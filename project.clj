@@ -4,4 +4,4 @@
                    [compojure "1.1.0"]
                    [clj-json "0.5.1"]]
   :plugins [[lein-ring "0.7.1"]]
-  :ring {:handler agile-grenoble-backend.core/app})
+  :ring {:handler infra.http/app})
