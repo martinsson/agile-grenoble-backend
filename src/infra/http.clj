@@ -2,17 +2,27 @@
   (:use compojure.core)
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
-            [core.program-import :as pi]))
+            [core.program-import :as pi]
+            [clj-json.core :as json]))
 
-(defn what-is-my-ip [request]
+(defn say-hello [request]
   {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body (:remote-addr request)})
+   :body ["hello" (:to (:params request))]})
+
+(defn json-encode [handler]
+  (fn [request]
+    (let [response (handler request)]
+      (merge response 
+             {:headers {"Content-Type" "application/json"}
+              :body (json/generate-string (:body response))}))))
+
+(def core-handler
+  (-> say-hello
+     (json-encode)))
 
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
-  (GET "/json" [] (pi/json-response {"hello" "world"}))
-  (GET "/son2" request (what-is-my-ip request))
+  (GET "/json" request (core-handler request))
   (route/resources "/")
   (route/not-found "Page not found"))
 
