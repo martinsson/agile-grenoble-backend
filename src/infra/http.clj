@@ -12,9 +12,8 @@
 (defn json-encode [handler]
   (fn [request]
     (let [response (handler request)]
-      (merge response 
-             {:headers {"Content-Type" "application/json"}
-              :body (json/generate-string (:body response))}))))
+      (merge {:headers {"Content-Type" "application/json"}}
+             (update-in response [:body] json/generate-string)))))
 
 (def core-handler
   (-> say-hello
