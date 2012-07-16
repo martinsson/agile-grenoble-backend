@@ -9,15 +9,20 @@
   {:status 200
    :body ["hello" (:to (:params request))]})
 
+(defn wrap-content-type-json [handler]
+  (fn [request]
+    (let [response (handler request)]
+      (assoc-in response [:headers "Content-Type"] "application/json"))))
+
 (defn json-encode [handler]
   (fn [request]
     (let [response (handler request)]
-      (merge {:headers {"Content-Type" "application/json"}}
-             (update-in response [:body] json/generate-string)))))
+      (update-in response [:body] json/generate-string))))
 
 (def core-handler
   (-> say-hello
-     (json-encode)))
+     (json-encode)
+     (wrap-content-type-json)))
 
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
