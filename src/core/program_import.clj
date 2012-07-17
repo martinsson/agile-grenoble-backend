@@ -1,7 +1,12 @@
 (ns core.program-import
+  (:use clojure-csv.core)
   (:require [clj-json.core :as json]))
 
-(defn json-response [data & [status]]
-  {:status (or status 200)
-   :headers {"Content-Type" "application/json"}
-   :body (json/generate-string data)})
+(def sessions 
+  (slurp "resources/public/sessions.csv"))
+
+
+(defn get-session-3 [request]
+  {:status 200
+   :body (nth (parse-csv sessions) 3) })
+

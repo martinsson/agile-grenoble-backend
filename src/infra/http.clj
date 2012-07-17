@@ -5,11 +5,8 @@
             [core.program-import :as pi]
             [clj-json.core :as json]))
 
-(defn say-hello [request]
-  {:status 200
-   :body ["hello" (:to (:params request))]})
 
-(defn wrap-content-type-json [handler]
+(defn wrap-with-content-type-json [handler]
   (fn [request]
     (let [response (handler request)]
       (assoc-in response [:headers "Content-Type"] "application/json"))))
@@ -20,9 +17,9 @@
       (update-in response [:body] json/generate-string))))
 
 (def core-handler
-  (-> say-hello
+  (-> pi/get-session-3
      (json-encode)
-     (wrap-content-type-json)))
+     (wrap-with-content-type-json)))
 
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
