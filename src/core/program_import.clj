@@ -33,8 +33,9 @@
   (cons (cons "Créneau" (first csv)) (rest csv)))
 
 (defn append-slot-to-body [csv]
-  (list (first csv) (second csv)))
+  (list (first csv) (cons "8:30" (second csv))))
 (facts
   (first (append-slot-to-header sessions)) => (has-prefix ["Créneau"])
   (second (append-slot-to-body (filter-empty-line sessions))) => (has-prefix ["8:30"])
+  (nth (append-slot-to-body (filter-empty-line sessions)) 2) => (has-prefix ["8:30"])
   )
