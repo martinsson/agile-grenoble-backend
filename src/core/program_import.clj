@@ -1,12 +1,12 @@
 (ns core.program-import
   (:use clojure-csv.core midje.sweet)
-  (:require [clj-json.core :as json]))
+  (:require [clj-json.core :as json])
+  (:require [clojure.java.io :as io]))
 
-(def sessions 
-  (parse-csv (slurp "resources/public/sessions.csv")))
-
+(defn sessions []
+  (parse-csv (slurp (io/resource "public/sessions.csv"))))
 (fact
-  (first sessions) => (contains [#"Format.*"]))
+  (first (sessions)) => (contains [#"Format.*"]))
 
 (defn empty-csv-line? [line]
   (every? empty? line))
@@ -19,12 +19,12 @@
   (remove empty-csv-line? csv))
 
 (fact 
-  (second sessions) => empty-csv-line?
-  (second (filter-empty-line sessions)) =not=> empty-csv-line?)
+  (second (sessions)) => empty-csv-line?
+  (second (filter-empty-line (sessions))) =not=> empty-csv-line?)
 
 (defn get-session-3 [request]
-  (let [line (nth sessions 3)
-        header (first sessions)] 
+  (let [line (nth (sessions) 3)
+        header (first (sessions))] 
     {:status 200
      :body (zipmap header line) }))
 

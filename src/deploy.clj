@@ -1,4 +1,5 @@
-(ns deploy)
+(ns deploy
+  (:require pallet.resource.package))
 
 (defn- sane-package-manager
   []
@@ -9,7 +10,7 @@
 (pallet.core/defnode master
   [:ubuntu :X86_32 :size-id "m1.small"
    :inbound-ports [22 80 443]]
-  :bootstrap [(pallet.crate.admin/automated-admin-user +admin-username+)
+  :bootstrap [(pallet.crate.admin/automated-admin-user "admin")
               (sane-package-manager)]
   :configure [(pallet.crate.java/java :sun)
               (pallet.crate.tomcat/tomcat)
@@ -20,10 +21,10 @@
 ;                :owner "couchdb:couchdb" :mode 600)
 ]
   :deploy [(pallet.resource.service/with-restart "tomcat*"
-             (pallet.crate.tomcat/deploy-local-file "/path/to/my/warfile.war" "ROOT"))])
+             (pallet.crate.tomcat/deploy-local-file "agile-grenoble-backend-1.0.0-SNAPSHOT-standalone.war" "ROOT"))])
 
 ;(def service (jcompute/compute-service "ec2" "AWS_ID" "AWS_SECRET_KEY" :ssh :log4j)
 
-(pallet.core/with-admin-user [+admin-username+]
+(pallet.core/with-admin-user ["admin"]
  ; (jcompute/with-compute-service [service]
     (pallet.core/converge {master 1} :configure :deploy))
