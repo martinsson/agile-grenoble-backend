@@ -14,10 +14,12 @@
         second-sessions (map #(cons "10:00" %) (drop 2 body))] 
     (concat (list header) first-sessions second-sessions)))
 
+(def decorated-sessions 
+  (-> 
+    cleaned-sessions
+    (append-slot-to-header)
+    (append-slot-to-body)))
+
 (defn sessions-with-missing-data [request]
-  (let [ sessions (-> 
-                    cleaned-sessions
-                    (append-slot-to-header)
-                    (append-slot-to-body))]
-    {:status 200
-     :body sessions }))
+  {:status 200
+   :body decorated-sessions })
