@@ -24,12 +24,11 @@
       (update-in response [:body] wrap-with-function))))
 
 (facts 
+  (against-background (..handler.. ..request..) => {:body ..some-json..})
   ((wrap-with-jsonp ..handler.. "getAllTimeSlots") ..request..) 
       => {:body (str "getAllTimeSlots(" ..some-json.. ")")}
-    (provided (..handler.. ..request..) => {:body ..some-json..})
-    ((wrap-with-jsonp ..handler.. "getSessionsForSlot") ..request..) 
-      => {:body (str "getSessionsForSlot(" ..some-json.. ")")}
-    (provided (..handler.. ..request..) => {:body ..some-json..}))
+  ((wrap-with-jsonp ..handler.. "getSessionsForSlot") ..request..) 
+      => {:body (str "getSessionsForSlot(" ..some-json.. ")")})
 
 (defn json-encode [handler]
   (fn [request]
