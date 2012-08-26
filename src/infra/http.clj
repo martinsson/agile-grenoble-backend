@@ -23,8 +23,9 @@
       {:body (str "getAllTimeSlots(" (:body response) ")")})))
 
 (facts 
-  ((wrap-with-jsonp ..handler.. "getAllTimeSlots") ..request..) => {:body "getAllTimeSlots({\"3\":\"11:00\"})"}
-  (provided (..handler.. ..request..) => {:body "{\"3\":\"11:00\"}"}))
+  ((wrap-with-jsonp ..handler.. "getAllTimeSlots") ..request..) 
+      => {:body (str "getAllTimeSlots(" ..some-json.. ")")}
+    (provided (..handler.. ..request..) => {:body ..some-json..}))
 
 (defn json-encode [handler]
   (fn [request]
