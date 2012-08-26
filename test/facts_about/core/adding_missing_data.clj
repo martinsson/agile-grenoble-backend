@@ -12,3 +12,7 @@
   (nth (append-slot-to-body cleaned-sessions) 3) => (has-prefix 2))
 
 (future-facts "handles more than two lines")
+
+(facts
+  (first (append-id cleaned-sessions)) => (has-prefix ["id"])
+  (second (append-id cleaned-sessions)) => (has-prefix [1]))

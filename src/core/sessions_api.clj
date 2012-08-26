@@ -22,7 +22,13 @@
                        :room nil})
 
 (defn sessions-as-maps [parsed-csv]
-  (list (zipmap (first parsed-csv) (second parsed-csv))))
+  (let [header (first parsed-csv)
+        body   (rest parsed-csv)
+        index-with-header (partial zipmap header)]
+    (map index-with-header body)))
 
+;TODO mock data
 (facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
-  (first (sessions-as-maps amd/cleaned-sessions)) => (contains {"Titre de la session | Title" "Approche pragmatique pour industrialiser le développement d’applications"}))
+  (sessions-as-maps amd/cleaned-sessions) => (has every? #(% "Titre de la session | Title"))
+  (first (sessions-as-maps amd/cleaned-sessions)) => (contains {"Titre de la session | Title" "Approche pragmatique pour industrialiser le développement d’applications"})
+  (second (sessions-as-maps amd/cleaned-sessions)) => (contains {"Titre de la session | Title" "Challenge Kanban"}))
