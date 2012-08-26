@@ -49,9 +49,9 @@
   {:status 200
    :body (sa/slot-list)})
 
-(defn sessions-for-body [request] 
+(defn sessions-for-body [slot request] 
   {:status 200
-   :body (sa/sessions-for)})
+   :body (sa/sessions-for slot)})
 
 (def slot-list 
   (-> slot-list-body
@@ -59,7 +59,7 @@
      (wrap-with-jsonp "getAllTimeSlots")))
 
 (defn sessions-for [slot] 
-  (-> (sessions-for-body slot)
+  (-> (partial sessions-for-body slot)
      (json-encode)
      (wrap-with-jsonp "getSessionsForSlot")))
 
@@ -68,7 +68,7 @@
   (GET "/json" request (core-handler request))
   (GET "/session-list" request (session-list request))
   (GET "/jsonp/slot-list" request (slot-list request))
-  (GET "/jsonp/sessions-for-slot/:slot" [slot] (sessions-for slot))
+  (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"] [slot] (sessions-for (Integer/parseInt slot)))
   (route/resources "/")
   (route/not-found "Page not found"))
 

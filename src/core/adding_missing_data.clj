@@ -17,14 +17,15 @@
 (defn append-id [csv]
   (let [header (cons "id" (first csv))
         ids    (iterate inc 1)
-        body   (map #(cons %1 %2) ids (rest csv))] 
+        body   (map #(cons %1 %2) ids (rest csv))]
     (cons header body)))
 
 (def decorated-sessions 
   (-> 
     cleaned-sessions
     (append-slot-to-header)
-    (append-slot-to-body)))
+    (append-slot-to-body)
+    (append-id)))
 
 (defn sessions-with-missing-data [request]
   {:status 200
