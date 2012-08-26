@@ -10,8 +10,8 @@
 (defn append-slot-to-body [csv]
   (let [header (first csv)
         body   (rest csv)
-        first-sessions (map #(cons "8:30" %) (take 2 body))
-        second-sessions (map #(cons "10:00" %) (drop 2 body))] 
+        first-sessions (map #(cons 1 %) (take 2 body))
+        second-sessions (map #(cons 2 %) (drop 2 body))] 
     (concat (list header) first-sessions second-sessions)))
 
 (def decorated-sessions 

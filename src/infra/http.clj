@@ -3,6 +3,7 @@
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [core.program-import :as pi]
+            [core.sessions-api :as sa]
             [core.adding-missing-data :as amd]
             [clj-json.core :as json]))
 
@@ -27,10 +28,20 @@
      (json-encode)
      (wrap-with-content-type-json)))
 
+(defn slot-list-body [request] 
+  {:status 200
+   :body (sa/slot-list)})
+
+(def slot-list 
+  (-> slot-list-body
+     (json-encode)
+     (wrap-with-content-type-json)))
+
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
   (GET "/json" request (core-handler request))
   (GET "/session-list" request (session-list request))
+  (GET "/slot-list" request (slot-list request))
   (route/resources "/")
   (route/not-found "Page not found"))
 
