@@ -15,21 +15,35 @@
                   2 "10:00"
                   3 "11:00"})
 
-(defn sessions-for [slot]
-  (let [sessions (vec (sessions-as-maps amd/cleaned-sessions))
-        session  (sessions (dec slot))
-        key-dictionary {"id" :id
-                        "Titre de la session | Title" :title}
-        normalized-session (merge {:room nil} (clojure.set/rename-keys session key-dictionary))]
-    (select-keys normalized-session [:room :id :title])))
+(defn normalized-session [raw-session] 
+  (let [key-dictionary {"id" :id
+                        "Titre de la session | Title" :title
+                        "Créneau | Slot" :slot}
+        normalized-session (merge {:room nil} (clojure.set/rename-keys raw-session key-dictionary))]
+    (select-keys normalized-session [:room :id :title :slot])))
 
-(facts 
-  (sessions-for 2) => {:id 55 
-                       :title "Kanban basics" 
-                       :room nil}
-  (provided (sessions-as-maps amd/cleaned-sessions) => 
-            [{"Créneau | Slot" 3}
-             {"Créneau | Slot" 2 "Titre de la session | Title" "Kanban basics" "id" 55}])
+(facts "adds key :room if not present, renames string keys to succint keywords"
+  (normalized-session {"Créneau | Slot" 2 
+                       "Titre de la session | Title" "Kanban basics" 
+                       "id" 55}) => {:slot 2
+                                     :title "Kanban basics" 
+                                     :id 55 
+                                     :room nil})
+
+(defn sessions-for [slot]
+  (for [s (sessions-as-maps amd/cleaned-sessions) :when (= slot (s "Créneau | Slot"))] s))
+
+(facts "find the sessions for a given slot"
+  (sessions-for 2) => [{"Créneau | Slot" 2 "id" 55}]
+    (provided (sessions-as-maps amd/cleaned-sessions) => 
+              [{"Créneau | Slot" 3}
+               {"Créneau | Slot" 2 "id" 55}])
+  (sessions-for 4) => [{"Créneau | Slot" 4 "id" 55}
+                       {"Créneau | Slot" 4 "id" 77}]
+    (provided (sessions-as-maps amd/cleaned-sessions) => 
+              [{"Créneau | Slot" 3}
+               {"Créneau | Slot" 4 "id" 55}
+               {"Créneau | Slot" 4 "id" 77}])
   )
 
 
