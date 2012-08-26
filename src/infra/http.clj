@@ -13,6 +13,19 @@
     (let [response (handler request)]
       (assoc-in response [:headers "Content-Type"] "application/json"))))
 
+(facts 
+  ((wrap-with-content-type-json ..handler..) ..request..) => {:headers {"Content-Type" "application/json"}}
+  (provided (..handler.. ..request..) => {}))
+
+(defn wrap-with-jsonp [handler f-name]
+  (fn [request]
+    (let [response (handler request)]
+      {:body (str "getAllTimeSlots(" (:body response) ")")})))
+
+(facts 
+  ((wrap-with-jsonp ..handler.. "getAllTimeSlots") ..request..) => {:body "getAllTimeSlots({\"3\":\"11:00\"})"}
+  (provided (..handler.. ..request..) => {:body "{\"3\":\"11:00\"}"}))
+
 (defn json-encode [handler]
   (fn [request]
     (let [response (handler request)]
@@ -35,7 +48,7 @@
 (def slot-list 
   (-> slot-list-body
      (json-encode)
-     (wrap-with-content-type-json)))
+     (wrap-with-jsonp "getAllTimeSlots")))
 
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
