@@ -17,14 +17,18 @@
   ((wrap-with-content-type-json ..handler..) ..request..) => {:headers {"Content-Type" "application/json"}}
   (provided (..handler.. ..request..) => {}))
 
-(defn wrap-with-jsonp [handler f-name]
+(defn wrap-with-jsonp [handler function-name]
   (fn [request]
-    (let [response (handler request)]
-      {:body (str "getAllTimeSlots(" (:body response) ")")})))
+    (let [response (handler request)
+          wrap-with-function (fn [j] (str function-name "(" j ")"))]
+      (update-in response [:body] wrap-with-function))))
 
 (facts 
   ((wrap-with-jsonp ..handler.. "getAllTimeSlots") ..request..) 
       => {:body (str "getAllTimeSlots(" ..some-json.. ")")}
+    (provided (..handler.. ..request..) => {:body ..some-json..})
+    ((wrap-with-jsonp ..handler.. "getSessionsForSlot") ..request..) 
+      => {:body (str "getSessionsForSlot(" ..some-json.. ")")}
     (provided (..handler.. ..request..) => {:body ..some-json..}))
 
 (defn json-encode [handler]
@@ -51,11 +55,17 @@
      (json-encode)
      (wrap-with-jsonp "getAllTimeSlots")))
 
+(def sessions-for 
+  (-> slot-list-body
+     (json-encode)
+     (wrap-with-jsonp "getSessionsForSlot")))
+
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
   (GET "/json" request (core-handler request))
   (GET "/session-list" request (session-list request))
-  (GET "/slot-list" request (slot-list request))
+  (GET "/jsonp/slot-list" request (slot-list request))
+  (GET "/jsonp/sessions-for-slot/:slot" [slot] (sessions-for slot))
   (route/resources "/")
   (route/not-found "Page not found"))
 
