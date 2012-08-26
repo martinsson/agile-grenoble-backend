@@ -12,3 +12,17 @@
   (slot-list) => {1 "8:30" 
                   2 "10:00"
                   3 "11:00"})
+
+(defn sessions-for [slot]
+  )
+
+(future-facts 
+  (sessions-for 2) => {:id 3 
+                       :title "Duo de retour d’expérience sauce aigre douce " 
+                       :room nil})
+
+(defn sessions-as-maps [parsed-csv]
+  (list (zipmap (first parsed-csv) (second parsed-csv))))
+
+(facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
+  (first (sessions-as-maps amd/cleaned-sessions)) => (contains {"Titre de la session | Title" "Approche pragmatique pour industrialiser le développement d’applications"}))

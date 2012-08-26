@@ -20,7 +20,7 @@
 (defn wrap-with-jsonp [handler function-name]
   (fn [request]
     (let [response (handler request)
-          wrap-with-function (fn [j] (str function-name "(" j ")"))]
+          wrap-with-function #(str function-name "(" % ")")]
       (update-in response [:body] wrap-with-function))))
 
 (facts 
@@ -49,13 +49,17 @@
   {:status 200
    :body (sa/slot-list)})
 
+(defn sessions-for-body [request] 
+  {:status 200
+   :body (sa/sessions-for)})
+
 (def slot-list 
   (-> slot-list-body
      (json-encode)
      (wrap-with-jsonp "getAllTimeSlots")))
 
-(def sessions-for 
-  (-> slot-list-body
+(defn sessions-for [slot] 
+  (-> (sessions-for-body slot)
      (json-encode)
      (wrap-with-jsonp "getSessionsForSlot")))
 
