@@ -53,22 +53,23 @@
   {:status 200
    :body (sa/sessions-for slot)})
 
-(def slot-list 
+(defn slot-list [callback] 
   (-> slot-list-body
      (json-encode)
-     (wrap-with-jsonp "getAllTimeSlots")))
+     (wrap-with-jsonp callback)))
 
-(defn sessions-for [slot] 
+(defn sessions-for [slot callback] 
   (-> (partial sessions-for-body slot)
      (json-encode)
-     (wrap-with-jsonp "getSessionsForSlot")))
+     (wrap-with-jsonp callback)))
 
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
   (GET "/json" request (core-handler request))
   (GET "/session-list" request (session-list request))
-  (GET "/jsonp/slot-list" request (slot-list request))
-  (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"] [slot] (sessions-for (Integer/parseInt slot)))
+  (GET ["/jsonp/:callback/slot-list"] [callback] (slot-list callback))
+  (GET ["/jsonp/:callback/sessions-for-slot/:slot", :slot #"[0-9]+"]  
+       [callback slot] (sessions-for (Integer/parseInt slot) callback))
   (route/resources "/")
   (route/not-found "Page not found"))
 
