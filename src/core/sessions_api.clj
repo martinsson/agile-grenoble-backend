@@ -4,7 +4,7 @@
 
 ;TODO rename to butterfly api
 
-(def time-slots ["8:30" "10:00" "11:00"])
+(def time-slots ["8:30" "10:00" "11:00" "14:00" "15:00" "16:30"])
 
 (defn slot-list []
   (list (zipmap (iterate inc 1) 
@@ -13,7 +13,10 @@
 (facts
   (slot-list) => [{1 "8:30" 
                   2 "10:00"
-                  3 "11:00"}])
+                  3 "11:00"
+                  4 "14:00"
+                  5 "15:00"
+                  6 "16:30"}])
 
 (defn- normalize [raw-session] 
   (let [key-dictionary {"id" :id
@@ -69,8 +72,9 @@
 (defn sessions-as-autoindexed-maps [parsed-csv]
   (into {} (for [s (map normalize (sessions-as-maps parsed-csv))] {(:id s) s})))
 (facts 
-  (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1..}
-                                             ..id2.. {:id ..id2.. :title ..title2..}}
+  ;; TODO get rid of the room constraint
+  (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1.. :room "To be defined"}
+                                             ..id2.. {:id ..id2.. :title ..title2.. :room "To be defined"}}
   (provided (sessions-as-maps ..csv..) => [{:id ..id1.. :title ..title1..}
                                            {:id ..id2.. :title ..title2..}]))
 

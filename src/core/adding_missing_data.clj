@@ -10,9 +10,9 @@
 (defn append-slot-to-body [csv]
   (let [header (first csv)
         body   (rest csv)
-        first-sessions (map #(cons 1 %) (take 2 body))
-        second-sessions (map #(cons 2 %) (drop 2 body))] 
-    (concat (list header) first-sessions second-sessions)))
+        slot-distribution (mapcat repeat (repeat 6) (range 1 9)) ;; get rid of this shit!!
+        decorated-body (map #(cons %1 %2) slot-distribution body)] 
+    (concat (list header) decorated-body)))
 
 (defn append-id [csv]
   (let [header (cons "id" (first csv))
@@ -27,6 +27,9 @@
     (append-slot-to-body)
     (append-id)))
 
+(defn sessions-with-missing-data [request]
+  {:status 200
+   :body decorated-sessions })
 (defn sessions-with-missing-data [request]
   {:status 200
    :body decorated-sessions })
