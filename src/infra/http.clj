@@ -67,8 +67,8 @@
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
   (GET "/json" request (core-handler request))
   (GET "/session-list" request (session-list request))
-  (GET ["/jsonp/:callback/slot-list"] [callback] (slot-list callback))
-  (GET ["/jsonp/:callback/sessions-for-slot/:slot", :slot #"[0-9]+"]  
+  (GET ["/jsonp/slot-list"] [callback] (slot-list callback))
+  (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (sessions-for (Integer/parseInt slot) callback))
   (route/resources "/")
   (route/not-found "Page not found"))
