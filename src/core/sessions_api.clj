@@ -67,7 +67,7 @@
                    (normalize ..session..) => {"key to remove" "toto" 
                                                         :id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }))
 (defn sessions-as-autoindexed-maps [parsed-csv]
-  (into {} (for [s (sessions-as-maps parsed-csv)] {(:id s) s})))
+  (into {} (for [s (map normalize (sessions-as-maps parsed-csv))] {(:id s) s})))
 (facts 
   (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1..}
                                              ..id2.. {:id ..id2.. :title ..title2..}}
