@@ -1,5 +1,5 @@
-Timestamp,Titre de la session | Title,Résume | Abstract,Quels bénéfices vont en retirer les participants ? | What will be the benefits for the participants?,Niveau | Level,Format | Format,Thèmes | Themes,Nombre de participants maxi | Maximum number of participants,"Dispositions particulières de la salle, Remarques | Room requirements, Remarks.",Prénom | First Name,Nom | Last Name,email,Téléphone | Phone,Entreprise | Company,Web site / Blog / Twitter...,Bio | Biography,Prénom | First Name,Nom | Last Name,email,Téléphone | Phone,Entreprise | Company,Web site / Blog / Twitter...,Bio | Biography,Prénom | First Name,Nom | Last Name,email,Téléphone | Phone,Entreprise | Company,Web site / Blog / Twitter...,Bio | Biography,Prénom | First Name,Nom | Last Name,email,Téléphone | Phone,Entreprise | Company,Web site / Blog / Twitter...,Bio | Biography,Durée | Duration,Interne: mail de confirmation envoyé à l'orateur
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Timestamp,Titre de la session | Title,Résume | Abstract,Quels bénéfices vont en retirer les participants ? | What will be the benefits for the participants?,Niveau | Level,Format | Format,Thèmes | Themes,Nombre de participants maxi | Maximum number of participants,"Dispositions particulières de la salle, Remarques | Room requirements, Remarks.",Prénom | First Name,Nom | Last Name,Entreprise | Company,Web site / Blog / Twitter...,Bio | Biography,Prénom | First Name,Nom | Last Name,Entreprise | Company,Web site / Blog / Twitter...,Bio | Biography,Prénom | First Name,Nom | Last Name,Entreprise | Company,Web site / Blog / Twitter...,Bio | Biography,Prénom | First Name,Nom | Last Name,Entreprise | Company,Web site / Blog / Twitter...,Bio | Biography,Durée | Duration,Interne: mail de confirmation envoyé à l'orateur
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 5/25/2012 13:51:59,Approche pragmatique pour industrialiser le développement d’applications,"Aujourd’hui, alors que le marché ne parle plus que d’industrialisation, la réalité des équipes de développement ne s’est pas éloignée de l’artisanat. Pendant des années, de nombreux éditeurs de logiciel se sont escrimés sur le sujet, proposant des méthodes très riches, systémiques, souvent inutilisables sans mettre en œuvre des outils si complexes qu’un individu normalement constitué ne pouvait les appréhender. Si complexes qu’après être utilisés en début de projet, au prix d’efforts extrêmes, ils étaient rapidement mis au placard.
 
 Nous avons tous en tête quelques projets qui ont pris un mauvais tournant. Ces projets sont riches d’enseignement, mais souvent délaissés : on préfère enterrer les problèmes plutôt que de les disséquer.
@@ -8,29 +8,716 @@ Si une méthode garantissait le succès d’un projet, cela se saurait. Les int�
 
 Pour conclure la réflexion, la confusion la plus importante serait de croire qu’un bon mixte Outils-Méthodes suffit pour s’affranchir de tout problème. Le premier facteur clé de succès d’un projet, ce sont les hommes. Penser que les référentiels d’amélioration des processus, les méthodes et les outils favorisent une industrialisation capable de réduire les individus à des simples pions facilement remplaçables et externalisables serait une grave erreur.
 
-Au contraire. Méthodes et outils doivent permettre aux individus d’exprimer pleinement leur potentiel en réduisant et en automatisant les tâches à faible valeur ajoutée, en fournissant un support transverse de collaboration et de workflow et des gains de productivité. C’est la somme des potentiels individuels, bien coordonnés, qui garantit le succès final du projet.","Réussir l'adoption des pratiques agiles ainsi l’industrialisation de développement avec un équilibre Méthode, Outil, Hommes","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Conférence | Conference,DevOps | DevOps,,,Hicham,AIT BASLAM,hichaaslam@gagamail.com,212661006741,,http://haitbaslam.wordpress.com,"Une expérience de plus de 11 ans, passée dans le conseil et le management de projets complexes à traiter de problématique d’intégration et d’architecture SI (FrontOffice, Backoffice), de refonte en SI Agile, d’apports de conseil et de méthode à la maîtrise d’ouvrage et maîtrise d’oeuvre. Elle est constituée sur le terrain par de nombreuses missions (Refonte SI Stratégique, Transformation SI, Urbanisation et Architecture SI, Architecture SOA et agilité SI, Solutions E-Business, Nouvelle expérience utilisateurs RIA, Industrialisation et usine de développement, Adoption et pratique des méthodes agiles, Management de projets complexes, Business développement de plusieurs SSII, développement de nouvelles offres sur le marché). Toutes ces expériences m’ont permis d’avoir une vision générale des systèmes d’information éclairés sous différents angles et sur les solutions globales à haute valeur ajoutée.
+Au contraire. Méthodes et outils doivent permettre aux individus d’exprimer pleinement leur potentiel en réduisant et en automatisant les tâches à faible valeur ajoutée, en fournissant un support transverse de collaboration et de workflow et des gains de productivité. C’est la somme des potentiels individuels, bien coordonnés, qui garantit le succès final du projet.","Réussir l'adoption des pratiques agiles ainsi l’industrialisation de développement avec un équilibre Méthode, Outil, Hommes","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Conférence | Conference,DevOps | DevOps,,,Hicham,AIT BASLAM,,http://haitbaslam.wordpress.com,"Une expérience de plus de 11 ans, passée dans le conseil et le management de projets complexes à traiter de problématique d’intégration et d’architecture SI (FrontOffice, Backoffice), de refonte en SI Agile, d’apports de conseil et de méthode à la maîtrise d’ouvrage et maîtrise d’oeuvre. Elle est constituée sur le terrain par de nombreuses missions (Refonte SI Stratégique, Transformation SI, Urbanisation et Architecture SI, Architecture SOA et agilité SI, Solutions E-Business, Nouvelle expérience utilisateurs RIA, Industrialisation et usine de développement, Adoption et pratique des méthodes agiles, Management de projets complexes, Business développement de plusieurs SSII, développement de nouvelles offres sur le marché). Toutes ces expériences m’ont permis d’avoir une vision générale des systèmes d’information éclairés sous différents angles et sur les solutions globales à haute valeur ajoutée.
 
-Aujourd’hui, je me consacre entièrement à accompagner les entreprises à réussir l'agilité de leur SI et à la traduction de la vision stratégique en résultat.",,,,,,,,,,,,,,,,,,,,,,50 minutes,OK le 29/05
+Aujourd’hui, je me consacre entièrement à accompagner les entreprises à réussir l'agilité de leur SI et à la traduction de la vision stratégique en résultat.",,,,,,,,,,,,,,,,50 minutes,OK le 29/05
 6/3/2012 14:40:57,Challenge Kanban,"Vous voulez découvrir le Kanban par la pratique?
 Vous voulez savoir combien de dollars vous allez gagner avec votre nouvelle start-up en 21 jours? Et si vous ferez-vous les bons choix d'injection, de sélection ou d'allocation pour établir le nouveau record?
 
-Alors venez relever le challenge atelier Kanban!","Vous y découvrirez comment fonctionne un système kanban avec ses limites kanban, les classes de service et les cartes de contrôles avec cet atelier ",Débutant | Beginner,Atelier pratique / Jeu | Practical Workshop / Game,Kanban,12,Pouvoir organiser les tables par équipe,Laurent,morisseau,laureau@googomail.com,608346355,Morisseau Consulting,"Site web : www.morisseauconsulting.com
+Alors venez relever le challenge atelier Kanban!","Vous y découvrirez comment fonctionne un système kanban avec ses limites kanban, les classes de service et les cartes de contrôles avec cet atelier ",Débutant | Beginner,Atelier pratique / Jeu | Practical Workshop / Game,Kanban,12,Pouvoir organiser les tables par équipe,Laurent,morisseau,Morisseau Consulting,"Site web : www.morisseauconsulting.com
 Twitter : @lmorisseau","Coach et formateur Agile/Kanban
 Certified Scrum Coach
 Co-fondateur fédération agile
-Fondateur AgileRennes et Agile Breizh",,,,,,,,,,,,,,,,,,,,,,120 minutes,OK le 04/06
+Fondateur AgileRennes et Agile Breizh",,,,,,,,,,,,,,,,120 minutes,OK le 04/06
 6/9/2012 18:53:38,Duo de retour d’expérience sauce aigre douce ,"Alexis et Bruno vous proposent la représentation sur scène, et ce pour la première fois en France, des meilleurs moments de deux missions de coaching agile. La première est une réussite comme on peut les lire dans les meilleurs ouvrages... La seconde est un échec, ou plutôt une longue suite d’échecs... Les deux combinées représentent une occasion d’apprendre, de partager et d’améliorer votre pratique des méthodes agiles.","La mise en scène de situations typiques que l'on rencontre lors de la transition vers une utilisation des méthodes agiles permet aux différents publics de prendre conscience des enjeux de cette transformation.
 Les participants vont également apprendre en se distrayant.
-Ils vont aussi pouvoir dédramatiser l'échec.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Amélioration Continue | Continuous Improvement",50 (si en format atelier 120 min) pas de limite si format court,,Alexis,Monville,alexonville@aydsdeba.fr,675730480,Ayeba,"Blog : http://alexis.monville.com
+Ils vont aussi pouvoir dédramatiser l'échec.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Amélioration Continue | Continuous Improvement",50 (si en format atelier 120 min) pas de limite si format court,,Alexis,Monville,Ayeba,"Blog : http://alexis.monville.com
 Société : Ayeba - http://ayeba.fr
 
 Twitter : http://twitter.com/alexismonville","20 ans d’expérience, depuis l’industrie automobile, l’épopée du démarrage d’Internet, le conseil, le secteur public, qui l’ont amené à fonder Ayeba, société de conseil en organisation combinant les domaines humain, management et digital pour accompagner la réussite des entreprises. Impliqué dans le monde associatif et conférencier dans les domaines du management, des méthodes agiles et du numérique.
 
-Vous pouvez revivre l’expérience des billes rouges grâce à ce résumé vidéo enregistré lors de l’AgileTour Bordeaux : http://ayeba.fr/2011/11/experience-des-billes-rouges-2/",Bruno,Sbille,brunle@gmail.com,,ELLIBS SPRL,"http://brunosbille.com (Blog)
+Vous pouvez revivre l’expérience des billes rouges grâce à ce résumé vidéo enregistré lors de l’AgileTour Bordeaux : http://ayeba.fr/2011/11/experience-des-billes-rouges-2/",Bruno,Sbille,ELLIBS SPRL,"http://brunosbille.com (Blog)
 
 http://twitter.com/BrunoSbille","Je suis dans la consultance IT et Business depuis plus de 13 ans. En plus de mes expériences de développeurs et de chef de projet, j'ai pu découvrir de nouveaux ustensiles à ajouter dans ma boîte à outils : Scrum, Agile, la PNL, le Coaching, Le ""People Management"", Diverses Techniques de Créativité etc...
 
 Je blogue régulièrement sur Scrum, Agile et le Management. 
 http://brunosbille.com (Scrum and Agile in Belgium)
 
-J'ai également produit (à l'aide de mon équipe) cette Vidéo dont le but est de promouvoir Scrum et les méthodes Agile. http://vimeo.com/4587652 (Scrum in the real world, an AGILE movie)",,,,,,,,,,,,,,,50 minutes,OK le 10/06
+J'ai également produit (à l'aide de mon équipe) cette Vidéo dont le but est de promouvoir Scrum et les méthodes Agile. http://vimeo.com/4587652 (Scrum in the real world, an AGILE movie)",,,,,,,,,,,50 minutes,OK le 10/06
+6/4/2012 11:28:20,L’agilité^3 chez un éditeur de logiciel,"Comment un éditeur de logiciel s’est inscrit dans l’agilité^3 :
+- En créant un produit de gestion de projet Agile
+- Sur une plateforme de développement Agile
+- Avec une méthode Agile","Cette session sera l’occasion de mesurer les apports des méthodes agiles en miroir des expériences de la R&D de l’éditeur dans le cadre du développement d’un nouveau produit.
+
+C’est une occasion d’interagir directement avec un éditeur de logiciel qui parlera non seulement de la méthode, mais aussi d’un résultat de l’agilité par l’agilité pour l’agilité : on atteint presque un niveau « meta » que les informaticiens apprécient. C’est une démarche d’autant plus intéressante qu’elle s’inscrit dans le cadre de la création d’un nouveau logiciel qui a pour vocation à intéresser les participants eux-mêmes dans leur travail au quotidien autour de l’agilité.
+
+Cet exposé permettra aux différents participants de comprendre comment un éditeur de logiciel français et francophone a évolué dans ses réflexions autour des méthodologies de développement, pour arriver à la maturité de l’agilité : Quel cheminement, quelles étapes, quelles expériences ?","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management",,,Jean-Loup,COMELIAU,W4,www.w4.eu,"Jean-Loup Comeliau received his masters in computer engineering from Supinfo Paris. He then worked for 10 years in a leading consulting firm, where he worked as a software engineer and a project leader on  telecommunication projects. He then spent 6 years in the US where he works for various San Francisco based  startups in the field of telecommunications, and received his MBA  from the Kelley School of Business (University of Indiana). He joined W4 in 2006 as a consultant and project manager, and is now a product manager. He was involved in different European projects such as ServFace and SERENOA",,,,,,,,,,,,,,,,50 minutes,OK le 04/06
+6/7/2012 8:37:50,Comment faire pour rendre une organisation agile?,"Est-il possible de changer son système d’exploitation organisationnel de sorte que l’agilité devienne possible dans toute l’organisation? La réponse est oui mais cela nécessite de remplacer l’ancien système d’exploitation “sous-jaçent” - le noyau dur de l’organisation, la structure, le système de pouvoir en place, les processus de prise de décision - par un nouveau système d’exploitation organisationnel qui inclut - des processus de prise de décision rapides, une nouvelle structure organique, un nouveau système de pilotage dynamique centré sur la réalité, une clarté sur les autorités en jeu, de nouvelles capacités à gérer les tensions et les transformer en évolutions pertinentes de l’organisation, une nouvelle conscience de ce que sont les organisations... Le système que je vais vous présenter s’appelle l’Holacracy®.
+L’Holacracy est un “système d’exploitation” organisationnel - une nouvelle technologie sociale pour piloter des entreprises agiles et centrées sur leur raison d’être.
+
+Remarque: possibilité d'ajuster la conférence en fonction du temps alloué. La durée de 120 minutes n'est pas fixe. En fonction du temps donné, l'intervenant pourra ou non proposer une expérimentation de réunion.","Comprendre comment mettre en place l'agilité dans une organisation avec cette nécessité de d'abord en changer la structure et le système d’exploitation. Explorer & découvrir - par l'expérience - des méthodes, processus et outils qui permettent cela.",Débutant | Beginner,Conférence | Conference,Management | Management,Pas de limite,,Bernard Marie,Chiquet,Integral Governance Institute,"Web site: www.integralgovernance.com
+Facebook: https://www.facebook.com/integralgovernance
+Twitter: https://twitter.com/#!/IntegralGI","Bernard Marie CHIQUET a été entrepreneur plusieurs fois dirigeant de grandes entreprises : Executive Director chez CAPGEMINI, Senior Partner chez Ernst & Young,President chez Eurexpert.
+Dans un deuxième volet de sa carrière, il a acquis une compétence d’executive coach (HEC), de médiateur (CAP’M) et de coach en Holacracy.
+Formateur et consultant en organisations, centré sur l'évolution des modes de gouvernance,  Bernard Marie CHIQUET est le fondateur de l’Institut de la Gouvernance Intégrale (IGI), crée en 2007. Aujourd’hui via IGI, il consacre son activité à l’accompagnement des entreprises pour une mise en place de  l’Holacracy et à la formation individuelle à ce mode gouvernance.",,,,,,,,,,,,,,,,120 minutes,OK le 07/06
+6/10/2012 14:30:28,Des Jeux Agile...en veux-tu ? En voilà !,"Les jeux Agile (parfois appelés Serious Games ou Agile Games) sont de plus en plus utilisés. Non seulement dans les formations, mais aussi dans les entreprises.
+
+Les jeux Agile c'est une manière ludique et puissante d'apprendre. Apprendre des principes Agile certes, mais aussi des principes essentiels comme la collaboration, l'écoute ou la confiance.
+
+L'objectif de cette session est de jouer un maximum de (courts) jeux Agile tous ensemble.
+
+Venez avec l'envie...d'expérimenter :-)
+","- Découvrir ce que l'on entend par ""jeux Agile""
+- Apprendre de nouveaux jeux Agile
+- Expérimenter différents jeux et ressentir lesquels vous parlent le mieux
+- Avoir une expérience ou se mêlent amusement et apprentissage
+","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, Amélioration Continue | Continuous Improvement, DevOps | DevOps, N.M.A. (Non-Mainstream Agile = Agile non-scrum et/ou non-logiciel | Non-scrum and/or non-software Agile)",entre 30 - 40,"Une salle large ou on peut déplacer les tables et les chaises
+
+Si possible: des paperboards ""3M"" avec papier autocollants",Bruno,Sbille,ELLIBS,"http://brunosbille.com (Blog Scrum et Agile)
+
+http://twitter.com/BrunoSbille
+","Je suis dans la consultance IT et Business depuis plus de 13 ans. En plus de mes expériences de développeurs et de chef de projet, j'ai pu découvrir de nouveaux ustensiles à ajouter dans ma boîte à outils : Scrum, Agile, la PNL, le Coaching, Le ""People Management"", Diverses Techniques de Créativité etc...
+
+Je blogue régulièrement sur Scrum, Agile et le Management. 
+http://brunosbille.com (Scrum and Agile in Belgium)
+
+J'ai également produit (à l'aide de mon équipe) cette Vidéo dont le but est de promouvoir Scrum et les méthodes Agile. http://vimeo.com/4587652 (Scrum in the real world, an AGILE movie)
+",Alexis,Monville,Ayeba,"Blog : http://alexis.monville.com
+Société : Ayeba - http://ayeba.fr
+
+Twitter : http://twitter.com/alexismonville","Alexis Monville
+
+20 ans d’expérience, depuis l’industrie automobile, l’épopée du démarrage d’Internet, le conseil, le secteur public, qui l’ont amené à fonder Ayeba, société de conseil en organisation combinant les domaines humain, management et digital pour accompagner la réussite des entreprises. Impliqué dans le monde associatif et conférencier dans les domaines du management, des méthodes agiles et du numérique.
+
+Vous pouvez revivre l’expérience des billes rouges grâce à ce résumé vidéo enregistré lors de l’AgileTour Bordeaux : http://ayeba.fr/2011/11/experience-des-billes-rouges-2/",,,,,,,,,,,120 minutes,OK le 10/06
+6/18/2012 14:29:10,"Des mots, des maux ? Démo !","Angoissé, impatient, heureux, stressé, confiant, triste, fébrile, épuisé, cool,... Vous vous sentez comment ? Demain, c'est démo !
+A la fin du sprint, vient le moment de la démo : un incrément de logiciel est montré. Que se cache-t-il derrière l'apparente simplicité de cette cérémonie ? Nous nous pencherons ensemble sur différentes facettes de la revue de sprint et  proposerons quelques astuces pour la préparer et l'animer.
+Parfois, ce n'est pas facile : ""on n'a pas tout fini !"", ""on développe des APIs"", ""le client n'est pas là"", ""tout le monde râle"" ... On en parlera aussi.
+Bref, comment faire de vos revues de sprint des meeting avec un roti à 5 doigts !","- les débutants pourront appréhender la revue de sprint dans toutes ses dimensions. Les exemples concrets, les enseignements transmis par la communauté pourront les aider à améliorer leurs revues de sprint si besoin
+- la session peut constituer une bonne ""piqure de rappel"" sur la revue de sprint pour les praticiens confirmés.","Débutant | Beginner, Confirmé | Skilled",Conférence | Conference,Amélioration Continue | Continuous Improvement,,,Caroline,Damour-Nobi,VIDAL,twitter : @Carolilo01,,Emilie,Franchomme,,twitter : @EFranchomme,,,,,,,,,,,,50 minutes,OK le 20/06
+6/19/2012 0:46:35,Don Quichotte et Sancho testa,"Don Quichotte et son valet Sancho testa partent en croisade contre les moulins agiles de la non régression fonctionnelle. 
+
+L'histoire de ce couple improbable , inventé en 1605 par l'espagnol Cervantès reste une énigme plus de 400 ans après se création :
+
+Don Quichotte reste à l’affût des dernières techniques java qui lui permettront de vaincre les moulins agile que sont aujourd'hui sont testNg, WebDriver et Jenkins
+
+Son fidèle valet, Sancho testa reste pragmatique et lui oppose sa lucidité de Product Owner  
+
+","La course à l'excellence technique reste un chimère si elle ne ne sert pas l'objectivité d'un projet
+","Débutant | Beginner, Confirmé | Skilled",Conférence | Conference,"Gestion de produit / portfolio Agile | Agile product/portfolio management, Amélioration Continue | Continuous Improvement, DevOps | DevOps",un max,,Laurent ,Leseigneur,SAMSE,http://sphereagile.blogspot.fr/,"Don Quichotte de l'agilité, courant après les moulins agiles",Emmanuel,Picon,SAMSE,,,,,,,,,,,,,50 minutes,OK le 20/06
+6/19/2012 16:54:10,REX - Sage X3,"Où vous êtes invités à partager l'histoire d'un éditeur international de logiciels qui décide de basculer en Scrum une équipe R&D de 100 personnes sur le mode Big-Bang (ou presque). Venez découvrir le contexte de mise en oeuvre de la transition Agile :
+
+- pourquoi a-t-il été décidé de passer à l’Agile,
+- comment le changement a été admis,
+- comment nous avons fait évoluer ""en douceur"" (vraiment ? ...) les processus existants,
+- quels progrés l'approche Agile a permis en termes de visibilité du travail en cours, de pertinence des développements réalisés, de délais de livraison, de niveau de qualité des livrables,
+- quelle place ont trouvée les managers, les qualiticiens, le support, les rédactrices et traductrices dans la nouvelle organisation Agile
+
+","La session laissera la place au dialogue avec les participants pour débattre sur les enjeux et contraintes de départ, les appréhensions et les freins rencontrés, les pratiques expérimentées, les écueils contournés.
+
+Et puis nous écrirons ensemble la suite de l'histoire : 
+- déplacement du curseur Agile vers la direction produits, 
+- initialisation d'une démarche de «Product Management» Agile,
+- exercice de cartographie des cas d'utilisation et besoins du produit,
+- ....
+
+",Débutant | Beginner,REX - Retour d'Expérience | Experience Reports,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, Agile Distribué | Distributed Agile, Amélioration Continue | Continuous Improvement, DevOps | DevOps",40,RAS,Guillaume,Leclere,SAGE MGE,,"Responsable équipe R&D
+Responsable du projet transverse de transition vers l'Agilité",Luc-André,Bard,Osiatis,,"Chef de Projet
+Coaching et formation de plusieurs équipes Agile
+Scrum Master de différents projets Agile",,,,,,,,,,,50 minutes,OK le 20/06
+6/19/2012 17:13:02,DevOps@Kelkoo,"Kelkoo a implémenté une solution globale pour banaliser la création, la configuration et le déploiement de ses applications sur son infrastructure.
+
+De la création du composant logiciel à travers des archetypes comprenant la structure maven ainsi des fichiers de configuration templatisés jusqu'a la software factory produisant des RPMS. Du clonage OS automatisé des serveurs jusqu'au backoffice de configuration des serveurs (tel composant avec telles clefs de conf sur tels serveurs); toutes ces opérations sont accessibles au développeurs Kelkoo et autorisent des logiques de déploiement continu pertinentes dans une société Agile.
+
+Cette présentation vise a expliquer comment Kelkoo a mis en oeuvre les outils: Cobbler, Puppet, jenkins, Maven, RPM, Gepetto (BO maison), Punch (surcouche puppet) pour simplifier la création, la configuration et le déploiement de ses applications de manière industrielle.","Découvrir Devops
+Découvrir une implémentation d'une chaine complète d'usine logicielle.
+Voir l'impact sur l'organisation et la communication entre équipes
+
+Pour info, déja présenté à MixIT (slides et vidéo dispo)",Confirmé | Skilled,Conférence | Conference,DevOps | DevOps,,,Alain ,DELAFOSSE,Kelkoo,"@alaindelafosse
+www.kelkoo.fr
+www.alaindelafosse.com",,Nicoals ,CAPPONI,Kelkoo,"www.kelkoo.fr
+@nicolascapponi",,,,,,,,,,,,50 minutes,OK le 20/06
+6/19/2012 17:19:17,Jeu ,"Basé sur le jeu Hard choices de Kruchten, ce jeu permet a une équipe agile (développeurs, PO, manager) d'appréhender les différentes stratégies de gestion de la dette technique (refactoring continu ou pas), d’implémentation des fonctionalités techniques (scalabilité, etc...) dans le cadre du déroulement d'un projet SCRUM très animé !","Découvrir et appréhender les attributs non fonctionnels d'un logiciel (scalabilité, iternationalisation).
+Découvrir les pratiques XP et leur bénéfices
+Comprendre les challenges en terme d'arbitrage technique auquels une équipe agile est exposée.",Confirmé | Skilled,Atelier pratique / Jeu | Practical Workshop / Game,"Gestion de produit / portfolio Agile | Agile product/portfolio management, Craftmanship (Technique / Coding / Testing...), chai pas trop",12,,Alain,DELAFOSSE,Kelkoo,"@alaindelafosse
+www.kelkoo.fr
+www.alaindelafosse.com",,,,,,,,,,,,,,,,,50 minutes,OK le 20/06. Demande d'un autre nom de session
+6/21/2012 11:37:27,« On ne fait pas pousser de l'herbe en tirant dessus »,"Quels ingrédients pour une bonne pousse ? 
+
+Cet atelier propose de tisser un lien entre la botanique et les piliers de la motivation individuelle => réalisation d’un dessin par les participants.
+
+L’accent est mis ensuite sur l’impact de notre personnalité sur notre perception des autres et sur la richesse du travail collectif => réalisation de posters par les participants.
+
+Enfin les différentes phases du processus agile sont « colorisées »  pour identifier ensemble les spécificités comportementales de chacune de ces phases  => jeu de cartes.
+
+Atelier ludique par équipe. 
+","Construire un cadre clair de compréhension de la motivation individuelle.
+
+Comprendre l’impact des personnalités individuelles sur le travail collectif.
+
+Identifier les attitudes à privilégier dans les différentes phases du processus agile.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Atelier pratique / Jeu | Practical Workshop / Game,Management | Management,40,"4 paper board ou
+Tout autre moyen de réaliser des poster et dessins en groupe tout en respectant les locaux (ex : murs).",Marc,VILCOT,Com-Hom,www.com-hom.com,"J'ai créé Com-Hom en 2008 après 17 années enrichissantes de vente et management terrain dans l’industrie.  
+
+Ingénieur électrotechnique (INPG 1989), j'ai commencé ma carrière à concevoir des machines électriques. Mes préférences créatives et relationnelles m'ont vite amené vers des activités commerciales et marketing.
+
+Com-Hom est partenaire des entreprises pour fédérer les énergies au service d’une performance durable.
+",Françoise,BALAND,Com-Hom,www.com-hom.com,"Ma formation initiale concerne le développement logiciel ( ENSIMAG). 
+
+J’ai pratiqué le développement logiciel, la gestion de projet et le management d’équipe R&D durant de nombreuses années dans le secteur de l’électronique (Télématique, Digigram). J’ai managé le processus de développement produit, de l’expression d’une idée à la mise en production, en privilégiant ce qui me paraissait indispensable à la réussite des projets : le travail d’équipe pluridisciplinaire. En 2009, nous mettons en place les premiers projets logiciels développés en Scrum. 
+
+Aujourd’hui, je fais de la formation et de l’accompagnement des entreprises dans le domaine du management des organisations
+",,,,,,,,,,,120 minutes,OK le 21/06
+6/24/2012 14:56:00,Les KPI agiles,"Que ce soit en interne ou avec une société de prestation, il est indispensable de savoir mesurer la performance d'un projet.
+L'habitude est de calculer des KPI (key performance indicators).
+Pour un projet agile, il faut des KPI spécifiques.
+Venez découvrir une proposition cohérente et complète.","Le problème de la mesure de la performance d'un projet agile revient chaque fois qu'on aborde la contractualisation (c'est à dire souvent).
+Ces KPI sont utilisables facilement, et personnalisables.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Conférence | Conference,"Management | Management, Agile Distribué | Distributed Agile, Contractualisation Agile | Agile Contracts",,,Rémy,Génin,Agile Walk,"www.agilewalk.com
+@leremyagile","Apres 20 ans de carrière et 5 ans comme évangéliste agile et responsable de tout ce qui touche à l'agilité chez France Telecom / Orange, Rémy Génin accompagne aujourd'hui les grands projets dans leur transition vers l'agilité. Il forme aussi les coaches agiles et scrummasters.",,,,,,,,,,,,,,,,50 minutes,OK le 24/06
+6/25/2012 15:39:55,Agile@ Kelkoo : en évolution continue,"Venez découvrir quels sont les moyens que Kelkoo a mis en place pour améliorer de manière continue et soutenue ses pratiques Agiles !
+(coding dojo, réunion hebdo Agile@ Kelkoo, rencontres bilatérales,etc..).
+Dans cette présentation, seront exposés quelques uns des principaux sujets débattus ces dernières années (gestion de programme, retrospectives, métriques, TDD, etc..)",Cette session a pour but de montrer que les pratiques des équipes agile évoluent constamment et qu'il existe un ensemble varié de pratiques à mettre en oeuvre pour aller toujours de l'avant. ,Confirmé | Skilled,REX - Retour d'Expérience | Experience Reports,"Management | Management, Amélioration Continue | Continuous Improvement",,,Elise,Vanholsbeeck,Kelkoo,,Scrum master et leader des communautés Agile et Outils engineering. Elise est chez Kelkoo depuis plus de 8 ans. Elle a commencé en tant que développeur. Son équipe a adopté Scrum en 2007.,Nicolas,Warzagier,Kelkoo,,"Développeur au sein de l'équipe frontend depuis mars 2011, Nicolas s'est initié aux méthodes Scrum et Kanban dans un environnement Agile en constante évolution. ",,,,,,,,,,,50 minutes,OK le 26/06
+6/25/2012 21:39:07,Sky Castle Game,"Oyez ! Oyez ! La légende du Sky Castle Game : ""Il était une fois un Roi très puissant. Un jour il tomba éperdument amoureux et décida de construire le Château de ses rêves pour y accueillir sa Bien aimée. Il décida de faire appel aux Compagnons Agiles qui sont réputés pour faire ce que l’on veut, montrer l’état d’avancement et accepter les modifications dont on va nécessairement avoir besoin au fur et à mesure du chantier afin de satisfaire sa Belle. L’équipe recrute. En ferez-vous partie ?""","Ce serious game est basé sur les principes de Scrum et de Kanban. Il met les membres d'une équipe en situation de collaboration pour atteindre un objectif commun. Ici, l'attention est portée sur la découverte et la réappropriation par l'équipe du flux de travail, priorisé, par itérations, auto-organisé...","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Amélioration Continue | Continuous Improvement",34,,Antoine,Vernois,Crafting Labs,"blog : http://blog.crafting-labs.fr
+blog du Sky Castle Game : http://www.skycastlegame.net
+twitter : @avernois","J'ai un doctorat en Informatique de l'ENS Lyon. Je pratique intuitivement les grands concepts de l'agilité pendant plusieurs années avant d'en découvrir leurs formalisations en 2008 et devient alors ScrumMaster puis Coach Agile. Je m'implique activement dans les communautés ayant trait à l'agilité et au développement logiciel : membre de la SigmaT, du Scrum User Group France, du Java User Group Toulouse et, début 2012, je suis à l'origine de la communauté Software Craftsmanship à Toulouse. Je vis actuellement sur Toulouse, mais j'apprécie de me déplacer un peu partout. Vous pouvez me suivre sur mon blog (http://blog.crafting-labs.fr) où je parle d'agilité et de développement logiciel et sur Twitter (@avernois).",Fabrice,Aimetti,,"http://agilarium.com/
+blog : http://agilarium.blogspot.fr/
+traduction : http://agilarium.wikispaces.com/
+Sky Castle Game : http://skycastlegame.net/
+twitter @agilarium","L'Agilité, je ne suis pas tombé dedans tout petit. Mais du jour où je l'ai rencontrée (début 2009), je ne l'ai plus quittée. J'en vis maintenant à plein temps depuis la création de la marque Agilarium® (début 2012). Je blogue agile, je tweete agile, je traduis agile et je joue agile. Vous aussi, vous pouvez le faire !",Philippe,Launay,,"Twitter : PhilAgile
+LinkedIn : http://fr.linkedin.com/pub/philippe-launay/12/a45/260","Une carrière commencée au début des années 90 dans les SI de santé (SIH), où j'ai notamment occupé les postes de Chef de Projet R&D et d’Ingénieur méthode et qualité, je suis actuellement Manager d’une équipe internationale et coach Agile chez AGFA Healthcare. Au cours de mes différentes affectations, j'ai été membre de commissions à l'AFNOR, membre de l'organisation HL7, membre du groupe IHE, membre de l'association HPRIM.
+J'ai commencé à utiliser SCRUM en 2006, j'ai été certifié Product Owner en 2008, puis j'ai obtenu la certification Scrum Professional en janvier 2010. A ce titre, je suis membre de la Scrum Alliance.
+Je suis membre du French Scrum User Group pour lequel je suis correspondant local à Bordeaux, dans le cadre duquel je publie sur un site SUG Bordeaux et un Google groupe, les présentations utilisées à cet égard ainsi que des billets sur Scrum et l’Agilité. J'interviens lors des ""Agile Tour"" à Bordeaux (2009, 2010 & 2011) et Toulouse (2011). J'interviens régulièrement pour des tables rondes sur l’Agilité animées par des journalistes professionnels de l’IT (ADEISO, Matinée 01 Informatique, Universités d'été du SI, etc.). J'ai participé aux SCRUM Gathering Munchen et London (2009 et 2011).
+Je suis depuis début 2011, Inovation Games® Trained Facilitator, confirmant mon implication dans l'utilisation des Serious Games que j'utilise comme support pédagogique dans mes formations.
+En 2011, j'ai publié des interviews dans 01 informatique, Business & Technologies n°2079, du 7 avril 2011, et dans I-Mag n°47, journal de l'Ensimag.
+Twitter : PhilAgile
+LinkedIn : http://fr.linkedin.com/pub/philippe-launay/12/a45/260",,,,,,120 minutes,OK le 26/6
+6/26/2012 10:10:10,Product Owner : comment tirer toute la puissance de l'agilité,"Pour les puristes, SCRUM a un seul PO, un ScrumMaster et une équipe auto-organisée... SCRUM ne parle pas de contrat, de plusieurs P.O., de super- P.O., de sponsor, de P.O. adjoint, de P.O. proxy... SCRUM dit que le P.O. a un rôle à plein temps (alimenter le backlog, préparer le prochain sprint, interagir avec l'équipe, venir aux revues...). 
+Or il n'est pas toujours possible pour un client d'être à 100% disponible, de renoncer à s'absenter (vacances, déplacement)  de peur de manquer à l'équipe...SCRUM ne donne pas de recettes et il y a peu de formations pour P.O. expliquant comment s'organiser, comment faire face au changement de mode entre le classique cycle en V où le MOE prend la main sur la base d’un cahier des charges complet, et le mode itératif SCRUM où le client garde un rôle au quotidien. Nous apportons notre recul et notre expérience aux candidats P.O.à l'agilité, et aux P.O.expérimentés qui cherchent des REX sur des schémas complexes (centre de service agile).
+Au travers d’une approche itérative et d’un jeu de rôles, nous présentons comment notre schéma d’organisation s’est affiné pour atteindre efficience, fiabilité et clarté des rôles après un an d’amélioration continue.","Trouver une solution gagnant / gagnant pour concilier SCRUM et centre de service dans un cadre de prestation de service avec engagement de résultat.
+Comprendre les différents rôles et types de PO qu'on peut identifier et leur apport.
+Monter une organisation agile efficiente et fluide dans le plus pur esprit agile.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, Contractualisation Agile | Agile Contracts",30,"Salle openspace avec 30 chaises et un projecteur.
+Une table
+Un paravent si possible pour cacher les coulisses des accessoires / jeu de rôle",Jean,DUPUIS,OPEN,"http://jidup.wordpress.com
+@jidup
+http://www.open-groupe.com","Jean est membre du CARA depuis 3 ans, coach agile chez OPEN Rhône-Alpes en charge de la diffusion de la pratique agile en interne et chez les clients régionaux.
+Jean est également Directeur de projets et TMA agiles au centre de services Rhône-Alpes et Professeur Affilié à Grenoble Ecole de management.",Christophe ,DUPLAIX,SNCF,www.sncf.fr,Christophe est Directeur de programme Trains communicants à la SNCF. Il est Product Owner et a demandé à OPEN de créer un centre de service  Trains communicants pour répondre aux demandes des différentes maîtrises d'ouvrage souhaitant installer des communications sol-bord. Il a décidé de passer en mode agile pour gérer les nouveaux projets et la TMA sur le périmètre des trains communicants.,,,,,,,,,,,50 minutes,OK le 26/6
+6/26/2012 22:25:32,Retour d’expérience : Agile contre Cycle en V : Le match,"En 2011, nous avons eu l'occasion de réaliser le rêve de tout agiliste. Un client a fait réaliser, par un concours de circonstances, deux fois le même site web, un en mode agile, l'autre en mode ""classique"". A votre avis qui a gagné ?
+Je vous présenterai le contexte de cette expérience à première vue étonnante et nous regarderons en détail les différences et leurs conséquences.
+
+Jusqu'à présent, j'ai toujours pensé qu'entre agile et cycle en V il ""n'y avait pas photo""... Bon, maintenant en plus j'ai la photo !","Lors des prestations précédentes de cet exposé, les participants ont remarqués que le match ne s'est pas passé comme ils s'y attendaient.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, Contractualisation Agile | Agile Contracts, DevOps | DevOps, Promotion de l'agilité",Etienne Charignon,"Disposition classique : orateur <-> audience, vidéo projecteur",Etienne,Charignon,Valtech,"http://etienne.charignon.free.fr
+
+Twitter : echar","Etienne Charignon est consultant sénior chez Valtech Technology, avec plus de 14 ans d’expérience en nouvelles technologies, développement logiciel et méthodes Agiles.
+
+Il a une expérience concrète de développement d’applications multi-tiers, application web ou clients riches en Java.
+Etienne a une expérience significative des méthodes de travail eXtreme Programming et Scrum.
+Etienne a une expérience concrète de la conduite des exigences par les tests (ATDD).
+
+Etienne est certifié ScrumMaster par François Beauregard. Il donne le cours Scrum pour Valtech Trainning.",,,,,,,,,,,,,,,,50 minutes,OK le 26/6
+6/26/2012 22:48:22,Il était une fois la vie d’un Product Owner,"« Il était une fois la vie d’un Product Owner (PO) » raconte la vie d’un PO qui a 9 mois pour délivrer son premier produit. Entre les visionnaires, les utilisateurs, l’équipe de développement et les investisseurs, le PO va devoir évoluer dans un environnement exigeant, sans filet. De l’initiation à la maturité, ce PO va découvrir des phénomènes agiles, varier les approches et les outils pour maîtriser sa gestion de produit. 
+
+Entre fiction et réalité, « Il était une fois la vie d’un Product Owner » est une illustration concrète et fantastique du quotidien et de l’apprentissage d’un PO fraichement débarqué qui va gérer son produit en mode startup. 
+","-	Retour d’expérience d’un Product Owner
+-	Des idées d’outils par la gestion de produit agile
+-	Comprendre les tenants et les aboutissants du rôle complexe de Product Owner
+-	Approche Lean Startup
+",Confirmé | Skilled,conférence (sujet avancé et retour d’expérience),"Gestion de produit / portfolio Agile | Agile product/portfolio management, Lean Startup",100,,Romain,Couturier,Terre d'Agile,"Site 		http://www.terredagile.com
+Blog 		http://www.talondagile.com
+Skype 	calton69
+Twitter 	@romaincouturier
+","Coach agile, formateur et enseignant, j’accompagne les équipes et les organisations dans leur transition et évolution vers l’agilité.
+
+De formation génie logiciel, j’ai démarré par le cœur de l’informatique : le développement. Les 3 premières années chez un éditeur m’ont fait découvrir la réalité des cycles de production logicielle, de la vision produit jusqu’au déploiement chez les clients. En 2006, je découvre le monde des startups : réactivité, haute disponibilité, qualité de service, et satisfaction utilisateur. C’est dans l’agilité (et notamment Scrum) que j’ai trouvé les réponses pour structurer de manière efficace le travail des équipes.
+
+Membre actif du CARA Lyon et co-fondateur de Mix-IT, je suis aujourd’hui activement impliqué dans les actions de diffusion et de promotion de l’agilité principalement à Lyon et en Rhône-Alpes.
+",,,,,,,,,,,,,,,,50 minutes,OK le 26/6
+6/26/2012 22:50:14,Lean Lego Game,"Le Lean s’impose naturellement depuis sa création dans les industries comme le seul véritable paradigme de production valorisant à la fois le produit et les équipes qui y contribuent. En révolutionnant les modes de pensée classique, le Lean a amené des résultats étonnants dont Toyota est l’illustration de référence depuis des dizaines d’années. Quand on leur parle des méthodes Scrum, XP ou Kanban pour ne citer qu’elles, les praticiens Lean redécouvrent des concepts similaires avec lesquels ils sont déjà familiers. En y regardant de plus près, ce n’est pas si étrange que cela.
+
+Qu’est-ce que le Lean ? Existent-ils des liens avec l’agilité ? Si oui quels seraient les apports du Lean dans un projet agile en informatique ? Quelles sont les différences ? C’est tout cela que l’atelier Lean Lego© Game vous propose de découvrir.
+
+Présenté pour la première fois par Danilo Sato & Francisco Trindade en 2008 à Buenos Aires, l’atelier Lean Lego© Game est une expérience ludique d’apprentissage des principaux concepts du Lean. Au rythme des jeux en équipes à base de Lego©, les participants exploreront quelques principes piliers du Lean et repartiront avec de nouvelles idées pour améliorer leur chaîne de production.
+","Découvrir et comprendre des principes clé du Lean
+Comprendre les passerelles Lean / Agilité
+Démontrer les principes du Lean par l’exemple
+Imaginer une chaine de production logicielle
+",Débutant | Beginner,Atelier pratique / Jeu | Practical Workshop / Game,"Amélioration Continue | Continuous Improvement, Lean",20,,Romain,Couturier,Terre d'Agile,"Site	 	http://www.terredagile.com
+Blog	 	http://www.talondagile.com
+Skype 	calton69
+Twitter 	@romaincouturier
+","Coach agile, formateur et enseignant, j’accompagne les équipes et les organisations dans leur transition et évolution vers l’agilité.
+
+De formation génie logiciel, j’ai démarré par le cœur de l’informatique : le développement. Les 3 premières années chez un éditeur m’ont fait découvrir la réalité des cycles de production logicielle, de la vision produit jusqu’au déploiement chez les clients. En 2006, je découvre le monde des startups : réactivité, haute disponibilité, qualité de service, et satisfaction utilisateur. C’est dans l’agilité (et notamment Scrum) que j’ai trouvé les réponses pour structurer de manière efficace le travail des équipes.
+
+Membre actif du CARA Lyon et co-fondateur de Mix-IT, je suis aujourd’hui activement impliqué dans les actions de diffusion et de promotion de l’agilité principalement à Lyon et en Rhône-Alpes.
+",,,,,,,,,,,,,,,,120 minutes,OK le 26/6
+6/27/2012 9:00:05,"Scrum, comment tomber dans le panneau","Une équipe qui démarre l’agilité commence le plus souvent par Scrum, la méthode la plus populaire 
+et la plus simple à comprendre et à appliquer … en théorie. Le guide officiel de Scrum décrit en 17 pages tout 
+ce qu’il faut savoir : rôles, évènements, artefacts. Pourtant bon nombre de principes clairs restent inappliqués, 
+oubliés ou galvaudés. Les conséquences d’une telle approche peuvent être plus ou moins catastrophiques.
+
+Au cours de ce retour d’expérience, je vous propose de revenir sur quelques-uns des pièges les plus connus de 
+Scrum et de voir comment les éviter. Le public sera mis à contribution pour cette session qui se veut interactive.
+","-	Découvrir ce qui n’est pas écrit dans le guide Scrum
+-	Donner les bonnes pratiques à ceux qui veulent démarrer notamment en Scrum
+-	Aborder des pistes d’amélioration pour ceux qui pratiquent l’agilité
+-	Partager un retour d’expérience terrain, concret, pratique, issu de 4 années de coaching d’équipe
+","Débutant | Beginner, Confirmé | Skilled",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, Contractualisation Agile | Agile Contracts, Amélioration Continue | Continuous Improvement, Scrum",100,"Un aperçu de ma session        http://www.slideshare.net/calton13/scrum-comment-tomber-dans-le-panneau
+",Romain,Couturier,Terre d'Agile,"Site		http://www.terredagile.com
+Blog		http://www.talondagile.com
+Skype 	calton69
+Twitter 	@romaincouturier
+","Coach agile, formateur et enseignant, j’accompagne les équipes et les organisations dans leur transition et évolution vers l’agilité.
+
+De formation génie logiciel, j’ai démarré par le cœur de l’informatique : le développement. Les 3 premières années chez un éditeur m’ont fait découvrir la réalité des cycles de production logicielle, de la vision produit jusqu’au déploiement chez les clients. En 2006, je découvre le monde des startups : réactivité, haute disponibilité, qualité de service, et satisfaction utilisateur. C’est dans l’agilité (et notamment Scrum) que j’ai trouvé les réponses pour structurer de manière efficace le travail des équipes.
+
+Membre actif du CARA Lyon et co-fondateur de Mix-IT, je suis aujourd’hui activement impliqué dans les actions de diffusion et de promotion de l’agilité principalement à Lyon et en Rhône-Alpes.
+",,,,,,,,,,,,,,,,50 minutes,OK le 27/6
+6/28/2012 9:57:13,Scrum à Kanban : 3 retours d’expériences,"Venez découvrir 3 expériences de passage de Scrum à Kanban. Chaque équipe expliquera les raisons du changements, l’organisation de la période de transition, l’état actuel, les avantages et les inconvénients et ce qui ne change pas.",Cette session a pour but de partager l’expérience de 3 équipes passées de Scrum à Kanban.  ,Confirmé | Skilled,REX - Retour d'Expérience | Experience Reports,"Management | Management, Amélioration Continue | Continuous Improvement, N.M.A. (Non-Mainstream Agile = Agile non-scrum et/ou non-logiciel | Non-scrum and/or non-software Agile)",peu importe,peu importe,véronique,mosnier,Kelkoo,,"Véronique Mosnier a fait 10 ans de conseil chez Capgemini (développement / informatique décisionnel / facilitation), elle a ensuite été 2 ans Scrum Master chez Yahoo. Après un passage éclair à la Ville de Grenoble, elle est maintenant Scrum Master des 2 équipes frontaux web chez Kelkoo dans un environnement distribué.",,,,,,,,,,,,,,,,50 minutes,OK le 29/06
+6/28/2012 10:01:01,Au cœur d’une équipe distribuée,Soyez équipier d’un jour et venez faire un stand-up  avec votre équipe distribuée.  ,Cette session a pour but de montrer les difficultés d’organisation et de communication d’une équipe distribuée.  ,Confirmé | Skilled,Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Agile Distribué | Distributed Agile",15-20,Il faudrait 2 salles ou 2 zones physiquement & phoniquement séparées avec une prise réseau chacune et un téléphone.,véronique,mosnier,Kelkoo,,"Véronique Mosnier a fait 10 ans de conseil chez Capgemini (développement / informatique décisionnel / facilitation), elle a ensuite été 2 ans Scrum Master chez Yahoo. Après un passage éclair à la Ville de Grenoble, elle est maintenant Scrum Master des 2 équipes frontaux web chez Kelkoo dans un environnement distribué.",,,,,,,,,,,,,,,,50 minutes,OK le 29/06
+6/28/2012 15:55:03,Agilité à distance : l'architecture logicielle au service de l'agilité,"Agilité et distance ne font pas bon ménage. Mais il est souvent impossible de réunir tous les acteurs d'un projet dans un même lieu.
+Comment rester agile dans ces conditions ?
+Comment échanger sur le produit, donner un feedback ou signaler une anomalie de manière simple et rapide ?
+Cette session présente une manière originale de répondre à cette problématique.
+Retour d'expérience et démonstration sont au programme.
+Projet réalisé chez un acteur majeur du transport ferroviaire.
+","Les participants vont découvrir une méthode originale de conception logicielle axée sur la facilitation des échanges (feedback, signalement d'anomalie) sur le produit entre des membres d'une équipe locale ou multi-sites.
+Ils mesureront les bénéfices de placer l'expérience utilisateur au coeur du processus de création logiciel.
+",Confirmé | Skilled,REX - Retour d'Expérience | Experience Reports,"Agile Distribué | Distributed Agile, Craftmanship (Technique / Coding / Testing...)",,,Jean-Philippe,GILLIBERT,SII,"http://jeanphilippegillibert.wordpress.com/
+L’article « Développement orienté scénario utilisateur »  donne des informations complémentaires sur le sujet de la session.
+","Après un parcours dans le développement de jeu vidéo, j’évolue chez SII depuis 2008. 
+Agiliste convaincu, j’interviens actuellement en tant que développeur/architecte à la SNCF où je m'efforce de démontrer les atouts de l'agilité.
+",,,,,,,,,,,,,,,,50 minutes,OK le 29/06
+6/28/2012 17:50:11,Les tests et l'agilité : la vraie vie,"Derrière le mot test vous pensez qu'il existe une réalité unique ?
+
+Et bien venez partager avec moi la vision de la vraie vie des équipes agiles, est-ce qu'elles y arrivent avec l'automatisation, quelles solutions elles trouvent, comment sont leurs pyramides des tests (cf. Mike Cohn).
+
+Ces approches nourriront vos réflexions,  vous regarderez vos propres pratiques sous un autre oeil et aurez sans doute de nouvelles idées.
+","Une vision assez large  de la réalité des différentes approches du test dans les équipes agiles,  des difficultées rencontrées et des solutions trouvées.
+
+Une approche différente des tests pour en avoir une vision plus ouverte qui intègre l'ensemble des tests réalisés par les différents membres de l'équipe des développeurs, aux testeurs mais aussi aux utilisateurs.
+
+Je m'appuierais sur des cas concrets que nous voyons précisement grâce à notre plateforme SaaS qui nous donne une visibilité trés large de la diversité des équipes agiles face aux tests.",Confirmé | Skilled,Conférence | Conference,Amélioration Continue | Continuous Improvement,1,,Marc,rambert,Kalistick,"www.kalistick.fr
+blog.kalistick.fr
+@MarcRambert
+","Marc Rambert est un des co-fondateurs de Kalistick et grâce à cette plateforme en mode SaaS recueille beaucoup d'informations sur les tests qu'il aime 
+partager dans des conférences comme  Iqnite Genève 2012, Scrum Day France 2011, Mix-It Lyon, Avril 2011, ...
+",,,,,,,,,,,,,,,,50 minutes,KO pas de mail
+6/29/2012 2:07:04,Petits Outils de facilitation à l'Usage des Honnêtes gens,"FACILITER, cela consiste à aider un groupe, une ou des personnes, à apprendre, explorer, trouver des solutions, atteindre un consensus… Souvent négligée, la facilitation est pourtant une vraie discipline, désormais au cœur de nos activités en Entreprise.
+C'est dans un mode Show & Tell et sous forme de pattern (Problème, contexte, solution) que je vous invite à découvrir ces petits outils & techniques de facilitation si simples mais terriblement efficaces au quotidien. Vos retours d’expérience sur les techniques présentées seront encouragées.
+Vous connaissez tous le ROTI ou le Vote à 5 doigts, vous en découvrirez d'autres...","- Connaissance de nouveaux outils
+- Pattern d'usage
+- Echanges et retour d'experience","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, N.M.A. (Non-Mainstream Agile = Agile non-scrum et/ou non-logiciel | Non-scrum and/or non-software Agile)",20,"Murs libres
+Affichage d'une quinzaine de posters",Jean Clalude,Grosjean,Valtech,"http://www.qualitystreet.fr
+http://www.agile-ux.com
+
+https://twitter.com/#!/jcQualitystreet
+@jcQualitystreet","Jean-Claude est Coach Agile, praticien Agile UX et formateur chez Valtech.
+
+Coach Agile et formateur depuis plusieurs années, Jean-Claude accompagne aujourd’hui les personnes, les équipes et les organisations de divers domaines et secteurs dans leur parcours dans ou vers l’agilité.
+
+Il est aussi l’auteur de deux blogs qualitystreet.fr et agile-ux.com, centrés sur le Coaching Agile, la facilitation, l’Experience Utilisateur ou encore le Management Agile & Lean.",,,,,,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 9:24:26,Changer pour mieux coder,"Rémy est un développeur qui aime son métier et qui sait livrer des applications en production. Néanmoins, il arrive souvent au même constat : sous les contraintes du projet (peu de temps, état du code…) il lui arrive de livrer du code pas très « propre » voir « pourri ». Au bout d’un moment, il ne voit pas d’autres solutions que de repartir de zéro pour retrouver une situation saine.
+
+Un jour, n'acceptant plus cette situation, il choisit de se remettre en question et de commencer une quête pour enfin être fier de ce qu’il produit. Il décide dorénavant de livrer du code de plus en plus maintenable et évolutif.
+
+Pour cela, il va à la rencontre de Johan, un maître reconnu, qui va l’aider sur son chemin d’apprentissage.  Ensemble, ils vont parcourir 9 règles de programmation pour l’aider dans sa quête.
+
+Une démonstration en live montrera comment améliorer un code existant en suivant les 9 règles d’Object Calisthenics.","Cette session est faite pour vous si vous partagez l’intérêt d’écrire du code maintenable et évolutif et vous avez envie de vous améliorer dans ce sens.
+
+Présentation de 9 règles de programmation Orienté Objet pour améliorer ses compétences de développeur. Applicable dès le lendemain sur vos projets.
+
+Vous ressortirez avec un programme d'entraînement pour écrire du code évolutif et maintenable que vous pourrez partager avec vos collègues.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Atelier technique | Technical Workshop,"Amélioration Continue | Continuous Improvement, Craftmanship (Technique / Coding / Testing...)",pas de limite,Besoin de 2 vidéo projecteurs indépendants ,Rémy,Sanlaville,Orange,@sanlaville,"Après une thèse en architecture logicielle, Rémy a rejoint Orange comme développeur java avancé. Passionné par le génie logiciel, il travaille depuis 6 ans sur la mise en place de pratiques et d'outils d'ingénierie logicielle ainsi que des méthodes agiles. Il a mis en place le Coding-Dojo à Grenoble en 2009, co-organisé le premier Code Retreat en France en 2011, le premier Legacy Code Retreat au monde en 2011 présenté par J.B. Rainsberger. Il a co-initié la communauté BDD sur Grenoble via le premier atelier BDD en France en 2012. Il s’intéresse aussi au Lean Startup.",Johan,Martinsson,ChangIT,martinsson-johan.blogspot.com / @johan_alps,,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 9:26:48,Comprendre le Manifeste agile,"Tout le monde connaît l'existence du manifeste agile, mais avez-vous bien compris toutes les richesses qu'il recèle ?
+Ensemble, nous répondrons à un certain nombre de ""pourquoi"", pour vous permettrons de rentrer pus finement et plus profondément dans les arcanes de l'état d'esprit agile.","Un des pièges classiques est de croire que les méthodes agiles se résument à la mise en place d'une liste de bonnes pratiques.
+Pour bien utiliser les méthodes agiles, il est indispensable de bien comprendre la philosophie et les principes qui les fondent. Cela vous permettra de mieux adapter l'agilité aux différents contextes que vous rencontrerez.","Débutant | Beginner, Confirmé | Skilled",Conférence | Conference,"Management | Management, Agile Distribué | Distributed Agile, Contractualisation Agile | Agile Contracts, Amélioration Continue | Continuous Improvement",,,Rémy,Génin,Agile Walk,www.agilewalk.com,Merci de reprendre celle déjà rédigée pour la proposition sur les KPI. ,,,,,,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 12:05:26,Différences entre approches agiles,"L'agile est aujourd'hui un ensemble très riche de pratiques, principes, valeurs et il existe plusieurs chemins (ce que l'on nomme ""méthodes agiles"") pour jalonner une mise en oeuvre agile. Cette conf propose un panorama d'approches, centré sur les différences concrètes :
+- hauteur de la première étape (XP Scrum vs Lean Kanban)
+- Rôles 
+- Cycle de vie
+- Certifications
+Au-delà de ces différences importantes entre les approches, la conf montre aussi l'inter-dépendance entre toutes.
+","- découvrir les possibilités offertes par l'agile aujourdh'ui, au-delà de scrum
+- se projeter dans une mise en oeuvre concrète en ayant une information sur les forces et freins inhérents à cette mise en oeuvre",Débutant | Beginner,Conférence | Conference,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, Amélioration Continue | Continuous Improvement",7000000000,N/A,Thierry,Cros,Maison de l'Initiative,"http://thierrycros.net
+https://twitter.com/#!/thierrycros","- créateur de Extreme Programming France en 2000 (devenu Agile France)
+- auteur de ""Maitriser les projets avec l'Extreme Programming"" Editions Cepadues en 2004
+- coach formateur agile",,,,,,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 12:06:16,Qualité: Stop à la procrastination,"Retour d'expérience sur la mise en place d'une stratégie Qualité
+
+Le projet: 
+Application en milieu industriel, critique
+
+Contexte: 
+Un existant pas testé de manière automatique et peu testable
+Budget limité et temps contraint avant la première mise en production
+
+Comment cibler les tests ?","Les éléments déclencheurs:
+
+Prise de conscience sur la nécessité d'une stratégie qualité.
+Prise de conscience sur le cout et la pertinence des tests automatiques par rapport au contexte.
+
+Exemple de mise en place d'une stratégie pertinente et optimisée en bonne entente entre le product owner et l'équipe de dévelopement.
+
+Le bénéfice étant d'inspirer l'audience à la mise en place de leur propre stratégie et leur montrer comment nous avons réussi à aborder ce challenge.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Gestion de produit / portfolio Agile | Agile product/portfolio management, Craftmanship (Technique / Coding / Testing...)",50,,Fabrice,Chaminand,Raynet,www.araymond.com,"Fabrice n'aime pas parler de lui. C'est d'ailleurs pour celà qu'il parle de lui à la troisième personne dans sa bio.
+
+ScrumMaster depuis un an, il a à ""coeur"" la conception d'une arbalette à chats en étiquettes pour protéger son équipe ainsi que le lavage de cerveau bi-hebdomadaire du product owner afin d'assurer un bon compromis entre le besoin fonctionnel et les contraintes technico/budgétaires.",Laurent,Dupanloup,Raynet,www.araymond.com,"Descendant du père Dupanloup, j'ai trainé ma bosse dans l'industrie depuis des lustres. Je parle l'automate couramment.
+
+J'ai rejoins le projet depuis un an en tant que product owner, adoptant l'agilité à bras ouverts. ",,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 12:33:12,La fleur de lotus ou comment redynamiser vos rétrospectives,"Vous découvrirez au travers d'un jeu une technique de collecte et d'exploration des problèmes en utilisant une représentation de type fleur de lotus
+« Lotus Blossom » vient du Japon et a été inventé par  Yasuo Matsumura. C’est une technique dérivée du Brainstorming mais qui favorise admirablement la pensée créative… Appliquée à la résolution de problèmes, elle peut être utilisée pour animer une rétrospective
+",Apprendre une nouvelle technique permettant de redynamiser leur rétrospective,"Débutant | Beginner, Confirmé | Skilled",Atelier pratique / Jeu | Practical Workshop / Game,Amélioration Continue | Continuous Improvement,12,1 table ronde (si possible) pour 4 participants,Yann,POLES,TOTAL,twitter @Ypoles,"15 ans d’expérience dans le développement et l’intégration de systèmes, je suis en charge de la « transformation silencieuse » des équipes de Total vers l'Agilité. Formateur, coach et facilitateur, j'anime également la communauté de pratiques interne Agilitateurs.",,,,,,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 14:36:16,Strategie de tests,"Dans un environnement de développement agile,  un des objectifs clé est de produire au cours des différentes itérations un logiciel fonctionnel d’un niveau de qualité élevé, à forte valeur ajoutée pour le client . La réalisation de cet objectif rencontre de nombreux écueils, et parmi ceux-ci on peut noter la définition d’une stratégie de tests adéquate, comprise et partagée par tous les acteurs, ainsi que l’implémentation efficace des différents niveaux de tests.
+Au cours de cette présentation, pour un public familier avec les tests, nous ferons un retour d’expérience de différentes stratégies de tests mises en place sur nos projets au cours des dernières années, stratégies dont nous ferons un bilan. Nous proposerons ensuite, une stratégie, basée sur ces retours, pour un futur projet.
+","Les participants à cette session pourront découvrir des retours d’expériences concrets sur différents projets, de taille et de contexte différents allant de la  petite équipe mono-site à une équipe de 20 personnes distribuée sur plusieurs sites.
+Les participants repartiront avec une liste de bonnes et mauvaises pratiques associées aux tests.
+Les participants pourront aussi lors d’une session de questions/réponses échanger avec les orateurs.
+","Débutant | Beginner, Confirmé | Skilled",REX - Retour d'Expérience | Experience Reports,"Amélioration Continue | Continuous Improvement, Craftmanship (Technique / Coding / Testing...)",50,,Laurent,Tardif,Persistent,"http://ouelcum.wordpress.com/
+","Depuis de nombreuses années j'encourage la pratique des tests automatiques (unitaires, intégration, fonctionnels), l'utilisation des outils d'analyses de codes, et l'utilsation de l'intégration continue pour améliorer et accélérer le developement logiciel. 
+",Sandrine,Montusclat,Persistent,,Sandrine est aujourd'hui R&D team manager chez Persistent SAS.,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 15:40:56,« REX : 10 bonnes raisons de ne pas choisir AGILE ? »,"Retour  d’un chef de projet sans parti pris et sans langue de bois, sur une conduite de changement vers AGILE dans le cadre d’un projet conséquent. 
+Les 10 principaux pièges à éviter qui permettent de dire que l’Agilité n'est pas la solution à tout.
+Toutes les facettes impactantes d’un projet sont revues : gestion administrative, impact humain, relation client, reporting au management, etc…
+Une chose est sûre : tout n’est pas rose dans l’Agilité…
+","Profiter d’un retour d’expérience afin de ne pas découvrir les problèmes lors de l’exécution d’un projet AGILE.
+Exemples concrets de ce qui se passe mal dans la vraie vie… et qui aurait pu être éviter sans problèmes.
+","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Contractualisation Agile | Agile Contracts",,,Tuan ,VO VINH,SGCIB,,"Tuan VO VINH (34 ans) - Responsable d'un pôle informatique de la Société Générale travaillant pour la salle des marchés.
+Expérience : 12 ans à la SGCIB
+Formation : Ecole d’ingénieur en informatique 
+Après être passé par différents postes de développement, de gestion de projets, de responsable d’application et finalement de responsable d’un pole de 40 personnes, Tuan a vu les méthodologies et mentalités changées au sein de son département. 
+L’objectif pour lui aujourd’hui est de partager une expérience à ceux qui en ont marre de la théorie.
+",,,,,,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 15:41:57,AgileUX (User Experience): Du Besoin au Sketching,"Diversité, Apprentissage, montée en compétences et partage de connaissance sont les clés de voute d’une Agilité, qui encourage toujours plus de Collaboration et de Feedback.
+Une Experience Utilisateur de qualité est aujourd’hui un élément différenciant. Dans un contexte agile, cette activité va donner de la valeur, faire gagner du temps, booster la créativité et l’innovation. 
+Depuis la Vision, la collecte et l'expression des besoins sous un angle stratégique jusqu'au Design d'interface, elle sera néanmoins menée sans excès, au plus juste, avant tout dans un esprit collaboratif et Agile pour au final n’en être que plus riche !
+Au programme :
+- Vision, Personas et recueil du besoin
+- L’approche design studio
+- Des workshops intermédiaires et ""Backlog refinement"" 
+- Les clés du sketching",De nouvelles pratiques pour une plus grande qualité produit,"Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Conférence | Conference,Expérience Utilisateur - Produit - Product Owner,/,,Jean Claude,Grosjean,Valtech,"www.qualitystreet.fr
+www.agile-ux.com
+
+@jcQualitystreet","Jean-Claude est Coach Agile, praticien Agile UX et formateur chez Valtech.
+
+Coach Agile et formateur depuis plusieurs années, Jean-Claude accompagne aujourd’hui les personnes, les équipes et les organisations de divers domaines et secteurs dans leur parcours dans ou vers l’agilité.
+
+Il est aussi l’auteur de deux blogs qualitystreet.fr et agile-ux.com, centrés sur le Coaching Agile, la facilitation, l’Experience Utilisateur ou encore le Management Agile & Lean.",,,,,,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 15:42:41,"Atelier ""cocotte"" : les principes du lean management appliqués au monde SI","La présentation du lean est animée grâce à une simulation, plutôt ludique, qui vise à améliorer un atelier de production.","Par ce biais, les participants découvrent les différents principes moteur du lean (client, performance, travail en équipe, qualité, flux tiré, etc…), que nous reformulons en fin de session.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Amélioration Continue | Continuous Improvement",12 acteurs + des observateurs,,Antoine,CONTAL,Operae Partners,@antoine_contal,"""Je suis coach lean spécialisé en informatique. J’interviens auprès d’équipes de développement, de support et de production. Je les aide à découvrir elles-mêmes les clés d’une performance pérenne et d’une fierté partagée. J’accompagne aussi leurs managers sur le terrain pour les coacher dans leur pratique du lean management.
+
+J’ai commencé mon initiation au Lean et à l’Agile au Japon en 2001. De retour en France, j’ai géré des projets et animé des équipes, toujours dans un esprit d’amélioration continue et de développement des personnes. En tant qu’expert de l’Agile, je co-dirige l’association Agile France depuis 2009 pour soutenir cette communauté. J’ai rejoint Operae Partners en 2010.
+
+Pratiquer le lean, pour moi, c’est contribuer à faire émerger une informatique plus conviviale, à la fois pour ceux qui la font et pour ceux qui l’utilisent.""",Dominique,DE PREMOREL,Operae Partners,@domidepremorel,"Dominique DE PREMOREL est spécialisée dans l’ingénierie logiciel et la conduite de projets informatiques. Elle a rejoint Operae en 2012, après 15 ans d’expériences de projets informatiques en France et en Allemagne, dont 5 ans en tant qu’ingénieur indépendant et coach agile. Pendant près de 10 ans, elle a pratiqué les méthodes de développement agiles, dans des sociétés de service et chez des éditeurs de logiciel. Fondatrice et animatrice du réseau Agile Morbihan et membre actif de l’association Agile Breizh, elle intervient pour la promotion et la diffusion de l’Agile et du Lean dans la région Bretagne en organisant l’Agile Tour à Vannes depuis 2010. Elle intervient dans l'enseignement des XP et Scrum auprès des étudiants de l'Université Bretagne Sud et les encadre dans l’apprentissage de ces méthodes à travers des mises en situation durant leur projet tutoré.",,,,,,,,,,,120 minutes,OK le 29/6
+6/29/2012 15:45:35,L'agilité : Innovation utile au business,"Si la valeur ajoutée des méthodes agiles est maintenant avérée, la mise en pratique nécessite un temps d’adaptation. Les intervenants qui avaient l’habitude du cycle en cascade ont besoin de retrouver leurs marques. C’est le cas notamment du rôle de product owner, rôle central souvent endossé par des directeurs métiers.
+ 
+Des retours d’expérience nombreux et significatifs nous permettent de mieux appréhender les valeurs fondamentales de l’agilité.
+ 
+Nous avons également constaté que, contrairement aux idées reçues, le rôle de chef de projet a toujours sa place dans un projet Scrum, et apporte de la valeur au projet. Le bon fonctionnement de l’organisation nécessite que chacun comprenne ses rôles et prérogatives.
+ 
+","Ce séminaire se propose de vous faire découvrir concrètement le quotidien d’une équipe agile, à travers l’illustration par des projets réels réalisés pour une grande banque d’investissement. Nous aborderons dans ce séminaire les difficultés rencontrées et des solutions pour les surmonter.
+","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,Management | Management,,,Vianney,Grassaud,Objet Direct,www.objetdirect.com - http://blog.objetdirect.com/ ,"Collaborateur Objet Direct depuis maintenant 7 ans, j’ai pu durant ces années m’intéresser à la fois au développement front office (IHM) et back office (Métier, services etc…) des applications . Que ce soit du client lourd ou RIA, ou middlware j’ai toujours essayé d’appliquer les bonnes pratiques agiles. Récemment j’ai même participé à la mise en place de SCRUM dans le contexte d’une grand banque d’investissement, banque n’ayant pas l’habitude de pratiquer les méthodes agiles. Face au succès du projet et de la méthode, cette banque veut continuer à travailler en agilité. ",,,,,,,,,,,,,,,,120 minutes,OK le 29/6
+6/29/2012 16:11:13,"Dis, monsieur, c'est quoi être agile ?","Nous vous proposons de (re)-découvrir et d'expérimenter les 4 valeurs du Manifeste agile à travers des ateliers / jeux. Ici pas de backlog, de Scrum ou de TDD. Des concepts simples pour bien (re-)commencer avec l'agilité et comprendre comment ""être agile"" plutôt que ""faire de l'agilité"". De l'interaction, de la collaboration, du concret et de l'ouverture seront au rendez-vous.","Sentir les principes sous-jacents à l'agilité, les (re-)découvrir sans se focaliser sur telle ou telle méthode.",Débutant | Beginner,Atelier pratique / Jeu | Practical Workshop / Game,Découverte de l'agilité,20,,Thierry,Vallée,36tribus,"http://thierryvallee.blogspot.com
+Twitter : @thvallee
+www.36tribus.com","Développeur, formateur, accompagnateur et entrepreneur.
+Tout ça de façon agile, bien sûr !",Laurence,Hanot,Thalès,,"Coach et formatrice agile, Scrum Master, évangéliste, pompier, promoteur, dynamiteuse (mais avec le sourire), empêcheuse de tourner en rond.
+L'agilité : j'en mange matin, midi et soir, j'en rêve la nuit, j'y travaille toute la journée, bref, je la vis quoi !",,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 16:47:36,"Well-crafted software: un code maintenable avec le ""principe de responsabilité unique""","Le ""principe de responsabilité unique"" permet d'écrire du code qui facilite les évolutions ultérieures, et donc la capacité à refactorer un logiciel tout au long de son cycle de vie comme le nécessite les méthodes agiles.
+
+Bien que très simple à énoncer, ce principe est aussi un des plus difficile à appliquer.
+
+L'objectif de cette présentation est de montrer comment appliquer le ""principe de responsabilité unique"", avec un minimum de théorie, des exemples de code, de l'écriture de code en direct et la participation du public. ","A l'issue de cette session, vous saurez ce qu'est le ""principe de responsabilité unique"" et ce qu'il peut vous apporter pour écrire du code maintenable.
+
+Les exemples, contre-exemples et conseils distillés pendant la session vous permettrons de vous posez les bonnes question pour l'appliquer sur vos projets et améliorer la qualité de votre code. 
+","Débutant | Beginner, Confirmé | Skilled",Mixte conférence/code en direct,Craftmanship (Technique / Coding / Testing...),100,,Nicolas,Capponi,Kelkoo,"http://www.linkedin.com/in/ncapponi
+https://twitter.com/ncapponi",Architecte logiciel / Développeur à Kelkoo.,Guillaume,Gardais,Kelkoo,,"Guillaume est Software Architect Frontend chez Kelkoo. Enthousiasmé par l'Extreme Programming et le Test Driven Development, il devient adepte des méthodes Agile et intégre une des équipe de Kelkoo en 2010. Il participe depuis à l'animation de la communauté Agile et aux Coding dojo chez Kelkoo.",,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 16:58:05,Le TDD ca rapporte vraiment ?,"Vous n'avez pas le temps de faire des tests ? Vous pensez que cela ne sert à rien ?
+Vous entendez sans arrêt parler de TDD (Test-Driven-Development), mais vous ne voyez pas trop ce que ça vous apporterait ?
+Venez tester vous–même en regardant le développement en direct d'un même problème selon 3 approches :
+1) L'approche ""sans tests"", où l'on écrit uniquement du code de production
+2) L'approche ""test après"", où l'on écrit d'abord le code de production puis ensuite des tests
+3) L'approche ""test avant"" (TDD), où l'on commence toujours par écrire un test avant d'écrire le code de production 
+Le problème est découpé en plusieurs phases, ce qui nous permet de mettre en évidence les apports des tests et du TDD à différentes étapes du développement : première implémentation, évolutions, changements de spécifications.","A l'issue de cette session :
+- Vous aurez vu ce qu'apporte l'écriture de tests unitaires pour réduire les bugs de votre code.
+- Vous aurez vu ce qu'apporte le TDD pour assurer la qualité de votre code.
+- Vous aurez toutes les cartes en main pour vous décider à franchir le pas afin de produire un code de meilleur qualité.","Débutant | Beginner, Confirmé | Skilled",Mixte conférence/code en direct,Craftmanship (Technique / Coding / Testing...),100,,Guillaume,Gardais,Kelkoo,,"Guillaume est Software Architect Frontend chez Kelkoo. Enthousiasmé par l'Extreme Programming et le Test Driven Development, il devient adepte des méthodes Agile et intégre une des équipe de Kelkoo en 2010. Il participe depuis à l'animation de la communauté Agile et aux Coding dojo chez Kelkoo.",Nicolas,Capponi,Kelkoo,"http://www.linkedin.com/in/ncapponi
+https://twitter.com/ncapponi",Architecte logiciel / Développeur à Kelkoo.,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 17:04:29,C'est grave Docteur Rétro ?,"Bienvenue à la clinique du Docteur Rétro !
+Vous n'êtes pas satisfait des rétrospectives (surtout celles que vous animez) ? Problèmes de tension, souffle court, endormissements, nausées, ou autres symptômes qui arrivent avant, pendant ou après les rétrospectives ?
+Un checkup complet vous permettra de prendre du recul sur vos pratiques.
+Si le traitement dispensé n'était pas suffisant, pour les nuits d'insomnies, des références bibliographiques vous serons fournies ;-)","Durant cette session les participants pourront 
+- prendre du recul par rapport à leurs pratiques des rétrospectives, 
+- obtenir des conseils pratiques tirées de 14 ans d'expérience
+- échanger et partager autour de cas concrets
+- repartir avec des pistes d'amélioration","Confirmé | Skilled, Expert | Expert",Atelier pratique / Jeu | Practical Workshop / Game,Amélioration Continue | Continuous Improvement,20,"4 ou 5 groupes de travail de 4 à 5 personnes par groupe, autour d'une table",Cyril,Megard,Moody's Analytics,,"Cyril Megard travaille depuis 7 ans dans des environnements “agiles”. D’abord en tant que développeur, puis ingénieur qualité : responsable du processus de développement logiciel (ISO9001) et de son amélioration. Actuellement program manager / facilitateur chez Moody’s Analytics, il travaille avec tous les intervenants (développeurs, testeurs, pôle produit) pour le succès des projets logiciels. ",Emmanuel,Etasse,Moody's Analytics,"blog : http://homoagilis.blogspot.fr/
+twitter : @eetasse","Emmanuel Etasse est ""Program Manager"" chez Moody's Analytics. Auparavant, coach, formateur et associé de la société /ut7, sa mission était d'aide les organisations de développement logiciel à devenir des lieux où résultats, qualité de vie et plaisir, coexistent de façon durable. Passionné de programmation, il a 14 ans d’expérience dans l’industrie du logiciel, dont 6 ans dans la mise en œuvre et l’accompagnement des approches agiles (éditeurs logiciels, PME, DSI, grands comptes…). Emmanuel est aussi membre actif et cofondateur du Club Agile Rhône Alpes. ",,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 17:08:14,Existe-t-il une agilité open source ?,"Le Libre/Open Source et l'agilité partagent des valeurs communes (ouverture, transparence, honneteté, engagement, ...) et certaines pratiques (eg. ""release early/release often"" vs ""livraison continue"").
+Quelles sont les racines communes et les divergences entre ces deux communautés?","Nous proposons dans cette session de mettre en regard les deux mondes et de proposer des pistes pour une meilleur intéraction entre eux:
+- Qu'est-ce qu'une communauté Libre peut retirer de l'agilité
+- Qu'est ce que les agilistes peuvent gagner à être ouvert, même sur les sources.
+",Débutant | Beginner,Conférence | Conference,"Agilité et ""autre chose""",,,Le Lous,Jonathan,Alter Way,"@JollFr
+http://blog.itnservice.net/",,Manuel,Vacelet,Enalean,"Twitter: @vaceletm
+http://tuleap.com/?q=blog/5",,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 17:11:09,Outiller le Kanban,"Les processus d’un éditeur de logiciels en forte croissance doivent concilier trois objectifs a priori difficilement réconciliables : productivité, rigueur des processus et agilité face aux changements de direction et adaptations, demandés par les clients.
+Nous avons fait le choix d’implémenter un macro-processus de pilotage business,  le Lean Startup et un processus Kanban pour le pilotage des activités.
+Nous exposerons tout d’abord les enjeux d’un éditeur et les conséquences sur les processus de R&D, d’exploitation, de support et les processus de vente.
+Nous expliciterons ensuite les choix d’implémentation d’un outillage du Kanban avec Codendi ;  ces choix seront illustrés par des démonstrations interactives.
+Enfin nous ferons le bilan quantitatif et qualitatif de l’application du Kanban chez un éditeur de logiciels d’une part, et d’autre part nous conclurons sur les nombreux bénéfices qu’apporte un outillage adapté, avec les témoignages en direct de l’équipe de développement.
+","Les dashboards Kanban à base de post-it ont fait depuis longtemps la preuve de leur efficacité : partage de l’information, visibilité, feedback, souplesse totale face aux changements. Ils doivent cependant être complétés. Venez découvrir comment le nouvel acteur de l’édition de logiciels ALM et ERP to Web, Viseo Sofware & Innovation a réussi la mise en œuvre de Kanban à l’échelle de l’entreprise grâce à Codendi.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Conférence | Conference,Outillage agile,,,Franck,Priore,Objet Direct,www.objetdirect.com - www.viseo.net,"Franck Priore, manager et expert en processus agiles depuis 1999 a mis en œuvre eXtrem Programming, Unified Process et plus récemment Kanban et Lean Startup au sein d‘organisations variées, depuis de grands groupes internationaux dans les nouvelles technologies, jusqu’à des startups dans le domaine de l’édition.
+D’une triple expérience de directeur de PME nouvelles technologies, consultant agile, et business developer, Franck Priore a tiré de la mise en œuvre de Lean Startup et Kanban des enseignements empreints de pragmatisme et souvent étonnants.
+",Laurent,Laslaz,Objet Direct,,"Laurent Laslaz, expert agile,  a mis en place et piloté des projets avec succès dans des contextes projets très variés en taille et en architectures cibles, pour ensuite rejoindre l’activité éditeur du groupe Viseo au poste de Directeur des Projets. Après avoir défini un Kanban adapté à l’organisation de Viseo Software & Innovation, il a conçu et implémenté une configuration du Kanban avec la plateforme projet Codendi qui s’avère épurée, limitée au strict nécessaire, et pourtant très raffinée.",,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 17:22:36,Les Men In Black font de l'Agile,Les Men in Black vous expliquent les comportements qui aident à l'Agilité...Et dégomment ceux qui pourraient la freiner,In progress,Débutant | Beginner,Conférence | Conference,"Management | Management, Amélioration Continue | Continuous Improvement, Psychologie",,,Alexandre,Boutin,,,,Bruno,Sbille,,,,,,,,,,,,,,50 minutes,OK le 29/6
+6/29/2012 19:20:10,PMBoK vs Agilité,Une idée fausse dans le management de projet logiciel est que pour utiliser le PMBoK® nous devrions le faire de façon non agile ou avec une approche en cascade. Cette présentation tente de corriger cette idée fausse et démontrer qu’un projet agile peut suivre le cycle de vie projet tel que défini dans le PMBoK®. Nous observerons en premier lieu la structure du PMBoK® et où sont les points de rencontre avec l’Agilité.,"Les participants auront une vision de synthèse du PMBoK(r), des principes de l'Agilité et des points de similitudes et de divergences entre eux. Ils pourront ainsi acquérir de nouvelle connaissances, et une clarification des idées fausses qui existent encore sur les types de méthodologies décrites dans le PMBoK(r)","Débutant | Beginner, Confirmé | Skilled",Conférence | Conference,Management | Management,,Video projecteur,Frédéric,RODRIGUEZ,Indépendant,,,,,,,,,,,,,,,,,,50 minutes,OK le 29/6
+6/30/2012 0:13:58,"Si t'es pas SOLID, t'es pas agile","""Une attention continue à l'excellence technique et à une bonne conception renforcent l’agilité""
+C'est le 9ème principe du manifeste agile et il est au moins aussi important que les autres pour créer des logiciels capables de s'adapter aux besoins des utilisateurs.
+
+Votre manager pense que l'on peut prendre quelques libertés avec ce principe ?
+Votre commercial ne jure que par les délais au détriment de la qualité du code ?
+Votre scrummaster ne comprend que les burdown charts et oublie de focaliser l'équipe sur sa dette technique ?
+Invitez-les à venir sur scène pour partager une expérience de conception d'un logiciel ""humain""...","S'amuser et peut être comprendre, en découvrant les principes S.O.L.I.D. popularisés par uncle Bob, à quel point de tels principes de conception sont d'une importance fondamentale dans toute organisation qui produit du logiciel en se disant ""agile""",Débutant | Beginner,Atelier pratique / Jeu | Practical Workshop / Game,Craftmanship (Technique / Coding / Testing...),,"Idéalement, un espace d'au moins 4x6 mètres faisant office de scène",Olivier,AZEAU,Varian Medical Systems,"http://agilitateur.azeau.com/
+
+twitter: @oaz","Olivier Azeau est diplomé de l’ENSEEIHT. Il dirige une équipe d’ingénierie chez Varian Medical Systems et, quand il en a le temps, il tient aussi un blog sur le développement logiciel : http://agilitateur.azeau.com/",,,,,,,,,,,,,,,,50 minutes,OK le 30/6
+6/30/2012 0:50:41,Un premier pas dans le Lean Startup avec le Lean Canvas,"L’agilité vous permet désormais de maitriser le développement de vos logiciels. Vous savez désormais livrer de manière régulière du logiciel de qualité.
+Cependant, savez-vous développer l’innovation ? Savez-vous vous assurer du succès de vos produits auprès de vos clients ?
+
+Afin de répondre à ces questions, je vous propose dans cet atelier de venir mettre en pratique la première étape d’une approche Lean Startup en utilisant l’outil Lean Canvas. Celui-ci vous permettra de définir de manière claire et synthétique votre business model et de définir toutes les hypothèses liées à celui-ci.",Découvrir et mettre en pratique une approche Lean Startup. Avoir mis en pratique la première étape grâce au Lean Canvas.,"Débutant | Beginner, Confirmé | Skilled",Atelier pratique / Jeu | Practical Workshop / Game,Gestion de produit / portfolio Agile | Agile product/portfolio management,20,Une salle avec 5 tables serait un must.,Nathaniel,Richand,Xebia,"http://blog.xebia.fr
+http://blog.richand.info
+@nrichand","Passionné par l’agilité depuis de nombreuses années, Nathaniel intervient depuis trois ans en tant que Coach agile pour Xebia. 
+Nathaniel a su développer une très grande expertise aussi bien sur la dimension technique, qu’humaine de l’agilité. Il intervient aussi bien dans le domaine de l’industrialisation des développements, la dimension produit, ainsi que dans la mise en place des valeurs “humaines” de l’agilité.
+",,,,,,,,,,,,,,,,120 minutes,OK le 30/6
+6/30/2012 1:03:26,Pratiques avancées de tests,"Je vous propose de présenter les meilleures pratiques de tests unitaires en Java.
+Cette présentation, destinée principalement à des développeurs ou architectes, permettra d’identifier certains code-smell spécifiques aux tests et de mettre en œuvre des techniques de refactoring. Ce sera également l’occasion de découvrir les possibilités d’outils de tests afin de créer des tests extrêmement lisibles et maintenables.",Connaître les meilleures pratiques de tests en java. Avoir un retour d’expérience concret et utile. Découvrir de nouveaux outils.,"Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Conférence | Conference,Craftmanship (Technique / Coding / Testing...),,,Nathaniel,Richand,Xebia,"http://blog.xebia.fr
+@nrichand","Passionné par l’agilité depuis de nombreuses années, Nathaniel intervient depuis trois ans en tant que Coach agile pour Xebia. 
+Nathaniel a su développer une très grande expertise aussi bien sur la dimension technique, qu’humaine de l’agilité. Il intervient aussi bien dans le domaine de l’industrialisation des développements, la dimension produit, ainsi que dans la mise en place des valeurs “humaines” de l’agilité.",,,,,,,,,,,,,,,,50 minutes,OK le 30/6
+6/30/2012 1:08:07,Deux ans dans le flux,"Ils ont remplacé les itérations par des lots dont le contenu est défini à l'avance.
+Ils ne mesurent plus leur vélocité mais le temps passé sur un élément de backlog.
+Les diagrammes de Gantt ont pris la place de leurs Burdown Charts.
+Leurs estimations sont tellement approximatives qu'elles sont faites durant leur mêlée quotidienne.
+Et pourtant ils pensent que leur production de logiciel est meilleure que jamais.
+C'est l'histoire de développeurs qui ont laissé tombé nombre de concepts et pratiques agiles emblématiques pour donner plus d'attention à d'autres éléments qui le méritent peut être un peu plus.
+C'est l'histoire d'une équipe qui vient de passer deux ans dans le flux.
+","En finir avec la pensée unique agile=scrum
+Découvrir une approche un peu radicale par rapport aux canons actuels du développement logiciel agile",Confirmé | Skilled,REX - Retour d'Expérience | Experience Reports,Amélioration Continue | Continuous Improvement,,,Olivier,AZEAU,Varian Medical Systems,"http://agilitateur.azeau.com/
+
+Twitter: @oaz","Olivier Azeau est diplomé de l’ENSEEIHT. Il dirige une équipe d’ingénierie chez Varian Medical Systems et, quand il en a le temps, il tient aussi un blog sur le développement logiciel : http://agilitateur.azeau.com/",,,,,,,,,,,,,,,,50 minutes,OK le 30/6
+6/30/2012 10:01:21,Ils sont fous ces romains | Those romans are crazy (workshop TDD),"L'apprentissage du TDD est une tâche plutôt hardue. Mais rien ne fait peur à nos valeureux gaulois. Grâce à cet atelier, chaque participant aura l'occasion de s'essayer au TDD en convertissant des chiffres romains. Les participants travaillerons en binômes, amenez vos laptop!
+
+Learning TDD can be a very tough task. But the Gauls are brave, and they're affraid of nothing! Thanks to this workshop, every participant will have the opportunity to try TDD out by converting roman numerals. They will work in pairs so bring your laptops!","Une prise de conscience de ce qu'est le TDD et l'importance de l'étape ""refactoring"". L'opportunité de faire du pair programming pour ceux qui n'y sont pas habitués. Les binômes seront changés régulièrement pour permettre à tous de comprendre l'importance de la maintenabilité du code.
+
+An awareness of what TDD is and the importance of the refactoring step in TDD. The opportunity to pair program for those who aren't used to it. The pairs will be switched a couple of times to make sure they understand the importance of maintainability.",Débutant | Beginner,Atelier technique | Technical Workshop,Craftmanship (Technique / Coding / Testing...),30,Des chaises et des tables pour permettre à 10-15 binômes de développeurs de travailler.,Marc,Lainez,The Other Guys,"twitter: @mlainez
+web: http://theotherguys.be","Marc a découvert l'agilité il y a maintenant 4 ans. Développeur et coach indépendant, il cherche a améliorer le quotidien des équipes dans lesquelles il est amené à travailler. Soucieux de partager ses expériences, il crée l'AgileCampusTour, une série de sessions et d'ateliers qu'il présente dans plusieurs universités Belges.
+
+Marc discovered Agility 4 years ago. Freelance Software developer and coach, he's always looking to improve the day to day life of the teams he works with. Always looking for a way to share his experience, he created the AgileCampusTour, a serie of lectures and workshops that he presented in different belgian universities.",,,,,,,,,,,,,,,,120 minutes,OK le 30/6
+6/30/2012 10:31:41,Mise en place du TDD: du mythe à la réalité,"Lorsque l’on commence à écrire ses tests avant le code, on est vite confronté aux écueils techniques et humains. Puis les outils se mettent en place et, avec la maturité, la façon d’aborder la conception change radicalement.
+
+Dans cette session, illustrée par un exemple concret en c#, nous allons utiliser principalement deux outils facilitant l’approche par les tests : les frameworks de mock et l’injection de dépendances. Puis nous montrerons comment le design s’en trouve bouleversé : les appels de constructeur vont quitter le navire et les classes seront amenées à se recentrer sur leur responsabilité. En conclusion nous débattrons de solutions permettant de traiter avec le framework .NET qui n’est pas conçu pour le test.","L’objectif de cette session est de donner des pistes pour bien démarrer en TDD.
+A la fin de cette session vous saurez :
+- pourquoi un framework de mock est indispensable 
+- comment utiliser l’injection de dépendance pour écrire des tests simples
+- pourquoi le TDD met la pression sur le design
+- quelques pièges classiques à éviter.
+
+Et peut-être aurez-vous envie d’injecter du TDD dans vos projets en cours...",Débutant | Beginner,Atelier technique | Technical Workshop,Craftmanship (Technique / Coding / Testing...),,,Mathieu,Cans,Thales Services,http://agileinthemix.com,"Passionné par l’approche objet et l’agilité, Mathieu intervient dans les équipes agiles en tant qu’équipier ou Scrum master.",Olivier,Gauchard,Thales Services,,"Technophile élevé à l’objet, Olivier insuffle son goût pour l’architecture et la conception objet au sein d’équipes agiles et s’émerveille chaque jour des bienfaits du TDD.",,,,,,,,,,,50 minutes,OK le 30/6
+6/30/2012 14:18:58,"Collaborer, et si on improvisait ?","Mise en scène d'une collaboration réussie où vous êtes les acteurs principaux ! 
+Osez relever les défis personnels de la collaboration.
+
+Acte 1 : Comprenez-la. La collaboration est la base sine qua non d’une équipe agile gagnante. Qu’y a-t-il réellement derrière le concept de collaboration ? 
+
+Acte 2 : Ressentez-la. Après une mise en condition, nous expérimenterons des petits jeux simples issus du théâtre d’improvisation. A travers ces mises en pratiques par petits groupes, nous jouerons avec les valeurs fondatrices de la collaboration. 
+
+Acte 3 : Jouez-la. En point d’orgue de ces expérimentations, improvisez en équipe des expériences de collaboration au service de l’histoire !
+","Vous comprendrez pourquoi il est primordial de mettre en priorité #1 la collaboration au sein d’une équipe agile.
+
+Vous expérimenterez les mécanismes d’une collaboration efficace : écoute, confiance, adaptation, esprit d’équipe, but commun.
+
+Vous vivrez des petites réussites personnelles, et surtout l’immense plaisir partagé de morceaux d’improvisation collective réussie !
+","Débutant | Beginner, Confirmé | Skilled",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Amélioration Continue | Continuous Improvement, Collaboration, travail en équipe",20,"Une salle avec de l'espace pour environ 50 personnes, mais seulement 25 chaises. Le chaises doivent pouvoir être empilables les unes sur les autres.
+Si possible, matérialiser par un tapis noir une partie sans chaise faisant office de scène (environ 4*3 m).",Vincent,DAVIET,Osiatis Ingénierie,"fr.viadeo.com/fr/profile/vincent.daviet
+fr.linkedin.com/pub/vincent-daviet/15/a87/3b7
+@VincentDaviet","Annécien d’origine, Vincent DAVIET est un membre actif du CARA Lyon, et également féru de théâtre d’improvisation.
+
+Après avoir été Product Owner et ScrumMaster pendant 3 ans en agence web lyonnaise, il est depuis plus d’1 an consultant Web et Agilité en SSII chez Osiatis Ingénierie.
+
+En plus de sa mission principale de conseil et développement chez Orange France Télécom, il s’attache à promouvoir, conseiller, et mettre en place « serious games » et méthodes agiles.
+",,,,,,,,,,,,,,,,120 minutes,OK le 30/6
+6/30/2012 15:14:48,Une rétrospective depuis les tranchées,"Je vous propose dans cet atelier de venir expérimenter une rétrospective sous tension pendant 90 minutes.
+Nous allons mettre ensemble à rude épreuve les nerfs de notre facilitateur.  Saura-t-il créer un cadre sécurisant ? Arrivera-t-il à faire participer toute l’équipe ? Comment réagira-t-il lorsqu’une personne sera prise à partie ? Quelle démarche aura-t-il face aux problèmes que remonte l’équipe ? 
+
+Dans cet atelier il y aura 3 rôles différents :
+-	Le membre de l’équipe dont le rôle et le comportement sera scénarisé.
+-	Le facilitateur qui devra jouer un vrai rôle de coach d’équipe.
+-	L’observateur qui aura pour rôle de relever les points forts ainsi que les axes d’amélioration.
+","L’objectif pour les coachs ou facilitateurs sera d’améliorer et d’échanger sur la manière d’animer une rétrospective et sur la gestion d’une équipe sous tension.
+L’objectif pour les personnes novices dans la pratique de rétrospectives sera de venir découvrir avec un exemple très concret ce que cela peut donner en pratique.
+","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Amélioration Continue | Continuous Improvement",20,,Nathaniel,Richand,Xebia,"http://blog.xebia.fr
+@nrichand","Passionné par l’agilité depuis de nombreuses années, Nathaniel intervient depuis trois ans en tant que Coach agile pour Xebia. 
+Nathaniel a su développer une très grande expertise aussi bien sur la dimension technique, qu’humaine de l’agilité. Il intervient aussi bien dans le domaine de l’industrialisation des développements, la dimension produit, ainsi que dans la mise en place des valeurs “humaines” de l’agilité.
+",,,,,,,,,,,,,,,,120 minutes,OK le 30/6
+6/30/2012 16:54:25,"BDD, Lisp et Emacs","Durant une séance de pair programming, nous développerons une extension Emacs en Lisp. L'objectif sera d'automatiser certaines tâches d'écriture de code PHP ou Java pour alléger notre quotidien. Nous utiliserons ECukes (Cucumber for Emacs - http://ecukes.info/) qui nous permettra de programmer en mode BDD.
+
+GNU Emacs est un éditeur de texte libre, multi-plateformes, pouvant être
+utilisé comme environnement de développement complet pour de nombreux
+langages.","Les développeurs apprendront qu'ils peuvent étendre leurs propres outils et valider leurs fonctionnements par rapport à des besoins exprimés.
+
+Ils apprécieront Emacs comme système élastique, adaptable rapidement à sa propre manière de travailler quelque soit son écosystème de programmation.
+
+Ils repartiront avec l'idée que l'outil doit être adapté rapidement à l'homme, et non l'inverse.",Débutant | Beginner,Atelier technique | Technical Workshop,Craftmanship (Technique / Coding / Testing...),30,,Laurent,Laffont,,"blog: http://magaloma.blogspot.com
+twitter: @lolgzs ","Développeur de logiciel libres, enseignant, adepte de l'eXtreme Programming et des méthodes agiles.
+
+Contribue notamment aux écosystèmes Pharo Smalltalk et Amber Smalltalk, auteur de PharoCasts - http://www.pharocasts.com.
+
+Anime le CARA74 sur Annecy - http://www.cara74.org",Estelle,Falcy,,http://syn-ic.fr,"Informaticienne indépendante, développeuse de logiciels libres.",,,,,,,,,,,50 minutes,OK le 30/6
+6/30/2012 19:20:13,"Sweet Rupture, en version OST","Sweet Rupture vous raconte une odyssee agile dans un grand groupe bancaire, incorporant de multiples ingredients plus ou moins conventionels. Presentee en mode supersonique en Keynote, vous aurez peut-etre envie de savourer plus particulierement quelques uns des ingredients, comme le Radical Management, Le Fearless Change, Les multiples usages du Bocal a Cons, des tresors de vitamines mentales, ou bien quelqes cuilleres de Tribal Leadership. Sous forme d'Open Space, elisez les sujets que nous pourrons traiter pendant ces 50'!",Decouvrir plus finement les ingredients de Sweet Rupture : repartir avec la banane et l'ENVIE d'integrer ces epices dans leur propre recette de diffusion de l'agilite.,"Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Conférence | Conference,Management | Management,10000,,Laurent,SARRAZIN,Societe generale,"Www.simplexeo.com
+Fearless-agile.posterous.com
+@Bangalaurent",La meme que pour le Keynote ;),Sylvaine,Pascual,Ithaque,,Idem keynote,,,,,,,,,,,50 minutes,OK le 30/6
+6/30/2012 22:34:50,Agilité et mobilité : le duo gagnant ?,"La mobilité s'impose de plus en plus aux entreprises. L’intégration des terminaux mobiles dans les SI est aujourd'hui un défi majeur.
+Quelles méthodes pour le développement des applications mobiles ?
+Existe-t-il des passerelles « naturelles » entre agilité et mobilité ?
+Les spécificités de ces applications peuvent-elles orienter le choix d'une méthodologie ?
+Quels avantages et quelles contraintes les principes de l'agilité apportent-t-ils au développement des applications mobiles ?
+Le choix de l'agilité peut-il être décisif à la réussite d'un projet de mobilité ?
+Ce sont quelques-unes des questions auxquelles cette présentation apportera des éléments de réponse.","A l'issue de cette présentation, les participants auront :
+- un aperçu des convergences et des écarts entre les méthodologies agiles et le développement d'applications mobiles,
+- une connaissance des bénéfices et des contraintes que l'agilité peut apporter à un projet de mobilité,
+- des éléments pour le choix d'une méthodologie pour la conduite de leurs projets de mobilité.","Débutant | Beginner, Confirmé | Skilled",Conférence | Conference,Gestion de produit / portfolio Agile | Agile product/portfolio management,,,Vincent,MARTIN,Osiatis Ingénierie,,"Toulousain d'origine, Vincent Martin est ingénieur d'études puis chef de projets dans le secteur aéronautique. En 1997, il rejoint Aérospatiale et le groupe EADS où il conduit plusieurs projets, notamment dans le cadre du programme A380.
+Lyonnais depuis neuf ans, consultant Méthodes pour Osiatis Ingénierie, il accompagne les principaux clients du groupe dans la mise en œuvre de Scrum et promeut les jeux et les méthodes de développement agile.",,,,,,,,,,,,,,,,50 minutes,OK le 30/6
+6/30/2012 23:25:26, Le jour où Josiane sauva notre projet,"A partir d’un persona, dénommée Josiane, nous relaterons comment nous avons réussi à stopper un projet en difficulté commencé 8 mois plus tôt et à repartir de zéro pour livrer 4 mois plus tard.
+
+Nous verrons comment Scrum a permis de mettre en évidence les problèmes qui étaient latents et nous a amenés à remettre en cause ce projet.
+
+Nous évoquerons notamment les freins aux projets (humains et techniques) et les outils que nous avons utilisés pour les supprimer. Nous aborderons ainsi les techniques de persona, d’innovation game (product box), de stories mapping et des différentes manières de dynamiser l’équipe. Ces techniques nous ont notamment permis de nous consacrer aux développements de fonctionnalités pertinentes pour le client final. Enfin nous verrons dans quelles mesures le projet a été un succès.","Les participants auront l'occasion de se rendre compte que l'agilité n'est pas une baguette magique et que la route qui mène vers la réussite est pavée d'embuches.
+Ils auront un retour très concret et des idées d'outils à utiliser chez eux.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, Amélioration Continue | Continuous Improvement",,,Nathaniel,Richand,Xebia,"http://blog.xebia.fr
+@nrichand","
+
+Passionné par l’agilité depuis de nombreuses années, Nathaniel intervient depuis deux ans en tant que Scrum Master et coach agile pour Xebia.
+
+Nathaniel a su développer une très grande expertise aussi bien sur la dimension technique, qu’humaine de l’agilité. Il intervient aussi bien dans le domaine de l’industrialisation des développements (tests, intégration continue, gestion de configuration, automatisation des déploiements) que dans la mise en place des valeurs “humaines” de l’agilité.
+",Nicolas,Jozwiak,Xebia,http://blog.xebia.fr,"Nicolas est un ingénieur d’études confirmé disposant de 6 ans d’expérience en conception et développement sur les technologies Java/JEE. Son parcours chez un éditeur avant son entrée chez Xebia lui a notamment permis de développer de solides compétences dans le domaine de la qualité et de l’industrialisation (tests, intégration continue, gestion de configuration, contrôle qualité). Bénéficiant d’une expérience très solide de mise en place des méthodes agiles et d’accompagnement d’équipes sur le terrain, il s’attache à mettre à profit quotidiennement son expérience qui est reconnue pour son approche pragmatique, proactive et pédagogique.",,,,,,,,,,,50 minutes,OK le 30/6
+7/1/2012 15:55:46,L’Agilité ou l’Intelligence des Emotions,"Les émotions ont souvent mauvaise presse dans le monde des ingénieurs et celui de l’Entreprise. Elles ne produisent aucun livrable et doivent être évitées comme les bugs. En situation conflictuelle ou de stress, les émotions nous submergent et nous font perdre une grande partie de nos moyens. Pourtant, les émotions sont les plus fidèles alliées d’un « agiliste »… à condition de commencer à les écouter et à les apprivoiser. 
+Cet atelier, conçu pour un public d’ingénieurs, présente les fondamentaux des émotions. Il expose l’importance qu’il y a à les accueillir pour demeurer agile et leur rôle clé dans toute transformation agile. 
+","Ouverture et développement personnel.
+",Débutant | Beginner,Atelier pratique / Jeu | Practical Workshop / Game,Management | Management,30,,Thierry,Montulé,,,"Thierry évolue depuis 25 ans dans le monde des SI et sa soif de découverte l’a conduit au-delà, sur les sentiers du développement personnel et des sciences sociales. Aujourd’hui, le coaching agile cristallise ses passions et son goût pour la complexité. Pionnier à l’AT sur des sujets comme l’importance des émotions, la PCM, la relation et l’écoute, il souhaite partager ses réflexions et expériences avec la communauté agile et continuer à s’enrichir des différences qui bourgeonnent à l’école de la vraie vie  des projets logiciels",,,,,,,,,,,,,,,,120 minutes,OK le 1/7
+7/1/2012 15:58:59,Scrum aux frontières de la psychologie sociale,"Aujourd’hui, dans un environnement incertain et instable, le manager est en quête du Graal de la prédictibilité pour réussir ses projets. Nonobstant les risques dus aux spécifications, les incertitudes technologiques et l’urgence des livraisons, le maillon le plus imprévisible reste encore les comportements des participants au projet. 
+Alors comment accroître les chances que ces comportements deviennent plus «prévisibles » ?  Comment augmenter la probabilité qu’une personne, pleine de personnalité, s’aligne sur l’objectif et qu’elle y colle ?
+A la croisée entre processus agile et psychologie sociale, cette présentation explique comment  Scrum répond à ces besoins et fonctionne si bien humainement pour produire du logiciel. Les participants à cette session s’éloigneront pendant une heure de l’imaginaire culturel agile pour découvrir l’envers de la médaille. A sa sortie, ils gagneront en liberté et réalisme à l’heure d’injecter un changement humain dans une organisation.
+",Connaissance des outils utilisés,Débutant | Beginner,Conférence | Conference,Management | Management,,,Thierry,Montulé,,,,,,,,,,,,,,,,,,,50 minutes,OK le 1/7
+7/1/2012 16:05:36,Un petit problème de relation et d’objectif… agiles,"On a beau dire que nous sommes tous différents et que nous voyons le monde à travers nos lunettes, nous sommes tout de même souvent certains d’avoir raison. Cette session va explorer le monde de nos perceptions au travers de la relation interpersonnelle. Au cours d'un atelier exigeant pour les participants, nous verrons comment nous pouvons parfois être sclérosés dans notre relation à l'autre, particulièrement quand je dois atteindre mon objectif. Or, sans relation il n'y a pas de communication efficace et sans communication pas d'agilité. Un atelier au-delà des recettes agiles de cuisine pour commencer à saisir comment j'entre en relation avec l'autre et quelle place je lui réserve. Session repensée depuis la Conférence Agile 2012.",Ouverture,Débutant | Beginner,Atelier pratique / Jeu | Practical Workshop / Game,Management | Management,30,,Thierry,Montulé,,,,,,,,,,,,,,,,,,,120 minutes,OK le 1/7
+7/1/2012 16:07:27,Les oreilles de l’agilité,"S’il existe une valeur phare pointée par l’agilité, c’est bien la communication face à face. L’ingénieur apprend à mettre en relation des systèmes informatiques hétérogènes, à envoyer et recevoir des messages d’objet à objet mais reste plutôt démuni, peu outillé quand il s’agit d’interactions entre les êtres humains. Cette session aborde la première difficulté rencontrée par tout membre d’un projet agile : savoir écouter l’autre. Facile, direz-vous ? C’est pourtant une des choses les plus difficiles à faire, surtout dans les conflits ! Au cours de cet atelier, nous aborderons les fondamentaux de l’écoute à travers des petits exercices et appréhenderons pourquoi le coaching est « l’art de l’écoute et du questionnement ",++ en coaching,Débutant | Beginner,Atelier pratique / Jeu | Practical Workshop / Game,Management | Management,30,,Thierry,Montulé,,,,,,,,,,,,,,,,,,,120 minutes,OK le 1/7
+7/2/2012 8:50:48,L'apprentissage du TDD en Coding-dojo,"L'ingénierie agile est indispensable à l'agilité dans le domaine logiciel. Les tests unitaires automatisés en sont une pièce maîtresse. Le TDD est le meilleur moyen d'écrire les tests et d'avoir du code testable, mais sa pratique va au-delà, notamment dans l'aide à la conception du code. Son apprentissage est difficile et long, mais peut-être aidé par une aide à l'apprentissage et de l'accompagnement. Pour cela, il y a la formation, l’accompagnement individuel, le travail d’équipe, etc … Et le coding-dojo est idéal, sous ses 2 formes : « Kata » pour les démonstrations ou « Randori » pour une séance de travail collaboratif, une véritable séance d’entrainement pour tester, essayer, se tromper, bref … apprendre. Cet atelier permettra de rappeler les bases théoriques, de montrer le TDD en action, et de permettre aux participants de tester son apprentissage en coding-dojo sur des défis simples.","Cet atelier permettra aux participants de mieux cerner les tests unitaires automatisés et le TDD : théorie, approche, cycle, conseils, pièges, … Il permettra également de découvrir le coding-dojo, un format idéal pour l’apprentissage de techniques, bonnes pratiques, ou technos : organisation, mise en œuvre, pratique, objectifs, … Cette session s’adresse à tous les publics : les managers qui veulent prendre conscience de l’importance de l’ingénierie agile pour aider leurs équipes à avancer dans cette voie, les développeurs qui veulent découvrir, tester, ou approfondir le TDD, et les agilistes de tous niveaux pour qu’ils n’oublient pas les outils et bonnes pratiques agiles, facteurs de succès pour une migration agile.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Atelier technique | Technical Workshop,"Amélioration Continue | Continuous Improvement, Craftmanship (Technique / Coding / Testing...)","Pas vraiment limité, seul le nombre de participants ""actifs"" sera limité (par le temps)","Aucune à priori, si ce n'est peut-être prévoir un clavier USB et un écran (pour le poste de développement qui sera vidéo-projeté)",Xavier,NOPRE,Logixen,http://xnopre.blogspot.com,"Depuis environ 20 ans dans le monde du logiciel, Xavier est passionné de développement et d'agilité. Développeur indépendant au quotidien (Java et applications WEB), il est persuadé que l’ingénierie agile est indispensable à l’agilité : tests unitaires automatisés, industrialisation, intégration continue, code propre, bonnes pratiques individuelles et collectives, etc… Il intervient auprès des entreprises pour partager ses compétences et pour promouvoir cette approche agile et technique : formation, conseil, accompagnement.",,,,,,,,,,,,,,,,120 minutes,OK le 2/7
+7/2/2012 9:45:42,Un atelier Théâtre d’Impro pour jouer à être Agile,"Sur scène, les improvisateurs doivent faire vivre une histoire et garder le public réceptif, sans texte et sans préparation. On nous donne un thème, et en définissant un personnage, un lieu et une action, on est parti pour jouer avec quelqu'un d'autre qui a forcément une idée complètement différente. Comment y arriver ? Etre réactif ? Ne pas être trop brutal en imposant son idée, ne pas s'écraser complètement non plus ? En restant fidèle a des grands principes : Ecoute, Accepte, Percute, Anime, Construis, Joue le jeu, Innove, Amuse-toi, Ose ! Le tout au service d'une Histoire qui doit avoir du sens. Impensable si l'équipe n'est pas en confiance et soudée. Tiens, mais on dirait qu'on parle d'Agile...","Découvrir les interactions humaines, notre manière à chacun de réagir lorsqu'une équipe se construit. Apprendre à s'adapter toujours, ne pas suivre un programme tout tracé, ne pas savoir ce qui va se passer à la seconde suivante... Ne pas avoir peur de l'inconnu et toujours proposer, ne pas parler à la place de l'autre mais proposer des nouvelles idées... L'impro a tellement de parallèles avec l'agilité !","Confirmé | Skilled, Expert | Expert",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Amélioration Continue | Continuous Improvement, N.M.A. (Non-Mainstream Agile = Agile non-scrum et/ou non-logiciel | Non-scrum and/or non-software Agile)",12,"Pas de video projecteur, tables et chaises poussées au fond. Salle vide c'est mieux. Pas trop petite.",Aline,Paponaud,Sfeir,@bootis,"Après avoir travaillé à Grenoble en tant que développeuse / scrum master dans le milieu industriel, j'ai rejoint Sfeir pour aller plus loin dans mon métier. J'aime aller au coding dojo, faire des tests, des revues de code... L'apprentissage de la programmation et l'agilité... Et le théâtre d'impro que je pratique depuis quelques années. ",,,,,,,,,,,,,,,,50 minutes,OK le 2/7
+7/2/2012 18:35:58,Les tests intégrés sont une arnaques,"Trop souvent le BDD (Behavior Driven Development) est de suite relégué au rang de Test d'Acceptance (donc au niveau des IHM) et on écrit trop vite l'équation BDD = ATDD. Hors les tests d’acceptance sont l’anti thèse du Test First et donc de l’assurance d’un logiciel non buggé.
+Au contraire, le vrai BDD doit renforcer, voir même devenir la base de tous les tests de vos composants logiciels, quelque soit leur rôle (base de donnée, logique métier et autres). 
+","Au travers des exemples concrets de tests ""unitaires"" dirigés par le comportement, nous montrerons et nous débattrons sur la place des tests, du comportementalisme dans la fabrique globale des logiciels, Web ou classiques. Nous nous poserons aussi les questions essentielles et existentielles que toute personne qui plonge dans un tel projet est à même de se poser afin d'assurer la  qualité logicielle de bout en bout ","Confirmé | Skilled, Expert | Expert",Conférence | Conference,Craftmanship (Technique / Coding / Testing...),200,,guillaume,saint etienne,,"http://www.dotnetguru2.org/gse/
+http://twitter.com/guillaume_agile","Développeur depuis mon premier micro: un ZX81, j’ai endossé également différents rôles, principalement chez des éditeurs logiciels: chef de projet, architecte logiciel, scrum master , et encore maintenant « Senior Software Programmer ».",,,,,,,,,,,,,,,,50 minutes,OK le 2/7
+7/2/2012 18:43:59,Software Craftsmanship en France: où en est on?,"1 an après Agile Grenoble 2011 et la tentative de faire émerger un mouvement national visible Software Craftsmanship en France: quel bilan peut-on en tirer et quel chemin reste-t-il à parcourir, pour aller dans quelle direction?t et donc de l’assurance d’un logiciel non buggé.
+Au contraire, le vrai BDD doit renforcer, voir même devenir la base de tous les tests de vos composants logiciels, quelque soit leur rôle (base de donnée, logique métier et autres).",Débattre et avancer. ou pas.,"Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Débat,Craftmanship (Technique / Coding / Testing...),40,de quoi faciliter les prises de parole.de quoi faciliter les prises de parole.,guillaume,saint etienne,,"http://www.dotnetguru2.org/gse/
+http://twitter.com/guillaume_agile","Développeur depuis mon premier micro: un ZX81, j’ai endossé également différents rôles, principalement chez des éditeurs logiciels: chef de projet, architecte logiciel, scrum master , et encore maintenant « Senior Software Programmer ».",,,,,,,,,,,,,,,,50 minutes,OK le 2/7
+7/2/2012 18:46:50,BDD: retour sur 3 ans de pratique avec Specflow,"Au bout de 3 ans de pratique intensive du BDD avec Specflow en C#, je vous propose de passer en revue les avantages et les écueils de cette pratique, mais également partager ""trucs et astuces"" et surtout les questionnements qui restent en suspend.",Apprendre et progresser sur le BDD et l'écriture de logiciel pilotée par les tests comportementalistes.,"Confirmé | Skilled, Expert | Expert",Atelier technique | Technical Workshop,Craftmanship (Technique / Coding / Testing...),40,,guillaume,saint etienne,,"http://www.dotnetguru2.org/gse/
+http://twitter.com/guillaume_agile","Développeur depuis mon premier micro: un ZX81, j’ai endossé également différents rôles, principalement chez des éditeurs logiciels: chef de projet, architecte logiciel, scrum master , et encore maintenant « Senior Software Programmer ».",,,,,,,,,,,,,,,,120 minutes,OK le 2/7
+7/3/2012 19:52:25,L'agilité pour les nuls,"L'agilité vous en avez entendu parler, et vous êtes venu voir. Vous avez entendu IC, TDD, BDD, binômage … et vous avez compris que c'était très technique. Et puis on a vous a dit : product owner, backlog, scrum master … et là vous vous êtes dit que ça devait être un truc anglo saxon. Finalement vous avez surpris des gens faisant des incantations debout en déplaçant des post-it et là vous avez compris : c'est un secte !
+
+Et bien, tout cela n'est pas tout à fait faux, mais ce n'est pas vraiment  juste non plus. Reprenons les choses simplement depuis le début, vous allez voir, vous allez tout comprendre.",Découvrir de façon attrayante les basiques de l'agilité,Débutant | Beginner,Conférence | Conference,Management | Management,100,,Jean-François,Jagodzinski,Agilessence,www.agilessence.fr,Coach Agile,,,,,,,,,,,,,,,,50 minutes,OK le 3/7
+7/3/2012 19:57:55,Un coach Agile pour quoi faire ?,"Dans coach Agile il y a coach et puis il y a Agile. Deux mots qui pris séparément semblent clairs. Mais personne en réalité n'en a la même définition. Alors quand ils sont mis ensemble….
+Pourquoi faut-il un coach maintenant alors que l'on n'en a jamais eu besoin avant ? Est-ce que c'est juste un autre nom pour un consultant ? Avec ou sans coach, qu'est-ce que ça change ? 
+Cette session se propose de vous éclairer sur un rôle nouveau dans les projets et de vous faire comprendre pourquoi et comment il est essentiel si l'on souhaite tirer complétement parti de l'agilité et rendre les équipes puissantes dans la durée. 
+",Comprendre le rôle joué par un coach agile.,"Débutant | Beginner, Confirmé | Skilled, Expert | Expert",Conférence | Conference,Management | Management,100,,Jean-François,Jagodzinski,Agilessence,www.agilessence.fr,,,,,,,,,,,,,,,,,50 minutes,OK le 3/7
+7/5/2012 15:46:41,"Histoire de Kalitou, transformateur d’entreprise.","Kalitou et  ses amis sont des personnages animés ; ils symbolisent les équipes de la Boite à Outils et font vivre la plateforme pédagogique du projet Kalitiss BAO.
+
+En partenariat avec In&Co startup Grenobloise, spécialisée dans la pédagogie et le développement multimédia, La boite à Outils a mis en place depuis 1 an et demi un processus innovant de transformation de l’entreprise.
+
+Il s’appuie sur les principes suivants : Effet miroir, pyramide inversée,  formation, facilitation, valorisation, et plaisir des équipes autonomes en émergence.
+
+Vivre le projet en jouant, le communiquer et le « marketer » sont les clés de la réussite.
+
+Elisabeth et Fred vous propose d’échanger sur ces pratiques, les concepts qui la fondent et les premiers résultats obtenus.
+Session très interactive : plateforme multimédia et jeux....de cartes,  de chaise sans chaise pour éprouver la stabilité des équipes...un plan d'actions en festival  : vous éprouverez avec kalitou, de nouveaux points de vue pour se transformer.","Partage d'une expérience de transformation d’entreprise à grande échelle.
+Découverte de concepts émergeant.
+Découverte de jeux","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,Management | Management,50,,Frédéric,Dufau-Joël,La Boite à Outils,www.e-brico.fr,"Grenoblois, montagnard citadin, 
+• Directeur informatique de ""La boite à Outis"", groupe SAMSE
+• Démarche AGILE, XP, SCRUM, Lean, Innovation Games © depuis 2005
+• Enseigne les pratiques Agile à l'université Joseph Fourier UFRM2AG
+• Adepte de la pédagogie par les jeux
+• Membre de GERME (groupe d’entrainement et de réflexion au management en entreprise)
+• Passions : Ski-Alpinisme, Voyage,  Rock, Salsa …",Elisabeth,Paccard,IN&CO,http://www.inandco.com/,"Grenobloise, passionnée de pédagogie et de cinéma d'animation
+	Dirigeante d'in&co qui déploie les modèles kalitiss. www.inandco.com
+	A mis en place le réseau des accompagnateurs kalitiss en France.
+	Spécialiste de l'approche systémique des organisations et de l'accompagnement des équipes. Coach.
+	Membre d'APM, (association pour les progrès du management) club de Grenoble G5
+	Diplômée de l'IEP de Grenoble.
+	Passions : montagne, musique, littérature et bandes dessinées.
+",,,,,,,,,,,50 minutes,OK
+7/6/2012 11:46:30,comment gérer l’absence des Product Owner ?,"Dans un monde idéal et dans les bonnes pratiques scrum, le PO fait parti intégrante de l'équipe Scrum, il est au quotidien disponible ... 
+Bref, la théorie est parfois difficilement applicable et le rôle de Proxy PO (ou PO délégué) s’impose, surtout dans les équipes distribuées ou dans le monde des SSII.
+Après quelques années de pratique dans ce mode, nous vous proposons de (re) définir  les rôles et responsabilités, les bonnes et mauvaises pratiques de chacun à travers des « jeux innovants » (story map, starfish, product tree…)
+","•	Un autre schéma de l’équipe Agile classique.
+•	L’application d’outils innovants pour avoir un REX sur une pratique
+•	Rappel des rôles et responsabilités du PO et des déviances à éviter
+","Débutant | Beginner, Confirmé | Skilled",Atelier pratique / Jeu | Practical Workshop / Game,Gestion de produit / portfolio Agile | Agile product/portfolio management,20,"Nous planifions de faire des ""innovation games"", il nous faudrait une salle avec agencement simple",Thomas,Ducrocq,Sopra Group,,,Andréane,Vuillamy,Sopra Group,,,,,,,,,,,,,50 minutes,OK le 7/6
+7/6/2012 11:58:46,XP Game,"Le XP Game va vous permettre de vous familiariser de manière ludique avec des concepts puissants de l'agilité, tels que la vélocité, les itérations, les estimations, les rétrospectives... car la meilleure façon d'expliquer ces notions, c'est de les pratiquer, et c'est exactement ce que le XP Game propose !
+En 2 heures, vous allez pouvoir travailler en équipe à la livraison de ""produits"".
+Cet atelier est ouvert à tous. Vous y serez tour à tour clients, puis développeurs (pas de logiciel dans ce jeu), afin que chacun puisse comprendre ce que vivent les gens qui utilisent ces pratiques.
+
+NB: Le nom de ce jeu indique son origine Extreme Programming, mais il est tout a fait indiqué aussi pour ceux qui font ou veulent découvrir Scrum...","Un agiliste doit avoir participé au moins une fois à un XP Game !
+Les débutants apprécieront la manière concrète de découvrir les grandes notions de l'agilité. 
+Pour les confirmés, ce sera parfois une piqure de rappel pas inutile, ainsi qu'un agréable moment de jeu !","Débutant | Beginner, Confirmé | Skilled",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, Amélioration Continue | Continuous Improvement",30,Tables regroupées en 4 ou 5 pôles de travail en équipe.,Cédric,Joseph,SAMSE,,"Scrum Master ou chef de projet Agile ?
+En tout cas, Agiliste depuis 2005, ayant pratiqué XP, Scrum, KANBAN...
+Membre du CARA
+Adepte de la découverte et de la présentation par les jeux",,,,,,,,,,,,,,,,120 minutes,OK
+7/9/2012 17:12:00,Processus de définition des besoins pour le Projet CAISSE de La Boîte à Outils,"Venez découvrir les Outils AGILE à travers un projet regroupant 20 personnes de métiers différents non Agilistes, avec comme objectif ""La création de notre propre logiciel de caisse pour tous nos magasins"".
+
+En tant que PO, nous avons utilisé la Story Map pour la définition des grands Thèmes et mis en place des Ateliers fonctionnels pour détailler les besoins utilisateurs.
+Les astuces Agiles nous ont permis de prioriser en 1 jour 300 besoins avec 20 personnes.","Ce retour d'expérience est plus particulièrement destiné aux PO, mais ouvert à tous.
+Si vous souhaitez fédérer et créer une vraie cohésion d'équipe Projet, venez découvir nos outils de management AGILE.
+Ce moment d'échange vous permettra de trouver en l'Agilité un moyen de vous rassurer face à la mise en place d'un projet d'envergure avec une vingtaine de participants. ","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management",?,,Krystel,GUETAT,La Boite à Outils,,,Fabien,GACHET,,,,,,,,,,,,,,50 minutes,OK
+7/10/2012 9:18:53,"Starter Games, ou comment diffuser de l'agilité dans vos réunions !","Cet atelier/retour d'expérience a pour but de faire partager aux participants des jeux simples et rapides que nous utilisons régulièrement au cours de nos réunions et ateliers de travail avec d'autres services de notre entreprise (qui ne connaissent pas forcément les méthodes Agiles).
+Ces jeux sont destinés à faire comprendre les pratiques agiles et faire adhérer nos collaborateurs et clients.
+Ils permettent entre autres :
+-              une inclusion ludique,
+-              des explications simples sur le sens de l’atelier,
+-              et donc une adhésion facilité de tous.
+Nous vous présenterons différents jeux destinés à mettre en évidence l'intérêt de pratiques agiles telles que 
+la rétrospective, la communication, la priorisation (à l’aide de ballons, de chamallows, ou même sans outils) !
+","Vous pratiquez l'agilité. Vos clients ou collaborateurs pas forcément.
+Venez découvrir comment les faire adhérer rapidement à vos pratiques !
+","Débutant | Beginner, Confirmé | Skilled",Atelier pratique / Jeu | Practical Workshop / Game,"Management | Management, Gestion de produit / portfolio Agile | Agile product/portfolio management, N.M.A. (Non-Mainstream Agile = Agile non-scrum et/ou non-logiciel | Non-scrum and/or non-software Agile)",30,,Jérome,Cuttaz,SAMSE,,Product Owner chez SAMSE depuis 5 ans,,,,,,,,,,,,,,,,50 minutes,OK
+7/16/2012 8:03:10,Construire une vision partagée,"Comment construire une vision partagée ?
+le principe est d'élaborer des encours, dans notre passé et dans notre perception du futur. ce travail est organisé par une multitude d'atelier, agile, participatif, dynamique avec des processus de travail varié (individuel, binôme, groupe, dessin, interview, ...).
+l'animation de ces atelier et la priorisation des encours permet d'identifier ce que nous sommes et vers quoi nous pourrions aller.","- la construction d'une vision est partagée et nous pouvons le faire dès sa construction.
+- la compréhension de la structuration d'une vsion avec des éléments plus ou moins permanent
+- la complémentarité forte avec les processus agile : savoir en gros ou l'on va et avec quelles valeurs pour adapter sans cesse ...
+",Débutant | Beginner,REX - Retour d'Expérience | Experience Reports,Management | Management,25,Plusieurs paper board (5) c'est le top autrement on fera du collage,Pierre,Morize,,,,,,,,,,,,,,,,,,,50 minutes,OK (doute sur le mail - je l'ai renseigné moi-même)
+7/20/2012 10:20:50,Mosquito Hunter - Gamification of Research,"Cyberio est une startup spécialisée dans la bioacoustique. Dans le cadre d'un projet de recherche visant à instrumenter les fonds sous-marins avec des réseaux de capteurs ultrasonores innovants, permettant de trajectographier les sources sonores, elle a développé une plateforme de simulation biomimétique, afin d'analyser la relation entre l'animal et son environnement, et notamment sa dynamique de plongée.
+
+Le choix a été fait de transformer le simulateur en ""serious game"" afin de sensibiliser le public aux enjeux liés au projet de recherche (préservation de la biodiversité, réduction de l'impact anthropique). ","Retour sur les étapes de conception et les simplifications réalisées afin de rendre le sujet accessible au public,
+Retour sur les étapes de développement et les problèmes rencontrés lors du portage,
+Retour sur les étapes de simplification du code du simulateur pour le temps-réel,
+Retour sur la réception par le public dans des contextes de manifestations ou muséums,
+Et quelques minutes de jeu vidéo !",Débutant | Beginner,REX - Retour d'Expérience | Experience Reports,Gamification,18/24,"Prévoir une disposition ""salon"" avec l'écran au centre, le PC de démo et la manette de jeu. Chacun doit pouvoir discuter sur le jeu en jouant. Une sortie son est souhaitable.
+Plutot dans la salle 25p du coup.",Xavier,Lardy,Cyberio,"Cyberio : http://www.cyberio-dsi.com/cmsms/
+Acounect : http://acounect.fr/wp/
+
+Xavier Lardy : http://www.linkedin.com/pub/xavier-lardy/5/269/58
+","Xavier Lardy est issu de l'ENS Louis Lumière, option Cinématographie. Il a travaillé plusieurs années comme storyboarder, illustrateur et animateur dans la publicité, la série d'animation et le jeu vidéo. A cette occasion il découvre le game design, et conçoit depuis des jeux de société, des jeux vidéos et des serious games. Il a porté un projet de société innovante à Grain de 2007 à 2010 et a rejoint Cyberio en 2011 pour conduire le projet Acounect, labellisé par Imaginove.",Pierre,Aufrere,Cyberio (stagiaire),,"Jeune ingénieur diplômé en 2012, il a étudié à l'Ensimag (Ecole National Supérieure d'Informatique et de Mathématiques).
+Il a effectué son stage de fin d'étude à Cyberio en tant que game builder sur un projet de serious game, en lien avec sa spécialisation image, réalité virtuelle et simulation.",,,,,,,,,,,50 minutes,OK le 20/07
+7/22/2012 10:27:49,Mon Binôme m'a tuer,"Le binômage est une des pratiques pilier de l'eXtreme Programming. Adulée par les uns, décriées par les autres, il est de bon ton dans les discussions courtoises de la qualifier d'""utile, mais pas tout le temps"".
+
+Nous allons dans cette session nous intéresser à tout ces autres moments, en creux, ceux où le développeur préfèrerait ne pas binômer et où par les circonstances les plus extraordinaires il s'est néanmoins vu attribuer la compagnie d'un collègue avec qui il doit partager son espace de travail et de réflexion.
+
+Par le biais de saynètes illustrant notre propos et dans un élan totalement anti-pédagogique, nous espérons montrer par le mauvais exemple comment efficacement tuer toute dynamique vertueuse de binômage, et par conséquent aider celui qui en a besoin à retrouver calme et solitude.","Comprendre pourquoi les sessions de binômage deviennent parfois de véritables moments de torture
+
+Apprendre comment se débarasser de ses collègues sans avoir besoin de leur dire et comment faire tourner bourrique son coach agile, ni vu ni connu
+
+Vivre l'expérience cathartique de regarder des développeurs se comporter de manière inappropriée - sans avoir besoin de le faire soi-même
+
+Imaginer, par jeu d'élimination, comment améliorer ses propres sessions de binômage ",Confirmé | Skilled,Live coding,Craftmanship (Technique / Coding / Testing...),Pas de limite autre que la contenance de la salle,"Pour les orateurs :
+* 1 table
+* 2 chaises 
+
+Disposition des tables pour les participants :
+* théâtre ou salle de classe",Emmanuel,Gaillot,/ut7,http://ut7.fr/papotes/,"Emmanuel Gaillot intervient en tant qu’accompagnateur d’équipes, animateur de réunions, formateur, programmeur extrême, codexhibitionniste et agitateur public. Par le biais d'armes non-conventionnelles, il aide les équipes produisant du logiciel à être plus efficaces dans leur travail, plus fières de leurs résultats et plus heureuses en général. Emmanuel est un spécialiste de la gestion de projet incrémentale, des structures émergentes et des espaces de co-apprentissage. Il s'intéresse aussi de manière déraisonnable à la programmation fonctionnelle en général et à Haskell en particulier. Un orateur régulier à de nombreuses conférences sur l’Agilité, Emmanuel organise également la conférence annuelle Agile Open France. Il est l’un des fondateurs du Dojo de développement de Paris, et un de ses membres assidus depuis sa création il y a six ans. Emmanuel est un des associés et co-gérant de la société /ut7. 
+",Jonathan,Perret,/ut7,,"Polyglotte, accro au dernier degré des tests automatisés, célèbre pour ses sessions endiablées au Dojo Développement de Paris, Jonathan Perret est un programmeur dans l'âme. Il développe du logiciel depuis plus de dix ans, mais sa lecture du livre ""XP explained"" en 2004 a profondément changé sa manière d'appréhender le métier de développeur - et ce n'était que le début. Jonathan est à la recherche constante d'occasions de montrer, partager et vivre pleinement la joie qu'apporte l'acte de programmation. Il est l'un des associés de /ut7.
+",,,,,,,,,,,50 minutes,OK le 22/07
+7/22/2012 10:34:03,Tout ce que vous avez toujours voulu savoir sur les entreprises auto-organisées (sans avoir à essayer vous-mêmes),"Le monde agile ne tarit pas d'éloges sur les équipes auto-organisées et les bénéfices qu'apporte l'auto-organisation. Peu d'agilistes souhaitent pourtant pousser l'auto-organisation un cran plus loin – c'est-à-dire, de travailler dans une entreprise sans chef / coordinateur / sénior bienveillant… en bref, sans que qui que ce soit n'ait pour rôle de dire à ses collègues ce qu'ils doivent faire.
+Il y a une raison à cela : l'auto-organisation est un calvaire au quotidien, ça ne marche pas, et tout le monde le sait bien. Comme à /ut7 nous n'écoutons personne et que nous avons besoin de faire par nous-mêmes pour apprendre, nous avons quand même essayé. Sérieusement. Et nous avons appris deux-trois choses en cours de route sur l'auto-organisation en particulier, et la vie en général.
+Dans cette session, nous animerons une discussion avec le public, et nous ferons de notre mieux pour répondre à leurs questions sur le sujet. Nous n'avons rien à vendre. Ni méthode, ni outil, ni une quelconque formule magique qui permettrait de contourner les difficultés. Il se peut qu'on parle de sexe et de politique, mais promis, on ne parlera pas de religion. ","Écouter un témoignage sur l'auto-organisation, pour changer des théories sur l'auto-organisation
+
+Découvrir quelques points pour lesquels ça vaut le coup de se battre dans son entreprise, même si ça n'en fait pas une ""Entreprise Agile""
+
+Rencontrer et discuter avec des personnes partagenat le même intérêt pour l'auto-organisation
+","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,"Management | Management, Amélioration Continue | Continuous Improvement, N.M.A. (Non-Mainstream Agile = Agile non-scrum et/ou non-logiciel | Non-scrum and/or non-software Agile), Auto-organisation",Aucune limite autre que la contenance de la salle,Pas de table. Disposition des chaises en cercles concentriques - pour favoriser la discussion.,Emmanuel,Gaillot,/ut7,http://ut7.fr/papotes/,"Emmanuel Gaillot intervient en tant qu’accompagnateur d’équipes, animateur de réunions, formateur, programmeur extrême, codexhibitionniste et agitateur public. Par le biais d'armes non-conventionnelles, il aide les équipes produisant du logiciel à être plus efficaces dans leur travail, plus fières de leurs résultats et plus heureuses en général. Emmanuel est un spécialiste de la gestion de projet incrémentale, des structures émergentes et des espaces de co-apprentissage. Il s'intéresse aussi de manière déraisonnable à la programmation fonctionnelle en général et à Haskell en particulier. Un orateur régulier à de nombreuses conférences sur l’Agilité, Emmanuel organise également la conférence annuelle Agile Open France. Il est l’un des fondateurs du Dojo de développement de Paris, et un de ses membres assidus depuis sa création il y a six ans. Emmanuel est un des associés et co-gérant de la société /ut7. 
+",Éric,Séguier,/ut7,,"Éric est gérant de /ut7 depuis sa création, à une époque où l'entreprise s'appelait encore Pyxis France. Éric se spécialise dans les méthodes de gestion alternatives, le management participatif et le lean start-up.",,,,,,,,,,,50 minutes,OK le 22/07
+8/27/2012 23:04:48,"Ingénierie agile, outils et bonnes pratiques : n'oubliez pas vos développeurs !","Bonjour,
+
+Je me dépêche de vous proposer ce sujet qui me tient à coeur mais pour lequel je n'ai pas encore formalisé le résumé & Co. Je vous en fait un premier jet. Si ce thème peut vous intéresser, je peux retravailler le résumé et les apports.
+
+Agiliste et développeur, je pense que l'ingénierie agile est indispensable aux équipes pour permettre une transition vers l'agilité : tests unitaires, TDD, refactoring, bonnes pratiques, intégration continue, pair-programming, etc ...
+
+Malheureusement, cet aspect technique et souvent sous-estimé voir inconnu par les acteurs souhaitant promouvoir une migration agile au sein de leur structure.
+
+Cette session aura donc pour objectif de préciser tous ces aspects techniques, les nommer, les définir, en expliquer les avantages mais également les difficultés pour les mettre en oeuvre.","Découvrir ce qu'est ""l'ingénierie agile"", ce qu'elle peut apporter à une équipe, pourquoi elle est indispensable, les bénéfices à espérer, les difficultés à probablement rencontrer, etc ...
+
+Cette prise de conscience devrait pousser les acteurs du changement au sein de la structure à compléter leur arsenal pour accompagner encore mieux leurs équipes.","Débutant | Beginner, Confirmé | Skilled, Expert | Expert",REX - Retour d'Expérience | Experience Reports,Je ne sais pas trop ....,,,Xavier,NOPRE,Logixen,"Voir précédente proposition de session SVP, merci ","Voir précédente proposition de session SVP, merci ",,,,,,,,,,,,,,,,50 minutes,
