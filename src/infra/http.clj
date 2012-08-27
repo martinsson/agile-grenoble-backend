@@ -62,7 +62,8 @@
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
   (GET "/session-list" request (session-list request))
   (GET ["/jsonp/slot-list"] [callback] (slot-list callback))
-  (GET ["/jsonp/session/:id", :id #"[0-9]+"] [id callback] (get-session id callback))
+  (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
+       [id callback] (get-session (Integer/parseInt id) callback))
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (sessions-for (Integer/parseInt slot) callback))
   (route/resources "/")
