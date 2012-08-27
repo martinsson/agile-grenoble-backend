@@ -67,6 +67,7 @@
                    (normalize ..session..) => {"key to remove" "toto" 
                                                         :id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }))
 
+(defn get-session [id])
 
 
 

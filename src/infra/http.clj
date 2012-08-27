@@ -35,39 +35,34 @@
     (let [response (handler request)]
       (update-in response [:body] json/generate-string))))
 
-(def core-handler
-  (-> pi/get-session-3
-     (json-encode)
-     (wrap-with-content-type-json)))
-
 (def session-list 
   (-> amd/sessions-with-missing-data
      (json-encode)
      (wrap-with-content-type-json)))
 
-(defn slot-list-body [request] 
-  {:status 200
-   :body (sa/slot-list)})
+(defn response-map [arg request]
+  {:status 200 :body arg})
 
-(defn sessions-for-body [slot request] 
-  {:status 200
-   :body (sa/sessions-for slot)})
-
-(defn slot-list [callback] 
-  (-> slot-list-body
+(defn sessions-for [slot callback] 
+  (-> (partial response-map (sa/sessions-for slot))
      (json-encode)
      (wrap-with-jsonp callback)))
 
-(defn sessions-for [slot callback] 
-  (-> (partial sessions-for-body slot)
+(defn slot-list [callback] 
+  (-> (partial response-map (sa/slot-list))
+     (json-encode)
+     (wrap-with-jsonp callback)))
+
+(defn get-session [session-id callback] 
+  (-> (partial response-map (sa/get-session session-id))
      (json-encode)
      (wrap-with-jsonp callback)))
 
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
-  (GET "/json" request (core-handler request))
   (GET "/session-list" request (session-list request))
   (GET ["/jsonp/slot-list"] [callback] (slot-list callback))
+  (GET ["/jsonp/session/:id", :id #"[0-9]+"] [id callback] (get-session id callback))
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (sessions-for (Integer/parseInt slot) callback))
   (route/resources "/")
@@ -78,8 +73,6 @@
     (handler/site)))
 
 ;;; experimental
-(defn response-map [request arg]
-  {:status 200 :body arg})
 (defn session-list2 [request]
   "doesn work"
   (let [sessions (response-map request amd/decorated-sessions)] 
@@ -87,7 +80,7 @@
      (json-encode)
      (wrap-with-content-type-json))))
 (fact "wraps in a response-map"
-  (response-map nil "toto") => {:status 200 :body "toto"}
-  (response-map nil 145)    => {:status 200 :body 145})
+  (response-map "toto" nil ) => {:status 200 :body "toto"}
+  (response-map 145 nil)    => {:status 200 :body 145})
 
 
