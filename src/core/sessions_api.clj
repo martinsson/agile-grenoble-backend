@@ -9,24 +9,38 @@
 (defn slot-list []
   (list (zipmap (iterate inc 1) 
                 time-slots)))
+  (facts
+    (slot-list) => [{1 "8:30" 
+                     2 "10:00"
+                     3 "11:00"
+                     4 "14:00"
+                     5 "15:00"
+                     6 "16:30"}])
 
-(facts
-  (slot-list) => [{1 "8:30" 
-                  2 "10:00"
-                  3 "11:00"
-                  4 "14:00"
-                  5 "15:00"
-                  6 "16:30"}])
+(def key-dictionary {"id" :id
+                     "Titre de la session | Title" :title
+                     "Créneau | Slot" :slot
+                     "Résume | Abstract" :abstract
+                     "Quels bénéfices vont en retirer les participants ? | What will be the benefits for the participants?" :benefits
+                     "Format | Format" :format
+                     "Thèmes | Themes" :theme
+                     "Prénom | First Name" :firstname
+                     "Nom | Last Name" :lastname})
 
 (defn- normalize [raw-session] 
-  (let [key-dictionary {"id" :id
-                        "Titre de la session | Title" :title
-                        "Créneau | Slot" :slot}]
-    (merge {:room "To be defined"} (clojure.set/rename-keys raw-session key-dictionary))))
+  (merge {:room "To be defined"} (clojure.set/rename-keys raw-session key-dictionary)))
 
   (fact "renames string keys to succint keywords"
-        (normalize {"id" 55 "Créneau | Slot" 2 "Titre de la session | Title" "Kanban basics" })
-          => (contains {:id 55 :slot 2 :title "Kanban basics"}))
+        (normalize {"id" 55, "Créneau | Slot" 2, "Titre de la session | Title" "Kanban basics",
+                    "Résume | Abstract" "les bases quoi", 
+                    "Quels bénéfices vont en retirer les participants ? | What will be the benefits for the participants?" "savoir faire du kanban", 
+                    "Format | Format" "Conférence", "Thèmes | Themes" "Process",
+                    "Prénom | First Name" "Neil", "Nom | Last Name" "Armstrong"})
+          => (contains {:id 55 :slot 2 :title "Kanban basics"
+                        :abstract "les bases quoi",
+                        :benefits "savoir faire du kanban",
+                        :format "Conférence", :theme "Process"
+                        :firstname "Neil", :lastname "Armstrong"}))
   (fact "adds key :room if not present"
         (normalize {:room "toto"}) => (contains {:room "toto"})
         (normalize {})             => (contains {:room "To be defined"}))
@@ -71,11 +85,11 @@
                                                         :id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }))
 (defn sessions-as-autoindexed-maps [parsed-csv]
   (into {} (for [s (map normalize (sessions-as-maps parsed-csv))] {(:id s) s})))
-(facts 
-  ;; TODO get rid of the room constraint
-  (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1.. :room "To be defined"}
-                                             ..id2.. {:id ..id2.. :title ..title2.. :room "To be defined"}}
-  (provided (sessions-as-maps ..csv..) => [{:id ..id1.. :title ..title1..}
+  (facts 
+    ;; TODO get rid of the room constraint
+    (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1.. :room "To be defined"}
+                                               ..id2.. {:id ..id2.. :title ..title2.. :room "To be defined"}}
+    (provided (sessions-as-maps ..csv..) => [{:id ..id1.. :title ..title1..}
                                            {:id ..id2.. :title ..title2..}]))
 
 (defn get-session [id]

@@ -22,7 +22,7 @@
 
 (def decorated-sessions 
   (-> 
-    cleaned-sessions
+    (map reverse cleaned-sessions)
     (append-slot-to-header)
     (append-slot-to-body)
     (append-id)))
