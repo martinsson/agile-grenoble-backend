@@ -22,7 +22,7 @@
 
 (def decorated-sessions 
   (-> 
-    (map reverse cleaned-sessions)
+    (map reverse cleaned-sessions)   ;; TODO remove hack to retain the first name/firstname when we make it into a map
     (append-slot-to-header)
     (append-slot-to-body)
     (append-id)))

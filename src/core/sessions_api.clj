@@ -27,7 +27,7 @@
                      "Prénom | First Name" :firstname
                      "Nom | Last Name" :lastname})
 
-(defn- normalize [raw-session] 
+(defn normalize [raw-session] 
   (merge {:room "To be defined"} (clojure.set/rename-keys raw-session key-dictionary)))
 
   (fact "renames string keys to succint keywords"
