@@ -5,27 +5,22 @@
 
 (defn sessions []
   (parse-csv (slurp (io/resource "public/sessions.csv"))))
-(fact
-  (first (sessions)) => (contains [#"Format.*"]))
 
+    (fact "the parsing works"
+      (first (sessions)) => (contains [#"Format.*"]))
+
+; TODO remove this as it isnt necessary in the latest version of sessions.csv    
 (defn empty-csv-line? [line]
   (every? empty? line))
 
-(fact
-  (empty-csv-line? ["" "" ""]) => true 
-  (empty-csv-line? ["" "a" ""]) => false )
+    (fact
+      (empty-csv-line? ["" "" ""]) => true 
+      (empty-csv-line? ["" "a" ""]) => false )
 
 (defn filter-empty-line [csv]
   (remove empty-csv-line? csv))
 
-(fact 
-  (second (sessions)) => empty-csv-line?
-  (second (filter-empty-line (sessions))) =not=> empty-csv-line?)
-
-(defn get-session-3 [request]
-  (let [line (nth (sessions) 3)
-        header (first (sessions))] 
-    {:status 200
-     :body (zipmap header line) }))
-
+    (fact 
+      (second (sessions)) => empty-csv-line?
+      (second (filter-empty-line (sessions))) =not=> empty-csv-line?)
 
