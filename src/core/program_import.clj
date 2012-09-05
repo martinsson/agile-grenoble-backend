@@ -3,11 +3,6 @@
   (:require [clj-json.core :as json])
   (:require [clojure.java.io :as io]))
 
-(defn sessions []
-  (parse-csv (slurp (io/resource "public/sessions.csv"))))
-
-    (fact "the parsing works"
-      (first (sessions)) => (contains [#"Format.*"]))
 
 (def key-dictionary {"id" :id
                      "Titre de la session | Title" :title
@@ -54,7 +49,7 @@
   (remove empty-csv-line? csv))
 
     (fact 
-      (second (sessions)) => empty-csv-line?
-      (second (filter-empty-line (sessions))) =not=> empty-csv-line?)
+      (second (normalized-sessions)) => empty-csv-line?
+      (second (filter-empty-line (normalized-sessions))) =not=> empty-csv-line?)
 
     
