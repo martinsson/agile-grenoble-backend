@@ -1,9 +1,6 @@
 (ns core.adding-missing-data
   (:use core.program-import))
 
-(def cleaned-sessions 
-  (normalized-sessions))
-
 (defn append-slot-to-header [csv]
   (cons (cons :slot (first csv)) (rest csv)))
 
@@ -22,7 +19,7 @@
 
 (def decorated-sessions 
   (-> 
-    (map reverse cleaned-sessions)   ;; TODO remove hack to retain the first name/firstname when we make it into a map
+    (map reverse (normalized-sessions))   ;; TODO remove hack to retain the first name/firstname when we make it into a map
     (append-slot-to-header)
     (append-slot-to-body)
     (append-id)))

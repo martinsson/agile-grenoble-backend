@@ -1,6 +1,7 @@
 (ns core.sessions-api
   (:use midje.sweet)
-  (:require [core.adding-missing-data :as amd]))
+  (:require [core.adding-missing-data :as amd]
+            [core.program-import :as pi]))
 
 ;TODO rename to butterfly api
 
@@ -24,10 +25,11 @@
     (map index-with-header body)))
 
   ;TODO mock data
-  (facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
-    (sessions-as-maps amd/cleaned-sessions) => (has every? #(% :title))
-    (first (sessions-as-maps amd/cleaned-sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
-    (second (sessions-as-maps amd/cleaned-sessions)) => (contains {:title "Challenge Kanban"}))
+  (let [sessions (pi/normalized-sessions)] 
+    (facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
+      (sessions-as-maps sessions) => (has every? #(% :title))
+      (first (sessions-as-maps sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
+      (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
 
 (defn- find-sessions-for [slot]
   (for [s (sessions-as-maps amd/decorated-sessions) :when (= slot (s "Créneau | Slot"))] s))
