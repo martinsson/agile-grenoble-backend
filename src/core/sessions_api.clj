@@ -27,7 +27,7 @@
                      "Prénom | First Name" :firstname
                      "Nom | Last Name" :lastname})
 
-(defn normalize [raw-session] 
+(defn- normalize [raw-session] 
   (merge {:room "To be defined"} (clojure.set/rename-keys raw-session key-dictionary)))
 
   (fact "renames string keys to succint keywords"
@@ -59,7 +59,7 @@
     (first (sessions-as-maps amd/cleaned-sessions)) => (contains {"Titre de la session | Title" "Approche pragmatique pour industrialiser le développement d’applications"})
     (second (sessions-as-maps amd/cleaned-sessions)) => (contains {"Titre de la session | Title" "Challenge Kanban"}))
 
-(defn find-sessions-for [slot]
+(defn- find-sessions-for [slot]
   (for [s (sessions-as-maps amd/decorated-sessions) :when (= slot (s "Créneau | Slot"))] s))
 
   (facts "find the sessions for a given slot"
@@ -89,8 +89,8 @@
     ;; TODO get rid of the room constraint
     (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1.. :room "To be defined"}
                                                ..id2.. {:id ..id2.. :title ..title2.. :room "To be defined"}}
-    (provided (sessions-as-maps ..csv..) => [{:id ..id1.. :title ..title1..}
-                                           {:id ..id2.. :title ..title2..}]))
+    (provided (sessions-as-maps ..csv..) => [{"id" ..id1.. "Titre de la session | Title" ..title1..}
+                                             {"id" ..id2.. "Titre de la session | Title" ..title2..}]))
 
 (defn get-session [id]
   ((sessions-as-autoindexed-maps amd/decorated-sessions) id))
@@ -103,6 +103,13 @@
                                                             2 ..session2..
                                                             3 ..session3..}))
 
+(defn get-session2 [id]
+  ((sessions-as-autoindexed-maps amd/decorated-sessions) id))
+
+  (future-facts
+    (get-session2 1) => ..session..
+    (provided )
+    )
 
 
 
