@@ -48,37 +48,31 @@
   (facts "finds, and filters keys"
          (sessions-for ..slot..) => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }]
          (provided (find-sessions-for ..slot..) => [{"key to remove" "toto" 
-                                                        :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}]
-                   ))
-(defn sessions-as-autoindexed-maps [parsed-csv]
+                                                        :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}]))
+;TODO use clojure.set/index?
+(defn- sessions-as-autoindexed-maps [parsed-csv]
   (into {} (for [s (sessions-as-maps parsed-csv)] {(:id s) s})))
+  
   (facts 
-    ;; TODO get rid of the room constraint
     (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1.. }
                                                ..id2.. {:id ..id2.. :title ..title2.. }}
     (provided (sessions-as-maps ..csv..) => [{:id ..id1.. :title ..title1..}
                                              {:id ..id2.. :title ..title2..}]))
 
 (defn get-session [id]
-  ((sessions-as-autoindexed-maps amd/decorated-sessions) id))
-
-  (facts
-    (get-session 1) => ..session..
-    (provided (sessions-as-autoindexed-maps amd/decorated-sessions) => {1 ..session..})
-    (get-session 3) => ..session3..
-    (provided (sessions-as-autoindexed-maps amd/decorated-sessions) => {1 ..session1..
-                                                            2 ..session2..
-                                                            3 ..session3..}))
-
-  
-(defn get-session2 [id]
   ((sessions-as-autoindexed-maps (pi/normalized-sessions)) id))
 
   (facts
-    (get-session2 ..id..) => {:id ..id.. :title "Hej"}
+    (get-session ..id..) => {:id ..id.. :title "Hej"}
     (provided (pi/normalized-sessions) => [[:id :title]
                                            [..id.. "Hej"]])
-    )
+    (get-session ..id2..) => {:id ..id2.. :title "Hopp"}
+    (provided (pi/normalized-sessions) => [[:id :title]
+                                           [..id1.. "Hej"]
+                                           [..id2.. "Hopp"]
+                                           [..id3.. "Daa"]
+                                           ]))
 
+;TODO add :room
 
 
