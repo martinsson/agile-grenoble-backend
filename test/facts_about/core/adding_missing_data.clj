@@ -2,7 +2,7 @@
   (:use clojure-csv.core midje.sweet core.adding-missing-data))
 
 (facts
-  (first (append-slot-to-header cleaned-sessions)) => (has-prefix ["Créneau | Slot"])
+  (first (append-slot-to-header cleaned-sessions)) => (has-prefix [:slot])
   (second (append-slot-to-header cleaned-sessions)) => (second cleaned-sessions))
 
 (facts
@@ -16,5 +16,5 @@
   )
 
 (facts
-  (first (append-id cleaned-sessions)) => (has-prefix ["id"])
+  (first (append-id cleaned-sessions)) => (has-prefix [:id])
   (second (append-id cleaned-sessions)) => (has-prefix [1]))

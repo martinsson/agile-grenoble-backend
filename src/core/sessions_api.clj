@@ -17,36 +17,6 @@
                      5 "15:00"
                      6 "16:30"}])
 
-(def key-dictionary {"id" :id
-                     "Titre de la session | Title" :title
-                     "Créneau | Slot" :slot
-                     "Résume | Abstract" :abstract
-                     "Quels bénéfices vont en retirer les participants ? | What will be the benefits for the participants?" :benefits
-                     "Format | Format" :format
-                     "Thèmes | Themes" :theme
-                     "Prénom | First Name" :firstname
-                     "Nom | Last Name" :lastname})
-
-(defn- normalize [raw-session] 
-  (merge {:room "To be defined"} (clojure.set/rename-keys raw-session key-dictionary)))
-
-  (fact "renames string keys to succint keywords"
-        (normalize {"id" 55, "Créneau | Slot" 2, "Titre de la session | Title" "Kanban basics",
-                    "Résume | Abstract" "les bases quoi", 
-                    "Quels bénéfices vont en retirer les participants ? | What will be the benefits for the participants?" "savoir faire du kanban", 
-                    "Format | Format" "Conférence", "Thèmes | Themes" "Process",
-                    "Prénom | First Name" "Neil", "Nom | Last Name" "Armstrong"})
-          => (contains {:id 55 :slot 2 :title "Kanban basics"
-                        :abstract "les bases quoi",
-                        :benefits "savoir faire du kanban",
-                        :format "Conférence", :theme "Process"
-                        :firstname "Neil", :lastname "Armstrong"}))
-  (fact "adds key :room if not present"
-        (normalize {:room "toto"}) => (contains {:room "toto"})
-        (normalize {})             => (contains {:room "To be defined"}))
-  (fact "does not filter any keys"
-        (normalize {:somekey "somevalue"}) => (contains {:somekey "somevalue"}))
-
 (defn- sessions-as-maps [parsed-csv]
   (let [header (first parsed-csv)
         body   (rest parsed-csv)
@@ -55,9 +25,9 @@
 
   ;TODO mock data
   (facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
-    (sessions-as-maps amd/cleaned-sessions) => (has every? #(% "Titre de la session | Title"))
-    (first (sessions-as-maps amd/cleaned-sessions)) => (contains {"Titre de la session | Title" "Approche pragmatique pour industrialiser le développement d’applications"})
-    (second (sessions-as-maps amd/cleaned-sessions)) => (contains {"Titre de la session | Title" "Challenge Kanban"}))
+    (sessions-as-maps amd/cleaned-sessions) => (has every? #(% :title))
+    (first (sessions-as-maps amd/cleaned-sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
+    (second (sessions-as-maps amd/cleaned-sessions)) => (contains {:title "Challenge Kanban"}))
 
 (defn- find-sessions-for [slot]
   (for [s (sessions-as-maps amd/decorated-sessions) :when (= slot (s "Créneau | Slot"))] s))
@@ -76,21 +46,21 @@
 
 (defn sessions-for [slot]
   (let [reduce-keys #(select-keys % [:id :title :slot :room])] 
-    (map (comp reduce-keys normalize) (find-sessions-for slot))))
+    (map reduce-keys (find-sessions-for slot))))
 
-  (facts "finds, normalizes, and filters keys"
+  (facts "finds, and filters keys"
          (sessions-for ..slot..) => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }]
-         (provided (find-sessions-for ..slot..) => [..session..]
-                   (normalize ..session..) => {"key to remove" "toto" 
-                                                        :id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }))
+         (provided (find-sessions-for ..slot..) => [{"key to remove" "toto" 
+                                                        :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}]
+                   ))
 (defn sessions-as-autoindexed-maps [parsed-csv]
-  (into {} (for [s (map normalize (sessions-as-maps parsed-csv))] {(:id s) s})))
+  (into {} (for [s (sessions-as-maps parsed-csv)] {(:id s) s})))
   (facts 
     ;; TODO get rid of the room constraint
-    (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1.. :room "To be defined"}
-                                               ..id2.. {:id ..id2.. :title ..title2.. :room "To be defined"}}
-    (provided (sessions-as-maps ..csv..) => [{"id" ..id1.. "Titre de la session | Title" ..title1..}
-                                             {"id" ..id2.. "Titre de la session | Title" ..title2..}]))
+    (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1.. }
+                                               ..id2.. {:id ..id2.. :title ..title2.. }}
+    (provided (sessions-as-maps ..csv..) => [{:id ..id1.. :title ..title1..}
+                                             {:id ..id2.. :title ..title2..}]))
 
 (defn get-session [id]
   ((sessions-as-autoindexed-maps amd/decorated-sessions) id))

@@ -9,7 +9,7 @@
     (fact "the parsing works"
       (first (sessions)) => (contains [#"Format.*"]))
 
-(def- key-dictionary {"id" :id
+(def key-dictionary {"id" :id
                      "Titre de la session | Title" :title
                      "Créneau | Slot" :slot
                      "Résume | Abstract" :abstract
@@ -18,6 +18,7 @@
                      "Thèmes | Themes" :theme
                      "Prénom | First Name" :firstname
                      "Nom | Last Name" :lastname})
+
 (defn- normalize-headers [parsed-csv]
   (let [header              (first parsed-csv)
         body                (rest parsed-csv)

@@ -2,10 +2,10 @@
   (:use core.program-import))
 
 (def cleaned-sessions
-  (filter-empty-line (sessions)))
+  (filter-empty-line (normalized-sessions)))
 
 (defn append-slot-to-header [csv]
-  (cons (cons "Créneau | Slot" (first csv)) (rest csv)))
+  (cons (cons :slot (first csv)) (rest csv)))
 
 (defn append-slot-to-body [csv]
   (let [header (first csv)
@@ -15,7 +15,7 @@
     (concat (list header) decorated-body)))
 
 (defn append-id [csv]
-  (let [header (cons "id" (first csv))
+  (let [header (cons :id (first csv))
         ids    (iterate inc 1)
         body   (map #(cons %1 %2) ids (rest csv))]
     (cons header body)))
@@ -27,9 +27,6 @@
     (append-slot-to-body)
     (append-id)))
 
-(defn sessions-with-missing-data [request]
-  {:status 200
-   :body decorated-sessions })
 (defn sessions-with-missing-data [request]
   {:status 200
    :body decorated-sessions })
