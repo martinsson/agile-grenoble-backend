@@ -27,19 +27,19 @@
       (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
 
 (defn- find-sessions-for [slot]
-  (for [s (sessions-as-maps amd/decorated-sessions) :when (= slot (s "Créneau | Slot"))] s))
+  (for [s (sessions-as-maps amd/decorated-sessions) :when (= slot (:slot s))] s))
 
   (facts "find the sessions for a given slot"
-    (find-sessions-for 2) => [{"Créneau | Slot" 2 "id" 55}]
+    (find-sessions-for 2) => [{:slot 2 "id" 55}]
       (provided (sessions-as-maps amd/decorated-sessions) => 
-                [{"Créneau | Slot" 3}
-                 {"Créneau | Slot" 2 "id" 55}])
-    (find-sessions-for 4) => [{"Créneau | Slot" 4 "id" 55}
-                         {"Créneau | Slot" 4 "id" 77}]
+                [{:slot 3}
+                 {:slot 2 "id" 55}])
+    (find-sessions-for 4) => [{:slot 4 "id" 55}
+                         {:slot 4 "id" 77}]
       (provided (sessions-as-maps amd/decorated-sessions) => 
-                [{"Créneau | Slot" 3}
-                 {"Créneau | Slot" 4 "id" 55}
-                 {"Créneau | Slot" 4 "id" 77}]))
+                [{:slot 3}
+                 {:slot 4 "id" 55}
+                 {:slot 4 "id" 77}]))
 
 (defn sessions-for [slot]
   (let [reduce-keys #(select-keys % [:id :title :slot :room])] 
