@@ -1,8 +1,8 @@
 (ns core.adding-missing-data
   (:use core.program-import))
 
-(def cleaned-sessions
-  (filter-empty-line (normalized-sessions)))
+(def cleaned-sessions 
+  (normalized-sessions))
 
 (defn append-slot-to-header [csv]
   (cons (cons :slot (first csv)) (rest csv)))
