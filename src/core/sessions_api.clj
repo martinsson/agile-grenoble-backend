@@ -11,12 +11,7 @@
   (list (zipmap (iterate inc 1) 
                 time-slots)))
   (facts
-    (slot-list) => [{1 "8:30" 
-                     2 "10:00"
-                     3 "11:00"
-                     4 "14:00"
-                     5 "15:00"
-                     6 "16:30"}])
+    (slot-list) => [{1 "8:30", 2 "10:00", 3 "11:00", 4 "14:00", 5 "15:00", 6 "16:30"}])
 
 (defn- sessions-as-maps [parsed-csv]
   (let [header (first parsed-csv)
@@ -75,12 +70,14 @@
                                                             2 ..session2..
                                                             3 ..session3..}))
 
+  
 (defn get-session2 [id]
-  ((sessions-as-autoindexed-maps amd/decorated-sessions) id))
+  ((sessions-as-autoindexed-maps (pi/normalized-sessions)) id))
 
-  (future-facts
-    (get-session2 1) => ..session..
-    (provided )
+  (facts
+    (get-session2 ..id..) => {:id ..id.. :title "Hej"}
+    (provided (pi/normalized-sessions) => [[:id :title]
+                                           [..id.. "Hej"]])
     )
 
 
