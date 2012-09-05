@@ -63,9 +63,9 @@
   (GET "/session-list" request (session-list request))
   (GET ["/jsonp/slot-list"] [callback] (slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
-       [callback id] (get-session (Integer/parseInt id) callback))
+       [callback id] (get-session id callback))
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
-       [callback slot] (sessions-for (Integer/parseInt slot) callback))
+       [callback slot] (sessions-for slot callback))
   (route/resources "/")
   (route/not-found "Page not found"))
 

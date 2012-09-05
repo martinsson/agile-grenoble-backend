@@ -7,13 +7,13 @@
 (defn append-slot-to-body [csv]
   (let [header (first csv)
         body   (rest csv)
-        slot-distribution (mapcat repeat (repeat 6) (range 1 9)) ;; get rid of this shit!!
+        slot-distribution (map str (mapcat repeat (repeat 6) (range 1 9))) ;; get rid of this shit!!
         decorated-body (map cons slot-distribution body)] 
     (concat (list header) decorated-body)))
 
 (defn append-id [csv]
   (let [header (cons :id (first csv))
-        ids    (iterate inc 1)
+        ids    (map str (iterate inc 1))
         body   (map #(cons %1 %2) ids (rest csv))]
     (cons header body)))
 
