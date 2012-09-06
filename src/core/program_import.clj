@@ -39,24 +39,26 @@
         translated-header   (map replace-if-possible header)]
     (cons translated-header body)))
 
-(defn normalized-sessions []
-  (-> "public/sessions.csv"
-      io/resource
+(def local-file (io/resource "public/sessions.csv"))
+
+(defn normalized-sessions 
+  ([csv-resource]
+  (-> csv-resource
       slurp
       parse-csv
       filter-empty-line
-      normalize-headers))
+      normalize-headers)))
 
     (fact "The csv headers are normalized"
-          (first (normalized-sessions)) => (contains [:title :abstract :benefits :format :theme :firstname :lastname] :in-any-order :gaps-ok))
+          (first (normalized-sessions local-file)) => (contains [:title :abstract :benefits :format :theme :firstname :lastname] :in-any-order :gaps-ok))
     (fact "The body is unchanged"
-          (rest (normalized-sessions))   => [...line1... 
+          (rest (normalized-sessions local-file))   => [...line1... 
                                              ...line2...]
           (provided (filter-empty-line anything) => [...header...
                                              ...line1...
                                              ...line2...]))
     (fact "it filters empty lines"
-          (normalized-sessions)   => [[:id :title] 
+          (normalized-sessions local-file)   => [[:id :title] 
                                       ["1"    "kanban pour le mieux"]]
           (provided (parse-csv anything) => [["id" "Titre de la session | Title"]
                                              [""   ""]

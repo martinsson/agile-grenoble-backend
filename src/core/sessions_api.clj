@@ -58,12 +58,18 @@
     (provided (sessions-as-maps ..csv..) => [{:id ..id1.. :title ..title1..}
                                              {:id ..id2.. :title ..title2..}]))
 
-(defn get-session [id]
+(defn get-session 
+  ([id]
   ((sessions-as-autoindexed-maps (amd/decorate-sessions)) id))
+  ([resource id]
+  ((sessions-as-autoindexed-maps (amd/decorate-sessions resource)) id)))
 
   (facts
     (get-session ..id..) => {:id ..id.. :title "Hej"}
     (provided (amd/decorate-sessions) => [[:id :title]
+                                           [..id.. "Hej"]])
+    (get-session ..resource.. ..id..) => {:id ..id.. :title "Hej"}
+    (provided (amd/decorate-sessions ..resource..) => [[:id :title]
                                            [..id.. "Hej"]])
     (get-session ..id2..) => {:id ..id2.. :title "Hopp"}
     (provided (amd/decorate-sessions) => [[:id :title]
