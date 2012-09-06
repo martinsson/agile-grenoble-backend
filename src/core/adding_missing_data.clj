@@ -18,12 +18,16 @@
         body   (map cons ids (rest csv))]
     (cons header body)))
 
-(def decorated-sessions 
+
+(defn decorate-sessions [] 
   (-> 
     (map reverse (normalized-sessions))   ;; TODO remove hack to retain the first name/firstname when we make it into a map
     (append-slot-to-header)
     (append-slot-to-body)
     (append-id)))
+
+(def decorated-sessions 
+  (decorate-sessions))
 
 (defn sessions-with-missing-data [request]
   {:status 200

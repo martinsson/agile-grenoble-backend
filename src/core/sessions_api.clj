@@ -1,7 +1,6 @@
 (ns core.sessions-api
   (:use midje.sweet)
-  (:require [core.adding-missing-data :as amd]
-            [core.program-import :as pi]))
+  (:require [core.adding-missing-data :as amd]))
 
 ;TODO rename to butterfly api
 
@@ -20,7 +19,7 @@
     (map index-with-header body)))
 
   ;TODO mock data
-  (let [sessions (pi/normalized-sessions)] 
+  (let [sessions (amd/decorate-sessions)] 
     (facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
       (sessions-as-maps sessions) => (has every? #(% :title))
       (first (sessions-as-maps sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
@@ -60,14 +59,14 @@
                                              {:id ..id2.. :title ..title2..}]))
 
 (defn get-session [id]
-  ((sessions-as-autoindexed-maps (pi/normalized-sessions)) id))
+  ((sessions-as-autoindexed-maps (amd/decorate-sessions)) id))
 
   (facts
     (get-session ..id..) => {:id ..id.. :title "Hej"}
-    (provided (pi/normalized-sessions) => [[:id :title]
+    (provided (amd/decorate-sessions) => [[:id :title]
                                            [..id.. "Hej"]])
     (get-session ..id2..) => {:id ..id2.. :title "Hopp"}
-    (provided (pi/normalized-sessions) => [[:id :title]
+    (provided (amd/decorate-sessions) => [[:id :title]
                                            [..id1.. "Hej"]
                                            [..id2.. "Hopp"]
                                            [..id3.. "Daa"]
