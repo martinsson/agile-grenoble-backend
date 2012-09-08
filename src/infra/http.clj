@@ -7,6 +7,10 @@
             [core.adding-missing-data :as amd]
             [clj-json.core :as json]))
 
+(def decorated-sessions (amd/decorate-sessions pi/local-file))
+(defn response-map [arg request]
+  {:status 200 :body arg})
+
 
 (defn wrap-with-content-type-json [handler]
   (fn [request]
@@ -36,12 +40,9 @@
       (update-in response [:body] json/generate-string))))
 
 (def session-list 
-  (-> amd/sessions-with-missing-data
+  (-> (partial response-map decorated-sessions)
      (json-encode)
      (wrap-with-content-type-json)))
-
-(defn response-map [arg request]
-  {:status 200 :body arg})
 
 (defn sessions-for [slot callback] 
   (-> (partial response-map (sa/sessions-for slot))
@@ -76,7 +77,7 @@
 ;;; experimental
 (defn session-list2 [request]
   "doesn work"
-  (let [sessions (response-map request amd/decorated-sessions)] 
+  (let [sessions (response-map request decorated-sessions)] 
     (-> sessions
      (json-encode)
      (wrap-with-content-type-json))))

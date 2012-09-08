@@ -30,6 +30,3 @@
 (def decorated-sessions 
   (decorate-sessions local-file))
 
-(defn sessions-with-missing-data [request]
-  {:status 200
-   :body decorated-sessions })
