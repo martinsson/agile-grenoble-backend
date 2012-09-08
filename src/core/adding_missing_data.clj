@@ -20,8 +20,6 @@
 
 
 (defn decorate-sessions 
-  ([] 
-  (decorate-sessions local-file))
   ([csv-resource] 
   (-> 
     (map reverse (normalized-sessions csv-resource))   ;; TODO remove hack to retain the first name/firstname when we make it into a map
@@ -30,7 +28,7 @@
     (append-id))))
 
 (def decorated-sessions 
-  (decorate-sessions))
+  (decorate-sessions local-file))
 
 (defn sessions-with-missing-data [request]
   {:status 200
