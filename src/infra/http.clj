@@ -7,10 +7,12 @@
             [core.adding-missing-data :as amd]
             [clj-json.core :as json]))
 
-(def decorated-sessions (amd/decorate-sessions pi/local-file))
+(defn decorate-sessions [] (amd/decorate-sessions pi/local-file))
+(def sessions-for (partial sa/sessions-for pi/local-file))
+(def get-session (partial sa/get-session pi/local-file))
+
 (defn response-map [arg request]
   {:status 200 :body arg})
-
 
 (defn wrap-with-content-type-json [handler]
   (fn [request]
@@ -39,34 +41,34 @@
     (let [response (handler request)]
       (update-in response [:body] json/generate-string))))
 
-(def session-list 
-  (-> (partial response-map decorated-sessions)
+(def h-session-list 
+  (-> (partial response-map (decorate-sessions))
      (json-encode)
      (wrap-with-content-type-json)))
 
-(defn sessions-for [slot callback] 
-  (-> (partial response-map (sa/sessions-for pi/local-file slot))
+(defn h-sessions-for [slot callback] 
+  (-> (partial response-map (sessions-for  slot))
      (json-encode)
      (wrap-with-jsonp callback)))
 
-(defn slot-list [callback] 
+(defn h-slot-list [callback] 
   (-> (partial response-map (sa/slot-list))
      (json-encode)
      (wrap-with-jsonp callback)))
 
-(defn get-session [session-id callback] 
-  (-> (partial response-map (sa/get-session pi/local-file session-id))
+(defn h-get-session [session-id callback] 
+  (-> (partial response-map (get-session session-id))
      (json-encode)
      (wrap-with-jsonp callback)))
 
 (defroutes main-routes
   (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
-  (GET "/session-list" request (session-list request))
-  (GET ["/jsonp/slot-list"] [callback] (slot-list callback))
+  (GET "/session-list" request (h-session-list request))
+  (GET ["/jsonp/slot-list"] [callback] (h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
-       [callback id] (get-session id callback))
+       [callback id] (h-get-session id callback))
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
-       [callback slot] (sessions-for slot callback))
+       [callback slot] (h-sessions-for slot callback))
   (route/resources "/")
   (route/not-found "Page not found"))
 
@@ -76,8 +78,8 @@
 
 ;;; experimental
 (defn session-list2 [request]
-  "doesn work"
-  (let [sessions (response-map request decorated-sessions)] 
+  "doesnt work"
+  (let [sessions (response-map request (decorate-sessions))] 
     (-> sessions
      (json-encode)
      (wrap-with-content-type-json))))

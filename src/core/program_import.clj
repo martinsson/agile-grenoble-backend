@@ -59,10 +59,10 @@
                                              ...line2...]))
     (fact "it filters empty lines"
           (normalized-sessions local-file)   => [[:id :title] 
-                                      ["1"    "kanban pour le mieux"]]
+                                                 ["1" "kanban pour le mieux"]]
           (provided (parse-csv anything) => [["id" "Titre de la session | Title"]
                                              [""   ""]
-                                             ["1"    "kanban pour le mieux"]]))
+                                             ["1"  "kanban pour le mieux"]]))
     
 
     
