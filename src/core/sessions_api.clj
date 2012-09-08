@@ -66,19 +66,20 @@
   ((sessions-as-autoindexed-maps (amd/decorate-sessions resource)) id)))
 
   (facts
-    (get-session ..id..) => {:id ..id.. :title "Hej"}
+    (get-session ..resource.. ..id..) => {:id ..id.. :title "Hej"}
     (provided (amd/decorate-sessions anything) => [[:id :title]
                                            [..id.. "Hej"]])
     (get-session ..resource.. ..id..) => {:id ..id.. :title "Hej"}
     (provided (amd/decorate-sessions ..resource..) => [[:id :title]
                                            [..id.. "Hej"]])
-    (get-session ..id2..) => {:id ..id2.. :title "Hopp"}
+    (get-session ..resource.. ..id2..) => {:id ..id2.. :title "Hopp"}
     (provided (amd/decorate-sessions anything) => [[:id :title]
                                            [..id1.. "Hej"]
                                            [..id2.. "Hopp"]
                                            [..id3.. "Daa"]
                                            ]))
 
+  (future-fact "we add a room column")
 ;TODO add :room
 
 
