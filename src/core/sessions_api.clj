@@ -26,28 +26,30 @@
       (first (sessions-as-maps sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
       (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
 
-(defn- find-sessions-for [slot]
-  (for [s (sessions-as-maps (amd/decorate-sessions pi/local-file)) :when (= slot (:slot s))] s))
+(defn- find-sessions-for 
+  ([slot csv-resource]
+  (for [s (sessions-as-maps (amd/decorate-sessions csv-resource)) :when (= slot (:slot s))] s)))
 
   (facts "find the sessions for a given slot"
-    (find-sessions-for 2) => [{:slot 2 "id" 55}]
-      (provided (sessions-as-maps (amd/decorate-sessions pi/local-file)) => 
+    (find-sessions-for 2 ..resource..) => [{:slot 2 "id" 55}]
+      (provided (sessions-as-maps (amd/decorate-sessions ..resource..)) => 
                 [{:slot 3}
                  {:slot 2 "id" 55}])
-    (find-sessions-for 4) => [{:slot 4 "id" 55}
+    (find-sessions-for 4 ..resource..) => [{:slot 4 "id" 55}
                          {:slot 4 "id" 77}]
-      (provided (sessions-as-maps (amd/decorate-sessions pi/local-file)) => 
+      (provided (sessions-as-maps (amd/decorate-sessions ..resource..)) => 
                 [{:slot 3}
                  {:slot 4 "id" 55}
                  {:slot 4 "id" 77}]))
 
-(defn sessions-for [slot]
+(defn sessions-for 
+  ([slot csv-resource]
   (let [reduce-keys #(select-keys % [:id :title :slot :room])] 
-    (map reduce-keys (find-sessions-for slot))))
+    (map reduce-keys (find-sessions-for slot csv-resource)))))
 
   (facts "finds, and filters keys"
-         (sessions-for ..slot..) => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }]
-         (provided (find-sessions-for ..slot..) => [{"key to remove" "toto" 
+         (sessions-for ..slot.. ..resource..) => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }]
+         (provided (find-sessions-for ..slot.. ..resource..) => [{"key to remove" "toto" 
                                                         :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}]))
 ;TODO use clojure.set/index?
 (defn- sessions-as-autoindexed-maps [parsed-csv]

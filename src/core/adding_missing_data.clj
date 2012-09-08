@@ -27,6 +27,3 @@
     (append-slot-to-body)
     (append-id))))
 
-(def decorated-sessions 
-  (decorate-sessions local-file))
-
