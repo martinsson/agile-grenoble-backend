@@ -1,15 +1,18 @@
 (ns infra.http  
-  (:use compojure.core midje.sweet)
+  (:use compojure.core midje.sweet infra.upload)
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [core.program-import :as pi]
             [core.sessions-api :as sa]
             [core.adding-missing-data :as amd]
-            [clj-json.core :as json]))
+            [clj-json.core :as json]
+            (ring.middleware [multipart-params :as mp])))
 
-(defn decorate-sessions [] (amd/decorate-sessions pi/local-file))
-(def sessions-for (partial sa/sessions-for pi/local-file))
-(def get-session (partial sa/get-session pi/local-file))
+(def local-file (clojure.java.io/resource "public/uploaded-sessions.csv"))
+
+(defn decorate-sessions [] (amd/decorate-sessions local-file))
+(def sessions-for (partial sa/sessions-for local-file))
+(def get-session (partial sa/get-session local-file))
 
 (defn response-map [arg request]
   {:status 200 :body arg})
@@ -69,6 +72,9 @@
        [callback id] (h-get-session id callback))
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (h-sessions-for slot callback))
+  (GET  "/upload" [] (render (index)))
+  (mp/wrap-multipart-params 
+     (POST "/file" {params :params} (upload-file (params :file))))
   (route/resources "/")
   (route/not-found "Page not found"))
 
