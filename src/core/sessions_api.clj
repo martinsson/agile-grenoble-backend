@@ -3,7 +3,7 @@
   (:require [core.adding-missing-data :as amd]
             [core.program-import :as pi]))
 
-;TODO rename to butterfly api
+;TODO rename to butterfly api?
 
 (def time-slots ["8:30" "10:00" "11:00" "14:00" "15:00" "16:30"])
 

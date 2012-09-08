@@ -1,6 +1,9 @@
 (ns core.adding-missing-data
   (:use core.program-import))
 
+;; As there is no id, nor a chosen slot (at what time of the day the session will take place) yet
+;; we artifically decorate the csv with these colums
+
 (defn append-slot-to-header [csv]
   (cons (cons :slot (first csv)) (rest csv)))
 

@@ -39,6 +39,7 @@
         translated-header   (map replace-if-possible header)]
     (cons translated-header body)))
 
+;; Used for testing
 (def local-file (io/resource "public/sessions.csv"))
 
 (defn normalized-sessions 
