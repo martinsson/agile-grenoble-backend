@@ -19,9 +19,9 @@
     (let [response (handler request)]
       (assoc-in response [:headers "Content-Type"] "application/json"))))
 
-(facts 
-  ((wrap-with-content-type-json ..handler..) ..request..) => {:headers {"Content-Type" "application/json"}}
-  (provided (..handler.. ..request..) => {}))
+    (facts 
+      ((wrap-with-content-type-json ..handler..) ..request..) => {:headers {"Content-Type" "application/json"}}
+      (provided (..handler.. ..request..) => {}))
 
 (defn wrap-with-jsonp [handler function-name]
   (fn [request]
@@ -29,12 +29,12 @@
           wrap-with-function #(str function-name "(" % ")")]
       (update-in response [:body] wrap-with-function))))
 
-(facts 
-  (against-background (..handler.. ..request..) => {:body ..some-json..})
-  ((wrap-with-jsonp ..handler.. "getAllTimeSlots") ..request..) 
-      => {:body (str "getAllTimeSlots(" ..some-json.. ")")}
-  ((wrap-with-jsonp ..handler.. "getSessionsForSlot") ..request..) 
-      => {:body (str "getSessionsForSlot(" ..some-json.. ")")})
+    (facts 
+      (against-background (..handler.. ..request..) => {:body ..some-json..})
+      ((wrap-with-jsonp ..handler.. "getAllTimeSlots") ..request..) 
+          => {:body (str "getAllTimeSlots(" ..some-json.. ")")}
+      ((wrap-with-jsonp ..handler.. "getSessionsForSlot") ..request..) 
+          => {:body (str "getSessionsForSlot(" ..some-json.. ")")})
 
 (defn json-encode [handler]
   (fn [request]
@@ -83,8 +83,9 @@
     (-> sessions
      (json-encode)
      (wrap-with-content-type-json))))
-(fact "wraps in a response-map"
-  (response-map "toto" nil ) => {:status 200 :body "toto"}
-  (response-map 145 nil)    => {:status 200 :body 145})
+
+    (fact "wraps in a response-map"
+      (response-map "toto" nil ) => {:status 200 :body "toto"}
+      (response-map 145 nil)    => {:status 200 :body 145})
 
 
