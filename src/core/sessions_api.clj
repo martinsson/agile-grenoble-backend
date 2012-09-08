@@ -27,16 +27,16 @@
       (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
 
 (defn- find-sessions-for [slot]
-  (for [s (sessions-as-maps amd/decorated-sessions) :when (= slot (:slot s))] s))
+  (for [s (sessions-as-maps (amd/decorate-sessions pi/local-file)) :when (= slot (:slot s))] s))
 
   (facts "find the sessions for a given slot"
     (find-sessions-for 2) => [{:slot 2 "id" 55}]
-      (provided (sessions-as-maps amd/decorated-sessions) => 
+      (provided (sessions-as-maps (amd/decorate-sessions pi/local-file)) => 
                 [{:slot 3}
                  {:slot 2 "id" 55}])
     (find-sessions-for 4) => [{:slot 4 "id" 55}
                          {:slot 4 "id" 77}]
-      (provided (sessions-as-maps amd/decorated-sessions) => 
+      (provided (sessions-as-maps (amd/decorate-sessions pi/local-file)) => 
                 [{:slot 3}
                  {:slot 4 "id" 55}
                  {:slot 4 "id" 77}]))
