@@ -45,7 +45,7 @@
      (wrap-with-content-type-json)))
 
 (defn sessions-for [slot callback] 
-  (-> (partial response-map (sa/sessions-for slot pi/local-file))
+  (-> (partial response-map (sa/sessions-for pi/local-file slot))
      (json-encode)
      (wrap-with-jsonp callback)))
 
@@ -55,7 +55,7 @@
      (wrap-with-jsonp callback)))
 
 (defn get-session [session-id callback] 
-  (-> (partial response-map (sa/get-session session-id))
+  (-> (partial response-map (sa/get-session pi/local-file session-id))
      (json-encode)
      (wrap-with-jsonp callback)))
 

@@ -27,15 +27,15 @@
       (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
 
 (defn- find-sessions-for 
-  ([slot csv-resource]
+  ([csv-resource slot]
   (for [s (sessions-as-maps (amd/decorate-sessions csv-resource)) :when (= slot (:slot s))] s)))
 
   (facts "find the sessions for a given slot"
-    (find-sessions-for 2 ..resource..) => [{:slot 2 "id" 55}]
+    (find-sessions-for ..resource.. 2) => [{:slot 2 "id" 55}]
       (provided (sessions-as-maps (amd/decorate-sessions ..resource..)) => 
                 [{:slot 3}
                  {:slot 2 "id" 55}])
-    (find-sessions-for 4 ..resource..) => [{:slot 4 "id" 55}
+    (find-sessions-for ..resource.. 4) => [{:slot 4 "id" 55}
                          {:slot 4 "id" 77}]
       (provided (sessions-as-maps (amd/decorate-sessions ..resource..)) => 
                 [{:slot 3}
@@ -43,13 +43,13 @@
                  {:slot 4 "id" 77}]))
 
 (defn sessions-for 
-  ([slot csv-resource]
+  ([csv-resource slot]
   (let [reduce-keys #(select-keys % [:id :title :slot :room])] 
-    (map reduce-keys (find-sessions-for slot csv-resource)))))
+    (map reduce-keys (find-sessions-for csv-resource slot)))))
 
   (facts "finds, and filters keys"
-         (sessions-for ..slot.. ..resource..) => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }]
-         (provided (find-sessions-for ..slot.. ..resource..) => [{"key to remove" "toto" 
+         (sessions-for ..resource.. ..slot..) => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }]
+         (provided (find-sessions-for ..resource.. ..slot..) => [{"key to remove" "toto" 
                                                         :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}]))
 ;TODO use clojure.set/index?
 (defn- sessions-as-autoindexed-maps [parsed-csv]
@@ -62,8 +62,6 @@
                                              {:id ..id2.. :title ..title2..}]))
 
 (defn get-session 
-  ([id]
-  (get-session pi/local-file id))
   ([resource id]
   ((sessions-as-autoindexed-maps (amd/decorate-sessions resource)) id)))
 
