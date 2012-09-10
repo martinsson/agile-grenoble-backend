@@ -65,16 +65,15 @@
      (wrap-with-jsonp callback)))
 
 (defroutes main-routes
-  (GET "/" [] "<h1>Bonjour Agile Grenoble !</h1>")
+  (GET "/" [] (render (index)))
   (GET "/session-list" request (h-session-list request))
   (GET ["/jsonp/slot-list"] [callback] (h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
        [callback id] (h-get-session id callback))
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (h-sessions-for slot callback))
-  (GET  "/upload" [] (render (index)))
   (mp/wrap-multipart-params 
-     (POST "/file" {params :params} (upload-file (params :file))))
+     (POST "/upload/sessions-csv" {params :params} (upload-file (params :file))))
   (route/resources "/")
   (route/not-found "Page not found"))
 
