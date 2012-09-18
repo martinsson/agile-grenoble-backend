@@ -28,7 +28,7 @@
 
 (defn- find-sessions-for 
   ([csv-resource slot]
-  (for [s (sessions-as-maps (amd/decorate-sessions csv-resource)) :when (= slot (:slot s))] s)))
+  (filter #(= slot (% :slot)) (sessions-as-maps (amd/decorate-sessions csv-resource)))))
 
   (facts "find the sessions for a given slot"
     (find-sessions-for ..resource.. 2) => [{:slot 2 "id" 55}]
@@ -51,19 +51,10 @@
          (sessions-for ..resource.. ..slot..) => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }]
          (provided (find-sessions-for ..resource.. ..slot..) => [{"key to remove" "toto" 
                                                         :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}]))
-;TODO use clojure.set/index?
-(defn- sessions-as-autoindexed-maps [parsed-csv]
-  (into {} (for [s (sessions-as-maps parsed-csv)] {(:id s) s})))
-  
-  (facts 
-    (sessions-as-autoindexed-maps ..csv..) => {..id1.. {:id ..id1.. :title ..title1.. }
-                                               ..id2.. {:id ..id2.. :title ..title2.. }}
-    (provided (sessions-as-maps ..csv..) => [{:id ..id1.. :title ..title1..}
-                                             {:id ..id2.. :title ..title2..}]))
-
 (defn get-session 
   ([resource id]
-  ((sessions-as-autoindexed-maps (amd/decorate-sessions resource)) id)))
+  (let [session-maps (sessions-as-maps (amd/decorate-sessions resource))] 
+    (first (filter #(= id (% :id)) session-maps)))))
 
   (facts
     (get-session ..resource.. ..id..) => {:id ..id.. :title "Hej"}
@@ -76,8 +67,7 @@
     (provided (amd/decorate-sessions anything) => [[:id :title]
                                            [..id1.. "Hej"]
                                            [..id2.. "Hopp"]
-                                           [..id3.. "Daa"]
-                                           ]))
+                                           [..id3.. "Daa"]]))
 
   (future-fact "we add a room column")
 ;TODO add :room
