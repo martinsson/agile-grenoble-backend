@@ -7,7 +7,17 @@
 <body>
   <h2>Administration des sessions d'Agile Grenoble</h2>
   <div>
-      Mettre à jour le fichier des sessions
+  <h3>API</h3>
+  Les fonctions JSONP suivantes sont disponibles
+  <li><a href="jsonp/slot-list?callback=callback_for_slot-list">
+    jsonp/slot-list?callback=callback_for_slot-list</a></li>
+  <li><a href="jsonp/sessions-for-slot/2?callback=callback_for_sessions-for-slot">
+    jsonp/sessions-for-slot/2?callback=callback_for_sessions-for-slot</a></li>
+  <li><a href="jsonp/session/17?callback=callback_for_session">
+    jsonp/session/17?callback=callback_function_for_session</a></li>
+  </div>
+  <div>
+      <h3>Mettre à jour le fichier des sessions</h3>
 	  <form action="/upload/sessions-csv" method="post" enctype="multipart/form-data">
 	    <input name="file" type="file" size="20" />
 	    <input type="submit" name="submit" value="submit" />
