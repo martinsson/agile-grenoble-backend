@@ -12,29 +12,27 @@
   (facts
     (slot-list) => [{1 "8:30", 2 "10:00", 3 "11:00", 4 "14:00", 5 "15:00", 6 "16:30"}])
 
-(defn- find-sessions-for 
-  ([session-maps slot]
-  (filter #(= slot (% :slot)) session-maps)))
-
-  (facts "find the sessions for a given slot"
-    (find-sessions-for [{:slot 3} 
-                        {:slot 2 "id" 55}] 
-                       2) => [{:slot 2 "id" 55}]
-    (find-sessions-for [{:slot 3}
-                        {:slot 4 "id" 55}
-                        {:slot 4 "id" 77}] 
-                       4) => [{:slot 4 "id" 55}
-                              {:slot 4 "id" 77}])
-
 (defn sessions-for 
   ([session-maps slot]
-  (let [reduce-keys #(select-keys % [:id :title :slot :room])] 
-    (map reduce-keys (find-sessions-for session-maps slot)))))
+  (let [reduce-keys #(select-keys % [:id :title :slot :room])
+        found-sessions (filter #(= slot (% :slot)) session-maps)] 
+    (map reduce-keys found-sessions))))
 
-  (facts "finds, and filters keys"
-         (sessions-for ..resource.. ..slot..) => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }]
-         (provided (find-sessions-for ..resource.. ..slot..) => [{"key to remove" "toto" 
-                                                        :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}]))
+  (facts "find the sessions for a given slot"
+    (sessions-for [{:slot 3} 
+                   {:slot 2 :id 55}] 
+                  2) => [{:slot 2 :id 55}]
+    (sessions-for [{:slot 3}
+                   {:slot 4 :id 55}
+                   {:slot 4 :id 77}] 
+                  4) => [{:slot 4 :id 55}
+                         {:slot 4 :id 77}])
+
+  (facts "filters keys"
+     (sessions-for [{"key to remove" "toto" 
+                     :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}] ..slot..) 
+     => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }])
+  
 (defn get-session 
   ([session-maps id]
   (first (filter #(= id (% :id)) session-maps))))
