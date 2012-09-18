@@ -10,12 +10,17 @@
 
 (def local-file (clojure.java.io/resource "public/uploaded-sessions.csv"))
 (defn decorate-sessions [] (amd/decorate-sessions local-file))
+
 (def session-maps (pi/sessions-as-maps (amd/decorate-sessions local-file)))
 (def sessions-for (partial sa/sessions-for session-maps))
 (def get-session (partial sa/get-session session-maps))
 
 (defn response-map [arg request]
   {:status 200 :body arg})
+
+    (fact "wraps in a response-map"
+      (response-map "toto" nil ) => {:status 200 :body "toto"}
+      (response-map 145 nil)    => {:status 200 :body 145})
 
 (defn wrap-with-content-type-json [handler]
   (fn [request]
@@ -96,17 +101,4 @@
         => (contains {:body (has-prefix "someOtherMethod")})
         (app {:query-string "callback=aThirdMethod" :uri "/jsonp/session/17" :request-method :get}) 
         => (contains {:body (has-prefix "aThirdMethod")}))
-
-;;; experimental
-(defn session-list2 [request]
-  "doesnt work"
-  (let [sessions (response-map request (decorate-sessions))] 
-    (-> sessions
-     (json-encode)
-     (wrap-with-content-type-json))))
-
-    (fact "wraps in a response-map"
-      (response-map "toto" nil ) => {:status 200 :body "toto"}
-      (response-map 145 nil)    => {:status 200 :body 145})
-
 
