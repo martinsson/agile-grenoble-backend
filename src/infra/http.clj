@@ -1,6 +1,8 @@
 (ns infra.http  
-  (:use compojure.core midje.sweet infra.upload)
-  (:require [infra.handlers :as h] 
+  (:use midje.sweet
+        [compojure.core :only (GET POST)])
+  (:require [infra.upload :as u] 
+            [infra.handlers :as h] 
             [compojure.route :as route]
             [compojure.handler :as handler]
             (ring.middleware [multipart-params :as mp])))
@@ -14,7 +16,7 @@
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (h/h-sessions-for slot callback))
   (mp/wrap-multipart-params 
-     (POST "/upload/sessions-csv" {params :params} (upload-file (params :file))))
+     (POST "/upload/sessions-csv" {params :params} (u/upload-file (params :file))))
   (route/resources "/")
   (route/not-found "Page not found"))
 

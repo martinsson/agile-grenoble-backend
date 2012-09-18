@@ -1,5 +1,6 @@
 (ns core.program-import
-  (:use clojure-csv.core midje.sweet)
+  (:use midje.sweet
+        [clojure-csv.core :only (parse-csv)])
   (:require [clj-json.core :as json])
   (:require [clojure.java.io :as io]))
 

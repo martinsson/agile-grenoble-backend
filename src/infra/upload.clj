@@ -1,7 +1,6 @@
 (ns infra.upload
   (:use [net.cgrand.enlive-html :only [deftemplate]]
-        [clojure.java.io :only (file copy)])
-  (:require (ring.middleware [multipart-params :as mp])))
+        [clojure.java.io :only (file copy)]))
   
 (defn render [t]
       (apply str t))
