@@ -1,17 +1,18 @@
 (ns infra.http  
-  (:use compojure.core midje.sweet infra.upload infra.handlers)
-  (:require [compojure.route :as route]
+  (:use compojure.core midje.sweet infra.upload)
+  (:require [infra.handlers :as h] 
+            [compojure.route :as route]
             [compojure.handler :as handler]
             (ring.middleware [multipart-params :as mp])))
 
 (defroutes main-routes
   (GET "/" [] (render (index)))
-  (GET "/session-list" request (h-session-list request))
-  (GET ["/jsonp/slot-list"] [callback] (h-slot-list callback))
+  (GET "/session-list" request (h/h-session-list request))
+  (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
-       [callback id] (h-get-session id callback))
+       [callback id] (h/h-get-session id callback))
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
-       [callback slot] (h-sessions-for slot callback))
+       [callback slot] (h/h-sessions-for slot callback))
   (mp/wrap-multipart-params 
      (POST "/upload/sessions-csv" {params :params} (upload-file (params :file))))
   (route/resources "/")
