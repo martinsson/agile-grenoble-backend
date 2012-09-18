@@ -11,8 +11,8 @@
 (def local-file (clojure.java.io/resource "public/uploaded-sessions.csv"))
 
 (defn decorate-sessions [] (amd/decorate-sessions local-file))
-(def sessions-for (partial sa/sessions-for local-file))
-(def get-session (partial sa/get-session local-file))
+(def sessions-for (partial sa/sessions-for (sa/sessions-as-maps (amd/decorate-sessions local-file))))
+(def get-session (partial sa/get-session (sa/sessions-as-maps (amd/decorate-sessions local-file))))
 
 (defn response-map [arg request]
   {:status 200 :body arg})
