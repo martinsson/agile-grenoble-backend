@@ -9,10 +9,10 @@
             (ring.middleware [multipart-params :as mp])))
 
 (def local-file (clojure.java.io/resource "public/uploaded-sessions.csv"))
-
 (defn decorate-sessions [] (amd/decorate-sessions local-file))
-(def sessions-for (partial sa/sessions-for (sa/sessions-as-maps (amd/decorate-sessions local-file))))
-(def get-session (partial sa/get-session (sa/sessions-as-maps (amd/decorate-sessions local-file))))
+(def session-maps (pi/sessions-as-maps (amd/decorate-sessions local-file)))
+(def sessions-for (partial sa/sessions-for session-maps))
+(def get-session (partial sa/get-session session-maps))
 
 (defn response-map [arg request]
   {:status 200 :body arg})

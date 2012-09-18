@@ -1,7 +1,6 @@
 (ns core.sessions-api
   (:use midje.sweet)
-  (:require [core.adding-missing-data :as amd]
-            [core.program-import :as pi]))
+  (:require [core.program-import :as pi]))
 
 ;TODO rename to butterfly api?
 
@@ -12,19 +11,6 @@
                 time-slots)))
   (facts
     (slot-list) => [{1 "8:30", 2 "10:00", 3 "11:00", 4 "14:00", 5 "15:00", 6 "16:30"}])
-
-(defn sessions-as-maps [parsed-csv]
-  (let [header (first parsed-csv)
-        body   (rest parsed-csv)
-        index-with-header (partial zipmap header)]
-    (map index-with-header body)))
-
-  ;TODO mock data
-  (let [sessions (amd/decorate-sessions pi/local-file)] 
-    (facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
-      (sessions-as-maps sessions) => (has every? #(% :title))
-      (first (sessions-as-maps sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
-      (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
 
 (defn- find-sessions-for 
   ([session-maps slot]

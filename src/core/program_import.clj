@@ -65,5 +65,17 @@
                                              [""   ""]
                                              ["1"  "kanban pour le mieux"]]))
     
+(defn sessions-as-maps [parsed-csv]
+  (let [header (first parsed-csv)
+        body   (rest parsed-csv)
+        index-with-header (partial zipmap header)]
+    (map index-with-header body)))
+
+  ;TODO mock data
+  (let [sessions (normalized-sessions local-file)] 
+    (facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
+      (sessions-as-maps sessions) => (has every? #(% :title))
+      (first (sessions-as-maps sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
+      (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
 
     
