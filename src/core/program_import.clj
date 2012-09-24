@@ -4,24 +4,6 @@
   (:require [clj-json.core :as json])
   (:require [clojure.java.io :as io]))
 
-; TODO remove this as it isnt necessary in the latest version of sessions.csv    
-(defn empty-csv-line? [line]
-  (every? empty? line))
-
-    (fact
-      (empty-csv-line? ["" "" ""]) => true 
-      (empty-csv-line? ["" "a" ""]) => false )
-
-(defn filter-empty-line [csv]
-  (remove empty-csv-line? csv))
-
-    (fact 
-      (let [sessions [["id" "title"]
-                      [""   ""]
-                      [1    "kanban pour le mieux"]]] 
-        (second sessions) => empty-csv-line?
-        (second (filter-empty-line sessions)) =not=> empty-csv-line?))
-
 
 (def key-dictionary {"id" :id
                      "Titre de la session | Title" :title
@@ -48,7 +30,6 @@
   (-> csv-resource
       slurp
       parse-csv
-      filter-empty-line
       normalize-headers)))
 
     (fact "The csv headers are normalized"
@@ -56,14 +37,13 @@
     (fact "The body is unchanged"
           (rest (normalized-sessions local-file))   => [...line1... 
                                              ...line2...]
-          (provided (filter-empty-line anything) => [...header...
+          (provided (parse-csv anything) => [...header...
                                              ...line1...
                                              ...line2...]))
     (fact "it filters empty lines"
           (normalized-sessions local-file)   => [[:id :title] 
                                                  ["1" "kanban pour le mieux"]]
           (provided (parse-csv anything) => [["id" "Titre de la session | Title"]
-                                             [""   ""]
                                              ["1"  "kanban pour le mieux"]]))
     
 (defn sessions-as-maps [parsed-csv]
