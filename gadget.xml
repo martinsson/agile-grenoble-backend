@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Fetch JSON Example"/>
+  <Content type="html">
+  <![CDATA[
+    <div id="content_div"></div>
+    <script type="text/javascript">
+
+    function makeJSONRequest() {    
+      var params = {};
+      params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
+      // This URL returns a JSON-encoded string that represents a JavaScript object
+      var url = "http://ec2-107-22-148-244.compute-1.amazonaws.com:8080/agile-grenoble-backend-1.0.0-SNAPSHOT-standalone/session-list";
+      gadgets.io.makeRequest(url, response, params);
+    };
+
+    function response(obj) { 
+       document.getElementById('content_div').innerHTML = obj;
+    };
+    gadgets.util.registerOnLoadHandler(makeJSONRequest);
+     </script>
+  ]]>
+  </Content>
+</Module>
