@@ -1,6 +1,6 @@
 (ns infra.http  
   (:use midje.sweet
-        [compojure.core :only (GET POST)])
+        [compojure.core :only (GET POST defroutes)])
   (:require [infra.upload :as u] 
             [infra.handlers :as h] 
             [compojure.route :as route]
@@ -8,7 +8,7 @@
             (ring.middleware [multipart-params :as mp])))
 
 (defroutes main-routes
-  (GET "/" [] (render (index)))
+  (GET "/" [] (u/render (u/index)))
   (GET "/session-list" request (h/h-session-list request))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
