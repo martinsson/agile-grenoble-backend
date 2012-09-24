@@ -12,6 +12,12 @@
 (def sessions-for (partial sa/sessions-for session-maps))
 (def get-session (partial sa/get-session session-maps))
 
+(defn all-slots [] 
+  (for [slot (range 1 6)] (sessions-for (str slot))))
+  (facts ""
+         (ffirst (all-slots)) => (contains {:slot "1", :title "Approche pragmatique pour industrialiser le développement d’applications", :id "1"})
+         (count (all-slots)) => 5)
+
 (defn response-map [arg request]
   {:status 200 :body arg})
 
@@ -48,6 +54,11 @@
 
 (def h-session-list 
   (-> (partial response-map (decorate-sessions))
+     (json-encode)
+     (wrap-with-content-type-json)))
+
+(def h-program-summary 
+  (-> (partial response-map (all-slots))
      (json-encode)
      (wrap-with-content-type-json)))
 
