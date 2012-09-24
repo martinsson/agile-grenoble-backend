@@ -5,17 +5,17 @@
             [core.adding-missing-data :as amd]
             [clj-json.core :as json]))
 
-(def local-file (clojure.java.io/resource "public/uploaded-sessions.csv"))
+(def local-file (clojure.java.io/resource "public/sessions.csv"))
 (defn decorate-sessions [] (amd/decorate-sessions local-file))
 
-(def session-maps (pi/sessions-as-maps (amd/decorate-sessions local-file)))
+(def session-maps (pi/keep-retained (amd/decorate-sessions local-file)))
 (def sessions-for (partial sa/sessions-for session-maps))
 (def get-session (partial sa/get-session session-maps))
 
 (defn all-slots [] 
   (for [slot (range 1 6)] (sessions-for (str slot))))
   (facts ""
-         (ffirst (all-slots)) => (contains {:slot "1", :title "Approche pragmatique pour industrialiser le développement d’applications", :id "1"})
+         (ffirst (all-slots)) => (contains {:slot "1", :title "Challenge Kanban", :id "2"})
          (count (all-slots)) => 5)
 
 (defn response-map [arg request]

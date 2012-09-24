@@ -4,7 +4,6 @@
   (:require [clj-json.core :as json])
   (:require [clojure.java.io :as io]))
 
-
 (def key-dictionary {"id" :id
                      "Titre de la session | Title" :title
                      "Créneau | Slot" :slot
@@ -13,7 +12,8 @@
                      "Format | Format" :format
                      "Thèmes | Themes" :theme
                      "Prénom | First Name" :firstname
-                     "Nom | Last Name" :lastname})
+                     "Nom | Last Name" :lastname
+                     "Retenu = x" :retained})
 
 (defn normalize-headers [parsed-csv]
   (let [header              (first parsed-csv)
@@ -24,6 +24,8 @@
 
 ;; Used for testing
 (def local-file (io/resource "public/sessions.csv"))
+
+
 
 (defn normalized-sessions 
   ([csv-resource]
@@ -59,4 +61,11 @@
       (first (sessions-as-maps sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
       (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
 
-    
+
+(defn keep-retained [parsed-csv]
+  (filter (comp not-empty :retained) (sessions-as-maps parsed-csv)))
+
+(fact "retains only sessions marked as such"
+      (keep-retained ..csv..) => [{:title "happy scrumming" :retained "x"}]
+      (provided (sessions-as-maps ..csv..) => [{:title "happy XP" :retained ""}
+                                              {:title "happy scrumming" :retained "x"}]))
