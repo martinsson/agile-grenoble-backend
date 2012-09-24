@@ -3,6 +3,18 @@
   <ModulePrefs title="Fetch JSON Example"/>
   <Content type="html">
   <![CDATA[
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <div class="row">
+    <div class="span3">Salle</div>
+    <div class="span1">Makallu</div>
+    <div class="span1">Kili 1</div>
+    <div class="span1">Kili3</div>
+    <div class="span1">Mtblc1</div>
+    <div class="span1">Mtblc3</div>
+    <div class="span1">Mtblc4</div>
+    <div class="span1">Cervin</div>
+    <div class="span1">Evrest</div>
+    </div>
     <div id="content_div2"></div>
     <script type="text/javascript">
 
