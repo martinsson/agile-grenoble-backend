@@ -16,6 +16,8 @@
        [callback id] (h/h-get-session id callback))
   (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (h/h-sessions-for slot callback))
+  (GET "/jsonp/current-sessions" [callback] (h/h-sessions-for "3" callback))
+  (GET "/jsonp/upcoming-sessions" [callback] (h/h-sessions-for "4" callback))
   (mp/wrap-multipart-params 
      (POST "/upload/sessions-csv" {params :params} (u/upload-file (params :file))))
   (route/resources "/")
