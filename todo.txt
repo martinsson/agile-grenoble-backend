@@ -1,0 +1,4 @@
+add slot and room to google doc
+store file on amazon s3
+make current, upcoming-sessions work properly
+
