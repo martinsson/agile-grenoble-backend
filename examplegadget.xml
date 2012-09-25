@@ -15,6 +15,13 @@
     <div class="span1">Cervin</div>
     <div class="span1">Evrest</div>
     </div>
+    <div class="row">
+        <div class="span11">Accueil café</div>
+    </div>
+   <div class="row">
+        <div class="span11"></div>
+   </div>
+
     <div id="content_div2"></div>
     <script type="text/javascript">
 
@@ -48,7 +55,7 @@
           html += value + "<br />";
         }      
       }               
-      document.getElementById('content_div2').innerHTML = html;
+      //document.getElementById('content_div2').innerHTML = html;
      };
      gadgets.util.registerOnLoadHandler(makeJSONRequest);
      </script>
