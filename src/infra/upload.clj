@@ -12,6 +12,6 @@
   [f-data]
   (copy 
     (f-data :tempfile)
-    (file "resources/public/uploaded-sessions.csv"))
+    (file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
   (render (upload-success)))
 

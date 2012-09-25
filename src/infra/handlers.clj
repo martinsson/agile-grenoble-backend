@@ -5,7 +5,7 @@
             [core.adding-missing-data :as amd]
             [clj-json.core :as json]))
 
-(def local-file (clojure.java.io/resource "public/sessions.csv"))
+(def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
 (defn decorate-sessions [] (amd/decorate-sessions local-file))
 
 (def session-maps (pi/keep-retained (amd/decorate-sessions local-file)))
