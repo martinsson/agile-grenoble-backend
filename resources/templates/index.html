@@ -8,19 +8,36 @@
   <h2>Administration des sessions d'Agile Grenoble</h2>
   <div>
   <h3>API</h3>
-  Butterfly
+  Butterfly (jsonp)
+  <li><a href="jsonp/current-sessions?callback=callback_for_current_sessions">
+    current sessions</a></li>
+  <li><a href="jsonp/upcoming-sessions?callback=callback_for_current_sessions">
+    upcoming sessions</a></li>
   <li><a href="jsonp/slot-list?callback=callback_for_slot-list">
-    jsonp/slot-list?callback=callback_for_slot-list</a></li>
+    slot-list, i.e. a list of time slots representing the session starting hours</a></li>
   <li><a href="jsonp/sessions-for-slot/2?callback=callback_for_sessions-for-slot">
-    jsonp/sessions-for-slot/2?callback=callback_for_sessions-for-slot</a></li>
+    list of sessions for slot a given slot</a></li>
   <li><a href="jsonp/session/17?callback=callback_for_session">
-    jsonp/session/17?callback=callback_function_for_session</a></li>
+    details of a given session</a></li>
+  
   Site agile-grenoble.org
   <li><a href="json/program-summary">json : list of slots </a> (slot = list of sessions, session = map with keys, title, slot, room, ...)</li>
   </div>
   <div>
       <h3>Mettre à jour le fichier des sessions</h3>
-	  <form action="/upload/sessions-csv" method="post" enctype="multipart/form-data">
+      <pre>
+        La référence est le formulaire de soumissions Google doc
+
+        Faire les nos modifs sur le google doc.
+	        Ex inverser deux sessions : Il y a une colonne “slot”, il faut inverser les valeurs
+	        Ex Changer de salle : il y a une colonne “room”, il faut la changer
+	        Ex Annuler une session : il y a une colonne “Retenu = x” dont la valeur est x pour les sessions retenus.
+
+        docs.google.com : File → Download as → csv
+        Ici             : Choose file → Submit
+
+        </pre>
+        <form action="/upload/sessions-csv" method="post" enctype="multipart/form-data">
 	    <input name="file" type="file" size="20" />
 	    <input type="submit" name="submit" value="submit" />
 	  </form>
