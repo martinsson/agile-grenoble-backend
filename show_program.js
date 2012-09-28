@@ -10,7 +10,7 @@ var program =
       {"slot":0, 'title':"Keynote 1", "id":0}  
     ],
     [
-	{"slot":"1","title":"Challenge Kanban","id":"2"},
+	{"slot":"1","title":"Challenge Kanban","id":"2","speakers": ['John doe', 'Captain Morgan']},
 	{"slot":"1","title":"Duo de retour d’expérience sauce aigre douce ","id":"3"},
 	{"slot":"1","title":"Des mots, des maux ? Démo !","id":"7"},
 	{"slot":"1","title":"Don Quichotte et Sancho testa","id":"8"},
@@ -83,7 +83,12 @@ $.each(program, function(islot, slot) {
         session_html += '<td colspan="9" class="plenary">'+slot[0]['title']+'</td>';
     } else {
         $.each(slot, function (isession, session) {
-            session_html += '<td>'+session['title']+'</td>';
+            session_content = '';
+            session_content += '<span class="session_title">'+session['title']+'</span> ';
+            if (session['speakers']) {
+                session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
+            }
+            session_html += '<td>'+session_content+'</td>';
         });
     }
     $('#program_content').append('<tr>'+session_html+'</tr>');
