@@ -5,6 +5,7 @@
   (:require [clojure.java.io :as io]))
 
 (def key-dictionary {"id" :id
+                     "slot" :slot
                      "Titre de la session | Title" :title
                      "Créneau | Slot" :slot
                      "Résume | Abstract" :abstract

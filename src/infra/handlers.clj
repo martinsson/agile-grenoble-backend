@@ -14,8 +14,8 @@
 
 (defn all-slots [] 
   (for [slot (range 1 6)] (sessions-for (str slot))))
-  (facts ""
-         (ffirst (all-slots)) => (contains {:slot "1", :title "Challenge Kanban", :id "2"})
+  (facts "returns a list of slots with a list of sessions"
+         (ffirst (all-slots)) => (contains {:slot "1", :title "Challenge Kanban", :id "2"} :in-any-order)
          (count (all-slots)) => 5)
 
 (defn response-map [arg request]

@@ -5,15 +5,10 @@
 ;; we artifically decorate the csv with these colums
 
 (defn append-slot-to-header [csv]
-  (cons (cons :slot (first csv)) 
-        (rest csv)))
+  csv)
 
 (defn append-slot-to-body [csv]
-  (let [header (first csv)
-        body   (rest csv)
-        artificial-distribution (map str (mapcat (partial repeat 6) (range 1 9)))
-        decorated-body (map cons artificial-distribution body)] 
-    (concat (list header) decorated-body)))
+  csv)
 
 (defn decorate-sessions 
   ([csv-resource] 
