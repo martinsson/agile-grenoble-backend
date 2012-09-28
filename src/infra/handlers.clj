@@ -6,9 +6,9 @@
             [clj-json.core :as json]))
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
-(defn decorate-sessions [] (amd/decorate-sessions local-file))
+(defn decorate-sessions [csv] (amd/decorate-sessions csv))
 
-(def session-maps (pi/keep-retained (amd/decorate-sessions local-file)))
+(def session-maps (pi/keep-retained (decorate-sessions local-file)))
 (def sessions-for (partial sa/sessions-for session-maps))
 (def get-session (partial sa/get-session session-maps))
 
@@ -53,7 +53,7 @@
       (update-in response [:body] json/generate-string))))
 
 (def h-session-list 
-  (-> (partial response-map (decorate-sessions))
+  (-> (partial response-map (decorate-sessions local-file))
      (json-encode)
      (wrap-with-content-type-json)))
 
