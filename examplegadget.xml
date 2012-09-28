@@ -3,60 +3,56 @@
   <ModulePrefs title="Fetch JSON Example"/>
   <Content type="html">
   <![CDATA[
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-    <div class="row">
-    <div class="span3">Salle</div>
-    <div class="span1">Makallu</div>
-    <div class="span1">Kili 1</div>
-    <div class="span1">Kili3</div>
-    <div class="span1">Mtblc1</div>
-    <div class="span1">Mtblc3</div>
-    <div class="span1">Mtblc4</div>
-    <div class="span1">Cervin</div>
-    <div class="span1">Evrest</div>
-    </div>
-    <div class="row">
-        <div class="span11">Accueil café</div>
-    </div>
-   <div class="row">
-        <div class="span11"></div>
-   </div>
+        <table cellpadding="0" cellspacing="0" class="program">
+            <thead>
+                <tr>
+                    <th>Auditorium</th>
+                    <th>Makalu</th>
+                    <th>Kilimandjaro&nbsp;1</th>
+                    <th>Kilimandjaro&nbsp;3</th>
+                    <th>Mont&nbsp;Blanc&nbsp;1</th>
+                    <th>Mont&nbsp;Blanc&nbsp;3</th>
+                    <th>Mont&nbsp;Blanc&nbsp;4</th>
+                    <th>Cervin</th>
+                    <th>Evrest</th>
+                </tr>
+            </thead>
+            <tbody id="program_content">
+            </tbody>
+        </table>
 
-    <div id="content_div2"></div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        
     <script type="text/javascript">
 
     function makeJSONRequest() {    
       var params = {};
       params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
       // This URL returns a JSON-encoded string that represents a JavaScript object
-      var url = "http://gadget-doc-examples.googlecode.com/svn/trunk/opensocial-gadgets/json-data.txt";
+      var url = "https://raw.github.com/vaceletm/agile-grenoble-backend/gadgets/program.json";
       gadgets.io.makeRequest(url, response, params);
     };
 
     function response(obj) { 
-      var jsondata = obj.data;
-      var html = "";
-      // Process returned JS object as an associative array
-      for (var key in jsondata) {
-        var value = jsondata[key];
-        html += key + ": ";
-        // If 'value' is an array, render its contents as a bulleted list
-        if (value instanceof Array)
-        {
-          html += "<br /><ul>";
-          for (var i = 0; i < value.length ; i++)
-          {
-            html += "<li>"+ jsondata.Hobbies[i] + "</li>";
-          }
-          html+= "</ul>";
-        }  
-        // If 'value' isn't an array, just write it out as a string
-        else {        
-          html += value + "<br />";
-        }      
-      }               
-      //document.getElementById('content_div2').innerHTML = html;
-     };
+      var program = obj.data;
+      $.each(program, function(islot, slot) {
+        var session_html = '';
+        if (slot.length == 1) {
+            session_html += '<td colspan="9" class="plenary">'+slot[0]['title']+'</td>';
+        } else {
+            $.each(slot, function (isession, session) {
+                session_content = '';
+                session_content += '<span class="session_title">'+session['title']+'</span> ';
+                if (session['speakers']) {
+                    session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
+                }
+                session_html += '<td>'+session_content+'</td>';
+            });
+        }
+        $('#program_content').append('<tr>'+session_html+'</tr>');
+     });
+   };
+     
      gadgets.util.registerOnLoadHandler(makeJSONRequest);
      </script>
   ]]>
