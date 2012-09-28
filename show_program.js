@@ -26,9 +26,9 @@ var program =
 $.each(program, function(islot, slot) {
     var session_html = '';
     $.each(slot, function (isession, session) {
-        session_html += '<div class="span1">'+session['title']+'</div>';
+        session_html += '<td>'+session['title']+'</td>';
     });
-    $('#slots').append('<div class="row room">'+session_html+'</div>');
+    $('#stuff').after('<tr>'+session_html+'</tr>');
 });
 /*
     <div class="row room">

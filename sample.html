@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-<style>
-.room_header {
-text-align: center;
-font-weight: bold;
-}
-.row {
-border: 1px solid black;
-}
-.plenary {
-text-align: center;
-}
-.room {
-text-align: center;
-}
-</style>
-</head>
-<body>
-    <div class="row room_header">
-      <div class="span1">Amphi</div>
-      <div class="span1">Makallu</div>
-      <div class="span1">Kili1</div>
-      <div class="span1">Kili3</div>
-      <div class="span1">Mtblc1</div>
-      <div class="span1">Mtblc3</div>
-      <div class="span1">Mtblc4</div>
-      <div class="span1">Cervin</div>
-      <div class="span1">Evrest</div>
-    </div>
-    <div class="row plenary">
-        <div class="span12">Accueil des participants autour d'un café</div>
-    </div>
-    <div class="row plenary">
-      <div class="span12">Session Plénière: le mot des organisateurs & Sponsor XYZ</div>
-    </div>
-    
-    <div id="slots">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <style>
+            .program {
+                width: 960px;
+                text-align: center;
+                border: 1px solid black;
+                border-bottom: none;
+                border-right: none;
+            }
+            .program td, .program th {
+                border-bottom: 1px solid black;
+                border-right: 1px solid black;
+                padding: 0.5em;
+            }
+            .plenary {
+                text-align: center;
+                background-color: lavender;
+            }
+        </style>
+    </head>
+    <body>
+        <table cellpadding="0" cellspacing="0" class="program">
+            <thead>
+                <tr>
+                    <th>Amphi</th>
+                    <th>Makallu</th>
+                    <th>Kili1</th>
+                    <th>Kili3</th>
+                    <th>Mtblc1</th>
+                    <th>Mtblc3</th>
+                    <th>Mtblc4</th>
+                    <th>Cervin</th>
+                    <th>Evrest</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="plenary">
+                    <td colspan="9">Accueil des participants autour d'un café</td>
+                </tr>
+                <tr class="plenary" id="stuff">
+                    <td colspan="9">Session Plénière: le mot des organisateurs & Sponsor XYZ</td>
+                </tr>
 
-    </div>
-
-    <div class="row plenary">
-        <div class="span12">Apéro offert par le CARA à tous les présents</div>
-    </div>
-    <div class="row plenary">
-        <div class="span12">Fin de la Journée</div>
-    </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    <script src="show_program.js"></script>
-</body>
+                <tr class="plenary">
+                    <td colspan="9">Apéro offert par le CARA à tous les présents</td>
+                </tr>
+                <tr class="plenary">
+                    <td colspan="9">Fin de la Journée</td>
+                </tr>
+            </tbody>
+        </table>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="show_program.js"></script>
+    </body>
 </html>
