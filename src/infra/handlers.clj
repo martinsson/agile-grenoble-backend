@@ -2,15 +2,19 @@
   (:use midje.sweet)
   (:require [core.program-import :as pi]
             [core.sessions-api :as sa]
-            [core.adding-missing-data :as amd]
             [clj-json.core :as json]))
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
-(defn decorate-sessions [csv] (amd/decorate-sessions csv))
+(defn decorate-sessions 
+  ([csv-resource] 
+  (-> 
+    (map reverse (pi/normalized-sessions csv-resource))   ;; TODO remove hack to retain the first name/firstname when we make it into a map
+)))
 
 (def session-maps (pi/keep-retained (decorate-sessions local-file)))
 (def sessions-for (partial sa/sessions-for session-maps))
 (def get-session (partial sa/get-session session-maps))
+
 
 (defn all-slots [] 
   (for [slot (range 1 6)] (sessions-for (str slot))))
