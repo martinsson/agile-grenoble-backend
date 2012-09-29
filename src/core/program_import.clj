@@ -93,3 +93,30 @@
       (keep-retained ..csv..) => [{:title "happy scrumming" :retained "x"}]
       (provided (sessions-as-maps ..csv..) => [{:title "happy XP" :retained ""}
                                               {:title "happy scrumming" :retained "x"}]))
+(defn add-non-session-data [[s1 s2 s3 s4 s5]]
+  [[{:title "Accueil des participants autour d'un café"}]
+   [{:title "Session Plénière: le mot des organisateurs & Sogilis"}]
+   [{:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]}]
+   s1
+   s2
+   [{:title "Repas"}] 
+   [{:title "Session Plénière: le mot des organisateurs & Samse"}]
+   [{:title "Keynote : XYZ" :speakers ["Laurent Sarrazin"]}]
+   s3
+   s4
+   s5
+   [{:title "Apéro offert par le CARA"}]])
+
+(fact "adds keynotes, coffe breaks, lunch to slots"
+      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [[{:title "Accueil des participants autour d'un café"}]
+                                                   [{:title "Session Plénière: le mot des organisateurs & Sogilis"}]
+                                                   [{:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]}]])
+      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) 
+      => (contains [..s2.. 
+                    [{:title "Repas"}] 
+                    [{:title "Session Plénière: le mot des organisateurs & Samse"}]
+                    [{:title "Keynote : XYZ" :speakers ["Laurent Sarrazin"]}]
+                    ..s3..])
+      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ])
+      => (has-suffix [..s5..
+                      [{:title "Apéro offert par le CARA"}]]))

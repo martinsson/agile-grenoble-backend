@@ -17,10 +17,10 @@
 
 
 (defn all-slots [] 
-  (for [slot (range 1 6)] (sessions-for (str slot))))
+  (pi/add-non-session-data (for [slot (range 1 6)] (sessions-for (str slot)))))
   (facts "returns a list of slots with a list of sessions"
-         (ffirst (all-slots)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
-         (count (all-slots)) => 5)
+         (first (nth (all-slots) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
+         (count (all-slots)) => 12)
 
 (defn response-map [arg request]
   {:status 200 :body arg})
