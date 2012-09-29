@@ -7,7 +7,8 @@
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
 (defn decorate-sessions 
   ([csv-resource] 
-  (pi/assemble-speakers (pi/normalized-sessions csv-resource))))
+  (map reverse ;; todo remove hack to keep the first speaker when butterfly uses the speaker list 
+       (pi/assemble-speakers (pi/normalized-sessions csv-resource)))))
 
 
 (def session-maps (pi/keep-retained (decorate-sessions local-file)))
