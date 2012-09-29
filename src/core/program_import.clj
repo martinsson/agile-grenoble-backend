@@ -48,6 +48,27 @@
                                                  ["1" "kanban pour le mieux"]]
           (provided (parse-csv anything) => [["id" "Titre de la session | Title"]
                                              ["1"  "kanban pour le mieux"]]))
+
+;; yuck! maybe it would be better to parse columns instead of lines
+;; maybe I could extract some higher level logic like the fact that a csv has header/body,
+;; that we insert something in the header/body like assoc-in, update-in. Perhaps protocols?
+(defn assemble-speakers [normalized-csv] 
+  (let [body           (rest normalized-csv)
+        header         (first normalized-csv)
+        indexes-of (fn [e] (keep-indexed #(if (= e %2) %1) header))
+        firstnames-pos (indexes-of :firstname)
+        lastnames-pos (indexes-of :lastname)
+        speaker-names (fn [line] (map #(str (nth line %) " " (nth line %2)) firstnames-pos lastnames-pos))]
+    (cons (cons :speakers header) 
+          (map #(cons (speaker-names %) %) body))))
+          
+    (fact "makes a speaker-list"
+          (assemble-speakers [[:id :firstname :lastname] 
+                              ["1" "Alexandre" "Boutin"]
+                              ["4" "Manuel" "Vacelet"]])   => [[:speakers :id :firstname :lastname]
+                                                                 [["Alexandre Boutin"] "1"  "Alexandre" "Boutin"]
+                                                                 [["Manuel Vacelet"] "4" "Manuel" "Vacelet"]]  
+          )
     
 (defn sessions-as-maps [parsed-csv]
   (let [header (first parsed-csv)
@@ -60,7 +81,9 @@
     (facts "transforms the cleaned csv to a list of maps, keys being the csv columns"
       (sessions-as-maps sessions) => (has every? #(% :title))
       (first (sessions-as-maps sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
-      (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"})))
+      (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"}))
+    
+)
 
 
 (defn keep-retained [parsed-csv]

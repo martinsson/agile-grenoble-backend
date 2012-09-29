@@ -7,9 +7,8 @@
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
 (defn decorate-sessions 
   ([csv-resource] 
-  (-> 
-    (map reverse (pi/normalized-sessions csv-resource))   ;; TODO remove hack to retain the first name/firstname when we make it into a map
-)))
+  (pi/assemble-speakers (pi/normalized-sessions csv-resource))))
+
 
 (def session-maps (pi/keep-retained (decorate-sessions local-file)))
 (def sessions-for (partial sa/sessions-for session-maps))
@@ -19,7 +18,7 @@
 (defn all-slots [] 
   (for [slot (range 1 6)] (sessions-for (str slot))))
   (facts "returns a list of slots with a list of sessions"
-         (ffirst (all-slots)) => (contains {:slot "1", :title "Challenge Kanban", :id "2"} :in-any-order)
+         (ffirst (all-slots)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
          (count (all-slots)) => 5)
 
 (defn response-map [arg request]

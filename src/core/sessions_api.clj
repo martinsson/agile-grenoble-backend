@@ -14,7 +14,7 @@
 
 (defn sessions-for 
   ([session-maps slot]
-  (let [reduce-keys #(select-keys % [:id :title :slot :room])
+  (let [reduce-keys #(select-keys % [:id :title :slot :room :speakers])
         found-sessions (filter #(= slot (% :slot)) session-maps)] 
     (map reduce-keys found-sessions))))
 
@@ -30,8 +30,8 @@
 
   (facts "filters keys"
      (sessions-for [{"key to remove" "toto" 
-                     :id ..id.. :title ..title.. :slot ..slot.. :room ..room..}] ..slot..) 
-     => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. }])
+                     :id ..id.. :title ..title.. :slot ..slot.. :room ..room.. :speakers ..sl..}] ..slot..) 
+     => [{:id ..id.. :title ..title.. :slot ..slot.. :room ..room.. :speakers ..sl.. }])
   
 (defn get-session 
   ([session-maps id]
