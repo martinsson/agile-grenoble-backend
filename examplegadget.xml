@@ -39,11 +39,22 @@
     function response(obj) { 
       var program = obj.data;
       
-      //console.log(obj.data);
-      //var program = ['toto', 'tutu'];
       $.each(program, function(islot, slot) {
-        $('#program_content').append('<tr><td>plop</td></tr>');
-      });
+      var session_html = '';
+      if (slot.length == 1) {
+          session_html += '<td colspan="9" class="plenary">'+slot[0]['title']+'</td>';
+      } else {
+        $.each(slot, function (isession, session) {
+            session_content = '';
+            session_content += '<span class="session_title">'+session['title']+'</span> ';
+            if (session['speakers']) {
+                session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
+            }
+            session_html += '<td>'+session_content+'</td>';
+        });
+       }
+       $('#program_content').append('<tr>'+session_html+'</tr>');
+     });
    };
      
      gadgets.util.registerOnLoadHandler(makeJSONRequest);
