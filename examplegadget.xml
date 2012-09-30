@@ -32,7 +32,8 @@
       var params = {};
       params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
       // This URL returns a JSON-encoded string that represents a JavaScript object
-      var url = "https://dl.dropbox.com/u/84602525/agile-grenoble-backend/program.json";
+      //var url = "https://dl.dropbox.com/u/84602525/agile-grenoble-backend/program.json";
+      var url = "http://sessions.agile-grenoble.org:8080/json/program-summary";
       gadgets.io.makeRequest(url, response, params);
     };
 
