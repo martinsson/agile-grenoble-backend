@@ -1,6 +1,8 @@
 (ns infra.upload
   (:use [net.cgrand.enlive-html :only [deftemplate]]
-        [clojure.java.io :only (file copy)]))
+        [clojure.java.io :only (file copy)]
+        [infra.handlers :only (session-maps decorate-sessions)]
+        [core.program-import :only (keep-retained)]))
   
 (defn render [t]
       (apply str t))
@@ -13,5 +15,6 @@
   (copy 
     (f-data :tempfile)
     (file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
+  (dosync ref-set session-maps (keep-retained (decorate-sessions (file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))))
   (render (upload-success)))
 

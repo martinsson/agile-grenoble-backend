@@ -11,13 +11,13 @@
        (pi/assemble-speakers (pi/normalized-sessions csv-resource)))))
 
 
-(def session-maps (pi/keep-retained (decorate-sessions local-file)))
-(def sessions-for (partial sa/sessions-for session-maps))
-(def get-session (partial sa/get-session session-maps))
+(def session-maps (ref (pi/keep-retained (decorate-sessions local-file))))
+(def sessions-for (partial sa/sessions-for @session-maps))
+(def get-session (partial sa/get-session @session-maps))
 
 
 (defn all-slots [] 
-  (pi/add-non-session-data (for [slot (range 1 6)] (sessions-for (str slot)))))
+  (pi/add-non-session-data (for [slot (range 1 6)] (sa/sessions-for @session-maps (str slot)))))
   (facts "returns a list of slots with a list of sessions"
          (first (nth (all-slots) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
          (count (all-slots)) => 12)
@@ -67,7 +67,7 @@
      (wrap-with-content-type-json)))
 
 (defn h-sessions-for [slot callback] 
-  (-> (partial response-map (sessions-for  slot))
+  (-> (partial response-map (sa/sessions-for @session-maps  slot))
      (json-encode)
      (wrap-with-jsonp callback)))
 
@@ -77,6 +77,6 @@
      (wrap-with-jsonp callback)))
 
 (defn h-get-session [session-id callback] 
-  (-> (partial response-map (get-session session-id))
+  (-> (partial response-map (sa/get-session @session-maps session-id))
      (json-encode)
      (wrap-with-jsonp callback)))
