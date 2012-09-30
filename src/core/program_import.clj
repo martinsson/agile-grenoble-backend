@@ -58,18 +58,22 @@
         indexes-of (fn [e] (keep-indexed #(if (= e %2) %1) header))
         firstnames-pos (indexes-of :firstname)
         lastnames-pos (indexes-of :lastname)
-        speaker-names (fn [line] (map #(str (nth line %) " " (nth line %2)) firstnames-pos lastnames-pos))]
+        speaker-names (fn [line] (map #(str (nth line %) " " (nth line %2)) firstnames-pos lastnames-pos))
+        filter-blank (partial filter (complement clojure.string/blank?))]
     (cons (cons :speakers header) 
-          (map #(cons (speaker-names %) %) body))))
+          (map #(cons (filter-blank (speaker-names %)) %) body))))
           
     (fact "makes a speaker-list"
           (assemble-speakers [[:id :firstname :lastname] 
                               ["1" "Alexandre" "Boutin"]
                               ["4" "Manuel" "Vacelet"]])   => [[:speakers :id :firstname :lastname]
                                                                  [["Alexandre Boutin"] "1"  "Alexandre" "Boutin"]
-                                                                 [["Manuel Vacelet"] "4" "Manuel" "Vacelet"]]  
-          )
-    
+                                                                 [["Manuel Vacelet"] "4" "Manuel" "Vacelet"]]  )
+    (fact "only retains non-emtpy names"
+          (assemble-speakers [[:id :firstname :lastname :firstname :lastname :firstname :lastname] 
+                              ["1" "" "" "Alexandre" "Boutin" "" ""]])   
+          => [[:speakers :id :firstname :lastname :firstname :lastname :firstname :lastname]
+              [["Alexandre Boutin"] "1"  "" "" "Alexandre" "Boutin"  "" "" ]]  )
 (defn sessions-as-maps [parsed-csv]
   (let [header (first parsed-csv)
         body   (rest parsed-csv)
