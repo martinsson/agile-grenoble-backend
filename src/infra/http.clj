@@ -11,6 +11,7 @@
   (GET "/" [] (u/render (u/index)))
   (GET "/session-list" request (h/h-session-list request))
   (GET "/json/program-summary" request (h/h-program-summary request))
+  (GET "/json/program-summary-with-roomlist" request (h/h-program-summary-with-roomlist request))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
        [callback id] (h/h-get-session id callback))
@@ -46,3 +47,6 @@
   (facts "provides a list of slots"
          (app {:uri "/json/program-summary" :request-method :get})
          => (contains {:status 200}))
+  (facts "provides a tuple of rooms and slots"
+         (app {:uri "/json/program-summary-with-roomlist" :request-method :get})
+         => (contains {:body (contains "Auditorium" )}))

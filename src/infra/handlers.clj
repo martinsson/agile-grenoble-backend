@@ -5,15 +5,36 @@
             [clj-json.core :as json]))
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
+
 (defn decorate-sessions 
   ([csv-resource] 
   (map reverse ;; todo remove hack to keep the first speaker when butterfly uses the speaker list 
        (pi/assemble-speakers (pi/normalized-sessions csv-resource)))))
 
-
 (def session-maps (ref (pi/keep-retained (decorate-sessions local-file))))
 (def sessions-for (partial sa/sessions-for @session-maps))
 (def get-session (partial sa/get-session @session-maps))
+
+  
+(defn all-slots-with-rooms [normalized-sessions] 
+  (let [sessions (pi/normalized-sessions local-file)
+        header   (first sessions)
+        body     (rest sessions)
+        roomidx  (.indexOf (vec header) :room)
+        index-by-room #(zipmap (map :room %) %)
+        slots    (for [slot (range 1 6)] (sa/sessions-for @session-maps (str slot)))]
+    {:rooms (filter not-empty (set (map #(nth % roomidx) body)))
+     :slots (map index-by-room slots)}))
+
+  (facts "returns a roomlist"
+         (all-slots-with-rooms local-file) =>
+         (contains {:rooms ["Auditorium" "Kilimanjaro 1" "Mont Blanc 1" "Kilimanjaro 3" "Mont Blanc 4" "Everest" "Cervin" "Mont Blanc 3+2" "Makalu"]}))
+  (facts "returns a list of slots, indexed by room"
+         (all-slots-with-rooms local-file) =>
+         (contains {:slots (contains (contains {"Auditorium" not-empty
+                                      "Mont Blanc 1" not-empty}))}))
+  (future-facts "there are  9 rooms")
+  
 
 
 (defn all-slots [] 
@@ -80,3 +101,8 @@
   (-> (partial response-map (sa/get-session @session-maps session-id))
      (json-encode)
      (wrap-with-jsonp callback)))
+
+(def h-program-summary-with-roomlist  
+  (-> (partial response-map (all-slots-with-rooms (pi/normalized-sessions local-file)))
+     (json-encode)
+     (wrap-with-content-type-json)))

@@ -14,7 +14,8 @@
                      "Thèmes | Themes" :theme
                      "Prénom | First Name" :firstname
                      "Nom | Last Name" :lastname
-                     "Retenu = x" :retained})
+                     "Retenu = x" :retained
+                     "room" :room})
 
 (defn normalize-headers [parsed-csv]
   (let [header              (first parsed-csv)
@@ -22,6 +23,7 @@
         replace-if-possible #(get-in key-dictionary [%] %)
         translated-header   (map replace-if-possible header)]
     (cons translated-header body)))
+
 
 ;; Used for testing
 (def local-file (io/resource "public/sessions.csv"))
@@ -36,7 +38,7 @@
       normalize-headers)))
 
     (fact "The csv headers are normalized"
-          (first (normalized-sessions local-file)) => (contains [:title :abstract :benefits :format :theme :firstname :lastname] :in-any-order :gaps-ok))
+          (first (normalized-sessions local-file)) => (contains [:title :abstract :benefits :format :theme :firstname :lastname :room] :in-any-order :gaps-ok))
     (fact "The body is unchanged"
           (rest (normalized-sessions local-file))   => [...line1... 
                                              ...line2...]
