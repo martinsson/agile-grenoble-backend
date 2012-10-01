@@ -34,7 +34,9 @@
          (all-slots-with-rooms local-file) =>
          (contains {:slots (contains (contains {"Auditorium" not-empty
                                       "Mont Blanc 1" not-empty}))}))
-  (future-facts "there are  9 rooms")
+  (facts "there are 9 rooms"
+         (count (:rooms (all-slots-with-rooms local-file))) =>
+         9) 
   
 
 

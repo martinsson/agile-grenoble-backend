@@ -111,18 +111,18 @@
    s3
    s4
    s5
-   {"all" {:title "Apéro offert par le CARA"}}])
+   {"all" {:title "Apéro offert par le Club Agile Rhone Alpes"}}])
 
 (fact "adds keynotes, coffe breaks, lunch to slots"
-      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [[{:title "Accueil des participants autour d'un café"}]
-                                                   [{:title "Session Plénière: le mot des organisateurs & Sogilis"}]
-                                                   [{:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]}]])
+      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [{"all" {:title "Accueil des participants autour d'un café"}}
+                                                   {"all" {:title "Session Plénière: le mot des organisateurs & Sogilis"}}
+                                                   {"all" {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]}}])
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) 
       => (contains [..s2.. 
-                    [{:title "Repas"}] 
-                    [{:title "Session Plénière: le mot des organisateurs & Samse"}]
-                    [{:title "Keynote : XYZ" :speakers ["Laurent Sarrazin"]}]
+                    {"all" {:title "Repas"}} 
+                    {"all" {:title "Session Plénière: le mot des organisateurs & Samse"}}
+                    {"all" {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"]}}
                     ..s3..])
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ])
       => (has-suffix [..s5..
-                      [{:title "Apéro offert par le CARA"}]]))
+                      {"all" {:title "Apéro offert par le Club Agile Rhone Alpes"}}]))
