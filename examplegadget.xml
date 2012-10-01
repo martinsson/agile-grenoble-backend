@@ -32,30 +32,45 @@
       var params = {};
       params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
       // This URL returns a JSON-encoded string that represents a JavaScript object
-      //var url = "https://dl.dropbox.com/u/84602525/agile-grenoble-backend/program.json";
-      var url = "http://sessions.agile-grenoble.org:8080/json/program-summary";
+      var url = "https://dl.dropbox.com/u/84602525/agile-grenoble-backend/program.json";
+      //var url = "http://sessions.agile-grenoble.org:8080/json/program-summary";
       gadgets.io.makeRequest(url, response, params);
     };
 
     function response(obj) { 
       var program = obj.data;
       
-      $.each(program, function(islot, slot) {
-      var session_html = '';
-      if (slot.length == 1) {
-          session_html += '<td colspan="9" class="plenary">'+slot[0]['title']+'</td>';
-      } else {
-        $.each(slot, function (isession, session) {
+      var slot_id = 0;    
+$.each(program["slots"], function(islot, slot) {
+    var session_html = '';
+    if (slot.all) {
+        // there is only one key
+        $.each(slot, function (room, slot) {
+            session_html += '<td colspan="9" class="plenary">'+slot['title']+'</td>';
+        });
+        $('#program_content').append('<tr>'+session_html+'</tr>');
+    } else {
+        var room_map = {};
+        var room_nb = 0;
+        $.each(program["rooms"], function (iroom, room) {
+            room_map[room] = room_nb;
+            session_html += '<td id="'+slot_id+'_'+room_nb+'"></td>';
+            room_nb++;
+        });
+        $('#program_content').append('<tr>'+session_html+'</tr>');
+
+        $.each(slot, function (room, session) {
             session_content = '';
             session_content += '<span class="session_title">'+session['title']+'</span> ';
             if (session['speakers']) {
                 session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
             }
-            session_html += '<td>'+session_content+'</td>';
+            session_id = 
+            $('#'+slot_id+'_'+room_map[room]).append(session_content);
         });
-       }
-       $('#program_content').append('<tr>'+session_html+'</tr>');
-     });
+    }
+    slot_id++;
+});
    };
      
      gadgets.util.registerOnLoadHandler(makeJSONRequest);
