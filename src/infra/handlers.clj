@@ -11,6 +11,7 @@
   (map reverse ;; todo remove hack to keep the first speaker when butterfly uses the speaker list 
        (pi/assemble-speakers (pi/normalized-sessions csv-resource)))))
 
+
 (def session-maps (ref (pi/keep-retained (decorate-sessions local-file))))
 (def sessions-for (partial sa/sessions-for @session-maps))
 (def get-session (partial sa/get-session @session-maps))
@@ -24,7 +25,7 @@
         index-by-room #(zipmap (map :room %) %)
         slots    (for [slot (range 1 6)] (sa/sessions-for @session-maps (str slot)))]
     {:rooms (filter not-empty (set (map #(nth % roomidx) body)))
-     :slots (map index-by-room slots)}))
+     :slots (pi/add-non-session-data (map index-by-room slots))}))
 
   (facts "returns a roomlist"
          (all-slots-with-rooms local-file) =>
