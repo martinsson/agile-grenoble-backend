@@ -32,15 +32,27 @@
       var params = {};
       params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
       // This URL returns a JSON-encoded string that represents a JavaScript object
-      var url = "https://dl.dropbox.com/u/84602525/agile-grenoble-backend/program.json";
-      //var url = "http://sessions.agile-grenoble.org:8080/json/program-summary";
+      //var url = "https://dl.dropbox.com/u/84602525/agile-grenoble-backend/program.json";
+      var url = "http://sessions.agile-grenoble.org:8080/json/program-summary-with-roomlist";
       gadgets.io.makeRequest(url, response, params);
     };
 
     function response(obj) { 
       var program = obj.data;
       
-      var slot_id = 0;    
+var room_map = {
+    "Auditorium":0,
+    "Makalu":1,  
+    "Kilimanjaro 1": 2,
+    "Kilimanjaro 3": 3,
+    "Mont Blanc 1": 4,
+    "Mont Blanc 3+2": 5,
+    "Mont Blanc 4": 6,
+    "Cervin": 7,
+    "Everest": 8
+};
+
+var slot_id = 0;    
 $.each(program["slots"], function(islot, slot) {
     var session_html = '';
     if (slot.all) {
@@ -50,12 +62,12 @@ $.each(program["slots"], function(islot, slot) {
         });
         $('#program_content').append('<tr>'+session_html+'</tr>');
     } else {
-        var room_map = {};
-        var room_nb = 0;
-        $.each(program["rooms"], function (iroom, room) {
-            room_map[room] = room_nb;
-            session_html += '<td id="'+slot_id+'_'+room_nb+'"></td>';
-            room_nb++;
+        //var room_map = {};
+        //var room_nb = 0;
+        $.each(room_map, function (room, room_id) {
+            //room_map[room] = room_nb;
+            session_html += '<td id="'+slot_id+'_'+room_id+'">&nbsp;</td>';
+            //room_nb++;
         });
         $('#program_content').append('<tr>'+session_html+'</tr>');
 
@@ -65,7 +77,6 @@ $.each(program["slots"], function(islot, slot) {
             if (session['speakers']) {
                 session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
             }
-            session_id = 
             $('#'+slot_id+'_'+room_map[room]).append(session_content);
         });
     }
