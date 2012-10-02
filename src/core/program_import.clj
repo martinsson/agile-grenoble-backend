@@ -111,8 +111,9 @@
                        {:title "Session Plénière: le mot des organisateurs & Samse" :type :sponsor}
                        {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"] :type :keynote}
                        {:title "Pause café" :type :cafe}
-                       {:title "Apéro offert par le Club Agile Rhone Alpes" :type :departure}]
-        [arr sp1 kn1 meal sp2 kn2 cafe apero] (for [ns non-sessions] {"all" ns})
+                       {:title "Apéro offert par le Club Agile Rhone Alpes" :type :apero}
+                       {:title "Fin de journée" :type :departure}]
+        [arr sp1 kn1 meal sp2 kn2 cafe apero dep] (for [ns non-sessions] {"all" ns})
 ;                [arr sp1 kn1 meal sp2 kn2 cafe apero] (map #(hash-map "all" (assoc-in % [:type] %2))  
 ;                                                   non-sessionss [:arrival :sponsors :keynote :meal :sponsor :keynote :cafe :apero :departure])
                 ]
@@ -128,7 +129,8 @@
      cafe
      s4
      s5
-     apero]))
+     apero
+     dep]))
 
 (future-fact "adds keynotes, coffe breaks, lunch to slots"
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [{"all" (contains {:title "Accueil des participants autour d'un café"})}
