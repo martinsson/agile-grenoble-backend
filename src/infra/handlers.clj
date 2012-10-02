@@ -86,7 +86,7 @@
      (json-encode)
      (wrap-with-content-type-json)))
 
-(def h-program-summary 
+(defn h-program-summary [] 
   (-> (partial response-map (all-slots))
      (json-encode)
      (wrap-with-content-type-json)))
@@ -106,7 +106,7 @@
      (json-encode)
      (wrap-with-jsonp callback)))
 
-(def h-program-summary-with-roomlist  
+(defn h-program-summary-with-roomlist []  
   (-> (partial response-map (all-slots-with-rooms (pi/normalized-sessions local-file)))
      (json-encode)
      (wrap-with-content-type-json)))
