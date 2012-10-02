@@ -5,18 +5,27 @@
     border-bottom: none;
     border-right: none;
 }
-.program td, .program th {
+
+.program td {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     padding: 0.5em;
 }
+
 .plenary {
     text-align: center;
     background-color: lavender;
 }
+
 .session_title {
     display: block;
 }
+
 .session_speakers {
     font-style: italic;
+}
+
+.room_desc {
+    font-weight: bold;
+    background-color: aliceblue;
 }
