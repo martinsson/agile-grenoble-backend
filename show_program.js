@@ -28,23 +28,20 @@ var slot_hours = [
     "18h30",
 ];
 
-var slot_id = 0;    
-$.each(program["slots"], function(islot, slot) {
-    var session_html = '<td>'+slot_hours[slot_id]+'</td>';
+format_program(program);
+
+function format_program(program) {
+    var slot_id = 0;    
+    $.each(program["slots"], function(islot, slot) {
+        var session_html = '<td>'+slot_hours[slot_id]+'</td>';
+        format_slot(slot_id, slot, session_html);
+        slot_id++;
+    });
+}
+
+function format_slot(slot_id, slot, session_html) {
     if (slot.all) {
-        var it_was_keynote = false;
-        // there is only one key
-        $.each(slot, function (room, slot) {
-            if (slot.type == 'keynote') {
-                it_was_keynote = true;
-            }
-            session_html += '<td colspan="9" class="plenary '+slot.type+'">'+format_session(slot)+'</td>';
-        });
-        $('#program_content').append('<tr>'+session_html+'</tr>');
-        
-        if (it_was_keynote) {
-            $('#program_content').append(get_rooms_slot());
-        }
+        format_plenary(session_html, slot);
     } else {
         prefill_empty_cells(session_html, slot_id);
 
@@ -53,14 +50,8 @@ $.each(program["slots"], function(islot, slot) {
         });
 
         $('#program_content').append(change_room());
-        
-        /*if (slot_id == afternoon) {
-            
-        }*/
     }
-        
-    slot_id++;
-});
+}
 
 function get_rooms_slot() {
     var session_html = '<td> </td>';
@@ -68,6 +59,22 @@ function get_rooms_slot() {
         session_html += '<td>'+room_name+'<br />('+room.capacity+' places)</td>';
     });
     return '<tr class="room_desc">'+session_html+'</tr>';
+}
+
+function format_plenary(session_html, slot) {
+    var it_was_keynote = false;
+    // there is only one key
+    $.each(slot, function (room, session) {
+        if (session.type == 'keynote') {
+            it_was_keynote = true;
+        }
+        session_html += '<td colspan="9" class="plenary '+session.type+'">'+format_session(session)+'</td>';
+    });
+    $('#program_content').append('<tr>'+session_html+'</tr>');
+
+    if (it_was_keynote) {
+        $('#program_content').append(get_rooms_slot());
+    }
 }
 
 function change_room() {
