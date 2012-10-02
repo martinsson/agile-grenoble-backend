@@ -15,16 +15,18 @@ var room_map = {
 var slot_hours = [
     "8h00",
     "8h30",
-    "9h00 - 9h45",
-    "10h00 - 10h50",
-    "11h10 - 12h",
+    "9h00",
+    "10h00",
+    "10h50",
+    "11h10",
     "12h00",
     "13h35",
-    "13h45 - 14h30",
-    "14h50 - 15h40",
+    "13h45",
+    "14h50",
     "15h40",
-    "16h10 - 17h00",
-    "17h20 - 18h10",
+    "16h10",
+    "17h00",
+    "17h20",
     "18h30"
 ];
 
@@ -34,28 +36,32 @@ function format_program(program) {
     var slot_id = 0;
     var previous_was_plenary = false;
     $.each(program["slots"], function(islot, slot) {
+        if (!slot.all && !previous_was_plenary) {
+            $('#program_content').append(change_room(slot_id));
+            slot_id++;
+        }
+
         var session_html = '<td>'+slot_hours[slot_id]+'</td>';
-        previous_was_plenary = format_slot(slot_id, slot, session_html, previous_was_plenary);
+        format_slot(slot_id, slot, session_html);
+        
+        previous_was_plenary = false;
+        if (slot.all) {
+            previous_was_plenary = true;
+        }
         slot_id++;
     });
 }
 
-function format_slot(slot_id, slot, session_html, previous_was_plenary) {
+function format_slot(slot_id, slot, session_html) {
     if (slot.all) {
         format_plenary(session_html, slot);
-        previous_was_plenary = true;
     } else {
-        if (!previous_was_plenary) {
-            $('#program_content').append(change_room());
-        }
         prefill_empty_cells(session_html, slot_id);
 
         $.each(slot, function (room, session) {
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
         });
-        previous_was_plenary = false;
     }
-    return previous_was_plenary;
 }
 
 function get_rooms_slot() {
@@ -82,10 +88,10 @@ function format_plenary(session_html, slot) {
     }
 }
 
-function change_room() {
-    var session = '<td></td>';
-    session += '<td colspan="9">Changement de salle</td>';
-    return '<tr class="change_room">'+session+'</tr>';
+function change_room(slot_id) {
+    var session_html = '<td>'+slot_hours[slot_id]+'</td>';
+    session_html += '<td colspan="9">Changement de salle</td>';
+    return '<tr class="change_room">'+session_html+'</tr>';
 }
 
 function prefill_empty_cells(session_html, slot_id) {
