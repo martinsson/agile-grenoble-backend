@@ -6,6 +6,7 @@
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
 
+
 (defn decorate-sessions 
   ([csv-resource] 
   (map reverse ;; todo remove hack to keep the first speaker when butterfly uses the speaker list 
@@ -16,7 +17,7 @@
 (def sessions-for (partial sa/sessions-for @session-maps))
 (def get-session (partial sa/get-session @session-maps))
 
-  
+
 (defn all-slots-with-rooms [normalized-sessions] 
   (let [sessions (pi/normalized-sessions local-file)
         header   (first sessions)
@@ -44,7 +45,7 @@
   (pi/add-non-session-data (for [slot (range 1 6)] (sa/sessions-for @session-maps (str slot)))))
   (facts "returns a list of slots with a list of sessions"
          (first (nth (all-slots) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
-         (count (all-slots)) => 12)
+         (count (all-slots)) => 13)
 
 (defn response-map [arg request]
   {:status 200 :body arg})

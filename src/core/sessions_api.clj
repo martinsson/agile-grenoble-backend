@@ -14,7 +14,7 @@
 
 (defn sessions-for 
   ([session-maps slot]
-  (let [reduce-keys #(select-keys % [:id :title :slot :room :speakers])
+  (let [reduce-keys #(select-keys % [:id :title :slot :room :speakers :type])
         found-sessions (filter #(= slot (% :slot)) session-maps)] 
     (map reduce-keys found-sessions))))
 
