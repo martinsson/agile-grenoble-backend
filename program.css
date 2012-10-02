@@ -17,6 +17,15 @@
     background-color: lavender;
 }
 
+.keynote {
+    background-color: graytext;
+    font-weight: bold;
+}
+
+.sponsor_gold {
+    background-color: gold;
+}
+
 .session_title {
     display: block;
 }
