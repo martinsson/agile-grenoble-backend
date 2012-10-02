@@ -9,8 +9,6 @@
             </tbody>
         </table>
 
-        <div id="content_div2"></div>
-
         
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -40,69 +38,108 @@ var room_map = {
 };
 
 var slot_hours = [
-    "8h",
+    "8h00",
     "8h30",
-    "9h - 9h45",
-    "10h - 10h50",
-    "11h10 - 12h",
-    "12h",
+    "9h00",
+    "10h00",
+    "10h50",
+    "11h10",
+    "12h00",
     "13h35",
-    "13h45 - 14h30",
-    "14h50 - 15h40",
-    "16h10 - 17h",
-    "17h20 - 18h10",
-    "18h30",
+    "13h45",
+    "14h50",
+    "15h40",
+    "16h10",
+    "17h00",
+    "17h20",
+    "18h30"
 ];
 
-var afternoon = 7;
+format_program(program);
 
-$('#program_content').append(get_rooms_slot());
+function format_program(program) {
+    var slot_id = 0;
+    var previous_was_plenary = false;
+    $.each(program["slots"], function(islot, slot) {
+        if (!slot.all && !previous_was_plenary) {
+            $('#program_content').append(change_room(slot_id));
+            slot_id++;
+        }
 
-var slot_id = 0;    
-$.each(program["slots"], function(islot, slot) {
-    var session_html = '<td>'+slot_hours[slot_id]+'</td>';
+        var session_html = '<td>'+slot_hours[slot_id]+'</td>';
+        format_slot(slot_id, slot, session_html);
+        
+        previous_was_plenary = false;
+        if (slot.all) {
+            previous_was_plenary = true;
+        }
+        slot_id++;
+    });
+}
+
+function format_slot(slot_id, slot, session_html) {
     if (slot.all) {
-        // there is only one key
-        $.each(slot, function (room, slot) {
-            session_html += '<td colspan="9" class="plenary">'+format_session(slot)+'</td>';
-        });
-        $('#program_content').append('<tr>'+session_html+'</tr>');
+        format_plenary(session_html, slot);
     } else {
-        $.each(room_map, function (room_name, room) {
-            session_html += '<td id="'+slot_id+'_'+room.id+'">&nbsp;</td>';
-        });
-        $('#program_content').append('<tr>'+session_html+'</tr>');
+        prefill_empty_cells(session_html, slot_id);
 
         $.each(slot, function (room, session) {
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
         });
     }
-    
-    if (slot_id == afternoon) {
-        $('#program_content').append(get_rooms_slot());
-    }
-    
-    slot_id++;
-});
+}
 
 function get_rooms_slot() {
     var session_html = '<td> </td>';
     $.each(room_map, function (room_name, room) {
-        session_html += '<td>'+room_name+' ('+room.capacity+' places)</td>';
+        session_html += '<td>'+room_name+'<br />('+room.capacity+' places)</td>';
     });
     return '<tr class="room_desc">'+session_html+'</tr>';
 }
 
-function format_session(session) {         
-    session_title = '<span class="session_title">'+session['title']+'</span> ';
-    session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
+function format_plenary(session_html, slot) {
+    var it_was_keynote = false;
+    // there is only one key
+    $.each(slot, function (room, session) {
+        if (session.type == 'keynote') {
+            it_was_keynote = true;
+        }
+        session_html += '<td colspan="9" class="plenary '+session.type+'">'+format_session(session)+'</td>';
+    });
+    $('#program_content').append('<tr>'+session_html+'</tr>');
 
+    if (it_was_keynote) {
+        $('#program_content').append(get_rooms_slot());
+    }
+}
+
+function change_room(slot_id) {
+    var session_html = '<td>'+slot_hours[slot_id]+'</td>';
+    session_html += '<td colspan="9">Changement de salle</td>';
+    return '<tr class="change_room">'+session_html+'</tr>';
+}
+
+function prefill_empty_cells(session_html, slot_id) {
+    $.each(room_map, function (room_name, room) {
+        session_html += '<td id="'+slot_id+'_'+room.id+'">&nbsp;</td>';
+    });
+    $('#program_content').append('<tr>'+session_html+'</tr>');    
+}
+
+function format_session(session) {
+    var session_title = '<span class="session_title">'+session['title']+'</span> ';
+    var session_url   = session_title;
+    if (session.id) {
+        session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
+    }
+    
     session_content = session_url;
     if (session['speakers']) {
         session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
     }
     return session_content;
 }
+
 
    };
      
