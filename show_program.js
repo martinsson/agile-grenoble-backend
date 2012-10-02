@@ -37,7 +37,7 @@ $.each(program["slots"], function(islot, slot) {
     if (slot.all) {
         // there is only one key
         $.each(slot, function (room, slot) {
-            session_html += '<td colspan="9" class="plenary">'+slot['title']+'</td>';
+            session_html += '<td colspan="9" class="plenary">'+format_session(slot)+'</td>';
         });
         $('#program_content').append('<tr>'+session_html+'</tr>');
     } else {
@@ -47,16 +47,7 @@ $.each(program["slots"], function(islot, slot) {
         $('#program_content').append('<tr>'+session_html+'</tr>');
 
         $.each(slot, function (room, session) {
-            session_content = '';
-            
-            session_title = '<span class="session_title">'+session['title']+'</span> ';
-            session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
-            
-            session_content += session_url;
-            if (session['speakers']) {
-                session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
-            }
-            $('#'+slot_id+'_'+room_map[room].id).append(session_content);
+            $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
         });
     }
     
@@ -73,4 +64,15 @@ function get_rooms_slot() {
         session_html += '<td>'+room_name+' ('+room.capacity+' places)</td>';
     });
     return '<tr class="room_desc">'+session_html+'</tr>';
+}
+
+function format_session(session) {         
+    session_title = '<span class="session_title">'+session['title']+'</span> ';
+    session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
+
+    session_content = session_url;
+    if (session['speakers']) {
+        session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
+    }
+    return session_content;
 }
