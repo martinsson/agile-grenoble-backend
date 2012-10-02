@@ -113,10 +113,7 @@
                        {:title "Pause café" :type :cafe}
                        {:title "Apéro offert par le Club Agile Rhone Alpes" :type :apero}
                        {:title "Fin de journée" :type :departure}]
-        [arr sp1 kn1 meal sp2 kn2 cafe apero dep] (for [ns non-sessions] {"all" ns})
-;                [arr sp1 kn1 meal sp2 kn2 cafe apero] (map #(hash-map "all" (assoc-in % [:type] %2))  
-;                                                   non-sessionss [:arrival :sponsors :keynote :meal :sponsor :keynote :cafe :apero :departure])
-                ]
+        [arr sp1 kn1 meal sp2 kn2 cafe apero dep] (for [ns non-sessions] {"all" ns})]
     [arr
      sp1
      kn1
