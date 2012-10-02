@@ -5,19 +5,6 @@
   <![CDATA[
         <link rel="stylesheet" type="text/css" href="https://dl.dropbox.com/u/84602525/agile-grenoble-backend/program.css" />
         <table cellpadding="0" cellspacing="0" class="program">
-            <thead>
-                <tr>
-                    <th>Auditorium</th>
-                    <th>Makalu</th>
-                    <th>Kilimandjaro&nbsp;1</th>
-                    <th>Kilimandjaro&nbsp;3</th>
-                    <th>Mont&nbsp;Blanc&nbsp;1</th>
-                    <th>Mont&nbsp;Blanc&nbsp;3</th>
-                    <th>Mont&nbsp;Blanc&nbsp;4</th>
-                    <th>Cervin</th>
-                    <th>Evrest</th>
-                </tr>
-            </thead>
             <tbody id="program_content">
             </tbody>
         </table>
@@ -41,47 +28,82 @@
       var program = obj.data;
       
 var room_map = {
-    "Auditorium":0,
-    "Makalu":1,  
-    "Kilimanjaro 1": 2,
-    "Kilimanjaro 3": 3,
-    "Mont Blanc 1": 4,
-    "Mont Blanc 3+2": 5,
-    "Mont Blanc 4": 6,
-    "Cervin": 7,
-    "Everest": 8
+    "Auditorium":{"id": 0, "capacity" : 530},
+    "Makalu": {"id":1, "capacity" : 110},  
+    "Kilimanjaro 1": {"id":2, "capacity" : 50},
+    "Kilimanjaro 3": {"id":3, "capacity" : 50},
+    "Mont Blanc 1": {"id":4, "capacity" : 25},
+    "Mont Blanc 3+2": {"id":5, "capacity" : 50},
+    "Mont Blanc 4": {"id":6, "capacity" : 25},
+    "Cervin": {"id":7, "capacity" : 40},
+    "Everest": {"id":8, "capacity" : 40}
 };
+
+var slot_hours = [
+    "8h",
+    "8h30",
+    "9h - 9h45",
+    "10h - 10h50",
+    "11h10 - 12h",
+    "12h",
+    "13h35",
+    "13h45 - 14h30",
+    "14h50 - 15h40",
+    "16h10 - 17h",
+    "17h20 - 18h10",
+    "18h30",
+];
+
+var afternoon = 7;
+
+$('#program_content').append(get_rooms_slot());
 
 var slot_id = 0;    
 $.each(program["slots"], function(islot, slot) {
-    var session_html = '';
+    var session_html = '<td>'+slot_hours[slot_id]+'</td>';
     if (slot.all) {
         // there is only one key
         $.each(slot, function (room, slot) {
-            session_html += '<td colspan="9" class="plenary">'+slot['title']+'</td>';
+            session_html += '<td colspan="9" class="plenary">'+format_session(slot)+'</td>';
         });
         $('#program_content').append('<tr>'+session_html+'</tr>');
     } else {
-        //var room_map = {};
-        //var room_nb = 0;
-        $.each(room_map, function (room, room_id) {
-            //room_map[room] = room_nb;
-            session_html += '<td id="'+slot_id+'_'+room_id+'">&nbsp;</td>';
-            //room_nb++;
+        $.each(room_map, function (room_name, room) {
+            session_html += '<td id="'+slot_id+'_'+room.id+'">&nbsp;</td>';
         });
         $('#program_content').append('<tr>'+session_html+'</tr>');
 
         $.each(slot, function (room, session) {
-            session_content = '';
-            session_content += '<span class="session_title">'+session['title']+'</span> ';
-            if (session['speakers']) {
-                session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
-            }
-            $('#'+slot_id+'_'+room_map[room]).append(session_content);
+            $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
         });
     }
+    
+    if (slot_id == afternoon) {
+        $('#program_content').append(get_rooms_slot());
+    }
+    
     slot_id++;
 });
+
+function get_rooms_slot() {
+    var session_html = '<td> </td>';
+    $.each(room_map, function (room_name, room) {
+        session_html += '<td>'+room_name+' ('+room.capacity+' places)</td>';
+    });
+    return '<tr class="room_desc">'+session_html+'</tr>';
+}
+
+function format_session(session) {         
+    session_title = '<span class="session_title">'+session['title']+'</span> ';
+    session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
+
+    session_content = session_url;
+    if (session['speakers']) {
+        session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
+    }
+    return session_content;
+}
+
    };
      
      gadgets.util.registerOnLoadHandler(makeJSONRequest);
