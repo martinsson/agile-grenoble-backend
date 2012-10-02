@@ -5,6 +5,8 @@
             [clj-json.core :as json]))
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
+(defn local-file-loader [] (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
+
 
 (defn decorate-sessions 
   ([csv-resource] 
@@ -15,30 +17,31 @@
 (def sessions-for (partial sa/sessions-for @session-maps))
 (def get-session (partial sa/get-session @session-maps))
 
-(defn all-slots-with-rooms [] 
-  (let [sessions (pi/normalized-sessions local-file)
+(defn all-slots-with-rooms [csv-file] 
+  (let [sessions (pi/normalized-sessions csv-file)
         header   (first sessions)
         body     (rest sessions)
         roomidx  (.indexOf (vec header) :room)
         index-by-room #(zipmap (map :room %) %)
-        slots    (for [slot (range 1 6)] (sa/sessions-for @session-maps (str slot)))]
+        slots    (for [slot (range 1 6)] (sa/sessions-for (pi/keep-retained (decorate-sessions csv-file)) (str slot)))]
+    (println "hellooooooo")
     {:rooms (filter not-empty (set (map #(nth % roomidx) body)))
      :slots (pi/add-non-session-data (map index-by-room slots))}))
 
   (facts "returns a roomlist"
-         (all-slots-with-rooms) =>
+         (all-slots-with-rooms local-file) =>
          (contains {:rooms ["Auditorium" "Kilimanjaro 1" "Mont Blanc 1" "Kilimanjaro 3" "Mont Blanc 4" "Everest" "Cervin" "Mont Blanc 3+2" "Makalu"]}))
   (facts "returns a list of slots, indexed by room"
-         (all-slots-with-rooms) =>
+         (all-slots-with-rooms local-file) =>
          (contains {:slots (contains (contains {"Auditorium" not-empty
                                       "Mont Blanc 1" not-empty}))}))
   (facts "there are 9 rooms"
-         (count (:rooms (all-slots-with-rooms))) =>
+         (count (:rooms (all-slots-with-rooms local-file))) =>
          9) 
 
   (future-facts "adapt to all-slots-with-rooms : returns a list of slots with a list of sessions"
-         (first (nth (all-slots-with-rooms) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
-         (count (all-slots-with-rooms)) => 14)
+         (first (nth (all-slots-with-rooms local-file) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
+         (count (all-slots-with-rooms local-file)) => 14)
 
 (defn response-map [arg request]
   {:status 200 :body arg})
@@ -89,7 +92,7 @@
      (json-encode)
      (wrap-with-jsonp callback)))
 
-(defn h-program-summary-with-roomlist []  
-  (-> (partial response-map (all-slots-with-rooms))
+(defn h-program-summary-with-roomlist [csv-file-loader w]  
+  (-> (partial response-map (all-slots-with-rooms (csv-file-loader)))
      (json-encode)
      (wrap-with-content-type-json)))
