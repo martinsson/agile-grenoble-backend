@@ -48,7 +48,11 @@ $.each(program["slots"], function(islot, slot) {
 
         $.each(slot, function (room, session) {
             session_content = '';
-            session_content += '<span class="session_title">'+session['title']+'</span> ';
+            
+            session_title = '<span class="session_title">'+session['title']+'</span> ';
+            session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
+            
+            session_content += session_url;
             if (session['speakers']) {
                 session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
             }
