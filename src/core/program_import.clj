@@ -100,29 +100,40 @@
       (provided (sessions-as-maps ..csv..) => [{:title "happy XP" :retained ""}
                                               {:title "happy scrumming" :retained "x"}]))
 (defn add-non-session-data [[s1 s2 s3 s4 s5]]
-  [{"all" {:title "Accueil des participants autour d'un café"}}
-   {"all" {:title "Session Plénière: le mot des organisateurs & Sogilis"}}
-   {"all" {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]}}
-   s1
-   s2
-   {"all" {:title "Repas"}} 
-   {"all" {:title "Session Plénière: le mot des organisateurs & Samse"}}
-   {"all" {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"]}}
-   s3
-   s4
-   s5
-   {"all" {:title "Apéro offert par le Club Agile Rhone Alpes"}}])
+  (let [non-sessions  [{:title "Accueil des participants autour d'un café"}
+                       {:title "Session Plénière: le mot des organisateurs & Sogilis"}
+                       {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]}
+                       {:title "Repas"} 
+                       {:title "Session Plénière: le mot des organisateurs & Samse"}
+                       {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"]}
+                       {:title "Apéro offert par le Club Agile Rhone Alpes"}]
+        [arr sp1 kn1 meal sp2 kn2 apero] (for [ns non-sessions] {"all" ns})]
+    [arr
+     sp1
+     kn1
+     s1
+     s2
+     meal
+     sp2
+     kn2
+     s3
+     s4
+     s5
+     apero]))
 
 (fact "adds keynotes, coffe breaks, lunch to slots"
-      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [{"all" {:title "Accueil des participants autour d'un café"}}
-                                                   {"all" {:title "Session Plénière: le mot des organisateurs & Sogilis"}}
-                                                   {"all" {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]}}])
+      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [(contains {"all" {:title "Accueil des participants autour d'un café"}})
+                                                   (contains {"all" {:title "Session Plénière: le mot des organisateurs & Sogilis"}})
+                                                   (contains {"all" {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]}})])
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) 
       => (contains [..s2.. 
-                    {"all" {:title "Repas"}} 
-                    {"all" {:title "Session Plénière: le mot des organisateurs & Samse"}}
-                    {"all" {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"]}}
+                    (contains {"all" {:title "Repas"}}) 
+                    (contains {"all" {:title "Session Plénière: le mot des organisateurs & Samse"}})
+                    (contains {"all" {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"]}})
                     ..s3..])
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ])
       => (has-suffix [..s5..
-                      {"all" {:title "Apéro offert par le Club Agile Rhone Alpes"}}]))
+                      (contains {"all" {:title "Apéro offert par le Club Agile Rhone Alpes"}})]))
+(future-facts "adds a type to every slot"
+       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) =>
+       (has-prefix))
