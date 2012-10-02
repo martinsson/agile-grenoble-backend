@@ -99,6 +99,8 @@
       (keep-retained ..csv..) => [{:title "happy scrumming" :retained "x"}]
       (provided (sessions-as-maps ..csv..) => [{:title "happy XP" :retained ""}
                                               {:title "happy scrumming" :retained "x"}]))
+
+(def slot-types [:arrival :sponsor :keynote :meal :sponsor :coffee :apero :departure])
 (defn add-non-session-data [[s1 s2 s3 s4 s5]]
   (let [non-sessions  [{:title "Accueil des participants autour d'un café"}
                        {:title "Session Plénière: le mot des organisateurs & Sogilis"}
@@ -106,9 +108,10 @@
                        {:title "Repas"} 
                        {:title "Session Plénière: le mot des organisateurs & Samse"}
                        {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"]}
+                       {:title "Pause café"}
                        {:title "Apéro offert par le Club Agile Rhone Alpes"}]
-        [arr sp1 kn1 meal sp2 kn2 apero] (for [ns non-sessions] {"all" ns})]
-    [arr
+        [arr sp1 kn1 meal sp2 kn2 cafe apero] (for [ns non-sessions] {"all" ns})]
+    [(assoc-in arr [:type] :arrival)
      sp1
      kn1
      s1
@@ -117,6 +120,7 @@
      sp2
      kn2
      s3
+     cafe
      s4
      s5
      apero]))
@@ -132,8 +136,10 @@
                     (contains {"all" {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"]}})
                     ..s3..])
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ])
-      => (has-suffix [..s5..
+      => (has-suffix [(contains {"all" {:title "Pause café"}})
+                      ..s4..
+                      ..s5..
                       (contains {"all" {:title "Apéro offert par le Club Agile Rhone Alpes"}})]))
-(future-facts "adds a type to every slot"
+(facts "adds a type to every slot"
        (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) =>
-       (has-prefix))
+       (has-prefix [(contains {:type :arrival})]))
