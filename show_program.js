@@ -25,32 +25,37 @@ var slot_hours = [
     "15h40",
     "16h10 - 17h00",
     "17h20 - 18h10",
-    "18h30",
+    "18h30"
 ];
 
 format_program(program);
 
 function format_program(program) {
-    var slot_id = 0;    
+    var slot_id = 0;
+    var previous_was_plenary = false;
     $.each(program["slots"], function(islot, slot) {
         var session_html = '<td>'+slot_hours[slot_id]+'</td>';
-        format_slot(slot_id, slot, session_html);
+        previous_was_plenary = format_slot(slot_id, slot, session_html, previous_was_plenary);
         slot_id++;
     });
 }
 
-function format_slot(slot_id, slot, session_html) {
+function format_slot(slot_id, slot, session_html, previous_was_plenary) {
     if (slot.all) {
         format_plenary(session_html, slot);
+        previous_was_plenary = true;
     } else {
+        if (!previous_was_plenary) {
+            $('#program_content').append(change_room());
+        }
         prefill_empty_cells(session_html, slot_id);
 
         $.each(slot, function (room, session) {
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
         });
-
-        $('#program_content').append(change_room());
+        previous_was_plenary = false;
     }
+    return previous_was_plenary;
 }
 
 function get_rooms_slot() {
