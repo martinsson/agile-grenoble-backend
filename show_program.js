@@ -38,7 +38,7 @@ $.each(program["slots"], function(islot, slot) {
     if (slot.all) {
         // there is only one key
         $.each(slot, function (room, slot) {
-            session_html += '<td colspan="9" class="plenary">'+format_session(slot)+'</td>';
+            session_html += '<td colspan="9" class="plenary '+slot.type+'">'+format_session(slot)+'</td>';
         });
         $('#program_content').append('<tr>'+session_html+'</tr>');
     } else {
@@ -72,9 +72,12 @@ function prefill_empty_cells(session_html, slot_id) {
 }
 
 function format_session(session) {
-    session_title = '<span class="session_title">'+session['title']+'</span> ';
-    session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
-
+    var session_title = '<span class="session_title">'+session['title']+'</span> ';
+    var session_url   = session_title;
+    if (session.id) {
+        session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
+    }
+    
     session_content = session_url;
     if (session['speakers']) {
         session_content += '<span class="session_speakers">'+session['speakers'].join(', ')+'</span>';
