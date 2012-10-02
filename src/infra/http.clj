@@ -10,7 +10,6 @@
 (defroutes main-routes
   (GET "/" [] (u/render (u/index)))
   (GET "/session-list" request (h/h-session-list))
-  (GET "/json/program-summary" request (h/h-program-summary))
   (GET "/json/program-summary-with-roomlist" request (h/h-program-summary-with-roomlist))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
@@ -44,9 +43,6 @@
         (app {:query-string "callback=aThirdMethod" :uri "/jsonp/session/17" :request-method :get}) 
         => (contains {:body (has-prefix "aThirdMethod")}))
 
-  (facts "provides a list of slots"
-         (app {:uri "/json/program-summary" :request-method :get})
-         => (contains {:status 200}))
   (facts "provides a tuple of rooms and slots"
          (app {:uri "/json/program-summary-with-roomlist" :request-method :get})
          => (contains {:body (contains "Auditorium" )}))
