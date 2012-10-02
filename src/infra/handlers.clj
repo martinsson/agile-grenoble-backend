@@ -45,7 +45,7 @@
   (pi/add-non-session-data (for [slot (range 1 6)] (sa/sessions-for @session-maps (str slot)))))
   (facts "returns a list of slots with a list of sessions"
          (first (nth (all-slots) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
-         (count (all-slots)) => 13)
+         (count (all-slots)) => 14)
 
 (defn response-map [arg request]
   {:status 200 :body arg})
@@ -81,7 +81,7 @@
     (let [response (handler request)]
       (update-in response [:body] json/generate-string))))
 
-(def h-session-list 
+(defn h-session-list [] 
   (-> (partial response-map (decorate-sessions local-file))
      (json-encode)
      (wrap-with-content-type-json)))
