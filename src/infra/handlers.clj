@@ -6,19 +6,16 @@
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
 
-
 (defn decorate-sessions 
   ([csv-resource] 
   (map reverse ;; todo remove hack to keep the first speaker when butterfly uses the speaker list 
        (pi/assemble-speakers (pi/normalized-sessions csv-resource)))))
 
-
 (def session-maps (ref (pi/keep-retained (decorate-sessions local-file))))
 (def sessions-for (partial sa/sessions-for @session-maps))
 (def get-session (partial sa/get-session @session-maps))
 
-
-(defn all-slots-with-rooms [normalized-sessions] 
+(defn all-slots-with-rooms [] 
   (let [sessions (pi/normalized-sessions local-file)
         header   (first sessions)
         body     (rest sessions)
@@ -29,14 +26,14 @@
      :slots (pi/add-non-session-data (map index-by-room slots))}))
 
   (facts "returns a roomlist"
-         (all-slots-with-rooms local-file) =>
+         (all-slots-with-rooms) =>
          (contains {:rooms ["Auditorium" "Kilimanjaro 1" "Mont Blanc 1" "Kilimanjaro 3" "Mont Blanc 4" "Everest" "Cervin" "Mont Blanc 3+2" "Makalu"]}))
   (facts "returns a list of slots, indexed by room"
-         (all-slots-with-rooms local-file) =>
+         (all-slots-with-rooms) =>
          (contains {:slots (contains (contains {"Auditorium" not-empty
                                       "Mont Blanc 1" not-empty}))}))
   (facts "there are 9 rooms"
-         (count (:rooms (all-slots-with-rooms local-file))) =>
+         (count (:rooms (all-slots-with-rooms))) =>
          9) 
 
   (future-facts "adapt to all-slots-with-rooms : returns a list of slots with a list of sessions"
@@ -77,11 +74,6 @@
     (let [response (handler request)]
       (update-in response [:body] json/generate-string))))
 
-(defn h-session-list [] 
-  (-> (partial response-map (decorate-sessions local-file))
-     (json-encode)
-     (wrap-with-content-type-json)))
-
 (defn h-sessions-for [slot callback] 
   (-> (partial response-map (sa/sessions-for @session-maps  slot))
      (json-encode)
@@ -98,6 +90,6 @@
      (wrap-with-jsonp callback)))
 
 (defn h-program-summary-with-roomlist []  
-  (-> (partial response-map (all-slots-with-rooms (pi/normalized-sessions local-file)))
+  (-> (partial response-map (all-slots-with-rooms))
      (json-encode)
      (wrap-with-content-type-json)))

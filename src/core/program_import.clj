@@ -24,11 +24,8 @@
         translated-header   (map replace-if-possible header)]
     (cons translated-header body)))
 
-
 ;; Used for testing
 (def local-file (io/resource "public/sessions.csv"))
-
-
 
 (defn normalized-sessions 
   ([csv-resource]
@@ -90,10 +87,7 @@
       (first (sessions-as-maps sessions)) => (contains {:title "Approche pragmatique pour industrialiser le développement d’applications"})
       (second (sessions-as-maps sessions)) => (contains {:title "Challenge Kanban"}))
     (fact "it has a key :type with value :session"
-          (sessions-as-maps sessions) => (has every? #(= :session (% :type))))
-    
-)
-
+          (sessions-as-maps sessions) => (has every? #(= :session (% :type)))))
 
 (defn keep-retained [parsed-csv]
   (filter (comp not-empty :retained) (sessions-as-maps parsed-csv)))

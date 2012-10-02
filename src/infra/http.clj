@@ -9,7 +9,6 @@
 
 (defroutes main-routes
   (GET "/" [] (u/render (u/index)))
-  (GET "/session-list" request (h/h-session-list))
   (GET "/json/program-summary-with-roomlist" request (h/h-program-summary-with-roomlist))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
