@@ -130,7 +130,7 @@ function format_session(session) {
     var session_title = '<span class="session_title">'+session['title']+'</span> ';
     var session_url   = session_title;
     if (session.id) {
-        session_url = '<a href="#'+session['id']+'">'+session_title+'</a>';
+        session_url = '<a href="#session_detail_'+session['id']+'">'+session_title+'</a>';
     }
     
     session_content = session_url;
@@ -143,7 +143,7 @@ function format_session(session) {
 
 function format_session_detail(session) {
     var session_html = '<h2>';
-    session_html += '<a id="'+session['id']+'">'+session['title']+'</a>';
+    session_html += '<a id="session_detail_'+session['id']+'" name="session_detail_'+session['id']+'">'+session['title']+'</a>';
     session_html += '</h2>';
     session_html += ' <a href="#program_head" class="back_to_top">Retour au programme</a>';    
     session_html += '<p class="logistic">'+session['room']+' - '+session['format']+'</p>';
