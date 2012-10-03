@@ -52,7 +52,8 @@ var slot_hours = [
     "16h10",
     "17h00",
     "17h20",
-    "18h30"
+    "18h30",
+    "20h30"
 ];
 
 format_program(program);
@@ -66,7 +67,7 @@ function format_program(program) {
             slot_id++;
         }
 
-        var session_html = '<td>'+slot_hours[slot_id]+'</td>';
+        var session_html = get_hour_cell(slot_id);
         format_slot(slot_id, slot, session_html);
         
         previous_was_plenary = false;
@@ -92,9 +93,9 @@ function format_slot(slot_id, slot, session_html) {
 function get_rooms_slot() {
     var session_html = '<td> </td>';
     $.each(room_map, function (room_name, room) {
-        session_html += '<td>'+room_name+'<br />('+room.capacity+' places)</td>';
+        session_html += '<td class="room_desc">'+room_name+'<br />('+room.capacity+' places)</td>';
     });
-    return '<tr class="room_desc">'+session_html+'</tr>';
+    return '<tr>'+session_html+'</tr>';
 }
 
 function format_plenary(session_html, slot) {
@@ -114,9 +115,13 @@ function format_plenary(session_html, slot) {
 }
 
 function change_room(slot_id) {
-    var session_html = '<td>'+slot_hours[slot_id]+'</td>';
-    session_html += '<td colspan="9">Changement de salle</td>';
-    return '<tr class="change_room">'+session_html+'</tr>';
+    var session_html = get_hour_cell(slot_id);
+    session_html += '<td colspan="9" class="plenary change_room">Changement de salle</td>';
+    return '<tr>'+session_html+'</tr>';
+}
+
+function get_hour_cell(slot_id) {
+    return '<td class="hour">'+slot_hours[slot_id]+'</td>';
 }
 
 function prefill_empty_cells(session_html, slot_id) {
