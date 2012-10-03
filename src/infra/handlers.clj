@@ -23,10 +23,11 @@
         body     (rest sessions)
         roomidx  (.indexOf (vec header) :room)
         index-by-room #(zipmap (map :room %) %)
-        slots    (for [slot (range 1 6)] (sa/sessions-for (pi/keep-retained (decorate-sessions csv-file)) (str slot)))]
-    (println "hellooooooo")
+        s-maps (pi/keep-retained (decorate-sessions csv-file))
+        slots    (for [slot (range 1 6)] (sa/sessions-for s-maps (str slot)))]
     {:rooms (filter not-empty (set (map #(nth % roomidx) body)))
-     :slots (pi/add-non-session-data (map index-by-room slots))}))
+     :slots (pi/add-non-session-data (map index-by-room slots))
+     :sessions (into {} (for [s s-maps] {(s :id) s}))}))
 
   (facts "returns a roomlist"
          (all-slots-with-rooms local-file) =>
@@ -38,6 +39,11 @@
   (facts "there are 9 rooms"
          (count (:rooms (all-slots-with-rooms local-file))) =>
          9) 
+  (facts ":sessions is an indexed list of all sessions"
+         (all-slots-with-rooms local-file) => 
+         (contains {:sessions anything})
+         (:sessions (all-slots-with-rooms local-file)) => 
+         (contains {"3" anything}))
 
   (future-facts "adapt to all-slots-with-rooms : returns a list of slots with a list of sessions"
          (first (nth (all-slots-with-rooms local-file) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
