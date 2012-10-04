@@ -4,13 +4,13 @@
 
 ;TODO rename to butterfly api?
 
-(def time-slots ["8:30" "10:00" "11:00" "14:00" "15:00" "16:30"])
+(def time-slots ["10:00" "11:10" "14:50" "16:10" "17:20"])
 
 (defn slot-list []
   (list (zipmap (iterate inc 1) 
                 time-slots)))
   (facts
-    (slot-list) => [{1 "8:30", 2 "10:00", 3 "11:00", 4 "14:00", 5 "15:00", 6 "16:30"}])
+    (slot-list) => [{1 "10:00", 2 "11:10", 3 "14:50", 4 "16:10", 5 "17:20"}])
 
 (defn sessions-for 
   ([session-maps slot]
