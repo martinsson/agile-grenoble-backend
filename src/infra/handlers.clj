@@ -11,9 +11,9 @@
   (map reverse ;; todo remove hack to keep the first speaker when butterfly uses the speaker list 
        (pi/assemble-speakers (pi/normalized-sessions csv-resource)))))
 
-(def session-maps (ref (pi/keep-retained (decorate-sessions local-file))))
-(def sessions-for (partial sa/sessions-for @session-maps))
-(def get-session (partial sa/get-session @session-maps))
+(defn session-maps [] (pi/keep-retained (decorate-sessions local-file)))
+(defn sessions-for [slot] (sa/sessions-for (session-maps) slot))
+(defn get-session [id] (sa/get-session (session-maps) id))
 
 (defn all-slots-with-rooms [csv-file] 
   (let [sessions (pi/normalized-sessions csv-file)
@@ -82,7 +82,7 @@
       (update-in response [:body] json/generate-string))))
 
 (defn h-sessions-for [slot callback] 
-  (-> (partial response-map (sa/sessions-for @session-maps  slot))
+  (-> (partial response-map (sa/sessions-for (session-maps)  slot))
      (json-encode)
      (wrap-with-jsonp callback)))
 
@@ -92,7 +92,7 @@
      (wrap-with-jsonp callback)))
 
 (defn h-get-session [session-id callback] 
-  (-> (partial response-map (sa/get-session @session-maps session-id))
+  (-> (partial response-map (sa/get-session (session-maps) session-id))
      (json-encode)
      (wrap-with-jsonp callback)))
 
