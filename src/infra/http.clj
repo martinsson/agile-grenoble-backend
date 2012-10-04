@@ -6,6 +6,7 @@
             [compojure.route :as route]
             [compojure.handler :as handler]
             (ring.middleware [multipart-params :as mp])))
+;(alter-var-root #'midje.semi-sweet/*include-midje-checks* (constantly false))
 
 (defroutes main-routes
   (GET "/askdfjasfasklfhasncvjkjfefdkfjksjfslkdjfnrefnedksfjhvn" [] (u/render (u/index)))
@@ -47,3 +48,7 @@
   (facts "provides a tuple of rooms and slots"
          (app {:uri "/json/program-summary-with-roomlist" :request-method :get})
          => (contains {:body (contains "Auditorium" )}))
+  
+  
+  
+  
