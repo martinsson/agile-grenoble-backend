@@ -5,8 +5,6 @@
             [clj-json.core :as json]))
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
-(defn local-file-loader [] (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
-
 
 (defn decorate-sessions 
   ([csv-resource] 
@@ -98,7 +96,7 @@
      (json-encode)
      (wrap-with-jsonp callback)))
 
-(defn h-program-summary-with-roomlist [csv-file-loader w]  
-  (-> (partial response-map (all-slots-with-rooms (csv-file-loader)))
+(defn h-program-summary-with-roomlist []  
+  (-> (partial response-map (all-slots-with-rooms local-file))
      (json-encode)
      (wrap-with-content-type-json)))
