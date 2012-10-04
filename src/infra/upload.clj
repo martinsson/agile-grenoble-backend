@@ -8,6 +8,7 @@
       (apply str t))
 
 (deftemplate index "templates/index.html" [])
+(deftemplate inclusion "templates/inclusion.html" [])
 (deftemplate upload-success "templates/fileupload/success.html" [])
 
 (defn upload-file
