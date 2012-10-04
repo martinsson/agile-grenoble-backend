@@ -9,6 +9,8 @@
 
 (deftemplate index "templates/index.html" [])
 (deftemplate sample "templates/sample.html" [])
+(deftemplate inclusion "templates/inclusion.html" [])
+
 (deftemplate upload-success "templates/fileupload/success.html" [])
 
 (defn upload-file

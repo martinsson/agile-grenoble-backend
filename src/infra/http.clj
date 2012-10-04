@@ -10,6 +10,7 @@
 (defroutes main-routes
   (GET "/askdfjasfasklfhasncvjkjfefdkfjksjfslkdjfnrefnedksfjhvn" [] (u/render (u/index)))
   (GET "/program" [] (u/render (u/sample)))
+  (GET "/inclusion" [] (u/render (u/inclusion)))
   (GET ["/json/program-summary-with-roomlist"] whatever (h/h-program-summary-with-roomlist h/local-file-loader whatever))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
