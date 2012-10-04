@@ -1,0 +1,64 @@
+.program {
+    font-size: x-small;
+    text-align: center;
+    border: 1px solid black;
+    border-bottom: none;
+    border-right: none;
+}
+
+.program td {
+    vertical-align: top;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0 0.5em 0.5em 0.5em;
+    margin: 0;
+}
+
+.plenary {
+    text-align: center;
+    background-color: lavender;
+}
+
+.keynote {
+    background-color: pink;
+    font-weight: bold;
+}
+
+.sponsor {
+    background-color: goldenrod;
+}
+
+.session_title {
+    display: block;
+}
+
+.session_speakers {
+    font-style: italic;
+}
+
+.room_desc {
+    font-weight: bold;
+    background-color: aliceblue;
+}
+
+.hour {
+    font-weight: bold;
+}
+
+#program_detail {
+    width: 960px;
+    margin: auto;
+}
+
+#program_detail .speaker {
+    font-weight: bold;
+    font-style: italic;
+}
+
+#program_detail h2 {
+    display: inline;
+}
+
+#program_detail .back_to_top {
+    font-size: xx-small;
+}
