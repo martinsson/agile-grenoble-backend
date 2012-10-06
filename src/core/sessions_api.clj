@@ -12,7 +12,7 @@
   (facts
     (slot-list) => [{1 "10:00", 2 "11:10", 3 "14:50", 4 "16:10", 5 "17:20"}])
 
-(defn sessions-for 
+(defn session-list-for 
   ([session-maps slot]
   (let [reduce-keys #(select-keys % [:id :title :slot :room :speakers :type])
         found-sessions (filter #(= slot (% :slot)) session-maps)] 
@@ -20,22 +20,32 @@
               (assoc-in s [:start-time] (slot-list-basic (Integer/valueOf (:slot s)))) ))))
 
   (facts "find the sessions for a given slot"
-    (sessions-for [{:slot 3} 
+    (session-list-for [{:slot 3} 
                    {:slot 2 :id 55}] 
                   2) => (just [(contains {:slot 2 :id 55})])
-    (sessions-for [{:slot 3}
+    (session-list-for [{:slot 3}
                    {:slot 4 :id 55}
                    {:slot 4 :id 77}] 
                   4) => (just [(contains {:slot 4 :id 55})
                                (contains {:slot 4 :id 77})]))
 
   (facts "filters keys"
-     (sessions-for [{"key to remove" "toto" 
+     (session-list-for [{"key to remove" "toto" 
                      :id ..id.. :title ..title.. :slot "3" 
                      :room ..room.. :speakers ..sl..}] "3") 
      => (just [{:id ..id.. :title ..title.. :slot "3" :room ..room.. :speakers ..sl.. :start-time "14:50"}])
      :in-any-order)
   
+(defn get-slot [session-maps slot]
+  {:id slot 
+   :start-time (slot-list-basic (Integer/valueOf slot)) 
+   :sessions (session-list-for session-maps slot)})
+
+  (facts "current-sessions provides an id, start-time and list of slots"  
+    (get-slot ..maps.. "2") => (contains {:id "2" :start-time "11:10"})
+    (get-slot ..maps.. "5") => (contains {:sessions ..sessions..})
+    (provided (session-list-for ..maps.. "5") => ..sessions..))
+
 (defn get-session 
   ([session-maps id]
   (first (filter #(= id (% :id)) session-maps))))
