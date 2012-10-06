@@ -35,7 +35,7 @@
   (facts "provides a slot-list, sessions for a given slot and details of a session"
         (app {:uri "/jsonp/slot-list" :request-method :get}) 
         => (contains {:status 200 :body not-empty})
-        (app {:uri "/jsonp/session-list-for-slot/3" :request-method :get}) 
+        (app {:uri "/jsonp/sessions-for-slot/3" :request-method :get}) 
         => (contains {:status 200 :body not-empty})
         (app {:uri "/jsonp/session/7" :request-method :get}) 
         => (contains {:status 200 :body not-empty}))
@@ -43,7 +43,7 @@
   (facts "uses the callback query parameter to wrap the json"
         (app {:query-string "callback=myMethod" :uri "/jsonp/slot-list" :request-method :get}) 
         => (contains {:body (has-prefix "myMethod")})
-        (app {:query-string "callback=someOtherMethod" :uri "/jsonp/session-list-for-slot/2" :request-method :get}) 
+        (app {:query-string "callback=someOtherMethod" :uri "/jsonp/sessions-for-slot/2" :request-method :get}) 
         => (contains {:body (has-prefix "someOtherMethod")})
         (app {:query-string "callback=aThirdMethod" :uri "/jsonp/session/17" :request-method :get}) 
         => (contains {:body (has-prefix "aThirdMethod")}))

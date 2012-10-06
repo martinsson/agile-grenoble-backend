@@ -138,7 +138,8 @@ function format_session_detail(session) {
     session_html += '</h2>';
     session_html += ' <a href="#program_head" class="back_to_top">Retour au programme</a>';    
     session_html += '<p class="logistic">'+session['room']+' - '+session['format']+'</p>';
-    session_html += '<p class="abstract">'+session['abstract']+'</p>';
+    session_html += '<p class="abstract"><b>Résumé : </b>'+session['abstract']+'</p>';
+    session_html += '<p class="abstract"><b>Bénéfices pour les participants : </b>'+session['benefits']+'</p>';
     session_html += '<p class="speaker">'+session['speakers'].join(', ')+'</p>';
     
     return session_html;
