@@ -100,7 +100,7 @@
 (defn add-non-session-data [[s1 s2 s3 s4 s5]]
   (let [non-sessions  [{:title "Accueil des participants autour d'un café" :type :arrival}
                        {:title "Session Plénière: le mot des organisateurs & Sogilis" :type :sponsor}
-                       {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"] :type :keynote}
+                       {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adzic"] :type :keynote}
                        {:title "Repas" :type :meal} 
                        {:title "Session Plénière: le mot des organisateurs & Samse" :type :sponsor}
                        {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"] :type :keynote}
@@ -126,7 +126,7 @@
 (future-fact "adds keynotes, coffe breaks, lunch to slots"
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [{"all" (contains {:title "Accueil des participants autour d'un café"})}
                                                    {"all" (contains {:title "Session Plénière: le mot des organisateurs & Sogilis"})}
-                                                   {"all" (contains {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adciz"]})}])
+                                                   {"all" (contains {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adzic"]})}])
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) 
       => (contains [..s2.. 
                     {"all" (contains {:title "Repas"})} 
