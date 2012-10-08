@@ -1,5 +1,10 @@
+.program_all {
+	color: #666;
+	font-family: trebuchet, sans-serif;
+}
+
 .program {
-    font-size: x-small;
+    font-size: small;
     text-align: center;
     border: 1px solid black;
     border-bottom: none;
@@ -46,7 +51,7 @@
 }
 
 #program_detail {
-    width: 960px;
+	width: 960px;
     margin: auto;
 }
 
