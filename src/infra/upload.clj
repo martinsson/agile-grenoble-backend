@@ -1,8 +1,7 @@
 (ns infra.upload
   (:use [net.cgrand.enlive-html :only [deftemplate]]
         [clojure.java.io :only (file copy)]
-        [infra.handlers :only (session-maps decorate-sessions local-file)]
-        [core.program-import :only (keep-retained)]))
+        [infra.handlers :only (session-maps smaps)]))
   
 (defn render [t]
       (apply str t))
@@ -17,6 +16,6 @@
   (copy 
     (f-data :tempfile)
     local-file)
-  (dosync ref-set session-maps (keep-retained (decorate-sessions local-file)))
+  (dosync ref-set smaps (session-maps))
   (render (upload-success)))
 

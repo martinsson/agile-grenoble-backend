@@ -12,8 +12,9 @@
        (pi/assemble-speakers (pi/normalized-sessions csv-resource)))))
 
 (defn session-maps [] (pi/keep-retained (decorate-sessions local-file)))
-(defn session-list-for [slot] (sa/session-list-for (session-maps) slot))
-(defn get-session [id] (sa/get-session (session-maps) id))
+(def smaps (ref (session-maps)))
+(defn session-list-for [slot] (sa/session-list-for @smaps slot))
+(defn get-session [id] (sa/get-session @smaps id))
 
 (defn all-slots-with-rooms [csv-file] 
   (let [sessions (pi/normalized-sessions csv-file)
@@ -21,11 +22,10 @@
         body     (rest sessions)
         roomidx  (.indexOf (vec header) :room)
         index-by-room #(zipmap (map :room %) %)
-        s-maps (pi/keep-retained (decorate-sessions csv-file))
-        slots    (for [slot (range 1 6)] (sa/session-list-for s-maps (str slot)))]
+        slots    (for [slot (range 1 6)] (sa/session-list-for @smaps (str slot)))]
     {:rooms (filter not-empty (set (map #(nth % roomidx) body)))
      :slots (pi/add-non-session-data (map index-by-room slots))
-     :sessions (into {} (for [s s-maps] {(s :id) s}))}))
+     :sessions (into {} (for [s @smaps] {(s :id) s}))}))
 
   (facts "returns a roomlist"
          (all-slots-with-rooms local-file) =>
@@ -82,12 +82,12 @@
       (update-in response [:body] json/generate-string))))
 
 (defn h-session-list-for [slot callback] 
-  (-> (partial response-map (sa/session-list-for (session-maps)  slot))
+  (-> (partial response-map (sa/session-list-for @smaps slot))
      (json-encode)
      (wrap-with-jsonp callback)))
 
 (defn h-get-slot [slot callback] 
-  (-> (partial response-map (sa/get-slot (session-maps) slot))
+  (-> (partial response-map (sa/get-slot @smaps slot))
      (json-encode)
      (wrap-with-jsonp callback)))
 
@@ -97,7 +97,7 @@
      (wrap-with-jsonp callback)))
 
 (defn h-get-session [session-id callback] 
-  (-> (partial response-map (sa/get-session (session-maps) session-id))
+  (-> (partial response-map (sa/get-session @smaps session-id))
      (json-encode)
      (wrap-with-jsonp callback)))
 
