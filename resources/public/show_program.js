@@ -91,7 +91,7 @@ function format_plenary(session_html, slot) {
         if (session.type == 'keynote') {
             it_was_keynote = true;
         }
-        session_html += '<td colspan="9" class="plenary '+session.type+'">'+format_session(session)+'</td>';
+        session_html += '<td colspan="9" class="plenary '+session.type+'">'+format_session(session, it_was_keynote)+'</td>';
     });
     $('#program_content').append('<tr>'+session_html+'</tr>');
 
@@ -117,9 +117,12 @@ function prefill_empty_cells(session_html, slot_id) {
     $('#program_content').append('<tr>'+session_html+'</tr>');    
 }
 
-function format_session(session) {
+function format_session(session, keynote) {
     var session_title = '<span class="session_title">'+session['title']+'</span> ';
     var session_url   = session_title;
+    if (keynote) {
+	session_url = '<a href="http://2012.agile-grenoble.org/keynote">'+session_title+'</a>';
+    }
     if (session.id) {
         session_url = '<a href="#session_detail_'+session['id']+'">'+session_title+'</a>';
     }
