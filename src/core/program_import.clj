@@ -73,6 +73,7 @@
                               ["1" "" "" "Alexandre" "Boutin" "" ""]])   
           => [[:speakers :id :firstname :lastname :firstname :lastname :firstname :lastname]
               [["Alexandre Boutin"] "1"  "" "" "Alexandre" "Boutin"  "" "" ]]  )
+
 (defn sessions-as-maps [parsed-csv]
   (let [header (first parsed-csv)
         body   (rest parsed-csv)
@@ -92,7 +93,7 @@
 (defn keep-retained [parsed-csv]
   (filter (comp not-empty :retained) (sessions-as-maps parsed-csv)))
 
-(fact "retains only sessions marked as such"
+  (fact "retains only sessions marked as such"
       (keep-retained ..csv..) => [{:title "happy scrumming" :retained "x"}]
       (provided (sessions-as-maps ..csv..) => [{:title "happy XP" :retained ""}
                                               {:title "happy scrumming" :retained "x"}]))
@@ -108,20 +109,7 @@
                        {:title "Apéro offert par le Club Agile Rhone Alpes" :type :apero}
                        {:title "Fin de journée" :type :departure}]
         [arr sp1 kn1 meal sp2 kn2 cafe apero dep] (for [ns non-sessions] {"all" ns})]
-    [arr
-     sp1
-     kn1
-     s1
-     s2
-     meal
-     sp2
-     kn2
-     s3
-     cafe
-     s4
-     s5
-     apero
-     dep]))
+    [arr sp1 kn1 s1 s2 meal sp2 kn2 s3 cafe s4 s5 apero dep]))
 
 (future-fact "adds keynotes, coffe breaks, lunch to slots"
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [{"all" (contains {:title "Accueil des participants autour d'un café"})}
