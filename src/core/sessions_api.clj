@@ -46,13 +46,30 @@
     (get-slot ..maps.. "5") => (contains {:sessions ..sessions..})
     (provided (session-list-for ..maps.. "5") => ..sessions..))
 
-(defn get-session 
+(defn- get-session-simple 
   ([session-maps id]
   (first (filter #(= id (% :id)) session-maps))))
 
-  (facts
+;; remove this wrapper when we handle the 120min sessions better
+(defn get-session 
+  ([session-maps id]
+  (let [session (get-session-simple session-maps id)
+        second-id  (:2nd-id session)] 
+    (if (empty? second-id)
+      session
+      (get-session-simple session-maps second-id) ;it is a 2nd part session, get the real one
+      ))))
+
+
+  (facts "it gets a session based on its id"
     (get-session [{:id ..id.. :title "Hej"}] ..id..) => {:id ..id.. :title "Hej"}
     (get-session [{:id ..id1.. :title "Hej"}
                   {:id ..id2.. :title "Hopp"}
                   {:id ..id3.. :title "Daa"}] ..id2..) => {:id ..id2.. :title "Hopp"})
+  
+  (fact "it handles the 2nd part sessions"
+    (get-session [{:id "22" :title "le must"}
+                  {:id "99" :2nd-id "22"}] "99") => {:id "22" :title "le must"}
+    (get-session [{:id "22" :title "le must"}
+                  {:id "99" :2nd-id "" :title "CI for dummies"}] "99") => (contains {:id "99" :title "CI for dummies"}))
 

@@ -16,7 +16,8 @@
                      "Nom | Last Name" :lastname
                      "Retenu = x" :retained
                      "room" :room
-                     "Bio | Biography" :bio})
+                     "Bio | Biography" :bio
+                     "2nd part of" :2nd-id})
 
 (defn normalize-headers [parsed-csv]
   (let [header              (first parsed-csv)
