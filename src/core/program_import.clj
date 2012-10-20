@@ -81,14 +81,17 @@
           (map #(cons (speaker-map speaker-keys pos-matrix %) %) body))))
   
 
-(defn assemble-speakers [session-maps] 
-  (let [fullname (fn [speaker] (clojure.string/join " " [(:firstname speaker) (:lastname speaker)]))
-        filter-blank (partial filter (complement clojure.string/blank?))
-        assemble-speakers-session (fn [session] (assoc-in session [:speakers] 
-                                                          (filter-blank (map fullname (:speaker-list session)))))
-        ]
-    (map assemble-speakers-session session-maps)))
+(defn add-speaker-fullnames [session] 
+  (let [fullname (fn [{:keys [firstname lastname]}] (clojure.string/join " " [firstname lastname]))
+        filter-blank (partial filter (complement clojure.string/blank?))]
+    (assoc-in session [:speakers] 
+               (filter-blank (map fullname (:speaker-list session))))))
           
+  (fact "appends element :speakers that contains the fullname of all speakers"
+    (add-speaker-fullnames {:title "whatever" :speaker-list [{:firstname "jean-claude" :lastname "dusse"}]})
+    => {:title "whatever" 
+        :speaker-list [{:firstname "jean-claude" :lastname "dusse"}]
+        :speakers ["jean-claude dusse"]})
 
 (defn sessions-as-maps [parsed-csv]
   (let [header (first parsed-csv)
