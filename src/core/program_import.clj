@@ -48,6 +48,31 @@
           (provided (parse-csv anything) => [["id" "Titre de la session | Title"]
                                              ["1"  "kanban pour le mieux"]]))
 
+(defn indexes-of [col e]
+  ;returns all indexes of e in col
+  (keep-indexed #(if (= e %2) %1) col))
+(def speaker-keys [:firstname :lastname])
+(defn- speaker-map [keys pos-matrix line]
+  (let [vline (vec line)
+        value-map (for [s pos-matrix] (map vline s))]  
+    (map #(zipmap keys  %)  value-map)))
+
+(defn extract-speakers [csv keys]
+  (let [body           (rest csv)
+        header         (first csv)
+        pos-matrix     (apply map list (for [k keys] (indexes-of header k)))]
+    (map (partial speaker-map keys pos-matrix) body)))
+
+  (fact "it returns a list of map where the values are the successive positions of the given keys "
+        (extract-speakers [[:firstname :bio :firstname :bio]
+              ["johan" "de suede" "bernard" "des states"]
+              ["katia" "informaticienne" "aline" "graphiste"]] [:firstname :bio]) => [[{:bio "de suede" :firstname "johan"}
+                                                                  {:bio "des states" :firstname "bernard"}]
+                                                                  [{:bio "informaticienne" :firstname "katia"}
+                                                                   {:bio "graphiste" :firstname "aline"}]])
+  
+  
+
 ;; yuck! maybe it would be better to parse columns instead of lines
 ;; maybe I could extract some higher level logic like the fact that a csv has header/body,
 ;; that we insert something in the header/body like assoc-in, update-in. Perhaps protocols?
