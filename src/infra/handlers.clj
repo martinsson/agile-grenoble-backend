@@ -9,12 +9,13 @@
 (defn decorate-sessions 
   ([csv-resource] 
   (map reverse ;; todo remove hack to keep the first speaker when butterfly uses the speaker list 
-       (pi/assemble-speakers (pi/normalized-sessions csv-resource)))))
+       (pi/append-speaker-maps (pi/assemble-speakers (pi/normalized-sessions csv-resource))))))
 
 (defn session-maps [] (pi/keep-retained (decorate-sessions local-file)))
 (def smaps (ref (session-maps)))
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
 (defn get-session [id] (sa/get-session @smaps id))
+
 
 (defn all-slots-with-rooms [csv-file] 
   (let [sessions (pi/normalized-sessions csv-file)

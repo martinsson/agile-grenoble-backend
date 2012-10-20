@@ -15,7 +15,8 @@
                      "Prénom | First Name" :firstname
                      "Nom | Last Name" :lastname
                      "Retenu = x" :retained
-                     "room" :room})
+                     "room" :room
+                     "Bio | Biography" :bio})
 
 (defn normalize-headers [parsed-csv]
   (let [header              (first parsed-csv)
@@ -51,7 +52,7 @@
 (defn indexes-of [col e]
   ;returns all indexes of e in col
   (keep-indexed #(if (= e %2) %1) col))
-(def speaker-keys [:firstname :lastname])
+(def speaker-keys [:firstname :lastname :bio])
 (defn- speaker-map [keys pos-matrix line]
   (let [vline (vec line)
         value-map (for [s pos-matrix] (map vline s))]  
@@ -71,6 +72,12 @@
                                                                   [{:bio "informaticienne" :firstname "katia"}
                                                                    {:bio "graphiste" :firstname "aline"}]])
   
+(defn append-speaker-maps [normalized-csv]
+  (let [body           (rest normalized-csv)
+        header         (first normalized-csv)
+        pos-matrix     (apply map list (for [k speaker-keys] (indexes-of header k)))]
+    (cons (cons :speaker-list header)
+          (map #(cons (speaker-map speaker-keys pos-matrix %) %) body))))
   
 
 ;; yuck! maybe it would be better to parse columns instead of lines
