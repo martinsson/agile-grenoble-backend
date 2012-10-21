@@ -1,17 +1,35 @@
 (ns infra.http  
   (:use midje.sweet
         [compojure.core :only (GET POST defroutes)])
-  (:require [infra.upload :as u] 
+  (:require [clojure.java.io :as io] 
+            [infra.upload :as u] 
             [infra.handlers :as h] 
             [compojure.route :as route]
             [compojure.handler :as handler]
-            (ring.middleware [multipart-params :as mp])))
-;(alter-var-root #'midje.semi-sweet/*include-midje-checks* (constantly false))
+            (ring.middleware [multipart-params :as mp])
+            [cemerick.friend :as friend]
+            (cemerick.friend [workflows :as workflows]
+                             [credentials :as creds])))
+(alter-var-root #'midje.semi-sweet/*include-midje-checks* (constantly false))
 
+(defn load-props
+  [file-name]
+  (with-open [^java.io.Reader reader (io/reader file-name)] 
+    (let [props (java.util.Properties.)]
+      (.load props reader)
+      (into {} (for [[k v] props] [k v])))))
+
+(def creds (load-props (str (System/getProperty "user.home") "/.sessions/credentials.properties")))
+(def users {"admin" {:username "admin"
+                    :password (creds/hash-bcrypt (creds "admin"))
+                    :roles #{::admin}}})
+
+(def page-bodies {"/login" (u/login)})
 (defroutes main-routes
-  (GET "/askdfjasfasklfhasncvjkjfefdkfjksjfslkdjfnrefnedksfjhvn" [] (u/render (u/index)))
-  (GET "/program" [] (u/render (u/sample)))
-  (GET "/inclusion" [] (u/render (u/inclusion)))
+  (GET "/" [] 
+       (friend/authorize #{::admin} 
+                            (u/render (u/index))))
+(GET "/program" [] (u/render (u/sample)))
   (GET ["/json/program-summary-with-roomlist"] request  (h/h-program-summary-with-roomlist))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
@@ -25,11 +43,14 @@
   (GET "/jsonp/upcoming-sessions" [callback] (h/h-get-slot "4" callback))
   (mp/wrap-multipart-params 
      (POST "/upload/sessions-csv" {params :params} (u/upload-file (params :file))))
+  (GET "/login" request (page-bodies (:uri request)))
   (route/resources "/")
   (route/not-found "Page not found"))
 
 (def app
   (-> main-routes
+    (friend/authenticate {:credential-fn (partial creds/bcrypt-credential-fn users)
+                          :workflows [(workflows/interactive-form)]})
     (handler/site)))
 
   (facts "provides a slot-list, sessions for a given slot and details of a session"
