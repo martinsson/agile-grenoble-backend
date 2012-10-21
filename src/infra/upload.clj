@@ -1,7 +1,7 @@
 (ns infra.upload
   (:use [net.cgrand.enlive-html :only [deftemplate]]
         [clojure.java.io :only (file copy)]
-        [infra.handlers :only (session-maps smaps local-file)]
+        [infra.handlers :only (session-maps-file smaps local-file)]
         hiccup.element 
         hiccup.form
         [hiccup.page :only [include-css html5 ]]))
@@ -55,6 +55,13 @@ Ici             : Choose file → Submit"]]
   (copy 
     (f-data :tempfile)
     local-file)
-  (dosync ref-set smaps (session-maps))
+  ;cant get my head around refs, smaps != new-smaps after dosync, this shit prints:
+  ;45
+  ;2 45
+  (let [tmpfile (f-data :tempfile)
+        new-smaps (session-maps-file tmpfile)]
+      (println (count (dosync ref-set smaps new-smaps)))
+      (println (count @smaps) (count new-smaps)))
+  
   (render (upload-success)))
 

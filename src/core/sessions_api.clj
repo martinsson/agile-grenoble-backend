@@ -53,6 +53,7 @@
 ;; remove this wrapper when we handle the 120min sessions better
 (defn get-session 
   ([session-maps id]
+    (clojure.pprint/pprint session-maps)
   (let [session (get-session-simple session-maps id)
         second-id  (:2nd-id session)] 
     (if (empty? second-id)
