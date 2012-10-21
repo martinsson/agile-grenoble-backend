@@ -24,23 +24,7 @@
   <li><a href="json/program-summary-with-roomlist">json : list of slots </a> (slot = list of sessions, session = map with keys, title, slot, room, ...)</li>
   </div>
   <div>
-      <h3>Mettre à jour le fichier des sessions</h3>
-      <pre>
-        La référence est le formulaire de soumissions Google doc
-
-        Faire les nos modifs sur le google doc.
-	        Ex inverser deux sessions : Il y a une colonne “slot”, il faut inverser les valeurs
-	        Ex Changer de salle : il y a une colonne “room”, il faut la changer
-	        Ex Annuler une session : il y a une colonne “Retenu = x” dont la valeur est x pour les sessions retenus.
-
-        docs.google.com : File → Download as → csv
-        Ici             : Choose file → Submit
-
-        </pre>
-        <form action="/upload/sessions-csv" method="post" enctype="multipart/form-data">
-	    <input name="file" type="file" size="20" />
-	    <input type="submit" name="submit" value="submit" />
-	  </form>
+      <h3><a href="/upload">Mettre à jour le fichier des sessions</a></h3>
   </div>
 </body>
 </html>
