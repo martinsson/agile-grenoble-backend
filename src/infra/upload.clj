@@ -50,18 +50,15 @@ Ici             : Choose file → Submit"]]
      [:div.upload
        (upload-form)  ]])))
 
+(def i (ref 2))
+(defn addi [j]
+  (+ @i j))
+(println (addi 4))
+
 (defn upload-file
   [f-data]
-  (copy 
-    (f-data :tempfile)
-    local-file)
-  ;cant get my head around refs, smaps != new-smaps after dosync, this shit prints:
-  ;45
-  ;2 45
-  (let [tmpfile (f-data :tempfile)
-        new-smaps (session-maps-file tmpfile)]
-      (println (count (dosync ref-set smaps new-smaps)))
-      (println (count @smaps) (count new-smaps)))
-  
+  (let [tmpfile (f-data :tempfile)]
+    (copy tmpfile local-file)
+    (dosync (ref-set smaps (session-maps-file tmpfile))))
   (render (upload-success)))
 
