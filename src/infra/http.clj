@@ -27,7 +27,8 @@
 (def page-bodies {"/login" (u/login)})
 (defroutes main-routes
   (GET "/" [] (u/render (u/index)))
-(GET "/program" [] (u/render (u/sample)))
+  (GET "/askdfjasfasklfhasncvjkjfefdkfjksjfslkdjfnrefnedksfjhvn" [] (u/render (u/index)))
+  (GET "/program" [] (u/render (u/sample)))
   (GET ["/json/program-summary-with-roomlist"] request  (h/h-program-summary-with-roomlist))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
