@@ -50,11 +50,6 @@ Ici             : Choose file → Submit"]]
      [:div.upload
        (upload-form)  ]])))
 
-(def i (ref 2))
-(defn addi [j]
-  (+ @i j))
-(println (addi 4))
-
 (defn upload-file
   [f-data]
   (let [tmpfile (f-data :tempfile)]
