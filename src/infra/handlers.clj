@@ -15,7 +15,7 @@
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
 (defn get-session [id] (sa/get-session @smaps id))
 
-(defn all-slots-with-rooms [csv-file] 
+(defn all-slots-with-rooms-and-sessions [csv-file] 
   (let [sessions (pi/normalized-sessions csv-file)
         header   (first sessions)
         body     (rest sessions)
@@ -25,6 +25,19 @@
     {:rooms (filter not-empty (set (map #(nth % roomidx) body)))
      :slots (pi/add-non-session-data (map index-by-room slots))
      :sessions (into {} (for [s @smaps] {(s :id) s}))}))
+
+(defn all-slots-with-rooms [csv-file] 
+  (let [sessions (pi/normalized-sessions csv-file)
+        header   (first sessions)
+        body     (rest sessions)
+        roomidx  (.indexOf (vec header) :room)
+        index-by-room #(zipmap (map :room %) %)
+        slots    (for [slot (range 1 6)] (sa/session-list-for @smaps (str slot)))]
+    {:rooms (filter not-empty (set (map #(nth % roomidx) body)))
+     :slots (pi/add-non-session-data (map index-by-room slots))}))
+
+(defn all-sessions [] 
+  {:sessions (into {} (for [s @smaps] {(s :id) s}))})
 
 
   (facts "returns a roomlist"
@@ -102,6 +115,16 @@
      (wrap-with-jsonp callback)))
 
 (defn h-program-summary-with-roomlist []  
+  (-> (partial response-map (all-slots-with-rooms-and-sessions local-file))
+     (json-encode)
+     (wrap-with-content-type-json)))
+
+(defn h-program-summary []  
   (-> (partial response-map (all-slots-with-rooms local-file))
+     (json-encode)
+     (wrap-with-content-type-json)))
+
+(defn h-program-detail []  
+  (-> (partial response-map (all-sessions))
      (json-encode)
      (wrap-with-content-type-json)))

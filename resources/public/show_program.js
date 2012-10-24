@@ -31,12 +31,27 @@ var slot_hours = [
 ];
 
 $.ajax({
-    url:'json/program-summary-with-roomlist',
+    url:'json/program-summary',
     success: function (p) {
         format_program(p);
     }
 }
 );
+$.ajax({
+	url:'json/program-detail',
+	success: function (p) {
+		format_detail(p);
+	}
+}
+);
+
+function format_detail(session_details) {
+    $.each(session_details["sessions"], function(session_id, session) {
+        if (session_id) {
+            $('#program_detail').append('<div>'+format_session_detail(session)+'</div>');
+        }
+    });
+}
 
 function format_program(program) {
     var slot_id = 0;
@@ -57,11 +72,6 @@ function format_program(program) {
         slot_id++;
     });
     
-    $.each(program["sessions"], function(session_id, session) {
-        if (session_id) {
-            $('#program_detail').append('<div>'+format_session_detail(session)+'</div>');
-        }
-    });
 }
 
 function format_slot(slot_id, slot, session_html) {

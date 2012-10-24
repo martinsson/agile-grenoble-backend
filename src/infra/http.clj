@@ -22,6 +22,8 @@
   (GET "/program" [] (u/render (u/sample)))
   (GET "/login" request (page-bodies (:uri request)))
   (GET ["/json/program-summary-with-roomlist"] request  (h/h-program-summary-with-roomlist))
+  (GET ["/json/program-summary"] request  (h/h-program-summary))
+  (GET ["/json/program-detail"] request  (h/h-program-detail))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
        [callback id] (h/h-get-session id callback))
