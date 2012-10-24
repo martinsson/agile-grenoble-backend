@@ -143,7 +143,9 @@ function format_session_detail(session) {
     session_html += '<p class="logistic">'+session['room']+' - '+session['format']+'</p>';
     session_html += '<p class="abstract"><b>Résumé : </b>'+session['abstract']+'</p>';
     session_html += '<p class="abstract"><b>Bénéfices pour les participants : </b>'+session['benefits']+'</p>';
-    session_html += '<p class="speaker">'+session['speakers'].join(', ')+'</p>';
-    
+    $.each(session['speaker-list'], function (id, speaker) {
+        session_html += '<p class="speaker">'+[speaker['firstname'], speaker['lastname']].join(', ')+'</p>';
+        session_html += '<p class="speaker_bio">'+speaker['bio']+'</p>'
+    })
     return session_html;
 }
