@@ -144,8 +144,11 @@ function format_session_detail(session) {
     session_html += '<p class="abstract"><b>Résumé : </b>'+session['abstract']+'</p>';
     session_html += '<p class="abstract"><b>Bénéfices pour les participants : </b>'+session['benefits']+'</p>';
     $.each(session['speaker-list'], function (id, speaker) {
-        session_html += '<p class="speaker">'+[speaker['firstname'], speaker['lastname']].join(', ')+'</p>';
-        session_html += '<p class="speaker_bio">'+speaker['bio']+'</p>'
+        session_html += '<p class="speaker">'
+        session_html += '<span class="speaker_name">'+[speaker['firstname'], speaker['lastname']].join(', ')+' </span>';
+        if 	(speaker['bio'] != "")	session_html += ' : '+speaker['bio']+''
+        session_html += '</p>'
+        session_html += '<br/>' //wtf get rid of this
     })
     return session_html;
 }

@@ -56,8 +56,12 @@
 }
 
 #program_detail .speaker {
+    width: 800px;
+    margin: auto
+}
+
+#program_detail .speaker_name {
     font-weight: bold;
-    font-style: italic;
 }
 
 #program_detail h2 {
