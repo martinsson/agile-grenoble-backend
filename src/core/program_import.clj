@@ -53,11 +53,18 @@
 (defn indexes-of [col e]
   ;returns all indexes of e in col
   (keep-indexed #(if (= e %2) %1) col))
+
 (def speaker-keys [:firstname :lastname :bio])
 (defn- speaker-map [keys pos-matrix line]
-  (let [vline (vec line)
-        value-map (for [s pos-matrix] (map vline s))]  
-    (map #(zipmap keys  %)  value-map)))
+  (let [vline        (vec line)
+        value-map    (for [s pos-matrix] (map vline s))
+        speaker-data (remove (partial every? empty?) value-map)]  
+    (map (partial zipmap keys) speaker-data)))
+
+  (fact "it removes any empty maps"
+        (speaker-map [:f :l] [[0 1] [2 3] [4 5]] ["m" "woo" "" "" "n" "foo"])
+        => [{:f "m" :l "woo"} 
+            {:f "n" :l "foo"}])
 
 (defn extract-speakers [csv keys]
   (let [body           (rest csv)
@@ -65,7 +72,9 @@
         pos-matrix     (apply map list (for [k keys] (indexes-of header k)))]
     (map (partial speaker-map keys pos-matrix) body)))
 
-  (fact "it returns a list of map where the values are the successive positions of the given keys "
+  (fact 
+    "for every line in the csv returns a list of maps with the specified keys, \n
+the number of elements is the number of repetitions of the keys"
         (extract-speakers [[:firstname :bio :firstname :bio]
               ["johan" "de suede" "bernard" "des states"]
               ["katia" "informaticienne" "aline" "graphiste"]] [:firstname :bio]) => [[{:bio "de suede" :firstname "johan"}
