@@ -15,37 +15,33 @@
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
 (defn get-session [id] (sa/get-session @smaps id))
 
-(defn all-slots-with-rooms [csv-file] 
-  (let [sessions (pi/normalized-sessions csv-file)
-        header   (first sessions)
-        body     (rest sessions)
-        roomidx  (.indexOf (vec header) :room)
+(defn all-slots-with-rooms [] 
+  (let [header   (keys (first @smaps))
         index-by-room #(zipmap (map :room %) %)
         slots    (for [slot (range 1 6)] (sa/session-list-for @smaps (str slot)))]
-    {:rooms (filter not-empty (set (map #(nth % roomidx) body)))
+    {:rooms (filter not-empty (set (map :room @smaps)))
      :slots (pi/add-non-session-data (map index-by-room slots))
      :sessions (into {} (for [s @smaps] {(s :id) s}))}))
 
-
   (facts "returns a roomlist"
-         (all-slots-with-rooms local-file) =>
+         (all-slots-with-rooms) =>
          (contains {:rooms ["Auditorium" "Kilimanjaro 1" "Mont Blanc 1" "Kilimanjaro 3" "Mont Blanc 4" "Everest" "Cervin" "Mont Blanc 3+2" "Makalu"]}))
   (facts "returns a list of slots, indexed by room"
-         (all-slots-with-rooms local-file) =>
+         (all-slots-with-rooms) =>
          (contains {:slots (contains (contains {"Auditorium" not-empty
                                       "Mont Blanc 1" not-empty}))}))
   (facts "there are 9 rooms"
-         (count (:rooms (all-slots-with-rooms local-file))) =>
+         (count (:rooms (all-slots-with-rooms))) =>
          9) 
   (facts ":sessions is an indexed list of all sessions"
-         (all-slots-with-rooms local-file) => 
+         (all-slots-with-rooms) => 
          (contains {:sessions anything})
-         (:sessions (all-slots-with-rooms local-file)) => 
+         (:sessions (all-slots-with-rooms)) => 
          (contains {"3" anything}))
 
   (future-facts "adapt to all-slots-with-rooms : returns a list of slots with a list of sessions"
-         (first (nth (all-slots-with-rooms local-file) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
-         (count (all-slots-with-rooms local-file)) => 14)
+         (first (nth (all-slots-with-rooms) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
+         (count (all-slots-with-rooms)) => 14)
 
 (defn response-map [arg request]
   {:status 200 :body arg})
@@ -102,6 +98,6 @@
      (wrap-with-jsonp callback)))
 
 (defn h-program-summary-with-roomlist []  
-  (-> (partial response-map (all-slots-with-rooms local-file))
+  (-> (partial response-map (all-slots-with-rooms))
      (json-encode)
      (wrap-with-content-type-json)))

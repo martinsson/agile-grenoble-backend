@@ -32,10 +32,10 @@
        [callback slot] (h/h-get-slot slot callback))
   (GET "/jsonp/current-sessions" [callback] (h/h-get-slot "3" callback))
   (GET "/jsonp/upcoming-sessions" [callback] (h/h-get-slot "4" callback))
-  (GET "/upload" [] (friend/authorize #{::admin} (u/upload)))
+  (GET "/upload" [] (friend/authorize #{:admin} (u/upload)))
   (mp/wrap-multipart-params 
      (POST "/upload/sessions-csv" {params :params} 
-           (friend/authorize #{::admin} (u/upload-file (params :file)))))
+           (friend/authorize #{:admin} (u/upload-file (params :file)))))
   (route/resources "/")
   (route/not-found "Page not found"))
 

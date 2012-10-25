@@ -12,5 +12,4 @@
 (def creds (load-props (str (System/getProperty "user.home") "/.sessions/credentials.properties")))
 (def users {"admin" {:username "admin"
                     :password (creds/hash-bcrypt (creds "admin"))
-                    :roles #{::admin}}})
-
+                    :roles #{:admin}}})
