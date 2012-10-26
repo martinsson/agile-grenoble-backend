@@ -22,14 +22,13 @@
     {:rooms (filter not-empty (set (map :room @smaps)))
      :slots (pi/add-non-session-data (map index-by-room slots))
      :sessions (into {} (for [s @smaps] {(s :id) s}))}))
-
   (facts "returns a roomlist"
          (all-slots-with-rooms) =>
-         (contains {:rooms ["Auditorium" "Kilimanjaro 1" "Mont Blanc 1" "Kilimanjaro 3" "Mont Blanc 4" "Everest" "Cervin" "Mont Blanc 3+2" "Makalu"]}))
+         (contains {:rooms (contains ["Auditorium" "Kilimanjaro 1" "Mont Blanc 3" "Kilimanjaro 3" "Mont Blanc 4" "Everest" "Cervin" "Mont Blanc 1+2" "Makalu"] :in-any-order) } ))
   (facts "returns a list of slots, indexed by room"
          (all-slots-with-rooms) =>
          (contains {:slots (contains (contains {"Auditorium" not-empty
-                                      "Mont Blanc 1" not-empty}))}))
+                                      "Mont Blanc 3" not-empty}))}))
   (facts "there are 9 rooms"
          (count (:rooms (all-slots-with-rooms))) =>
          9) 
