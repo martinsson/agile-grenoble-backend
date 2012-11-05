@@ -30,8 +30,8 @@
       [callback slot] (h/h-session-list-for slot callback))
   (GET ["/jsonp/get-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (h/h-get-slot slot callback))
-  (GET "/jsonp/current-sessions" [callback] (h/h-get-slot "3" callback))
-  (GET "/jsonp/upcoming-sessions" [callback] (h/h-get-slot "4" callback))
+  (GET "/jsonp/current-sessions" [callback] (h/h-current-slot callback))
+  (GET "/jsonp/upcoming-sessions" [callback] (h/h-upcoming-slot callback))
   (GET "/upload" [] (friend/authorize #{:admin} (u/upload)))
   (mp/wrap-multipart-params 
      (POST "/upload/sessions-csv" {params :params} 

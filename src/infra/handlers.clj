@@ -85,6 +85,12 @@
   (-> (partial response-map (sa/get-slot @smaps slot))
      (json-encode)
      (wrap-with-jsonp callback)))
+(defn h-current-slot [callback]
+  (h-get-slot (str (sa/current-slot-id)) callback))
+
+(defn h-upcoming-slot [callback]
+  (h-get-slot "4" callback))
+
 
 (defn h-slot-list [callback] 
   (-> (partial response-map (sa/slot-list))
