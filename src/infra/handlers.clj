@@ -2,6 +2,7 @@
   (:use midje.sweet)
   (:require [core.program-import :as pi]
             [core.sessions-api :as sa]
+            [core.current-sessions :as cs]
             [clj-json.core :as json]))
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
@@ -86,7 +87,7 @@
      (json-encode)
      (wrap-with-jsonp callback)))
 (defn h-current-slot [callback]
-  (h-get-slot (str (sa/current-slot-id)) callback))
+  (h-get-slot (str (cs/current-slot-id)) callback))
 
 (defn h-upcoming-slot [callback]
   (h-get-slot "4" callback))
