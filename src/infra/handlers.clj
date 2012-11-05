@@ -90,7 +90,7 @@
   (h-get-slot (str (cs/current-slot-id)) callback))
 
 (defn h-upcoming-slot [callback]
-  (h-get-slot "4" callback))
+  (h-get-slot (str (cs/upcoming-slot-id)) callback))
 
 
 (defn h-slot-list [callback] 
