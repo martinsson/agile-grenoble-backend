@@ -5,6 +5,7 @@
 ;TODO rename to butterfly api?
 
 (def time-slots ["10:00" "11:10" "14:50" "16:10" "17:20"])
+(def slot-list-basic (zipmap (iterate inc 1) time-slots))
 
 (defn slot-list []
   (list slot-list-basic))

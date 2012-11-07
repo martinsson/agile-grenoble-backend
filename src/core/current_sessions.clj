@@ -5,7 +5,6 @@
 
 (def time-slots2 [[10 0] [11 10] [14 50] [16 10] [17 20]])
 
-(def slot-list-basic (zipmap (iterate inc 1) sa/time-slots))
 
 (defn current-slot-vec [[h m]]
   (let [make-time   (fn [[h m]] (clj-time.core/date-time 0 1 1 h m))
