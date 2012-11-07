@@ -139,7 +139,11 @@ function format_session_detail(session) {
     var session_html = '<h2>';
     session_html += '<a id="session_detail_'+session['id']+'" name="session_detail_'+session['id']+'">'+session['title']+'</a>';
     session_html += '</h2>';
-    session_html += ' <a href="#program_head" class="back_to_top">Retour au programme</a>';    
+    session_html += ' <a href="#program_head" class="back_to_top">Retour au programme</a>';
+    slides = session.slides;
+    if (session.slides) {
+    	session_html += '<p class="slides"><a href="'+session.slides+'">support / slides</a></p>'
+    }
     session_html += '<p class="logistic">'+session['room']+' - '+session['format']+'</p>';
     session_html += '<p class="abstract"><b>Résumé : </b>'+session['abstract']+'</p>';
     session_html += '<p class="abstract"><b>Bénéfices pour les participants : </b>'+session['benefits']+'</p>';

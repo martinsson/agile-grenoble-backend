@@ -71,3 +71,7 @@
 #program_detail .back_to_top {
     font-size: xx-small;
 }
+
+#program_detail .slides {
+    font-size: small;
+}
