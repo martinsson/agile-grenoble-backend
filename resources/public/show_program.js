@@ -16,23 +16,63 @@ var slot_hours = [
     "8h30",
     "9h00",
     "10h00",
-    "10h50",
-    "11h10",
-    "12h00",
-    "13h35",
+    "(10h15)",
+    "(10h30)",
+    "10h45",
+    "11h05",
+    "(11h20)",
+    "(11h35)",
+    "11h50",
+    "13h20",
     "13h45",
+    "14h30",
     "14h50",
-    "15h40",
-    "16h10",
-    "17h00",
-    "17h20",
-    "18h30",
-    "20h30"
+    "(15h05)",
+    "(15h20)",
+    "15h35",
+    "16h05",
+    "(16h20)",
+    "(16h35)",
+    "16h50",
+    "17h10",
+    "(17h25)",
+    "(17h40)",
+    "17h55",
+    "18h15",
 ];
+
+function times(n, callback) {
+  for(var i=0; i<n; i++) {
+    callback(i);
+  }
+}
+
+function deepCopy(object) {
+  return $.extend(true, {}, object);
+}
+
+var removal = [];
 
 $.ajax({
     url:'json/program-summary-with-roomlist',
     success: function (p) {
+        // FIXTURES START //////////////////
+        $.each([11, 10, 8, 4, 3], function(_, i) {
+          times(2, function() {
+            p.slots.splice(i, 0, deepCopy(p.slots[i]));
+          });
+        });
+        p.slots[4]['Makalu']['length'] = '2';
+        delete(p.slots[5]['Makalu']);
+        p.slots[6]['Cervin']['length'] = '3';
+        delete(p.slots[7]['Cervin']);
+        delete(p.slots[8]['Cervin']);
+        p.slots[12]['Auditorium']['length'] = '2';
+        delete(p.slots[13]['Auditorium']);
+        p.slots[19]['Everest']['length'] = '3';
+        delete(p.slots[20]['Everest']);
+        delete(p.slots[21]['Everest']);
+        // FIXTURES END ////////////////////
         format_program(p);
     }
 }
@@ -40,21 +80,24 @@ $.ajax({
 
 function format_program(program) {
     var slot_id = 0;
-    var previous_was_plenary = false;
+    var previous_non_plenary_slots = 0;
     $.each(program["slots"], function(islot, slot) {
-        if (!slot.all && !previous_was_plenary) {
+        if (!slot.all && previous_non_plenary_slots == 3) {
             $('#program_content').append(change_room(slot_id));
+            previous_non_plenary_slots = 0;
             slot_id++;
         }
 
         var session_html = get_hour_cell(slot_id);
         format_slot(slot_id, slot, session_html);
         
-        previous_was_plenary = false;
-        if (slot.all) {
-            previous_was_plenary = true;
+        if (! slot.all) {
+            previous_non_plenary_slots ++;
         }
         slot_id++;
+    });
+    $.each(removal, function(_, selector) {
+      $(selector).remove();
     });
     
     $.each(program["sessions"], function(session_id, session) {
@@ -71,6 +114,14 @@ function format_slot(slot_id, slot, session_html) {
         prefill_empty_cells(session_html, slot_id);
 
         $.each(slot, function (room, session) {
+            var rowspan = parseInt(session['length'] || 1);
+            if(rowspan > 1) {
+                $('#'+slot_id+'_'+room_map[room].id).attr('rowspan', rowspan);
+                times(rowspan - 1, function(n) {
+                    var selector = '#'+(parseInt(slot_id)+n+1)+'_'+room_map[room].id;
+                    removal.push(selector);
+                });
+            }
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
         });
     }
