@@ -57,21 +57,21 @@ $.ajax({
     url:'json/program-summary-with-roomlist',
     success: function (p) {
         // FIXTURES START //////////////////
-        $.each([11, 10, 8, 4, 3], function(_, i) {
-          times(2, function() {
-            p.slots.splice(i, 0, deepCopy(p.slots[i]));
-          });
-        });
-        p.slots[4]['Makalu']['length'] = '2';
-        delete(p.slots[5]['Makalu']);
-        p.slots[6]['Cervin']['length'] = '3';
-        delete(p.slots[7]['Cervin']);
-        delete(p.slots[8]['Cervin']);
-        p.slots[12]['Auditorium']['length'] = '2';
-        delete(p.slots[13]['Auditorium']);
-        p.slots[19]['Everest']['length'] = '3';
-        delete(p.slots[20]['Everest']);
-        delete(p.slots[21]['Everest']);
+        // $.each([11, 10, 8, 4, 3], function(_, i) {
+        //   times(2, function() {
+        //     p.slots.splice(i, 0, deepCopy(p.slots[i]));
+        //   });
+        // });
+        // p.slots[4]['Makalu']['length'] = '2';
+        // delete(p.slots[5]['Makalu']);
+        // p.slots[6]['Cervin']['length'] = '3';
+        // delete(p.slots[7]['Cervin']);
+        // delete(p.slots[8]['Cervin']);
+        // p.slots[12]['Auditorium']['length'] = '2';
+        // delete(p.slots[13]['Auditorium']);
+        // p.slots[19]['Everest']['length'] = '3';
+        // delete(p.slots[20]['Everest']);
+        // delete(p.slots[21]['Everest']);
         // FIXTURES END ////////////////////
         format_program(p);
     }
