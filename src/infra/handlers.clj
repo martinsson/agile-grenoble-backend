@@ -19,11 +19,12 @@
 (defn all-slots-with-rooms [] 
   (let [header   (keys (first @smaps))
         index-by-room #(zipmap (map :room %) %)
-        slots    (for [slot (range 1 6)] (sa/session-list-for @smaps (str slot)))
+        slots    (for [slot (range 1 30)] (sa/session-list-for @smaps (str slot)))
         all-slots (pi/add-non-session-data (map index-by-room slots))]
     {:rooms (filter not-empty (set (map :room @smaps)))
      :slots all-slots
-     :sessions (into {} (for [s @smaps] {(s :id) s}))}))
+     :sessions (into {} (for [s @smaps] {(s :id) s}))
+     }))
   (facts "returns a roomlist"
          (all-slots-with-rooms) =>
          (contains {:rooms (contains ["Auditorium" "Kilimanjaro 1" "Mont Blanc 3" "Kilimanjaro 3" "Mont Blanc 4" "Everest" "Cervin" "Mont Blanc 1+2" "Makalu"] :in-any-order) } ))
