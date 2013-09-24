@@ -3,12 +3,12 @@
         [compojure.core :only (GET POST defroutes)]
         [users.users :only (users)])
   (:require [clojure.java.io :as io] 
+            [cemerick.friend :as friend]
             [infra.upload :as u] 
             [infra.handlers :as h] 
             [compojure.route :as route]
             [compojure.handler :as handler]
             (ring.middleware [multipart-params :as mp])
-            [cemerick.friend :as friend]
             [cemerick.friend.workflows :as workflows]
             [cemerick.friend.credentials :as creds]))
 
