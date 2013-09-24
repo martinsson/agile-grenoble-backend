@@ -82,18 +82,8 @@ function format_program(program) {
     var slot_id = 0;
     var previous_non_plenary_slots = 0;
     $.each(program["slots"], function(islot, slot) {
-        if (!slot.all && previous_non_plenary_slots == 3) {
-            $('#program_content').append(change_room(slot_id));
-            previous_non_plenary_slots = 0;
-            slot_id++;
-        }
-
         var session_html = get_hour_cell(slot_id);
         format_slot(slot_id, slot, session_html);
-        
-        if (! slot.all) {
-            previous_non_plenary_slots ++;
-        }
         slot_id++;
     });
     $.each(removal, function(_, selector) {

@@ -128,18 +128,20 @@ the number of elements is the number of repetitions of the keys"
                                               {:title "happy scrumming" :retained "x"}]))
 
 (defn add-non-session-data [[s1 s2 s3 pause s5 s6 s7 s8 mug keynote2 chgmt s12 s13 s14 pause2 s16 s17 s18 chgmt2 s20 s21 s22]]
-  (let [non-sessions  [{:title "Accueil des participants autour d'un café" :type :arrival}
+  (let [non-sessions  [{:title "Accueil des participants autour d'un café" :type :non-session}
                        {:title "Session Plénière: le mot des organisateurs & Enalean" :type :sponsor}
                        {:title "Keynote : When Geek Leaks" :speakers ["Neal Ford"] :type :keynote}
                        {:title "Pause café" :type :cafe}
                        {:title "Repas" :type :meal} 
                        {:title "Session Plénière: le mot des organisateurs & Sogilis" :type :sponsor}
                        {:title "Keynote : Comment écrire des systèmes patrimoniaux" :speakers ["Pascal van Cauwenberghe"] :type :keynote}
+                       {:title "Changement de salle" :type :non-session}
                        {:title "Pause café" :type :cafe}
-                       {:title "Apéro offert par le Club Agile Rhone Alpes" :type :apero}
+                       {:title "Changement de salle" :type :non-session}
+                       {:title "Apéro offert par le Club Agile Rhone Alpes" :type :non-session}
                        {:title "Fin de journée" :type :departure}]
-        [arr sp1 kn1 cafe1 meal sp2 kn2 cafe2 apero dep] (for [ns non-sessions] {"all" ns})]
-    [arr sp1 kn1 s1 s2 s3 cafe1 s5 s6 s7 meal sp2 kn2 s12 s13 s14 cafe2 s16 s17 s18 s20 s21 s22 apero dep]))
+        [arr sp1 kn1 cafe1 meal sp2 kn2 ch_room1 cafe2 ch_room2 apero dep] (for [ns non-sessions] {"all" ns})]
+    [arr sp1 kn1 s1 s2 s3 cafe1 s5 s6 s7 meal sp2 kn2 ch_room1 s12 s13 s14 cafe2 s16 s17 s18 ch_room2 s20 s21 s22 apero dep]))
 
 (future-fact "adds keynotes, coffe breaks, lunch to slots"
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [{"all" (contains {:title "Accueil des participants autour d'un café"})}
