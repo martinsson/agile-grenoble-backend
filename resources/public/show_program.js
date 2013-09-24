@@ -2,11 +2,11 @@
 var room_map = {
     "Auditorium":{"id": 0, "capacity" : 530},
     "Makalu": {"id":1, "capacity" : 110},  
-    "Kilimanjaro 1": {"id":2, "capacity" : 55},
-    "Kilimanjaro 3": {"id":3, "capacity" : 55},
-    "Mont Blanc 3": {"id":4, "capacity" : 24},
-    "Mont Blanc 1+2": {"id":5, "capacity" : 55},
-    "Mont Blanc 4": {"id":6, "capacity" : 24},
+    "Kili 1+2": {"id":2, "capacity" : 55},
+    "Kili 3+4": {"id":3, "capacity" : 55},
+    "Mt-Blanc 1": {"id":4, "capacity" : 24},
+    "Mt-Blanc 2": {"id":5, "capacity" : 24},
+    "Mt-Blanc 3+4": {"id":6, "capacity" : 55},
     "Cervin": {"id":7, "capacity" : 40},
     "Everest": {"id":8, "capacity" : 40}
 };
