@@ -26,12 +26,12 @@
      :sessions (into {} (for [s @smaps] {(s :id) s}))
      }))
   (facts "returns a roomlist"
-         (all-slots-with-rooms) =>
-         (contains {:rooms (contains ["Auditorium" "Kilimanjaro 1" "Mont Blanc 3" "Kilimanjaro 3" "Mont Blanc 4" "Everest" "Cervin" "Mont Blanc 1+2" "Makalu"] :in-any-order) } ))
+         (:rooms (all-slots-with-rooms)) =>
+         (contains ["Auditorium" "Kili 1+2" "Mt-Blanc 3+4" "Kili 3+4" "Mt-Blanc 1" "Everest" "Cervin" "Mt-Blanc 2" "Makalu"] :in-any-order))
   (facts "returns a list of slots, indexed by room"
          (all-slots-with-rooms) =>
          (contains {:slots (contains (contains {"Auditorium" not-empty
-                                      "Mont Blanc 3" not-empty}))}))
+                                                "Mt-Blanc 3+4" not-empty}))}))
   (facts "there are 9 rooms"
          (count (:rooms (all-slots-with-rooms))) =>
          9) 
@@ -39,7 +39,7 @@
          (all-slots-with-rooms) => 
          (contains {:sessions anything})
          (:sessions (all-slots-with-rooms)) => 
-         (contains {"3" anything}))
+         (contains {"98" anything}))
 
   (future-facts "adapt to all-slots-with-rooms : returns a list of slots with a list of sessions"
          (first (nth (all-slots-with-rooms) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
