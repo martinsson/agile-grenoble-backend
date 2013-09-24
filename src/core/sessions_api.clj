@@ -38,7 +38,7 @@
      (session-list-for [{"key to remove" "toto" 
                      :id ..id.. :title ..title.. :slot "3" 
                      :room ..room.. :speakers ..sl..}] "3") 
-     => (just [{:id ..id.. :title ..title.. :slot "3" :room ..room.. :speakers ..sl.. :start-time "14:50"}])
+     => (just [{:id ..id.. :title ..title.. :slot "3" :room ..room.. :speakers ..sl.. :start-time "10:30"}])
      :in-any-order)
   
 (defn get-slot [session-maps slot]
@@ -47,7 +47,7 @@
    :sessions (session-list-for session-maps slot)})
 
   (facts "current-sessions provides an id, start-time and list of slots"  
-    (get-slot ..maps.. "2") => (contains {:id "2" :start-time "11:10"})
+    (get-slot ..maps.. "2") => (contains {:id "2" :start-time "10:15"})
     (get-slot ..maps.. "5") => (contains {:sessions ..sessions..})
     (provided (session-list-for ..maps.. "5") => ..sessions..))
 
