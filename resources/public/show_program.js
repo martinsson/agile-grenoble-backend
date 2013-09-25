@@ -4,11 +4,12 @@ var room_map = {
     "Makalu": {"id":1, "capacity" : 110},  
     "Kili 1+2": {"id":2, "capacity" : 55},
     "Kili 3+4": {"id":3, "capacity" : 55},
-    "Mt-Blanc 1": {"id":4, "capacity" : 24},
-    "Mt-Blanc 2": {"id":5, "capacity" : 24},
-    "Mt-Blanc 3+4": {"id":6, "capacity" : 55},
-    "Cervin": {"id":7, "capacity" : 40},
-    "Everest": {"id":8, "capacity" : 40}
+    "Cervin": {"id":4, "capacity" : 40},
+    "Everest": {"id":5, "capacity" : 40},
+    "Mt-Blanc 1": {"id":6, "capacity" : 24},
+    "Mt-Blanc 2": {"id":7, "capacity" : 24},
+    "Mt-Blanc 3": {"id":8, "capacity" : 24},
+    "Mt-Blanc 4": {"id":9, "capacity" : 24},
 };
 
 var slot_hours = [
@@ -132,7 +133,7 @@ function format_plenary(session_html, slot) {
         if (session.type == 'keynote') {
             it_was_keynote = true;
         }
-        session_html += '<td colspan="9" class="plenary '+session.type+'">'+format_session(session, it_was_keynote)+'</td>';
+        session_html += '<td colspan="10" class="plenary '+session.type+'">'+format_session(session, it_was_keynote)+'</td>';
     });
     $('#program_content').append('<tr>'+session_html+'</tr>');
 
@@ -143,7 +144,7 @@ function format_plenary(session_html, slot) {
 
 function change_room(slot_id) {
     var session_html = get_hour_cell(slot_id);
-    session_html += '<td colspan="9" class="plenary change_room">Changement de salle</td>';
+    session_html += '<td colspan="10" class="plenary change_room">Changement de salle</td>';
     return '<tr>'+session_html+'</tr>';
 }
 
@@ -182,10 +183,10 @@ function format_session_detail(session) {
     session_html += '</h2>';
     session_html += ' <a href="#program_head" class="back_to_top">Retour au programme</a>';
     slides = session.slides;
-    if (session.slides) {
-    	session_html += '<p class="slides"><a href="'+session.slides+'">support / slides</a></p>'
+    if (slides) {
+    	session_html += '<p class="slides"><a href="'+slides+'">support / slides</a></p>'
     }
-    session_html += '<p class="logistic">'+session['room']+' - '+session['format']+'</p>';
+    session_html += '<p class="logistic">'+session['room']+'</p>';
     session_html += '<p class="abstract"><b>Résumé : </b>'+session['abstract']+'</p>';
     session_html += '<p class="abstract"><b>Bénéfices pour les participants : </b>'+session['benefits']+'</p>';
     $.each(session['speaker-list'], function (id, speaker) {

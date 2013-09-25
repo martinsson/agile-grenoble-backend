@@ -27,7 +27,7 @@
      }))
   (facts "returns a roomlist"
          (:rooms (all-slots-with-rooms)) =>
-         (contains ["Auditorium" "Kili 1+2" "Mt-Blanc 3+4" "Kili 3+4" "Mt-Blanc 1" "Everest" "Cervin" "Mt-Blanc 2" "Makalu"] :in-any-order))
+         (contains ["Auditorium" "Kili 1+2" "Mt-Blanc 4" "Mt-Blanc 4" "Kili 3+4" "Mt-Blanc 1" "Everest" "Cervin" "Mt-Blanc 2" "Makalu"] :in-any-order))
   (facts "returns a list of slots, indexed by room"
          (all-slots-with-rooms) =>
          (contains {:slots (contains (contains {"Auditorium" not-empty
