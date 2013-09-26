@@ -163,7 +163,7 @@ function format_session(session, keynote) {
     var session_title = '<span class="session_title">'+session['title']+'</span> ';
     var session_url   = session_title;
     if (keynote) {
-	session_url = '<a href="http://2012.agile-grenoble.org/keynote">'+session_title+'</a>';
+	session_url = '<a href="http://2013.agile-grenoble.org/keynote">'+session_title+'</a>';
     }
     if (session.id) {
         session_url = '<a href="#session_detail_'+session['id']+'">'+session_title+'</a>';
