@@ -4,17 +4,22 @@
 
 ;TODO rename to butterfly api?
 
-(def time-slots ["10:00" "11:10" "14:50" "16:10" "17:20"])
+(def time-slots ["10:00" "10:15" "10:30" "10:45" "11:05" "11:20" "11:35" "11:50" "13:20" 
+                 "13:45" "14:30"  "14:50" "15:05" "15:20" "15:35" "16:05" "16:20" "16:35" 
+                 "16:50" "17:10" "17:25" "17:40" "17:55" "18:15"])
 (def slot-list-basic (zipmap (iterate inc 1) time-slots))
 
 (defn slot-list []
   (list slot-list-basic))
   (facts
-    (slot-list) => [{1 "10:00", 2 "11:10", 3 "14:50", 4 "16:10", 5 "17:20"}])
+    (slot-list) => [{1 "10:00", 2 "10:15", 3 "10:30", 4 "10:45", 5 "11:05", 6 "11:20", 
+                     7 "11:35", 8 "11:50", 9 "13:20", 10 "13:45", 11 "14:30", 12 "14:50", 
+                     13 "15:05", 14 "15:20", 15 "15:35", 16 "16:05", 17 "16:20", 18 "16:35", 
+                     19 "16:50", 20 "17:10", 21 "17:25", 22 "17:40", 23 "17:55", 24 "18:15"}])
 
 (defn session-list-for 
   ([session-maps slot]
-  (let [reduce-keys #(select-keys % [:id :title :slot :room :speakers :type])
+  (let [reduce-keys #(select-keys % [:id :title :slot :room :speakers :type :length])
         found-sessions (filter #(= slot (% :slot)) session-maps)] 
     (for [s (map reduce-keys found-sessions)]
               (assoc-in s [:start-time] (slot-list-basic (Integer/valueOf (:slot s)))) ))))
@@ -33,7 +38,7 @@
      (session-list-for [{"key to remove" "toto" 
                      :id ..id.. :title ..title.. :slot "3" 
                      :room ..room.. :speakers ..sl..}] "3") 
-     => (just [{:id ..id.. :title ..title.. :slot "3" :room ..room.. :speakers ..sl.. :start-time "14:50"}])
+     => (just [{:id ..id.. :title ..title.. :slot "3" :room ..room.. :speakers ..sl.. :start-time "10:30"}])
      :in-any-order)
   
 (defn get-slot [session-maps slot]
@@ -42,7 +47,7 @@
    :sessions (session-list-for session-maps slot)})
 
   (facts "current-sessions provides an id, start-time and list of slots"  
-    (get-slot ..maps.. "2") => (contains {:id "2" :start-time "11:10"})
+    (get-slot ..maps.. "2") => (contains {:id "2" :start-time "10:15"})
     (get-slot ..maps.. "5") => (contains {:sessions ..sessions..})
     (provided (session-list-for ..maps.. "5") => ..sessions..))
 

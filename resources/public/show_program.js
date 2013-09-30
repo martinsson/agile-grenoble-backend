@@ -2,13 +2,14 @@
 var room_map = {
     "Auditorium":{"id": 0, "capacity" : 530},
     "Makalu": {"id":1, "capacity" : 110},  
-    "Kilimanjaro 1": {"id":2, "capacity" : 55},
-    "Kilimanjaro 3": {"id":3, "capacity" : 55},
-    "Mont Blanc 3": {"id":4, "capacity" : 24},
-    "Mont Blanc 1+2": {"id":5, "capacity" : 55},
-    "Mont Blanc 4": {"id":6, "capacity" : 24},
-    "Cervin": {"id":7, "capacity" : 40},
-    "Everest": {"id":8, "capacity" : 40}
+    "Kili 1+2": {"id":2, "capacity" : 55},
+    "Kili 3+4": {"id":3, "capacity" : 55},
+    "Cervin": {"id":4, "capacity" : 40},
+    "Everest": {"id":5, "capacity" : 40},
+    "Mt-Blanc 1": {"id":6, "capacity" : 24},
+    "Mt-Blanc 2": {"id":7, "capacity" : 24},
+    "Mt-Blanc 3": {"id":8, "capacity" : 24},
+    "Mt-Blanc 4": {"id":9, "capacity" : 24},
 };
 
 var slot_hours = [
@@ -16,23 +17,63 @@ var slot_hours = [
     "8h30",
     "9h00",
     "10h00",
-    "10h50",
-    "11h10",
-    "12h00",
-    "13h35",
+    "(10h15)",
+    "(10h30)",
+    "10h45",
+    "11h05",
+    "(11h20)",
+    "(11h35)",
+    "11h50",
+    "13h20",
     "13h45",
+    "14h30",
     "14h50",
-    "15h40",
-    "16h10",
-    "17h00",
-    "17h20",
-    "18h30",
-    "20h30"
+    "(15h05)",
+    "(15h20)",
+    "15h35",
+    "16h05",
+    "(16h20)",
+    "(16h35)",
+    "16h50",
+    "17h10",
+    "(17h25)",
+    "(17h40)",
+    "17h55",
+    "18h15",
 ];
+
+function times(n, callback) {
+  for(var i=0; i<n; i++) {
+    callback(i);
+  }
+}
+
+function deepCopy(object) {
+  return $.extend(true, {}, object);
+}
+
+var removal = [];
 
 $.ajax({
     url:'json/program-summary-with-roomlist',
     success: function (p) {
+        // FIXTURES START //////////////////
+        // $.each([11, 10, 8, 4, 3], function(_, i) {
+        //   times(2, function() {
+        //     p.slots.splice(i, 0, deepCopy(p.slots[i]));
+        //   });
+        // });
+        // p.slots[4]['Makalu']['length'] = '2';
+        // delete(p.slots[5]['Makalu']);
+        // p.slots[6]['Cervin']['length'] = '3';
+        // delete(p.slots[7]['Cervin']);
+        // delete(p.slots[8]['Cervin']);
+        // p.slots[12]['Auditorium']['length'] = '2';
+        // delete(p.slots[13]['Auditorium']);
+        // p.slots[19]['Everest']['length'] = '3';
+        // delete(p.slots[20]['Everest']);
+        // delete(p.slots[21]['Everest']);
+        // FIXTURES END ////////////////////
         format_program(p);
     }
 }
@@ -40,21 +81,14 @@ $.ajax({
 
 function format_program(program) {
     var slot_id = 0;
-    var previous_was_plenary = false;
+    var previous_non_plenary_slots = 0;
     $.each(program["slots"], function(islot, slot) {
-        if (!slot.all && !previous_was_plenary) {
-            $('#program_content').append(change_room(slot_id));
-            slot_id++;
-        }
-
         var session_html = get_hour_cell(slot_id);
         format_slot(slot_id, slot, session_html);
-        
-        previous_was_plenary = false;
-        if (slot.all) {
-            previous_was_plenary = true;
-        }
         slot_id++;
+    });
+    $.each(removal, function(_, selector) {
+      $(selector).remove();
     });
     
     $.each(program["sessions"], function(session_id, session) {
@@ -71,6 +105,14 @@ function format_slot(slot_id, slot, session_html) {
         prefill_empty_cells(session_html, slot_id);
 
         $.each(slot, function (room, session) {
+            var rowspan = parseInt(session['length'] || 1);
+            if(rowspan > 1) {
+                $('#'+slot_id+'_'+room_map[room].id).attr('rowspan', rowspan);
+                times(rowspan - 1, function(n) {
+                    var selector = '#'+(parseInt(slot_id)+n+1)+'_'+room_map[room].id;
+                    removal.push(selector);
+                });
+            }
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
         });
     }
@@ -91,7 +133,7 @@ function format_plenary(session_html, slot) {
         if (session.type == 'keynote') {
             it_was_keynote = true;
         }
-        session_html += '<td colspan="9" class="plenary '+session.type+'">'+format_session(session, it_was_keynote)+'</td>';
+        session_html += '<td colspan="10" class="plenary '+session.type+'">'+format_session(session, it_was_keynote)+'</td>';
     });
     $('#program_content').append('<tr>'+session_html+'</tr>');
 
@@ -102,7 +144,7 @@ function format_plenary(session_html, slot) {
 
 function change_room(slot_id) {
     var session_html = get_hour_cell(slot_id);
-    session_html += '<td colspan="9" class="plenary change_room">Changement de salle</td>';
+    session_html += '<td colspan="10" class="plenary change_room">Changement de salle</td>';
     return '<tr>'+session_html+'</tr>';
 }
 
@@ -121,7 +163,7 @@ function format_session(session, keynote) {
     var session_title = '<span class="session_title">'+session['title']+'</span> ';
     var session_url   = session_title;
     if (keynote) {
-	session_url = '<a href="http://2012.agile-grenoble.org/keynote">'+session_title+'</a>';
+	session_url = '<a href="http://2013.agile-grenoble.org/keynote">'+session_title+'</a>';
     }
     if (session.id) {
         session_url = '<a href="#session_detail_'+session['id']+'">'+session_title+'</a>';
@@ -141,10 +183,10 @@ function format_session_detail(session) {
     session_html += '</h2>';
     session_html += ' <a href="#program_head" class="back_to_top">Retour au programme</a>';
     slides = session.slides;
-    if (session.slides) {
-    	session_html += '<p class="slides"><a href="'+session.slides+'">support / slides</a></p>'
+    if (slides) {
+    	session_html += '<p class="slides"><a href="'+slides+'">support / slides</a></p>'
     }
-    session_html += '<p class="logistic">'+session['room']+' - '+session['format']+'</p>';
+    session_html += '<p class="logistic">'+session['room']+'</p>';
     session_html += '<p class="abstract"><b>Résumé : </b>'+session['abstract']+'</p>';
     session_html += '<p class="abstract"><b>Bénéfices pour les participants : </b>'+session['benefits']+'</p>';
     $.each(session['speaker-list'], function (id, speaker) {
