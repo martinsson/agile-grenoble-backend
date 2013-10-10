@@ -6,44 +6,77 @@
 .program {
     font-size: x-small;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid grey;
     border-bottom: none;
     border-right: none;
 }
 
 .program td {
     vertical-align: top;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey;
     padding: 0 0.5em 0.5em 0.5em;
     margin: 0;
 }
 
 .plenary {
     text-align: center;
-    background-color: lavender;
+    background-color: aliceblue;
+
 }
 
+
 .keynote {
-    background-color: pink;
+    background-color: aliceblue;
+
     font-weight: bold;
 }
 
 .sponsor {
-    background-color: goldenrod;
+    background-color: aliceblue;
+
 }
 
 .session_title {
     display: block;
 }
 
+.rounded {
+	border-radius: 0px;
+}
+
+.th_green {
+	background-color: GreenYellow;
+}
+
+.th_yellow {
+	background-color: yellow;
+}
+
+.th_orange {
+    background-color: gold;
+/* 	background-color: orange; */
+}
+
+.th_blue {
+	background-color: LightSkyBlue;
+}
+
+.th_pink {
+    background-color: pink;
+/* 	background-color: fuchsia; */
+}
+
+.th_red {
+	background-color: Tomato;
+}
 .session_speakers {
     font-style: italic;
 }
 
 .room_desc {
     font-weight: bold;
-    background-color: aliceblue;
+    background-color: lavender;
 }
 
 .hour {

@@ -42,6 +42,15 @@ var slot_hours = [
     "18h15",
 ];
 
+var theme_colors = {
+    "Management": "th_yellow",
+    "Kanban-Lean": "th_red",
+    "Découverte": "th_green",
+    "Portfolio": "th_pink",
+    "Scrum master / Coaching": "th_blue",
+    "Technique": "th_orange"}
+
+
 function times(n, callback) {
   for(var i=0; i<n; i++) {
     callback(i);
@@ -57,23 +66,6 @@ var removal = [];
 $.ajax({
     url:'json/program-summary-with-roomlist',
     success: function (p) {
-        // FIXTURES START //////////////////
-        // $.each([11, 10, 8, 4, 3], function(_, i) {
-        //   times(2, function() {
-        //     p.slots.splice(i, 0, deepCopy(p.slots[i]));
-        //   });
-        // });
-        // p.slots[4]['Makalu']['length'] = '2';
-        // delete(p.slots[5]['Makalu']);
-        // p.slots[6]['Cervin']['length'] = '3';
-        // delete(p.slots[7]['Cervin']);
-        // delete(p.slots[8]['Cervin']);
-        // p.slots[12]['Auditorium']['length'] = '2';
-        // delete(p.slots[13]['Auditorium']);
-        // p.slots[19]['Everest']['length'] = '3';
-        // delete(p.slots[20]['Everest']);
-        // delete(p.slots[21]['Everest']);
-        // FIXTURES END ////////////////////
         format_program(p);
     }
 }
@@ -114,6 +106,8 @@ function format_slot(slot_id, slot, session_html) {
                 });
             }
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
+            $('#'+slot_id+'_'+room_map[room].id).attr('class', theme_colors[session.theme]  + ' rounded');
+
         });
     }
 }

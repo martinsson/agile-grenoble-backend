@@ -19,7 +19,7 @@
 
 (defn session-list-for 
   ([session-maps slot]
-  (let [reduce-keys #(select-keys % [:id :title :slot :room :speakers :type :length])
+  (let [reduce-keys #(select-keys % [:id :title :slot :room :speakers :type :length :theme])
         found-sessions (filter #(= slot (% :slot)) session-maps)] 
     (for [s (map reduce-keys found-sessions)]
               (assoc-in s [:start-time] (slot-list-basic (Integer/valueOf (:slot s)))) ))))
