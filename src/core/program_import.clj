@@ -9,10 +9,10 @@
                      "length" :length
                      "Titre de la session | Title" :title
                      "Créneau | Slot" :slot
+                     "Thème" :theme
                      "Résume | Abstract" :abstract
                      "Quels bénéfices vont en retirer les participants ? | What will be the benefits for the participants?" :benefits
                      "Format | Format" :format
-                     "Thèmes | Themes" :theme
                      "Prénom | First Name" :firstname
                      "Nom | Last Name" :lastname
                      "Retenu = x" :retained
@@ -28,7 +28,7 @@
     (cons translated-header body)))
 
 ;; Used for testing
-(def local-file (io/resource "public/sessions.csv"))
+(def loocal-file (io/resource "public/sessions.csv"))
 
 (defn normalized-sessions 
   ([csv-resource]
