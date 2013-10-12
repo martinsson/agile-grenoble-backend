@@ -28,7 +28,7 @@
     (cons translated-header body)))
 
 ;; Used for testing
-(def loocal-file (io/resource "public/sessions.csv"))
+(def local-file (io/resource "public/sessions.csv"))
 
 (defn normalized-sessions 
   ([csv-resource]
