@@ -7,44 +7,30 @@
     font-size: x-small;
     text-align: center;
     background-color: aliceblue;
-/*     border: 1px solid grey; */
-/*     border-bottom: none; */
-/*     border-right: none; */
 }
 
 .program td {
     vertical-align: top;
-/*     border-bottom: 1px solid grey; */
     border: 2px solid aliceblue;
-/*     border-bottom: 2px solid aliceblue; */
-/*     border-bottom: 2px solid aliceblue; */
-/*     border-right: 2px solid aliceblue; */
-/*     border-right: 1px solid grey; */
     padding: 0 0.5em 0.5em 0.5em;
     margin: 0;
 }
 
 .plenary {
     text-align: center;
-    background-color: aliceblue;
-
 }
 
-
 .keynote {
-    background-color: aliceblue;
-
     font-weight: bold;
 }
 
 .sponsor {
-    background-color: aliceblue;
-
 }
 
 a:link {
 	text-decoration: none;
 }
+
 .session_title {
     display: block;
     color: grey;
@@ -66,7 +52,6 @@ a:link {
 
 .th_orange {
     background-color: gold;
-/* 	background-color: orange; */
 }
 
 .th_blue {
@@ -75,12 +60,12 @@ a:link {
 
 .th_pink {
     background-color: pink;
-/* 	background-color: fuchsia; */
 }
 
 .th_red {
 	background-color: Tomato;
 }
+
 .session_speakers {
     font-style: italic;
 }
