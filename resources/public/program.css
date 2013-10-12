@@ -6,15 +6,20 @@
 .program {
     font-size: x-small;
     text-align: center;
-    border: 1px solid grey;
-    border-bottom: none;
-    border-right: none;
+    background-color: aliceblue;
+/*     border: 1px solid grey; */
+/*     border-bottom: none; */
+/*     border-right: none; */
 }
 
 .program td {
     vertical-align: top;
-    border-bottom: 1px solid grey;
-    border-right: 1px solid grey;
+/*     border-bottom: 1px solid grey; */
+    border: 2px solid aliceblue;
+/*     border-bottom: 2px solid aliceblue; */
+/*     border-bottom: 2px solid aliceblue; */
+/*     border-right: 2px solid aliceblue; */
+/*     border-right: 1px solid grey; */
     padding: 0 0.5em 0.5em 0.5em;
     margin: 0;
 }
@@ -37,12 +42,18 @@
 
 }
 
+a:link {
+	text-decoration: none;
+}
 .session_title {
     display: block;
+    color: grey;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .rounded {
-	border-radius: 0px;
+	border-radius: 8px;
 }
 
 .th_green {
