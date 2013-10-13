@@ -43,12 +43,12 @@ var slot_hours = [
 ];
 
 var theme_colors = {
-    "Management": "th_yellow",
-    "Kanban-Lean": "th_red",
-    "Découverte": "th_green",
-    "Portfolio": "th_pink",
-    "Scrum master / Coaching": "th_blue",
-    "Technique": "th_orange"}
+    "Management": "th_management",
+    "Kanban-Lean": "th_kanban",
+    "Découverte": "th_decouverte",
+    "Portfolio": "th_portfolio",
+    "Scrum master / Coaching": "th_coaching",
+    "Technique": "th_technique"}
 
 
 function times(n, callback) {

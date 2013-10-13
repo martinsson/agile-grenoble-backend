@@ -42,26 +42,26 @@ a:link {
     border: 2px solid aliceblue;
 }
 
-.th_green {
+.th_decouverte {
     background-color: #D0F56C;
 }
 
-.th_yellow {
+.th_management {
     background-color: #FAF687;
 }
 
-.th_orange {
+.th_technique {
     background-color: #F5C55D;
 }
 
-.th_blue {
+.th_coaching {
     background-color: #C2D7FF;
 }
 
-.th_pink {
+.th_portfolio {
     background-color: pink;}
 
-.th_red {
+.th_kanban {
     background-color: #E3B6B6;
 }
 
