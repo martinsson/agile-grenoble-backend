@@ -11,7 +11,6 @@
 
 .program td {
     vertical-align: top;
-    border: 2px solid aliceblue;
     padding: 0 0.5em 0.5em 0.5em;
     margin: 0;
 }
@@ -40,6 +39,7 @@ a:link {
 
 .rounded {
 	border-radius: 8px;
+    border: 2px solid aliceblue;
 }
 
 .th_green {
