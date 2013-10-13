@@ -7,6 +7,7 @@
 (def key-dictionary {"id" :id
                      "slot" :slot
                      "length" :length
+                     "width" :width
                      "Titre de la session | Title" :title
                      "Créneau | Slot" :slot
                      "Thème" :theme

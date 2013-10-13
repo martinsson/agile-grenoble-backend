@@ -105,6 +105,14 @@ function format_slot(slot_id, slot, session_html) {
                     removal.push(selector);
                 });
             }
+            var colspan = parseInt(session['width'] || 1);
+            if(colspan > 1) {
+            	$('#'+slot_id+'_'+room_map[room].id).attr('colspan', colspan);
+            	times(colspan - 1, function(n) {
+            		var selector = '#'+(parseInt(slot_id)+n+1)+'_'+room_map[room].id;
+            		removal.push(selector);
+            	});
+            }
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
             $('#'+slot_id+'_'+room_map[room].id).attr('class', theme_colors[session.theme]  + ' rounded');
 
