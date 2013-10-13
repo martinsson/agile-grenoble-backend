@@ -98,26 +98,22 @@ function format_slot(slot_id, slot, session_html) {
 
         $.each(slot, function (room, session) {
             var rowspan = parseInt(session['length'] || 1);
-            if(rowspan > 1) {
-                $('#'+slot_id+'_'+room_map[room].id).attr('rowspan', rowspan);
-                times(rowspan - 1, function(n) {
-                    var selector = '#'+(parseInt(slot_id)+n+1)+'_'+room_map[room].id;
-                    removal.push(selector);
-                });
-            }
+            insert_session_span(slot_id, room, 'rowspan', rowspan)
             var colspan = parseInt(session['width'] || 1);
-            if(colspan > 1) {
-            	$('#'+slot_id+'_'+room_map[room].id).attr('colspan', colspan);
-            	times(colspan - 1, function(n) {
-            		var selector = '#'+(parseInt(slot_id)+n+1)+'_'+room_map[room].id;
-            		removal.push(selector);
-            	});
-            }
+           	insert_session_span(slot_id, room, 'colspan', colspan)
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
             $('#'+slot_id+'_'+room_map[room].id).attr('class', theme_colors[session.theme]  + ' rounded');
 
         });
     }
+}
+
+function insert_session_span(slot_id, room, attribute, value) {
+	$('#'+slot_id+'_'+room_map[room].id).attr(attribute, value);
+	times(value - 1, function(n) {
+		var selector = '#'+(parseInt(slot_id)+n+1)+'_'+room_map[room].id;
+		removal.push(selector);
+	});
 }
 
 function get_rooms_slot() {
