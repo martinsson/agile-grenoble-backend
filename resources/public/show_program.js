@@ -192,7 +192,7 @@ function format_session_detail(session) {
         session_html += '<span class="speaker_name">'+[speaker['firstname'], speaker['lastname']].join(', ')+' </span>';
         if 	(speaker['bio'] != "")	session_html += ' : '+speaker['bio']+''
         session_html += '</p>'
-        session_html += '<br/>' //wtf get rid of this
+        session_html += '<br/>' //wtf get rid of this test
     })
     return session_html;
 }
