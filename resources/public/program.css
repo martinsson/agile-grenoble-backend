@@ -43,6 +43,10 @@ a:link {
     border: 2px solid aliceblue;
 }
 
+.th_unselected {
+    background-color: #EBF4FC;
+}
+
 .th_decouverte {
     background-color: #D0F56C;
 }
