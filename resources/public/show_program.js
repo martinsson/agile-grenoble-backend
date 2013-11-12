@@ -66,10 +66,25 @@ var removal = [];
 $.ajax({
     url:'json/program-summary-with-roomlist',
     success: function (p) {
+		create_toolbar();
         format_program(p);
     }
 }
 );
+
+function create_toolbar() {
+	for (name in theme_colors) {
+	  if (theme_colors.hasOwnProperty(name)) {
+		$('#toolbar').append('<input type="checkbox" class="toolbarcheckbox" id="check' + name + '" data-theme="' + theme_colors[name] + '" /><label for="check' + name + '">' + name + '</label>');	
+	  }
+	}
+	$('#toolbar').buttonset();
+	$('.toolbarcheckbox').click(function() {
+		$('[data-session-theme=' + $(this).attr('data-theme') + ']').each(function() {
+			$(this).toggleClass($(this).attr('data-session-theme')).toggleClass('th_unselected');
+		});
+	});
+}
 
 function format_program(program) {
     var slot_id = 0;
@@ -103,7 +118,7 @@ function format_slot(slot_id, slot, session_html) {
            	insert_session_span(slot_id, room, 'colspan', colspan)
             $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
             $('#'+slot_id+'_'+room_map[room].id).attr('class', theme_colors[session.theme]  + ' rounded');
-
+			$('#'+slot_id+'_'+room_map[room].id).attr('data-session-theme', theme_colors[session.theme]);
         });
     }
 }
@@ -179,7 +194,7 @@ function format_session_detail(session) {
     var session_html = '<h2>';
     session_html += '<a id="session_detail_'+session['id']+'" name="session_detail_'+session['id']+'">'+session['title']+'</a>';
     session_html += '</h2>';
-    session_html += ' <a href="#program_head" class="back_to_top">Retour au programme</a>';
+    session_html += ' <a href="#program_head" class="back_to_top">Retour au PROgramme</a>';
     slides = session.slides;
     if (slides) {
     	session_html += '<p class="slides"><a href="'+slides+'">support / slides</a></p>'
