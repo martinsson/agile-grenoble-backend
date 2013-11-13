@@ -50,6 +50,26 @@ var theme_colors = {
     "Scrum master / Coaching": "th_coaching",
     "Technique": "th_technique"}
 
+	
+var personas_colors = {
+    "Eric, Explorateur Agile": "eric",
+    "Mathieu, Manager Produit": "mathieu",
+    "Dimitri, Développeur Agile": "dimitri",
+    "Patrick, Programmeur": "patrick",
+    "Alain, Architecte Logiciel": "alain",
+    "Tiana, Testeur/QA": "tiana",
+	"Carole, Chef de Projet": "carole",
+	"Stéphane, Scrum Master": "stephane",
+	"Philippe, Program Manager": "philippe",
+	"Claude, Champion (ou coach interne)": "claude",
+	"Christophe, Consultant": "christophe",
+	"Adrien, Analyste Métier/Fonctionnel": "adrien",
+	"Daphné, Designer UI/Ergonome": "daphne",
+	"Denis, Dirigeant d'entreprise (ou Manager R&D)": "denis"
+	}
+
+var personasFieldNameCounter = 'data-personas-compteur';
+
 
 function times(n, callback) {
   for(var i=0; i<n; i++) {
@@ -66,24 +86,68 @@ var removal = [];
 $.ajax({
     url:'json/program-summary-with-roomlist',
     success: function (p) {
-		create_toolbar();
+		create_toolbarPersonas();
         format_program(p);
     }
 }
 );
 
-function create_toolbar() {
-	for (name in theme_colors) {
-	  if (theme_colors.hasOwnProperty(name)) {
-		$('#toolbar').append('<input type="checkbox" class="toolbarcheckbox" id="check' + name + '" data-theme="' + theme_colors[name] + '" /><label for="check' + name + '">' + name + '</label>');	
+function create_toolbarPersonas() {
+	createCheckboxPersonas();
+	createClickEventOnPersonas();
+}
+
+function createCheckboxPersonas() {
+	for (name in personas_colors) {
+	  if (personas_colors.hasOwnProperty(name)) {
+		$('#toolbar_personas').append('<input id="checkbox_' + name + '" class="css-checkbox" type="checkbox" data-personas="' + personas_colors[name] + '" />');
+		$('#toolbar_personas').append('<label for="checkbox_' + name + '" name="checkbox_lbl_' + name + '" class="css-label">' + name + '</label>');
 	  }
 	}
-	$('#toolbar').buttonset();
-	$('.toolbarcheckbox').click(function() {
-		$('[data-session-theme=' + $(this).attr('data-theme') + ']').each(function() {
-			$(this).toggleClass($(this).attr('data-session-theme')).toggleClass('th_unselected');
-		});
+	$('.css-checkbox').prop("checked", true);
+}
+
+function createClickEventOnPersonas() {
+	$('.css-checkbox').click(function() {
+		var $checkbox = $(this);
+		var $personasName = $checkbox.attr('data-personas');
+		if(isChecked($checkbox)) {
+			displayCheckedPersonas($personasName);
+		}
+		else {
+			dealWithUncheckedPersonas($personasName);
+		}
 	});
+}
+
+function displayCheckedPersonas($personasName) {
+	$('.' + $personasName).each(function() {
+		var $sessionItem = $(this);
+		displaySessionColor($sessionItem);
+		incrementPersonasCounter($sessionItem);
+	});
+}
+
+function dealWithUncheckedPersonas($personasName) {
+	$('.' + $personasName).each(function() {
+		var $sessionItem = $(this);
+		decrementPersonasCounter($sessionItem);
+		if(isPersonasCounterZero($sessionItem)) {
+			hideSessionColor($sessionItem);
+		}
+	});
+}
+
+function isChecked($checkbox) {
+	return $checkbox.prop("checked");
+}
+
+function displaySessionColor($item) {
+	$item.addClass($item.attr('data-session-theme')).removeClass('th_unselected');
+}
+
+function hideSessionColor($item) {
+	$item.removeClass($item.attr('data-session-theme')).addClass('th_unselected');
 }
 
 function format_program(program) {
@@ -113,14 +177,73 @@ function format_slot(slot_id, slot, session_html) {
 
         $.each(slot, function (room, session) {
             var rowspan = parseInt(session['length'] || 1);
-            insert_session_span(slot_id, room, 'rowspan', rowspan)
+            insert_session_span(slot_id, room, 'rowspan', rowspan);
             var colspan = parseInt(session['width'] || 1);
-           	insert_session_span(slot_id, room, 'colspan', colspan)
-            $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
-            $('#'+slot_id+'_'+room_map[room].id).attr('class', theme_colors[session.theme]  + ' rounded');
-			$('#'+slot_id+'_'+room_map[room].id).attr('data-session-theme', theme_colors[session.theme]);
+           	insert_session_span(slot_id, room, 'colspan', colspan);
+			var currentItem = slot_id+'_'+room_map[room].id;
+			var $item = $('#'+currentItem);
+            $item.append(format_session(session));
+            $item.attr('class', theme_colors[session.theme]  + ' rounded');
+			
+			fillPersonasInfo($item, session.theme);
+			
+			// Uncomment to test example
+			//fillPersonasExample($item, currentItem, session.theme);
         });
     }
+}
+
+function fillPersonasInfo($item, theme) {
+	$item.attr('data-session-theme', theme_colors[theme]);
+	createPersonasCounter($item);
+	// TODO: add class for each personas in this current session
+}
+
+function fillPersonasExample($item, currentItem, theme) {
+	if(currentItem == "3_0") {
+		addOnePersonasInfo($item, personas_colors["Mathieu, Manager Produit"]);
+	}else if(currentItem == "3_1") {
+		addOnePersonasInfo($item, personas_colors["Eric, Explorateur Agile"]);
+		addOnePersonasInfo($item, personas_colors["Mathieu, Manager Produit"]);
+	}
+	else if(currentItem == "3_2") {
+		addOnePersonasInfo($item, personas_colors["Eric, Explorateur Agile"]);
+		addOnePersonasInfo($item, personas_colors["Dimitri, Développeur Agile"]);
+	}
+	else if(currentItem == "3_3") {
+		addOnePersonasInfo($item, personas_colors["Eric, Explorateur Agile"]);
+		addOnePersonasInfo($item, personas_colors["Dimitri, Développeur Agile"]);
+		addOnePersonasInfo($item, personas_colors["Mathieu, Manager Produit"]);
+	}
+	else if(currentItem == "3_4") {
+		addOnePersonasInfo($item, personas_colors["Dimitri, Développeur Agile"]);
+	}
+	else {
+		$item.removeClass(theme_colors[theme]);
+		$item.attr('class', 'unselected'  + ' rounded');
+		$item.attr('data-session-theme', 'unselected');
+	}
+}
+
+function addOnePersonasInfo($item, namePersonas) {
+	$item.addClass(namePersonas);
+	incrementPersonasCounter($item);
+}
+
+function createPersonasCounter($item) {
+	$item.attr(personasFieldNameCounter, '0');
+}
+
+function incrementPersonasCounter($item) {
+	$item.attr(personasFieldNameCounter, parseInt($item.attr(personasFieldNameCounter))+1);
+}
+
+function decrementPersonasCounter($item) {
+	$item.attr(personasFieldNameCounter, parseInt($item.attr(personasFieldNameCounter))-1);
+}
+
+function isPersonasCounterZero($item) {
+	return (parseInt($item.attr(personasFieldNameCounter)) === 0);
 }
 
 function insert_session_span(slot_id, room, attribute, value) {
