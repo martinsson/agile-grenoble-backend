@@ -126,11 +126,12 @@ img.grayscale {
 
 ul#personasToolbar li {
     display: inline-block;
-	cursor: pointer;
+    padding-right:10px;
+    float:left;	
     color: #4A5370;
-    width: 19%;
     border-radius: 8px;
     border: 1px solid #CED1DB;
+    cursor: pointer;
 }
 
 ul#personasToolbar li.graycolor {
@@ -139,8 +140,10 @@ ul#personasToolbar li.graycolor {
 
 ul#personasToolbar li label {
     vertical-align: middle;
+    cursor: pointer;
 }
 
 ul#personasToolbar li img {
     vertical-align: middle;
+    cursor: pointer;
 }

@@ -117,7 +117,8 @@ var classHideListPersonas = 'hidePersonas';
 var thSessionUnselected = 'th_unselected';
 var dataSessionTheme = 'data-session-theme';
 var dataPersonas = 'data-personas';
-var classPersonasUnchecked = 'grayscale';
+var classPersonasUncheckedImage = 'grayscale';
+var classPersonasUncheckedTextColor = 'graycolor';
 var classPersonasImageClickable = 'css-checkbox';
 
 function times(n, callback) {
@@ -156,10 +157,14 @@ function createCheckboxPersonas() {
 }
 
 function createPersonasStructure(name) {
-    var $checkboxItem = $('<li>');
-    $checkboxItem.append('<img ' + getImageId(name) + getImageClasses() + getImageDataPersonas(name) + getImageSrc(name) + getImageSize() + '></img>');
+    var $checkboxItem = $('<li ' + getZonePersonasClasses() + getImageDataPersonas(name) + '>');
+    $checkboxItem.append('<img ' + getImageId(name) + getImageClasses() + getImageSrc(name) + getImageSize() + '></img>');
     $checkboxItem.append('<label for="' + getPersonasId(name) + '">' + personas_intitule[name].intitule + '</label>');
     return $checkboxItem;
+}
+
+function getZonePersonasClasses() {
+    return ' class="' + classPersonasImageClickable + '" ';
 }
 
 function getImageId(name) {
@@ -171,7 +176,7 @@ function getPersonasId(name) {
 }
 
 function getImageClasses() {
-    return ' class="' + classPersonasImageClickable + ' rounded" ';
+    return ' class="rounded" ';
 }
 
 function getImageDataPersonas(name) {
@@ -206,29 +211,42 @@ function createClickEventOnLegend() {
 }
 
 function areAllPersonasSelected($personas) {
-    return ($('#' + personasToolbarId).find('.' + classPersonasUnchecked).length == 0)
+    return ($('#' + personasToolbarId).find('.' + classPersonasUncheckedTextColor).length == 0)
 }
 
 function keepOnlyCurrentPersonasAsSelected($currentPersonas) {
-    var currentDataPersonas = $currentPersonas.attr(dataPersonas)
+    var currentDataPersonas = getDataPersonas($currentPersonas);
     $('.' + classPersonasImageClickable).each(function () {
         var $personas = $(this);
-        if($personas.attr(dataPersonas) != currentDataPersonas) {
+        if(getDataPersonas($personas) != currentDataPersonas) {
             dealWithCurrentPersonasOnly($personas);
         }
     });
 }
 
 function dealWithCurrentPersonasOnly($personas) {
-    $personas.toggleClass(classPersonasUnchecked);
-    $personas.parent().toggleClass("graycolor");
-    var $personasName = $personas.attr(dataPersonas);
+    updatePersonasColorText($personas);
+    updatePersonasColorImage($personas);
+    
+    var $personasName = getDataPersonas($personas);
     if(isChecked($personas)) {
         displayCheckedPersonas($personasName);
     }
     else {
         dealWithUncheckedPersonas($personasName);
     }
+}
+
+function getDataPersonas($personas) {
+    return $personas.attr(dataPersonas);
+}
+
+function updatePersonasColorText($personas) {
+    $personas.toggleClass(classPersonasUncheckedTextColor);
+}
+
+function updatePersonasColorImage($personas) {
+    $personas.find('img').toggleClass(classPersonasUncheckedImage);
 }
 
 function updatePersonasLegendText($legend) {
@@ -260,7 +278,7 @@ function dealWithUncheckedPersonas($personasName) {
 }
 
 function isChecked($personas) {
-	return !$personas.hasClass(classPersonasUnchecked);
+	return !$personas.hasClass(classPersonasUncheckedTextColor);
 }
 
 function displaySessionColor($item) {
