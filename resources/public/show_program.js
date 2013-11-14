@@ -50,65 +50,6 @@ var theme_colors = {
     "Scrum master / Coaching": "th_coaching",
     "Technique": "th_technique"}
 
-	
-var personas_intitule = {
-    "eric": {
-            "intitule":"Eric, Explorateur Agile", 
-            "photo":"http://2013.agile-grenoble.org/personas/p7.png"
-            },
-    "mathieu": {
-            "intitule": "Mathieu, Manager Produit",
-            "photo":"http://2013.agile-grenoble.org/personas/p11.png"
-            },
-    "dimitri": {
-            "intitule": "Dimitri, Développeur Agile",
-            "photo":"http://2013.agile-grenoble.org/personas/devagile.png"
-            },
-    "patrick": {
-            "intitule": "Patrick, Programmeur",
-            "photo":"http://2013.agile-grenoble.org/personas/p4.png"
-            },
-    "alain": {
-            "intitule": "Alain, Architecte Logiciel",
-            "photo":"http://2013.agile-grenoble.org/personas/p10.png"
-            },
-    "tiana": {
-            "intitule": "Tiana, Testeur/QA",
-            "photo":"http://2013.agile-grenoble.org/personas/p3.png"
-            },
-	"carole": {
-            "intitule": "Carole, Chef de Projet",
-            "photo":"http://2013.agile-grenoble.org/personas/p2.png"
-            },
-	"stephane": {
-            "intitule": "Stéphane, Scrum Master",
-            "photo":"http://2013.agile-grenoble.org/personas/scm.png"
-            },
-	"philippe": {
-            "intitule": "Philippe, Program Manager",
-            "photo":"http://2013.agile-grenoble.org/personas/p6.png"
-            },
-	"claude": {
-            "intitule": "Claude, Champion (ou coach interne)",
-            "photo":"http://2013.agile-grenoble.org/personas/p1.png"
-            },
-	"christophe": {
-            "intitule": "Christophe, Consultant",
-            "photo":"http://2013.agile-grenoble.org/personas/p13.png"
-            },
-	"adrien": {
-            "intitule": "Adrien, Analyste Métier/Fonctionnel",
-            "photo":"http://2013.agile-grenoble.org/personas/p12.png"
-            },
-	"daphne": {
-            "intitule": "Daphné, Designer UI/Ergonome",
-            "photo":"http://2013.agile-grenoble.org/personas/p9.png"
-            },
-	"denis": {
-            "intitule": "Denis, Dirigeant d'entreprise (ou Manager R&D)", 
-            "photo":"http://2013.agile-grenoble.org/personas/dirigeant.png"
-            }
-	}
 
 var personasFieldNameCounter = 'data-personas-compteur';
 var personasLegendId = 'personasLegend';
@@ -134,32 +75,39 @@ function deepCopy(object) {
 var removal = [];
 
 $.ajax({
+    url:'json/personas',
+    success: function (p) {
+       create_toolbarPersonas(p);
+    }
+}
+);
+
+$.ajax({
     url:'json/program-summary-with-roomlist',
     success: function (p) {
-		create_toolbarPersonas();
         format_program(p);
     }
 }
 );
 
-function create_toolbarPersonas() {
-	createCheckboxPersonas();
+function create_toolbarPersonas(personas) {
+	createCheckboxPersonas(personas);
 	createClickEventOnPersonas();
     createClickEventOnLegend();
 }
 
-function createCheckboxPersonas() {
+function createCheckboxPersonas(personas) {
     var $personasToolbarHead = $('#' + personasToolbarId);
-	for (name in personas_intitule) {
-        var $checkboxItem = createPersonasStructure(name);
+	for (name in personas) {
+        var $checkboxItem = createPersonasStructure(name, personas[name].photo, personas[name].intitule);
         $personasToolbarHead.append($checkboxItem);
 	}
 }
 
-function createPersonasStructure(name) {
+function createPersonasStructure(name, photo, intitule) {
     var $checkboxItem = $('<li ' + getZonePersonasClasses() + getImageDataPersonas(name) + '>');
-    $checkboxItem.append('<img ' + getImageId(name) + getImageClasses() + getImageSrc(name) + getImageSize() + '></img>');
-    $checkboxItem.append('<label for="' + getPersonasId(name) + '">' + personas_intitule[name].intitule + '</label>');
+    $checkboxItem.append('<img ' + getImageId(name) + getImageClasses() + getImageSrc(photo) + getImageSize() + '></img>');
+    $checkboxItem.append('<label for="' + getPersonasId(name) + '">' + intitule + '</label>');
     return $checkboxItem;
 }
 
@@ -183,8 +131,8 @@ function getImageDataPersonas(name) {
     return ' ' + dataPersonas + '="' + name + '" ';
 }
 
-function getImageSrc(name) {
-    return ' src=' + personas_intitule[name].photo + ' ';
+function getImageSrc(photo) {
+    return ' src=' + photo + ' ';
 }
 
 function getImageSize() {
