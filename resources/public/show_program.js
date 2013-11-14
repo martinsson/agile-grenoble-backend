@@ -309,7 +309,7 @@ function format_slot(slot_id, slot, session_html) {
 			fillPersonasInfo($item, session.theme);
 			
 			// Uncomment to test example
-			//fillPersonasExample($item, currentItem, session.theme);
+			fillPersonasExample($item, currentItem, session.theme);
         });
     }
 }

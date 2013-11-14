@@ -11,7 +11,7 @@
   ([csv-resource] 
   (pi/append-speaker-maps (pi/normalized-sessions csv-resource))))
 
-(defn session-maps-file [f] (map pi/add-speaker-fullnames (pi/keep-retained (decorate-sessions f))))
+(defn session-maps-file [f] (map (comp pi/add-speaker-fullnames pi/make-list-of-personas) (pi/keep-retained (decorate-sessions f))))
 (def smaps (ref (session-maps-file local-file)))
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
 (defn get-session [id] (sa/get-session @smaps id))
