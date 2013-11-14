@@ -336,6 +336,7 @@ function fillPersonasInfo($item, theme) {
 	$item.attr(dataSessionTheme, theme_colors[theme]);
 	createPersonasCounter($item);
 	// TODO: add class for each personas in this current session
+    // ex: addOnePersonasInfo($item, "mathieu");
 }
 
 function fillPersonasExample($item, currentItem, theme) {
