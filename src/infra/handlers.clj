@@ -100,6 +100,7 @@
      (json-encode)
      (wrap-with-jsonp callback)))
 
+
 (defn h-get-session [session-id callback] 
   (-> (partial response-map (sa/get-session @smaps session-id))
      (json-encode)
@@ -107,5 +108,10 @@
 
 (defn h-program-summary-with-roomlist []  
   (-> (partial response-map (all-slots-with-rooms))
+     (json-encode)
+     (wrap-with-content-type-json)))
+
+(defn h-personas [] 
+  (-> (partial response-map (sa/persona-list))
      (json-encode)
      (wrap-with-content-type-json)))
