@@ -51,25 +51,74 @@ var theme_colors = {
     "Technique": "th_technique"}
 
 	
-var personas_colors = {
-    "Eric, Explorateur Agile": "eric",
-    "Mathieu, Manager Produit": "mathieu",
-    "Dimitri, Développeur Agile": "dimitri",
-    "Patrick, Programmeur": "patrick",
-    "Alain, Architecte Logiciel": "alain",
-    "Tiana, Testeur/QA": "tiana",
-	"Carole, Chef de Projet": "carole",
-	"Stéphane, Scrum Master": "stephane",
-	"Philippe, Program Manager": "philippe",
-	"Claude, Champion (ou coach interne)": "claude",
-	"Christophe, Consultant": "christophe",
-	"Adrien, Analyste Métier/Fonctionnel": "adrien",
-	"Daphné, Designer UI/Ergonome": "daphne",
-	"Denis, Dirigeant d'entreprise (ou Manager R&D)": "denis"
+var personas_intitule = {
+    "eric": {
+            "intitule":"Eric, Explorateur Agile", 
+            "photo":"http://2013.agile-grenoble.org/personas/p7.png"
+            },
+    "mathieu": {
+            "intitule": "Mathieu, Manager Produit",
+            "photo":"http://2013.agile-grenoble.org/personas/p11.png"
+            },
+    "dimitri": {
+            "intitule": "Dimitri, Développeur Agile",
+            "photo":"http://2013.agile-grenoble.org/personas/devagile.png"
+            },
+    "patrick": {
+            "intitule": "Patrick, Programmeur",
+            "photo":"http://2013.agile-grenoble.org/personas/p4.png"
+            },
+    "alain": {
+            "intitule": "Alain, Architecte Logiciel",
+            "photo":"http://2013.agile-grenoble.org/personas/p10.png"
+            },
+    "tiana": {
+            "intitule": "Tiana, Testeur/QA",
+            "photo":"http://2013.agile-grenoble.org/personas/p3.png"
+            },
+	"carole": {
+            "intitule": "Carole, Chef de Projet",
+            "photo":"http://2013.agile-grenoble.org/personas/p2.png"
+            },
+	"stephane": {
+            "intitule": "Stéphane, Scrum Master",
+            "photo":"http://2013.agile-grenoble.org/personas/scm.png"
+            },
+	"philippe": {
+            "intitule": "Philippe, Program Manager",
+            "photo":"http://2013.agile-grenoble.org/personas/p6.png"
+            },
+	"claude": {
+            "intitule": "Claude, Champion (ou coach interne)",
+            "photo":"http://2013.agile-grenoble.org/personas/p1.png"
+            },
+	"christophe": {
+            "intitule": "Christophe, Consultant",
+            "photo":"http://2013.agile-grenoble.org/personas/p13.png"
+            },
+	"adrien": {
+            "intitule": "Adrien, Analyste Métier/Fonctionnel",
+            "photo":"http://2013.agile-grenoble.org/personas/p12.png"
+            },
+	"daphne": {
+            "intitule": "Daphné, Designer UI/Ergonome",
+            "photo":"http://2013.agile-grenoble.org/personas/p9.png"
+            },
+	"denis": {
+            "intitule": "Denis, Dirigeant d'entreprise (ou Manager R&D)", 
+            "photo":"http://2013.agile-grenoble.org/personas/dirigeant.png"
+            }
 	}
 
 var personasFieldNameCounter = 'data-personas-compteur';
-
+var personasLegendId = 'personasLegend';
+var personasToolbarId = 'personasToolbar';
+var classHideListPersonas = 'hidePersonas';
+var thSessionUnselected = 'th_unselected';
+var dataSessionTheme = 'data-session-theme';
+var dataPersonas = 'data-personas';
+var classPersonasUnchecked = 'grayscale';
+var classPersonasImageClickable = 'css-checkbox';
 
 function times(n, callback) {
   for(var i=0; i<n; i++) {
@@ -95,29 +144,101 @@ $.ajax({
 function create_toolbarPersonas() {
 	createCheckboxPersonas();
 	createClickEventOnPersonas();
+    createClickEventOnLegend();
 }
 
 function createCheckboxPersonas() {
-	for (name in personas_colors) {
-	  if (personas_colors.hasOwnProperty(name)) {
-		$('#toolbar_personas').append('<input id="checkbox_' + name + '" class="css-checkbox" type="checkbox" data-personas="' + personas_colors[name] + '" />');
-		$('#toolbar_personas').append('<label for="checkbox_' + name + '" name="checkbox_lbl_' + name + '" class="css-label">' + name + '</label>');
-	  }
+    var $personasToolbarHead = $('#' + personasToolbarId);
+	for (name in personas_intitule) {
+        var $checkboxItem = createPersonasStructure(name);
+        $personasToolbarHead.append($checkboxItem);
 	}
-	$('.css-checkbox').prop("checked", true);
+}
+
+function createPersonasStructure(name) {
+    var $checkboxItem = $('<li>');
+    $checkboxItem.append('<img ' + getImageId(name) + getImageClasses() + getImageDataPersonas(name) + getImageSrc(name) + getImageSize() + '></img>');
+    $checkboxItem.append('<label for="' + getPersonasId(name) + '">' + personas_intitule[name].intitule + '</label>');
+    return $checkboxItem;
+}
+
+function getImageId(name) {
+    return ' id="' + getPersonasId(name) + '" ';
+}
+
+function getPersonasId(name) {
+    return 'img_' + name;
+}
+
+function getImageClasses() {
+    return ' class="' + classPersonasImageClickable + ' rounded" ';
+}
+
+function getImageDataPersonas(name) {
+    return ' ' + dataPersonas + '="' + name + '" ';
+}
+
+function getImageSrc(name) {
+    return ' src=' + personas_intitule[name].photo + ' ';
+}
+
+function getImageSize() {
+    return ' width="30" height="36" ';
 }
 
 function createClickEventOnPersonas() {
-	$('.css-checkbox').click(function() {
-		var $checkbox = $(this);
-		var $personasName = $checkbox.attr('data-personas');
-		if(isChecked($checkbox)) {
-			displayCheckedPersonas($personasName);
-		}
-		else {
-			dealWithUncheckedPersonas($personasName);
-		}
+	$('.' + classPersonasImageClickable).click(function() {
+        var $personas = $(this);
+        if(areAllPersonasSelected($personas)) {
+            keepOnlyCurrentPersonasAsSelected($personas);
+        }
+        else {
+            dealWithCurrentPersonasOnly($personas);
+        }
 	});
+}
+
+function createClickEventOnLegend() {
+    $('#' + personasLegendId).click(function() {
+        $('#' + personasToolbarId).slideToggle();
+        updatePersonasLegendText($(this));
+    });
+}
+
+function areAllPersonasSelected($personas) {
+    return ($('#' + personasToolbarId).find('.' + classPersonasUnchecked).length == 0)
+}
+
+function keepOnlyCurrentPersonasAsSelected($currentPersonas) {
+    var currentDataPersonas = $currentPersonas.attr(dataPersonas)
+    $('.' + classPersonasImageClickable).each(function () {
+        var $personas = $(this);
+        if($personas.attr(dataPersonas) != currentDataPersonas) {
+            dealWithCurrentPersonasOnly($personas);
+        }
+    });
+}
+
+function dealWithCurrentPersonasOnly($personas) {
+    $personas.toggleClass(classPersonasUnchecked);
+    $personas.parent().toggleClass("graycolor");
+    var $personasName = $personas.attr(dataPersonas);
+    if(isChecked($personas)) {
+        displayCheckedPersonas($personasName);
+    }
+    else {
+        dealWithUncheckedPersonas($personasName);
+    }
+}
+
+function updatePersonasLegendText($legend) {
+    $legend.toggleClass(classHideListPersonas);
+    if($legend.hasClass(classHideListPersonas)) {
+        $legend.text('Personas (Cliquez pour afficher la liste des personas)');
+    }
+    else {
+        $legend.text('Personas (Cliquez sur l\'image pour sélectionner un personas)');
+    }
 }
 
 function displayCheckedPersonas($personasName) {
@@ -138,16 +259,16 @@ function dealWithUncheckedPersonas($personasName) {
 	});
 }
 
-function isChecked($checkbox) {
-	return $checkbox.prop("checked");
+function isChecked($personas) {
+	return !$personas.hasClass(classPersonasUnchecked);
 }
 
 function displaySessionColor($item) {
-	$item.addClass($item.attr('data-session-theme')).removeClass('th_unselected');
+	$item.addClass($item.attr(dataSessionTheme)).removeClass(thSessionUnselected);
 }
 
 function hideSessionColor($item) {
-	$item.removeClass($item.attr('data-session-theme')).addClass('th_unselected');
+	$item.removeClass($item.attr(dataSessionTheme)).addClass(thSessionUnselected);
 }
 
 function format_program(program) {
@@ -194,29 +315,29 @@ function format_slot(slot_id, slot, session_html) {
 }
 
 function fillPersonasInfo($item, theme) {
-	$item.attr('data-session-theme', theme_colors[theme]);
+	$item.attr(dataSessionTheme, theme_colors[theme]);
 	createPersonasCounter($item);
 	// TODO: add class for each personas in this current session
 }
 
 function fillPersonasExample($item, currentItem, theme) {
 	if(currentItem == "3_0") {
-		addOnePersonasInfo($item, personas_colors["Mathieu, Manager Produit"]);
+		addOnePersonasInfo($item, "mathieu");
 	}else if(currentItem == "3_1") {
-		addOnePersonasInfo($item, personas_colors["Eric, Explorateur Agile"]);
-		addOnePersonasInfo($item, personas_colors["Mathieu, Manager Produit"]);
+		addOnePersonasInfo($item, "eric");
+		addOnePersonasInfo($item, "mathieu");
 	}
 	else if(currentItem == "3_2") {
-		addOnePersonasInfo($item, personas_colors["Eric, Explorateur Agile"]);
-		addOnePersonasInfo($item, personas_colors["Dimitri, Développeur Agile"]);
+		addOnePersonasInfo($item, "eric");
+		addOnePersonasInfo($item, "dimitri");
 	}
 	else if(currentItem == "3_3") {
-		addOnePersonasInfo($item, personas_colors["Eric, Explorateur Agile"]);
-		addOnePersonasInfo($item, personas_colors["Dimitri, Développeur Agile"]);
-		addOnePersonasInfo($item, personas_colors["Mathieu, Manager Produit"]);
+		addOnePersonasInfo($item, "eric");
+		addOnePersonasInfo($item, "dimitri");
+		addOnePersonasInfo($item, "mathieu");
 	}
 	else if(currentItem == "3_4") {
-		addOnePersonasInfo($item, personas_colors["Dimitri, Développeur Agile"]);
+		addOnePersonasInfo($item, "dimitri");
 	}
 	else {
 		$item.removeClass(theme_colors[theme]);
