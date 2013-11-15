@@ -243,11 +243,11 @@ function isChecked($personas) {
 }
 
 function displaySessionColor($item) {
-	$item.addClass($item.attr(dataSessionTheme)).removeClass(thSessionUnselected);
+	$item.addClass($item.attr(dataSessionTheme), 500).removeClass(thSessionUnselected, 500);
 }
 
 function hideSessionColor($item) {
-	$item.removeClass($item.attr(dataSessionTheme)).addClass(thSessionUnselected);
+	$item.removeClass($item.attr(dataSessionTheme), 500).addClass(thSessionUnselected, 500);
 }
 
 function format_program(program) {
