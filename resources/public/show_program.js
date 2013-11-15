@@ -99,9 +99,22 @@ function create_toolbarPersonas(personas) {
 function createCheckboxPersonas(personas) {
     var $personasToolbarHead = $('#' + personasToolbarId);
 	for (name in personas) {
+    
         var $checkboxItem = createPersonasStructure(name, personas[name].photo, personas[name].intitule);
         $personasToolbarHead.append($checkboxItem);
 	}
+}
+
+function transformToLowercaseWithoutSpecialChar(s) {
+  s = s.toLowerCase();
+  var translate = {
+    "ä": "a", "ö": "o", "ü": "u", "é": "e",
+    "Ä": "A", "Ö": "O", "Ü": "U"  
+  };
+  var translate_re = /[öäüÖÄÜé]/g;
+  return ( s.replace(translate_re, function(match) { 
+    return translate[match]; 
+  }) );
 }
 
 function createPersonasStructure(name, photo, intitule) {
@@ -253,6 +266,9 @@ function format_program(program) {
         if (session_id) {
             $('#program_detail').append('<div>'+format_session_detail(session)+'</div>');
         }
+        $('#program_content').find('[data-session-id=' + session.id + ']').each(function() {
+            fillPersonasInfo($(this), session.personas);
+        });
     });
 }
 
@@ -271,46 +287,20 @@ function format_slot(slot_id, slot, session_html) {
 			var $item = $('#'+currentItem);
             $item.append(format_session(session));
             $item.attr('class', theme_colors[session.theme]  + ' rounded');
-			
-			fillPersonasInfo($item, session.theme);
-			
-			// Uncomment to test example
-			fillPersonasExample($item, currentItem, session.theme);
+			$item.attr(dataSessionTheme, theme_colors[session.theme]);
+            $item.attr('data-session-id', session.id);
         });
     }
 }
 
-function fillPersonasInfo($item, theme) {
-	$item.attr(dataSessionTheme, theme_colors[theme]);
+function fillPersonasInfo($item, personas) {
 	createPersonasCounter($item);
-	// TODO: add class for each personas in this current session
-    // ex: addOnePersonasInfo($item, "mathieu");
-}
-
-function fillPersonasExample($item, currentItem, theme) {
-	if(currentItem == "3_0") {
-		addOnePersonasInfo($item, "mathieu");
-	}else if(currentItem == "3_1") {
-		addOnePersonasInfo($item, "eric");
-		addOnePersonasInfo($item, "mathieu");
-	}
-	else if(currentItem == "3_2") {
-		addOnePersonasInfo($item, "eric");
-		addOnePersonasInfo($item, "dimitri");
-	}
-	else if(currentItem == "3_3") {
-		addOnePersonasInfo($item, "eric");
-		addOnePersonasInfo($item, "dimitri");
-		addOnePersonasInfo($item, "mathieu");
-	}
-	else if(currentItem == "3_4") {
-		addOnePersonasInfo($item, "dimitri");
-	}
-	else {
-		$item.removeClass(theme_colors[theme]);
-		$item.attr('class', 'unselected'  + ' rounded');
-		$item.attr('data-session-theme', 'unselected');
-	}
+    
+    for (name in personas) {
+        if(personas[name] != "") {
+            addOnePersonasInfo($item, transformToLowercaseWithoutSpecialChar(personas[name]));
+        }
+    }
 }
 
 function addOnePersonasInfo($item, namePersonas) {
