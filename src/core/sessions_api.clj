@@ -10,64 +10,66 @@
 (def slot-list-basic (zipmap (iterate inc 1) time-slots))
 
 (def personas {
-               "eric" {
-            "intitule" "Eric, Explorateur Agile", 
-            "photo" "http://2013.agile-grenoble.org/personas/p7.png"
-            },
+    "eric" {
+          "intitule" "Eric, Explorateur Agile", 
+          "photo" "p7.png"
+          },
     "mathieu"  {
             "intitule"  "Mathieu, Manager Produit",
-            "photo" "http://2013.agile-grenoble.org/personas/p11.png"
+            "photo" "p11.png"
             },
     "dimitri"  {
             "intitule"  "Dimitri, Développeur Agile",
-            "photo" "http://2013.agile-grenoble.org/personas/devagile.png"
+            "photo" "devagile.png"
             },
     "patrick"  {
             "intitule"  "Patrick, Programmeur",
-            "photo" "http://2013.agile-grenoble.org/personas/p4.png"
+            "photo" "p4.png"
             },
     "alain"  {
             "intitule"  "Alain, Architecte Logiciel",
-            "photo" "http://2013.agile-grenoble.org/personas/p10.png"
+            "photo" "p10.png"
             },
     "tiana"  {
             "intitule"  "Tiana, Testeur/QA",
-            "photo" "http://2013.agile-grenoble.org/personas/p3.png"
+            "photo" "p3.png"
             },
 	"carole"  {
             "intitule"  "Carole, Chef de Projet",
-            "photo" "http://2013.agile-grenoble.org/personas/p2.png"
+            "photo" "p2.png"
             },
 	"stephane"  {
             "intitule"  "Stéphane, Scrum Master",
-            "photo" "http://2013.agile-grenoble.org/personas/scm.png"
+            "photo" "scm.png"
             },
 	"philippe"  {
             "intitule"  "Philippe, Program Manager",
-            "photo" "http://2013.agile-grenoble.org/personas/p6.png"
+            "photo" "p6.png"
             },
 	"claude"  {
             "intitule"  "Claude, Champion (ou coach interne)",
-            "photo" "http://2013.agile-grenoble.org/personas/p1.png"
+            "photo" "p1.png"
             },
 	"christophe"  {
             "intitule"  "Christophe, Consultant",
-            "photo" "http://2013.agile-grenoble.org/personas/p13.png"
+            "photo" "p13.png"
             },
 	"adrien"  {
             "intitule"  "Adrien, Analyste Métier/Fonctionnel",
-            "photo" "http://2013.agile-grenoble.org/personas/p12.png"
+            "photo" "p12.png"
             },
 	"daphne"  {
             "intitule"  "Daphné, Designer UI/Ergonome",
-            "photo" "http://2013.agile-grenoble.org/personas/p9.png"
+            "photo" "p9.png"
             },
 	"denis"  {
             "intitule"  "Denis, Dirigeant d'entreprise (ou Manager R&D)", 
-            "photo" "http://2013.agile-grenoble.org/personas/dirigeant.png"
+            "photo" "dirigeant.png"
             }})
 (defn persona-list []
-  personas)
+  (into {} (for [[k v] personas] {k (update-in v ["photo"] (partial str "http://2013.agile-grenoble.org/personas/"))})))
+  (fact
+    (get-in (persona-list) ["eric" "photo"] ) => "http://2013.agile-grenoble.org/personas/p7.png" )
 
 (defn slot-list []
   (list slot-list-basic))
