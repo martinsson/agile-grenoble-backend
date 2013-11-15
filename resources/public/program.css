@@ -127,6 +127,8 @@ img.grayscale {
 ul#personasToolbar li {
     display: inline-block;
     padding-right:10px;
+    margin-top:5px;
+    margin-right:5px;
     float:left;	
     color: #4A5370;
     border-radius: 8px;
