@@ -51,6 +51,17 @@ var theme_colors = {
     "Technique": "th_technique"}
 
 
+var personasFieldNameCounter = 'data-personas-compteur';
+var personasLegendId = 'personasLegend';
+var personasToolbarId = 'personasToolbar';
+var classHideListPersonas = 'hidePersonas';
+var thSessionUnselected = 'th_unselected';
+var dataSessionTheme = 'data-session-theme';
+var dataPersonas = 'data-personas';
+var classPersonasUncheckedImage = 'grayscale';
+var classPersonasUncheckedTextColor = 'graycolor';
+var classPersonasImageClickable = 'css-checkbox';
+
 function times(n, callback) {
   for(var i=0; i<n; i++) {
     callback(i);
@@ -64,12 +75,180 @@ function deepCopy(object) {
 var removal = [];
 
 $.ajax({
+    url:'json/personas',
+    success: function (p) {
+       create_toolbarPersonas(p);
+    }
+}
+);
+
+$.ajax({
     url:'json/program-summary-with-roomlist',
     success: function (p) {
         format_program(p);
     }
 }
 );
+
+function create_toolbarPersonas(personas) {
+	createCheckboxPersonas(personas);
+	createClickEventOnPersonas();
+    createClickEventOnLegend();
+}
+
+function createCheckboxPersonas(personas) {
+    var $personasToolbarHead = $('#' + personasToolbarId);
+	for (name in personas) {
+    
+        var $checkboxItem = createPersonasStructure(name, personas[name].photo, personas[name].intitule);
+        $personasToolbarHead.append($checkboxItem);
+	}
+}
+
+function transformToLowercaseWithoutSpecialChar(s) {
+  s = s.toLowerCase();
+  var translate = {
+    "ä": "a", "ö": "o", "ü": "u", "é": "e",
+    "Ä": "A", "Ö": "O", "Ü": "U"  
+  };
+  var translate_re = /[öäüÖÄÜé]/g;
+  return ( s.replace(translate_re, function(match) { 
+    return translate[match]; 
+  }) );
+}
+
+function createPersonasStructure(name, photo, intitule) {
+    var $checkboxItem = $('<li ' + getZonePersonasClasses() + getImageDataPersonas(name) + '>');
+    $checkboxItem.append('<img ' + getImageId(name) + getImageClasses() + getImageSrc(photo) + getImageSize() + '></img>');
+    $checkboxItem.append('<label for="' + getPersonasId(name) + '">' + intitule + '</label>');
+    return $checkboxItem;
+}
+
+function getZonePersonasClasses() {
+    return ' class="' + classPersonasImageClickable + '" ';
+}
+
+function getImageId(name) {
+    return ' id="' + getPersonasId(name) + '" ';
+}
+
+function getPersonasId(name) {
+    return 'img_' + name;
+}
+
+function getImageClasses() {
+    return ' class="rounded" ';
+}
+
+function getImageDataPersonas(name) {
+    return ' ' + dataPersonas + '="' + name + '" ';
+}
+
+function getImageSrc(photo) {
+    return ' src=' + photo + ' ';
+}
+
+function getImageSize() {
+    return ' width="30" height="36" ';
+}
+
+function createClickEventOnPersonas() {
+	$('.' + classPersonasImageClickable).click(function() {
+        var $personas = $(this);
+        if(areAllPersonasSelected($personas)) {
+            keepOnlyCurrentPersonasAsSelected($personas);
+        }
+        else {
+            dealWithCurrentPersonasOnly($personas);
+        }
+	});
+}
+
+function createClickEventOnLegend() {
+    $('#' + personasLegendId).click(function() {
+        $('#' + personasToolbarId).slideToggle();
+        updatePersonasLegendText($(this));
+    });
+}
+
+function areAllPersonasSelected($personas) {
+    return ($('#' + personasToolbarId).find('.' + classPersonasUncheckedTextColor).length == 0)
+}
+
+function keepOnlyCurrentPersonasAsSelected($currentPersonas) {
+    var currentDataPersonas = getDataPersonas($currentPersonas);
+    $('.' + classPersonasImageClickable).each(function () {
+        var $personas = $(this);
+        if(getDataPersonas($personas) != currentDataPersonas) {
+            dealWithCurrentPersonasOnly($personas);
+        }
+    });
+}
+
+function dealWithCurrentPersonasOnly($personas) {
+    updatePersonasColorText($personas);
+    updatePersonasColorImage($personas);
+    
+    var $personasName = getDataPersonas($personas);
+    if(isChecked($personas)) {
+        displayCheckedPersonas($personasName);
+    }
+    else {
+        dealWithUncheckedPersonas($personasName);
+    }
+}
+
+function getDataPersonas($personas) {
+    return $personas.attr(dataPersonas);
+}
+
+function updatePersonasColorText($personas) {
+    $personas.toggleClass(classPersonasUncheckedTextColor);
+}
+
+function updatePersonasColorImage($personas) {
+    $personas.find('img').toggleClass(classPersonasUncheckedImage);
+}
+
+function updatePersonasLegendText($legend) {
+    $legend.toggleClass(classHideListPersonas);
+    if($legend.hasClass(classHideListPersonas)) {
+        $legend.text('Personas (Cliquez pour afficher la liste des personas)');
+    }
+    else {
+        $legend.text('Personas (Cliquez sur l\'image pour sélectionner un personas)');
+    }
+}
+
+function displayCheckedPersonas($personasName) {
+	$('.' + $personasName).each(function() {
+		var $sessionItem = $(this);
+		displaySessionColor($sessionItem);
+		incrementPersonasCounter($sessionItem);
+	});
+}
+
+function dealWithUncheckedPersonas($personasName) {
+	$('.' + $personasName).each(function() {
+		var $sessionItem = $(this);
+		decrementPersonasCounter($sessionItem);
+		if(isPersonasCounterZero($sessionItem)) {
+			hideSessionColor($sessionItem);
+		}
+	});
+}
+
+function isChecked($personas) {
+	return !$personas.hasClass(classPersonasUncheckedTextColor);
+}
+
+function displaySessionColor($item) {
+	$item.addClass($item.attr(dataSessionTheme), 500).removeClass(thSessionUnselected, 500);
+}
+
+function hideSessionColor($item) {
+	$item.removeClass($item.attr(dataSessionTheme), 500).addClass(thSessionUnselected, 500);
+}
 
 function format_program(program) {
     var slot_id = 0;
@@ -87,6 +266,9 @@ function format_program(program) {
         if (session_id) {
             $('#program_detail').append('<div>'+format_session_detail(session)+'</div>');
         }
+        $('#program_content').find('[data-session-id=' + session.id + ']').each(function() {
+            fillPersonasInfo($(this), session.personas);
+        });
     });
 }
 
@@ -98,14 +280,48 @@ function format_slot(slot_id, slot, session_html) {
 
         $.each(slot, function (room, session) {
             var rowspan = parseInt(session['length'] || 1);
-            insert_session_span(slot_id, room, 'rowspan', rowspan)
+            insert_session_span(slot_id, room, 'rowspan', rowspan);
             var colspan = parseInt(session['width'] || 1);
-           	insert_session_span(slot_id, room, 'colspan', colspan)
-            $('#'+slot_id+'_'+room_map[room].id).append(format_session(session));
-            $('#'+slot_id+'_'+room_map[room].id).attr('class', theme_colors[session.theme]  + ' rounded');
-
+           	insert_session_span(slot_id, room, 'colspan', colspan);
+			var currentItem = slot_id+'_'+room_map[room].id;
+			var $item = $('#'+currentItem);
+            $item.append(format_session(session));
+            $item.attr('class', theme_colors[session.theme]  + ' rounded');
+			$item.attr(dataSessionTheme, theme_colors[session.theme]);
+            $item.attr('data-session-id', session.id);
         });
     }
+}
+
+function fillPersonasInfo($item, personas) {
+	createPersonasCounter($item);
+    
+    for (name in personas) {
+        if(personas[name] != "") {
+            addOnePersonasInfo($item, transformToLowercaseWithoutSpecialChar(personas[name]));
+        }
+    }
+}
+
+function addOnePersonasInfo($item, namePersonas) {
+	$item.addClass(namePersonas);
+	incrementPersonasCounter($item);
+}
+
+function createPersonasCounter($item) {
+	$item.attr(personasFieldNameCounter, '0');
+}
+
+function incrementPersonasCounter($item) {
+	$item.attr(personasFieldNameCounter, parseInt($item.attr(personasFieldNameCounter))+1);
+}
+
+function decrementPersonasCounter($item) {
+	$item.attr(personasFieldNameCounter, parseInt($item.attr(personasFieldNameCounter))-1);
+}
+
+function isPersonasCounterZero($item) {
+	return (parseInt($item.attr(personasFieldNameCounter)) === 0);
 }
 
 function insert_session_span(slot_id, room, attribute, value) {
@@ -179,7 +395,7 @@ function format_session_detail(session) {
     var session_html = '<h2>';
     session_html += '<a id="session_detail_'+session['id']+'" name="session_detail_'+session['id']+'">'+session['title']+'</a>';
     session_html += '</h2>';
-    session_html += ' <a href="#program_head" class="back_to_top">Retour au programme</a>';
+    session_html += ' <a href="#program_head" class="back_to_top">Retour au PROgramme</a>';
     slides = session.slides;
     if (slides) {
     	session_html += '<p class="slides"><a href="'+slides+'">support / slides</a></p>'
@@ -192,7 +408,7 @@ function format_session_detail(session) {
         session_html += '<span class="speaker_name">'+[speaker['firstname'], speaker['lastname']].join(', ')+' </span>';
         if 	(speaker['bio'] != "")	session_html += ' : '+speaker['bio']+''
         session_html += '</p>'
-        session_html += '<br/>' //wtf get rid of this
+        session_html += '<br/>' //wtf get rid of this test
     })
     return session_html;
 }

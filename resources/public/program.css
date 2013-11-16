@@ -43,6 +43,10 @@ a:link {
     border: 2px solid aliceblue;
 }
 
+.th_unselected {
+    background-color: #EBF4FC;
+}
+
 .th_decouverte {
     background-color: #D0F56C;
 }
@@ -103,4 +107,45 @@ a:link {
 
 #program_detail .slides {
     font-size: small;
+}
+
+img.grayscale {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+    -webkit-transition: all .6s ease; /* Fade to color for Chrome and Safari */
+    -webkit-backface-visibility: hidden; /* Fix for transition flickering */
+}
+
+#personasLegend
+{
+    text-decoration: underline;
+	color: #4A5370;
+	background: transparent;
+}
+
+ul#personasToolbar li {
+    display: inline-block;
+    padding-right:10px;
+    margin-top:5px;
+    margin-right:5px;
+    float:left;	
+    color: #4A5370;
+    border-radius: 8px;
+    border: 1px solid #CED1DB;
+    cursor: pointer;
+}
+
+ul#personasToolbar li.graycolor {
+    color: #CED1DB;
+}
+
+ul#personasToolbar li label {
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+ul#personasToolbar li img {
+    vertical-align: middle;
+    cursor: pointer;
 }

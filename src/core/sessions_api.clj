@@ -9,6 +9,66 @@
                  "16:50" "17:10" "17:25" "17:40" "17:55" "18:15"])
 (def slot-list-basic (zipmap (iterate inc 1) time-slots))
 
+(def personas {
+               "eric" {
+            "intitule" "Eric, Explorateur Agile", 
+            "photo" "http://2013.agile-grenoble.org/personas/p7.png"
+            },
+    "mathieu"  {
+            "intitule"  "Mathieu, Manager Produit",
+            "photo" "http://2013.agile-grenoble.org/personas/p11.png"
+            },
+    "dimitri"  {
+            "intitule"  "Dimitri, Développeur Agile",
+            "photo" "http://2013.agile-grenoble.org/personas/devagile.png"
+            },
+    "patrick"  {
+            "intitule"  "Patrick, Programmeur",
+            "photo" "http://2013.agile-grenoble.org/personas/p4.png"
+            },
+    "alain"  {
+            "intitule"  "Alain, Architecte Logiciel",
+            "photo" "http://2013.agile-grenoble.org/personas/p10.png"
+            },
+    "tiana"  {
+            "intitule"  "Tiana, Testeur/QA",
+            "photo" "http://2013.agile-grenoble.org/personas/p3.png"
+            },
+	"carole"  {
+            "intitule"  "Carole, Chef de Projet",
+            "photo" "http://2013.agile-grenoble.org/personas/p2.png"
+            },
+	"stephane"  {
+            "intitule"  "Stéphane, Scrum Master",
+            "photo" "http://2013.agile-grenoble.org/personas/scm.png"
+            },
+	"philippe"  {
+            "intitule"  "Philippe, Program Manager",
+            "photo" "http://2013.agile-grenoble.org/personas/p6.png"
+            },
+	"claude"  {
+            "intitule"  "Claude, Champion (ou coach interne)",
+            "photo" "http://2013.agile-grenoble.org/personas/p1.png"
+            },
+	"christophe"  {
+            "intitule"  "Christophe, Consultant",
+            "photo" "http://2013.agile-grenoble.org/personas/p13.png"
+            },
+	"adrien"  {
+            "intitule"  "Adrien, Analyste Métier/Fonctionnel",
+            "photo" "http://2013.agile-grenoble.org/personas/p12.png"
+            },
+	"daphne"  {
+            "intitule"  "Daphné, Designer UI/Ergonome",
+            "photo" "http://2013.agile-grenoble.org/personas/p9.png"
+            },
+	"denis"  {
+            "intitule"  "Denis, Dirigeant d'entreprise (ou Manager R&D)", 
+            "photo" "http://2013.agile-grenoble.org/personas/dirigeant.png"
+            }})
+(defn persona-list []
+  personas)
+
 (defn slot-list []
   (list slot-list-basic))
   (facts

@@ -11,7 +11,7 @@
   ([csv-resource] 
   (pi/append-speaker-maps (pi/normalized-sessions csv-resource))))
 
-(defn session-maps-file [f] (map pi/add-speaker-fullnames (pi/keep-retained (decorate-sessions f))))
+(defn session-maps-file [f] (map (comp pi/add-speaker-fullnames pi/make-list-of-personas) (pi/keep-retained (decorate-sessions f))))
 (def smaps (ref (session-maps-file local-file)))
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
 (defn get-session [id] (sa/get-session @smaps id))
@@ -100,6 +100,7 @@
      (json-encode)
      (wrap-with-jsonp callback)))
 
+
 (defn h-get-session [session-id callback] 
   (-> (partial response-map (sa/get-session @smaps session-id))
      (json-encode)
@@ -107,5 +108,10 @@
 
 (defn h-program-summary-with-roomlist []  
   (-> (partial response-map (all-slots-with-rooms))
+     (json-encode)
+     (wrap-with-content-type-json)))
+
+(defn h-personas [] 
+  (-> (partial response-map (sa/persona-list))
      (json-encode)
      (wrap-with-content-type-json)))

@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Programme</title>
+        <title>Programme Test</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="/program.css" />
+		<link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/overcast/jquery-ui.min.css" />
     </head>
     <body>
+        <a id="personasLegend" href="javascript:void(0)">
+            Personas (Cliquez sur l'image pour sélectionner un personas)
+        </a>
+        <ul id="personasToolbar">
+        </ul> 
         <table width="100%">
             <tr><td><h1><a id="program_head" class="program_all">Programme</a></h1></td> 
               <td><a class="program_all" href="http://2013.agile-grenoble.org">2013.agile-grenoble.org</a></td>
@@ -18,7 +24,9 @@
         </table>
         <h1 class="program_detail program_all">Programme détaillé</h1>
         <div id="program_detail" class="program_all"></div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		
         <script src="/show_program.js"></script>
     </body>
 </html>

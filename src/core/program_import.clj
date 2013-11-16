@@ -13,6 +13,7 @@
                      "Thème" :theme
                      "Résume | Abstract" :abstract
                      "Quels bénéfices vont en retirer les participants ? | What will be the benefits for the participants?" :benefits
+                     "Personas" :personas
                      "Format | Format" :format
                      "Prénom | First Name" :firstname
                      "Nom | Last Name" :lastname
@@ -31,6 +32,9 @@
 ;; Used for testing
 (def local-file (io/resource "public/sessions.csv"))
 
+(defn make-list-of-personas [session-map]
+  (update-in session-map [:personas] #(clojure.string/split % #", ?")))
+  
 (defn normalized-sessions 
   ([csv-resource]
   (-> csv-resource
@@ -39,7 +43,7 @@
       normalize-headers)))
 
     (fact "The csv headers are normalized"
-          (first (normalized-sessions local-file)) => (contains [:title :abstract :benefits :format :theme :firstname :lastname :room] :in-any-order :gaps-ok))
+          (first (normalized-sessions local-file)) => (contains [:title :abstract :benefits :format :theme :firstname :lastname :room :personas] :in-any-order :gaps-ok))
     (fact "The body is unchanged"
           (rest (normalized-sessions local-file))   => [...line1... 
                                              ...line2...]
