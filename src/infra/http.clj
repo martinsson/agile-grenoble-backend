@@ -10,7 +10,8 @@
             [compojure.handler :as handler]
             (ring.middleware [multipart-params :as mp])
             [cemerick.friend.workflows :as workflows]
-            [cemerick.friend.credentials :as creds]))
+            [cemerick.friend.credentials :as creds]
+            [ring.adapter.jetty :as jetty]))
 
 (alter-var-root #'midje.semi-sweet/*include-midje-checks* (constantly false))
 
@@ -67,4 +68,7 @@
   (facts "current-sessions provides an id, start-time and list of slots"
          (app {:uri "/jsonp/current-sessions" :request-method :get})
          => (contains {:body (contains "\"id\":")}))
+  
+  (defn -main [port]
+    (jetty/run-jetty app {:port (Integer. port) :join? false}))
   
