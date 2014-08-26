@@ -22,13 +22,11 @@
   (GET "/program" [] (u/render (u/sample)))
   (GET "/login" request (page-bodies (:uri request)))
   (GET ["/json/program-summary-with-roomlist"] request  (h/h-program-summary-with-roomlist))
+  (GET ["/jsonp/program-summary-with-roomlist"] [callback]  (h/wrap-with-jsonp (h/h-program-summary-with-roomlist) callback))
   (GET ["/json/personas"] request  (h/h-personas))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
        [callback id] (h/h-get-session id callback))
-;deprecated use get-slot
-  (GET ["/jsonp/sessions-for-slot/:slot", :slot #"[0-9]+"]
-      [callback slot] (h/h-session-list-for slot callback))
   (GET ["/jsonp/get-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (h/h-get-slot slot callback))
   (GET "/jsonp/current-sessions" [callback] (h/h-current-slot callback))

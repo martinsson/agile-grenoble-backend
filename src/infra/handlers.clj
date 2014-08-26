@@ -23,7 +23,6 @@
         all-slots (pi/add-non-session-data (map index-by-room slots))]
     {:rooms (filter not-empty (set (map :room @smaps)))
      :slots all-slots
-     :sessions (into {} (for [s @smaps] {(s :id) s}))
      }))
   (facts "returns a roomlist"
          (:rooms (all-slots-with-rooms)) =>
@@ -35,11 +34,7 @@
   (facts "there are 10 rooms"
          (count (:rooms (all-slots-with-rooms))) =>
          10) 
-  (facts ":sessions is an indexed list of all sessions"
-         (all-slots-with-rooms) => 
-         (contains {:sessions anything})
-         (:sessions (all-slots-with-rooms)) => 
-         (contains {"98" anything}))
+  
 
   (future-facts "adapt to all-slots-with-rooms : returns a list of slots with a list of sessions"
          (first (nth (all-slots-with-rooms) 3)) => (contains {:slot "1", :title "DevOps@Kelkoo", :id "10"} :in-any-order)
