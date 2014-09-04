@@ -6,7 +6,7 @@
             [clj-json.core :as json]
             [clojure.java.jdbc :as jdbc]))
 
-(def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
+(def local-file (clojure.java.io/file (str (or (System/getProperty "app.basedir") (System/getProperty "user.home")) "/uploaded-sessions.csv")))
 
 (defn decorate-sessions 
   ([csv-resource] 
