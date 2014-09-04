@@ -3,7 +3,8 @@
   (:require [core.program-import :as pi]
             [core.sessions-api :as sa]
             [core.current-sessions :as cs]
-            [clj-json.core :as json]))
+            [clj-json.core :as json]
+            [clojure.java.jdbc :as jdbc]))
 
 (def local-file (clojure.java.io/file (str (System/getProperty "user.home") "/uploaded-sessions.csv")))
 
@@ -12,6 +13,11 @@
   (pi/append-speaker-maps (pi/normalized-sessions csv-resource))))
 
 (defn session-maps-file [f] (map (comp pi/add-speaker-fullnames pi/make-list-of-personas) (pi/keep-retained (decorate-sessions f))))
+
+(def db-spec (or (System/getenv "DATABASE_URL")
+              "postgresql://localhost:5432/sessions"))
+(def smaps-pg (jdbc/query db-spec ["select * from sessions"]))
+
 (def smaps (ref (session-maps-file local-file)))
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
 (defn get-session [id] (sa/get-session @smaps id))
@@ -21,7 +27,7 @@
         index-by-room #(zipmap (map :room %) %)
         slots    (for [slot (range 1 30)] (sa/session-list-for @smaps (str slot)))
         all-slots (pi/add-non-session-data (map index-by-room slots))]
-    {:rooms (filter not-empty (set (map :room @smaps)))
+    {:rooms (filter not-empty (set (map :room smaps-pg)))
      :slots all-slots
      }))
   (facts "returns a roomlist"
