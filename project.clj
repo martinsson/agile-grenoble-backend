@@ -9,7 +9,10 @@
                    [enlive "1.0.1"]
                    [hiccup "1.0.1"]
                    [compojure "1.1.5" :exclusions [ring/ring-core]]
-                   [ring/ring-jetty-adapter "1.1.6"]]
+                   [ring/ring-jetty-adapter "1.1.6"]
+                   
+                   [org.clojure/java.jdbc "0.3.2"]
+                   [postgresql "9.1-901.jdbc4"]]
   :uberjar-name "agile-grenoble-standalone.jar"
   :dev-dependencies [[lein-midje "1.0.10"]
                      [ring/ring-core "1.2.0"]] 
