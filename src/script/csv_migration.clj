@@ -1,13 +1,12 @@
 (ns script.csv-migration
-  (:require [clojure.java.jdbc :as jdbc]
-            [infra.handlers :as h]))
+  (:require [clojure.java.jdbc :as jdbc]))
 
 (defn extractor [session-map] (update-in (select-keys session-map ["slides" :width :bio :benefits :length :room :retained :title :speakers
                                                                    :firstname :lastname :theme :abstract "email" :id :slot]) [:speakers] first))
 
 (defn -main [command & [url]]
   (let [db-spec (or url "postgresql://localhost:5432/sessions")
-        csv-file (h/session-maps-file h/local-file)]
+        ]
     (case command
       "drop" (jdbc/db-do-commands db-spec (jdbc/drop-table-ddl :sessions))
       "create"
@@ -29,14 +28,10 @@
           ["email"  "varchar(32)"]
           [:id  "varchar(32)"]
           [:slot  "varchar(32)"]))
-      "inject" (for [session-map (map extractor csv-file)] (jdbc/insert! db-spec :sessions session-map))
+      "inject" (let [csv-file (infra.handlers/session-maps-file infra.handlers/local-file)] 
+                 (for [session-map (map extractor csv-file)] (jdbc/insert! db-spec :sessions session-map)))
       "either of [drop, create or inject")))
 
-(defn toto [route]
-  (case route
-    "home" "go home"
-    "away" "go away"
-    "stay"))
 ;(clojure.pprint/pprint line-one)
 
 ;  [:speaker-list "varchar(32)"]
