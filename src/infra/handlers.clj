@@ -16,19 +16,33 @@
 
 (def db-spec (or (System/getenv "DATABASE_URL")
               "postgresql://localhost:5432/sessions"))
+
 (def smaps-pg (jdbc/query db-spec ["select * from sessions"]))
 
 (def smaps (ref (session-maps-file local-file)))
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
 (defn get-session [id] (sa/get-session @smaps id))
 
+(def room-defs {
+               "Auditorium" {:id 0, :capacity 530}
+               "Makalu"     {:id 1, :capacity 110} 
+               "Kili 1+2"   {:id 2, :capacity 55}
+               "Kili 3+4"   {:id 3, :capacity 55}
+               "Cervin"     {:id 4, :capacity 40}
+               "Everest"    {:id 5, :capacity 40}
+               "Mt-Blanc 1" {:id 6, :capacity 24}
+               "Mt-Blanc 2" {:id 7, :capacity 24}
+               "Mt-Blanc 3" {:id 8, :capacity 24}
+               "Mt-Blanc 4" {:id 9, :capacity 24}})
+
 (defn all-slots-with-rooms [] 
-  (let [header   (keys (first @smaps))
+  (let [;header   (keys (first @smaps))
         index-by-room #(zipmap (map :room %) %)
-        slots    (for [slot (range 1 30)] (sa/session-list-for @smaps (str slot)))
+        slots    (for [slot (range 1 30)] (sa/session-list-for smaps-pg (str slot)))
         all-slots (pi/add-non-session-data (map index-by-room slots))]
-    {:rooms (filter not-empty (set (map :room smaps-pg)))
-     :slots all-slots
+    {:rooms room-defs
+     :slots (remove empty? all-slots)
+     :sessions smaps-pg
      }))
   (facts "returns a roomlist"
          (:rooms (all-slots-with-rooms)) =>
