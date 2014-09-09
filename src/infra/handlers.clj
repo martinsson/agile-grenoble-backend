@@ -17,7 +17,8 @@
 (def db-spec (or (System/getenv "DATABASE_URL")
               "postgresql://localhost:5432/sessions"))
 
-(def smaps-pg (jdbc/query db-spec ["select * from sessions"]))
+(defn speakers-to-list [m] (update-in m [:speakers] list))
+(def smaps-pg (jdbc/query db-spec ["select * from sessions"] :row-fn speakers-to-list))
 
 (def smaps (ref (session-maps-file local-file)))
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
