@@ -12,7 +12,9 @@
                    [ring/ring-jetty-adapter "1.1.6"]
                    
                    [org.clojure/java.jdbc "0.3.2"]
-                   [postgresql "9.1-901.jdbc4"]]
+                   [postgresql "9.1-901.jdbc4"]
+                   
+                   [clj-http "0.7.1"] ]
   :uberjar-name "agile-grenoble-standalone.jar"
   :dev-dependencies [[lein-midje "1.0.10"]
                      [ring/ring-core "1.2.0"]] 
