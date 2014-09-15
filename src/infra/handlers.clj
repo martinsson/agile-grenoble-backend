@@ -18,7 +18,7 @@
               "postgresql://localhost:5432/sessions"))
 
 (defn speakers-to-list [m] (update-in m [:speakers] list))
-(def smaps-pg (jdbc/query db-spec ["select * from sessions"] :row-fn speakers-to-list))
+(defn smaps-pg [] (jdbc/query db-spec ["select * from sessions"] :row-fn speakers-to-list))
 
 (def smaps (ref (session-maps-file local-file)))
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
@@ -39,11 +39,11 @@
 (defn all-slots-with-rooms [] 
   (let [;header   (keys (first @smaps))
         index-by-room #(zipmap (map :room %) %)
-        slots    (for [slot (range 1 30)] (sa/session-list-for smaps-pg (str slot)))
+        slots    (for [slot (range 1 30)] (sa/session-list-for (smaps-pg) (str slot)))
         all-slots (pi/add-non-session-data (map index-by-room slots))]
     {:rooms room-defs
      :slots (remove empty? all-slots)
-     :sessions smaps-pg
+     :sessions (smaps-pg)
      }))
   (facts "returns a roomlist"
          (:rooms (all-slots-with-rooms)) =>
