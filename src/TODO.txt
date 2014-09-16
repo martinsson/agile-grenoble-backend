@@ -1,1 +1,5 @@
+:type :keynote/:session
+masquer les mails en cas de nom pas rempli
+
+DONE
 Supprimer les slots vides

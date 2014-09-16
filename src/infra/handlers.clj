@@ -42,7 +42,7 @@
   ([] (all-slots-with-rooms (smaps-pg)))
   ([smaps] (let [;header   (keys (first @smaps))
           index-by-room #(zipmap (map :room %) %)
-          slots    (for [slot (range 1 30)] (sa/session-list-for smaps slot))
+          slots    (for [slot (range 1 15)] (sa/session-list-for smaps slot))
           all-slots (pi/add-non-session-data (map index-by-room slots))]
       {:rooms room-defs
        :slots (remove empty? all-slots)
