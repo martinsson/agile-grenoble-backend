@@ -1,4 +1,5 @@
-(ns script.propile-client)
+(ns script.propile-client
+  (:require [clj-http.client :as client]))
 (defonce cached-response (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
 
 ;(defn propile-response [] cached-response)
@@ -55,9 +56,9 @@
 
 (clojure.pprint/pprint (backend-session (nth (result) 3)))
 
-(defn session [id] 
-  (some #(when (= id (:id %)) %) (sessions)))
-
 (defn sessions [] 
   (for [s (result)] (backend-session s)))
+
+(defn session [id] 
+  (some #(when (= id (:id %)) %) (sessions)))
 ;todo speaker.name

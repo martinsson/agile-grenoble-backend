@@ -19,7 +19,8 @@
               "postgresql://localhost:5432/sessions"))
 
 (defn speakers-to-list [m] (update-in m [:speakers] list))
-(defn smaps-pg [] (jdbc/query db-spec ["select * from sessions"] :row-fn speakers-to-list))
+(defn slots-to-int [m] (update-in m [:slot] read-string))
+(defn smaps-pg [] (jdbc/query db-spec ["select * from sessions"] :row-fn (comp slots-to-int speakers-to-list)))
 
 (def smaps (ref (session-maps-file local-file)))
 (defn session-list-for [slot] (sa/session-list-for @smaps slot))
@@ -37,15 +38,16 @@
                "Mt-Blanc 3" {:id 8, :capacity 24}
                "Mt-Blanc 4" {:id 9, :capacity 24}})
 
-(defn all-slots-with-rooms [] 
-  (let [;header   (keys (first @smaps))
-        index-by-room #(zipmap (map :room %) %)
-        slots    (for [slot (range 1 30)] (sa/session-list-for (smaps-pg) (str slot)))
-        all-slots (pi/add-non-session-data (map index-by-room slots))]
-    {:rooms room-defs
-     :slots (remove empty? all-slots)
-     :sessions (smaps-pg)
-     }))
+(defn all-slots-with-rooms 
+  ([] (all-slots-with-rooms (smaps-pg)))
+  ([smaps] (let [;header   (keys (first @smaps))
+          index-by-room #(zipmap (map :room %) %)
+          slots    (for [slot (range 1 30)] (sa/session-list-for smaps slot))
+          all-slots (pi/add-non-session-data (map index-by-room slots))]
+      {:rooms room-defs
+       :slots (remove empty? all-slots)
+       :sessions smaps
+       })))
   (facts "returns a roomlist"
          (:rooms (all-slots-with-rooms)) =>
          (contains ["Auditorium" "Kili 1+2" "Kili 3+4" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4" "Everest" "Cervin" "Makalu"] :in-any-order))
@@ -129,12 +131,12 @@
      (wrap-with-jsonp callback)))
 
 (defn h-program-summary-with-roomlist []  
-  (-> (partial response-map (all-slots-with-rooms))
+  (-> (partial response-map (all-slots-with-rooms (smaps-pg)))
      (json-encode)
      (wrap-with-content-type-json)))
 
 (defn h-beta-program-summary-with-roomlist [callback]  
-  (-> (partial response-map (pc/sessions))
+  (-> (partial response-map (all-slots-with-rooms (pc/sessions)))
      (json-encode)
      (wrap-with-jsonp callback)))
 
