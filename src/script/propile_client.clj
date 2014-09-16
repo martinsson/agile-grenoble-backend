@@ -2,8 +2,8 @@
   (:require [clj-http.client :as client]))
 (defonce cached-response (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
 
-;(defn propile-response [] cached-response)
-(defn propile-response [] (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
+(defn propile-response [] cached-response)
+;(defn propile-response [] (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
 
 (defn result [] (->> (propile-response) 
                  :body 
