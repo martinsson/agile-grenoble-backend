@@ -13,13 +13,17 @@
 )
 (comment but (  :slides  :length :room  :email :firstname  :lastname))
 
-(defn width [session] (if (:span_entire_row session) 1 8))
+(defn width [session] (if (:span_entire_row session) 1 10))
 
-(defn room-name [track-number] "makalu")
+(def propile-room-def 
+  ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4"])
+
+(defn room-name [session] (propile-room-def (dec (:track session))))
+
 (defn backend-session [session]
   {:width (width session)
    :id (:id session)
-   :room (room-name :track)
+   :room (room-name session)
    :title (get-in session [:session :title])
    :sub_title (get-in session [:session :sub_title]) ;??
    :abstract (get-in session [:session :short_description])
@@ -42,8 +46,6 @@
                "Mt-Blanc 2" {:id 7, :capacity 24}
                "Mt-Blanc 3" {:id 8, :capacity 24}
                "Mt-Blanc 4" {:id 9, :capacity 24}})
-(def propile-room-def 
-  ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4"])
 ;Track1	Track2	Track3	Track4	Track5	Track6	Track7	Track8	Track9	Track10
 ;AMPHI	Makalu	Kili1+2	Kili3+4	Cervin	Everest	MB1	MB2	MB3	MB4
 ;530p	110p	55p	55p	40p	40p	25p	25p	25p	25p
