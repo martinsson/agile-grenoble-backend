@@ -31,8 +31,24 @@
    :slot (:slot session)
    :length 3
    })
+(def room-defs {
+               "Auditorium" {:id 0, :capacity 530}
+               "Makalu"     {:id 1, :capacity 110} 
+               "Kili 1+2"   {:id 2, :capacity 55}
+               "Kili 3+4"   {:id 3, :capacity 55}
+               "Cervin"     {:id 4, :capacity 40}
+               "Everest"    {:id 5, :capacity 40}
+               "Mt-Blanc 1" {:id 6, :capacity 24}
+               "Mt-Blanc 2" {:id 7, :capacity 24}
+               "Mt-Blanc 3" {:id 8, :capacity 24}
+               "Mt-Blanc 4" {:id 9, :capacity 24}})
+(def propile-room-def 
+  ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4"])
+;Track1	Track2	Track3	Track4	Track5	Track6	Track7	Track8	Track9	Track10
+;AMPHI	Makalu	Kili1+2	Kili3+4	Cervin	Everest	MB1	MB2	MB3	MB4
+;530p	110p	55p	55p	40p	40p	25p	25p	25p	25p
 
 (clojure.pprint/pprint (backend-session (nth result 3)))
-
+(for [s result] (:track s))
 
 ;todo speaker.name
