@@ -30,7 +30,7 @@
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
        [callback id] (h/h-get-session id callback))
   (GET ["/jsonp/beta/session/:id", :id #"[0-9]+"] 
-       [callback id] (h/h-beta-get-session id callback))
+       [callback id] (h/h-beta-get-session (read-string id) callback))
   (GET ["/jsonp/get-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (h/h-get-slot slot callback))
   (GET "/jsonp/current-sessions" [callback] (h/h-current-slot callback))
