@@ -46,7 +46,7 @@
           all-slots (pi/add-non-session-data (map index-by-room slots))]
       {:rooms room-defs
        :slots (remove empty? all-slots)
-       :sessions smaps
+       ;:sessions smaps  // to speed up the UI dont need this for the program summary. 
        })))
   (facts "returns a roomlist"
          (:rooms (all-slots-with-rooms)) =>
