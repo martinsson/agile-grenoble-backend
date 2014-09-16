@@ -1,10 +1,13 @@
 (ns script.propile-client)
-(defonce propile-response (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
+(defonce cached-response (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
 
-(def result (->> propile-response 
-             :body 
-             :program_entries 
-             (filter :session)))
+;(defn propile-response [] cached-response)
+(defn propile-response [] (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
+
+(defn result [] (->> (propile-response) 
+                 :body 
+                 :program_entries 
+                 (filter :session)))
 (comment depart (:span_entire_row :session :comment :program_id :updated_at :session_id :created_at :track :id :slot)
          (:intended_audience :first_presenter_id :duration :session_type :materials_needed :topic 
           :state :laptops_required :updated_at :material_description :first_presenter :title :created_at 
@@ -50,7 +53,11 @@
 ;AMPHI	Makalu	Kili1+2	Kili3+4	Cervin	Everest	MB1	MB2	MB3	MB4
 ;530p	110p	55p	55p	40p	40p	25p	25p	25p	25p
 
-(clojure.pprint/pprint (backend-session (nth result 3)))
-(for [s result] (:track s))
+(clojure.pprint/pprint (backend-session (nth (result) 3)))
 
+(defn session [id] 
+  (some #(when (= id (:id %)) %) (sessions)))
+
+(defn sessions [] 
+  (for [s (result)] (backend-session s)))
 ;todo speaker.name

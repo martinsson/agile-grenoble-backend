@@ -24,10 +24,13 @@
   (GET "/login" request (page-bodies (:uri request)))
   (GET ["/json/program-summary-with-roomlist"] request  (h/h-program-summary-with-roomlist))
   (GET ["/jsonp/program-summary-with-roomlist"] [callback]  (h/wrap-with-jsonp (h/h-program-summary-with-roomlist) callback))
+  (GET ["/jsonp/beta/program-summary-with-roomlist"] [callback]  (h/h-beta-program-summary-with-roomlist callback))
   (GET ["/json/personas"] request  (h/h-personas))
   (GET ["/jsonp/slot-list"] [callback] (h/h-slot-list callback))
   (GET ["/jsonp/session/:id", :id #"[0-9]+"] 
        [callback id] (h/h-get-session id callback))
+  (GET ["/jsonp/beta/session/:id", :id #"[0-9]+"] 
+       [callback id] (h/h-beta-get-session id callback))
   (GET ["/jsonp/get-slot/:slot", :slot #"[0-9]+"]
        [callback slot] (h/h-get-slot slot callback))
   (GET "/jsonp/current-sessions" [callback] (h/h-current-slot callback))

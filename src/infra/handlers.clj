@@ -3,6 +3,7 @@
   (:require [core.program-import :as pi]
             [core.sessions-api :as sa]
             [core.current-sessions :as cs]
+            [script.propile-client :as pc] 
             [clj-json.core :as json]
             [clojure.java.jdbc :as jdbc]))
 
@@ -122,10 +123,20 @@
      (json-encode)
      (wrap-with-jsonp callback)))
 
+(defn h-beta-get-session [session-id callback] 
+  (-> (partial response-map (pc/session session-id))
+     (json-encode)
+     (wrap-with-jsonp callback)))
+
 (defn h-program-summary-with-roomlist []  
   (-> (partial response-map (all-slots-with-rooms))
      (json-encode)
      (wrap-with-content-type-json)))
+
+(defn h-beta-program-summary-with-roomlist [callback]  
+  (-> (partial response-map (pc/sessions))
+     (json-encode)
+     (wrap-with-jsonp callback)))
 
 (defn h-personas [] 
   (-> (partial response-map (sa/persona-list))
