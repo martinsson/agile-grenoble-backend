@@ -17,7 +17,7 @@
 )
 (comment but (  :slides  :length :room  :email :firstname  :lastname))
 
-(defn width [session] (if (:span_entire_row session) 1 10))
+(defn width [session] (if (:span_entire_row session) 10 1))
 
 (def propile-room-def 
   ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4"])
