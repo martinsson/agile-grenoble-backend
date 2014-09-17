@@ -143,7 +143,7 @@ the number of elements is the number of repetitions of the keys"
                        ;{:title "Apéro offert par le Club Agile Rhone Alpes" :type :non-session}
                        ;{:title "Fin de journée" :type :departure}
                        ]
-        [arr sp1 cafe1 meal sp2 cafe2 cafe3] (for [ns non-sessions] {"all" (assoc ns :length 1)})]
+        [arr sp1 cafe1 meal sp2 cafe2 cafe3] (for [ns non-sessions] {"all" (assoc ns :length 1 :width 10)})]
     [arr sp1 s1 s2 cafe1 s3 meal sp2 s4 s5 cafe2 s6 cafe3 s7 ]))
 
 (future-fact "adds keynotes, coffe breaks, lunch to slots"
