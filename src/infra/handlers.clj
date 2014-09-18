@@ -74,17 +74,18 @@
 (defn wrap-with-content-type-json [handler]
   (fn [request]
     (let [response (handler request)]
-      (assoc-in response [:headers "Content-Type"] "application/json"))))
+      (assoc-in response [:headers "Content-Type"] "application/json; charset=iso-8859-1")))) 
 
     (facts 
       ((wrap-with-content-type-json ..handler..) ..request..) => {:headers {"Content-Type" "application/json"}}
       (provided (..handler.. ..request..) => {}))
 
 (defn wrap-with-jsonp [handler function-name]
-  (fn [request]
-    (let [response (handler request)
-          wrap-with-function #(str function-name "(" % ")")]
-      (update-in response [:body] wrap-with-function))))
+  (wrap-with-content-type-json 
+    (fn [request]
+      (let [response (handler request)
+            wrap-with-function #(str function-name "(" % ")")]
+        (update-in response [:body] wrap-with-function)))))
 
     (facts 
       (against-background (..handler.. ..request..) => {:body ..some-json..})
