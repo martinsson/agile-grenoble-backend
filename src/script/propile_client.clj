@@ -25,7 +25,7 @@
 (defn room-name [session] (propile-room-def (dec (:track session))))
 
 (defn backend-session [session]
-  (let [theme (get-in session [:session :theme])] 
+  (let [theme (get-in session [:session :topic])] 
     {:width (width session)
     :id (:id session)
     :room (room-name session)
