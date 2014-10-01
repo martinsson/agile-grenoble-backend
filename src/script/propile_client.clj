@@ -1,11 +1,17 @@
 (ns script.propile-client
   (:require [clj-http.client :as client]))
-(defonce cached-response (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
+(defn get-propile-program [] (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
 
-(defn propile-response [] cached-response)
-;(defn propile-response [] (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
+(def propile-response-ref (ref (get-propile-program)))
 
-(defn result [] (->> (propile-response) 
+; Update the program every 2 minutes
+(future (let [two-minutes 120000] 
+          (loop [] 
+              (java.lang.Thread/sleep two-minutes)
+              (dosync (ref-set propile-response-ref (get-propile-program)))
+              (recur))))
+
+(defn result [] (->> @propile-response-ref 
                  :body 
                  :program_entries 
                  (filter :session)))
