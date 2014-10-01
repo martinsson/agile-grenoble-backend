@@ -31,21 +31,20 @@
 (defn room-name [session] (propile-room-def (dec (:track session))))
 
 (defn backend-session [session]
-  (let [theme (get-in session [:session :topic])] 
-    {:width (width session)
-    :id (:id session)
-    :room (room-name session)
-    :title (get-in session [:session :title])
-    :sub_title (get-in session [:session :sub_title]) ;??
-    :abstract (get-in session [:session :short_description])
-    :description (get-in session [:session :description])
-    :benefits (get-in session [:session :session_goal]) ;??
-    :theme (first (remove empty? [theme "no_theme"]))
-    :speakers (remove nil? [(get-in session [:session :first_presenter :name]) (get-in session [:session :second_presenter :name])])
-    :type "session"
-    :slot (:slot session)
-    :length 3
-    }))
+  {:width (width session)
+  :id (:id session)
+  :room (room-name session)
+  :title (get-in session [:session :title])
+  :sub_title (get-in session [:session :sub_title]) ;??
+  :abstract (get-in session [:session :short_description])
+  :description (get-in session [:session :description])
+  :benefits (get-in session [:session :session_goal]) ;??
+  :theme (get-in session [:session :topic])
+  :speakers (remove nil? [(get-in session [:session :first_presenter :name]) (get-in session [:session :second_presenter :name])])
+  :type "session"
+  :slot (:slot session)
+  :length 3
+  })
 (def room-defs {
                "Auditorium" {:id 0, :capacity 530}
                "Makalu"     {:id 1, :capacity 110} 
