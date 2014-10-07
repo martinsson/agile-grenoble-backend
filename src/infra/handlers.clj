@@ -74,7 +74,7 @@
 (defn wrap-with-content-type-json [handler]
   (fn [request]
     (let [response (handler request)]
-      (assoc-in response [:headers "Content-Type"] "application/json; charset=iso-8859-1")))) 
+      (assoc-in response [:headers "Content-Type"] "application/json; charset=UTF-8")))) 
 
     (facts 
       ((wrap-with-content-type-json ..handler..) ..request..) => {:headers {"Content-Type" "application/json"}}
