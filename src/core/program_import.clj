@@ -134,7 +134,7 @@ the number of elements is the number of repetitions of the keys"
 
 (defn add-non-session-data [[s1 s2 s3 s4 s5 s6 s7]]
   (let [non-sessions  [{:title "Accueil des participants autour d'un café" :type :non-session}
-                       {:title "Session Plénière: le mot des organisateurs & Enalean" :type :sponsor}
+                       {:title "Session Plénière: le mot des organisateurs & Samse" :type :sponsor}
                        {:title "Pause café" :type :cafe}
                        {:title "Repas" :type :meal} 
                        {:title "Session Plénière: le mot des organisateurs & Sogilis" :type :sponsor}
