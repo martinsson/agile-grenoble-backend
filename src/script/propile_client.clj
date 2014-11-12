@@ -30,6 +30,11 @@
 
 (defn room-name [session] (propile-room-def (dec (:track session))))
 
+(defn speakers [{session :session}]
+  (remove nil? [(get-in session [:first_presenter :name]) (get-in session [:second_presenter :name])]))
+(defn speakers-details [{session :session}]
+  (select-keys session [:first_presenter :second_presenter]))
+
 (defn backend-session [session]
   {:width (width session)
   :id (:id session)
@@ -40,11 +45,12 @@
   :description (get-in session [:session :description])
   :benefits (get-in session [:session :session_goal]) ;??
   :theme (get-in session [:session :topic])
-  :speakers (remove nil? [(get-in session [:session :first_presenter :name]) (get-in session [:session :second_presenter :name])])
+  :speakers (speakers session)
+  :speakers-detail (speakers-details session)
   :type "session"
   :slot (:slot session)
   :length 3
-  })
+})
 (def room-defs {
                "Auditorium" {:id 0, :capacity 530}
                "Makalu"     {:id 1, :capacity 110} 
@@ -60,7 +66,7 @@
 ;AMPHI	Makalu	Kili1+2	Kili3+4	Cervin	Everest	MB1	MB2	MB3	MB4
 ;530p	110p	55p	55p	40p	40p	25p	25p	25p	25p
 
-(clojure.pprint/pprint (backend-session (nth (result) 3)))
+(clojure.pprint/pprint (backend-session (nth (result) 7)))
 
 (defn sessions [] 
   (for [s (result)] (backend-session s)))
