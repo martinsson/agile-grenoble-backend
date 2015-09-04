@@ -1,6 +1,6 @@
 (ns script.propile-client
   (:require [clj-http.client :as client]))
-(defn get-propile-program [] (client/get "http://cfp.agile-grenoble.org/programs/6/full_export" {:as :json}))
+(defn get-propile-program [] (client/get "http://cfp.agile-grenoble.org/programs/7/full_export" {:as :json}))
 
 (def propile-response-ref (ref (get-propile-program)))
 
@@ -23,7 +23,8 @@
 )
 (comment but (  :slides  :length :room  :email :firstname  :lastname))
 
-(defn width [session] (if (:span_entire_row session) 10 1))
+(def room-count 10)
+(defn width [session] (if (:span_entire_row session) room-count 1))
 
 (def propile-room-def 
   ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4"])
@@ -66,7 +67,7 @@
 ;AMPHI	Makalu	Kili1+2	Kili3+4	Cervin	Everest	MB1	MB2	MB3	MB4
 ;530p	110p	55p	55p	40p	40p	25p	25p	25p	25p
 
-(clojure.pprint/pprint (backend-session (nth (result) 7)))
+(clojure.pprint/pprint (backend-session (nth (result) 0)))
 
 (defn sessions [] 
   (for [s (result)] (backend-session s)))
