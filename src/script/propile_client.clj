@@ -1,6 +1,6 @@
 (ns script.propile-client
   (:require [clj-http.client :as client]))
-(defn get-propile-program [] (client/get "http://cfp.agile-grenoble.org/programs/7/full_export" {:as :json}))
+(defn get-propile-program [] (client/get "http://cfp.agile-grenoble.org/programs/40/full_export" {:as :json}))
 
 (def propile-response-ref (ref (get-propile-program)))
 
