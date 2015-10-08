@@ -132,21 +132,22 @@ the number of elements is the number of repetitions of the keys"
       (provided (sessions-as-maps ..csv..) => [{:title "happy XP" :retained ""}
                                               {:title "happy scrumming" :retained "x"}]))
 
-(defn add-non-session-data [[s1 s2 s3 s4 s5 s6 s7]]
+(defn add-non-session-data [[s1 s2 s3 s4 s5 s6 s7 s8]]
   (let [non-sessions  [{:title "Accueil des participants autour d'un café" :type :non-session}
-                       {:title "Session Plénière: le mot des organisateurs & Samse" :type :sponsor}
+                       {:title "Session Plénière: le mot des organisateurs & Sponsor" :type :sponsor}
                        {:title "Changement de salle" :type :non-session}
                        {:title "Pause café" :type :cafe}
-                       {:title "Repas" :type :meal} 
-                       {:title "Session Plénière: le mot des organisateurs & Sogilis" :type :sponsor}
+                       {:title "Pause déjeuner" :type :meal} 
+                       {:title "Session Plénière: le mot des organisateurs & Sponsor" :type :sponsor}
                        {:title "Changement de salle" :type :non-session}
                        {:title "Pause café" :type :cafe}
                        {:title "Pause café" :type :cafe}
-                       {:title "Apéro offert par le Club Agile Rhone Alpes" :type :non-session}
+                       {:title "Changement de salle" :type :non-session}
+                       
                        ;{:title "Fin de journée" :type :departure}
                        ]
-        [arr sp1 chgmt1 cafe1 meal sp2 chgmt2 cafe2 cafe3 apero] (for [ns non-sessions] {"all" (assoc ns :length 1 :width 10)})]
-    [arr sp1 s1 chgmt1 s2 cafe1 s3 meal sp2 s4 chgmt2 s5 cafe2 s6 cafe3 s7 apero]))
+        [arr sp1 chgmt1 cafe1 meal sp2 chgmt2 cafe2 cafe3 chgmt3 chgmt4] (for [ns non-sessions] {"all" (assoc ns :length 1 :width 11)})]
+    [arr sp1 s1 chgmt1 s2 cafe1 s3 meal sp2 s4 chgmt2 s5 cafe2 s6 cafe3 s7 chgmt3 s8]))
 
 (future-fact "adds keynotes, coffe breaks, lunch to slots"
       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [{"all" (contains {:title "Accueil des participants autour d'un café"})}

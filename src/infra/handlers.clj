@@ -36,7 +36,8 @@
                "Mt-Blanc 1" {:id 6, :capacity 24}
                "Mt-Blanc 2" {:id 7, :capacity 24}
                "Mt-Blanc 3" {:id 8, :capacity 24}
-               "Mt-Blanc 4" {:id 9, :capacity 24}})
+               "Mt-Blanc 4" {:id 9, :capacity 24}
+               "Atrium"     {:id 10 :capacity 100}})
 
 (defn all-slots-with-rooms 
   ([] (all-slots-with-rooms (smaps-pg)))

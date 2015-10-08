@@ -1,6 +1,6 @@
 (ns script.propile-client
   (:require [clj-http.client :as client]))
-(defn get-propile-program [] (client/get "http://cfp.agile-grenoble.org/programs/40/full_export" {:as :json}))
+(defn get-propile-program [] (client/get "http://cfp.agile-grenoble.org/programs/7/full_export" {:as :json}))
 
 (def propile-response-ref (ref (get-propile-program)))
 
@@ -23,13 +23,14 @@
 )
 (comment but (  :slides  :length :room  :email :firstname  :lastname))
 
-(def room-count 10)
+(def room-count 11)
 (defn width [session] (if (:span_entire_row session) room-count 1))
 
 (def propile-room-def 
-  ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4"])
+  ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4" "Atrium"])
 
 (defn room-name [session] (propile-room-def (dec (:track session))))
+
 
 (defn speakers [{session :session}]
   (remove nil? [(get-in session [:first_presenter :name]) (get-in session [:second_presenter :name])]))
@@ -62,7 +63,8 @@
                "Mt-Blanc 1" {:id 6, :capacity 24}
                "Mt-Blanc 2" {:id 7, :capacity 24}
                "Mt-Blanc 3" {:id 8, :capacity 24}
-               "Mt-Blanc 4" {:id 9, :capacity 24}})
+               "Mt-Blanc 4" {:id 9, :capacity 24}
+               "Atrium"     {:id 10 :capacity 100}})
 ;Track1	Track2	Track3	Track4	Track5	Track6	Track7	Track8	Track9	Track10
 ;AMPHI	Makalu	Kili1+2	Kili3+4	Cervin	Everest	MB1	MB2	MB3	MB4
 ;530p	110p	55p	55p	40p	40p	25p	25p	25p	25p
