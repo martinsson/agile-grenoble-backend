@@ -1,13 +1,11 @@
 (ns infra.http  
   (:use midje.sweet
-        [compojure.core :only (GET POST defroutes)]
-        [users.users :only (users)])
+        [compojure.core :only (GET POST defroutes)])
   (:require [clojure.java.io :as io] 
             [infra.upload :as u] 
             [infra.handlers :as h] 
             [compojure.route :as route]
             [compojure.handler :as handler]
-            (ring.middleware [multipart-params :as mp])
             [ring.adapter.jetty :as jetty]))
 
 (alter-var-root #'midje.semi-sweet/*include-midje-checks* (constantly false))
