@@ -3,35 +3,27 @@
         [compojure.core :only (GET POST defroutes)]
         [users.users :only (users)])
   (:require [clojure.java.io :as io] 
-            [cemerick.friend :as friend]
             [infra.upload :as u] 
             [infra.handlers :as h] 
             [compojure.route :as route]
             [compojure.handler :as handler]
             (ring.middleware [multipart-params :as mp])
-            [cemerick.friend.workflows :as workflows]
-            [cemerick.friend.credentials :as creds]
             [ring.adapter.jetty :as jetty]))
 
 (alter-var-root #'midje.semi-sweet/*include-midje-checks* (constantly false))
 
-(def page-bodies {"/login" (u/login)})
 
 (defroutes main-routes
   (GET "/" [] (u/render (u/index)))
-  (GET "/login" request (page-bodies (:uri request)))
   (GET ["/jsonp/beta/program-summary-with-roomlist"] [callback]  (h/h-beta-program-summary-with-roomlist callback))
   (GET ["/jsonp/beta/session/:id", :id #"[0-9]+"] 
        [callback id] (h/h-beta-get-session (read-string id) callback))
-  (GET "/upload" [] (friend/authorize #{:admin} (u/upload)))
   
   (route/resources "/")
   (route/not-found "Page not found"))
 
 (def app
   (-> main-routes
-    (friend/authenticate {:credential-fn (partial creds/bcrypt-credential-fn users)
-                          :workflows [(workflows/interactive-form)]})
     (handler/site)))
 
   (facts "provides a slot-list, sessions for a given slot and details of a session"
