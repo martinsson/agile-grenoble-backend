@@ -1,7 +1,6 @@
 (ns infra.handlers  
   (:use midje.sweet)
-  (:require [core.program-import :as pi]
-            [core.sessions-api :as sa]
+  (:require [core.sessions-api :as sa]
             [script.propile-client :as pc] 
             [clj-json.core :as json]
             [clojure.java.jdbc :as jdbc]))
