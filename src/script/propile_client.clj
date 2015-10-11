@@ -1,5 +1,7 @@
 (ns script.propile-client
-  (:require [clj-http.client :as client]))
+  (:use midje.sweet)
+  (:require [clj-http.client :as client])
+  (:require [script.clean-sessions :as clean-sessions]))
 (defn get-propile-program [] (client/get "http://cfp.agile-grenoble.org/programs/42/full_export" {:as :json}))
 
 (def propile-response-ref (ref (get-propile-program)))
@@ -31,28 +33,29 @@
 
 (defn room-name [session] (propile-room-def (dec (:track session))))
 
-
 (defn speakers [{session :session}]
   (remove nil? [(get-in session [:first_presenter :name]) (get-in session [:second_presenter :name])]))
 (defn speakers-details [{session :session}]
   (select-keys session [:first_presenter :second_presenter]))
 
-(defn backend-session [session]
-  {:width (width session)
-  :id (:id session)
-  :room (room-name session)
-  :title (get-in session [:session :title])
-  :sub_title (get-in session [:session :sub_title]) ;??
-  :abstract (get-in session [:session :short_description])
-  :description (get-in session [:session :description])
-  :benefits (get-in session [:session :session_goal]) ;??
-  :theme (get-in session [:session :topic])
-  :speakers (speakers session)
-  :speakers-detail (speakers-details session)
-  :type "session"
-  :slot (:slot session)
-  :length 3
-})
+(defn backend-session [raw-session]
+  (let [tmp-session (update-in raw-session [:session :first_presenter] clean-sessions/filter-names-that-are-emails)
+        session (update-in tmp-session [:session :second_presenter] clean-sessions/filter-names-that-are-emails)] 
+    {:width (width session)
+      :id (:id session)
+      :room (room-name session)
+      :title (get-in session [:session :title])
+      :sub_title (get-in session [:session :sub_title]) ;??
+      :abstract (get-in session [:session :short_description])
+      :description (get-in session [:session :description])
+      :benefits (get-in session [:session :session_goal]) ;??
+      :theme (get-in session [:session :topic])
+      :speakers (speakers session)
+      :speakers-detail (speakers-details session)
+      :type "session"
+      :slot (:slot session)
+      :length 3}))
+
 (def room-defs {
                "Auditorium" {:id 0, :capacity 530}
                "Makalu"     {:id 1, :capacity 110} 
@@ -69,7 +72,7 @@
 ;AMPHI	Makalu	Kili1+2	Kili3+4	Cervin	Everest	MB1	MB2	MB3	MB4
 ;530p	110p	55p	55p	40p	40p	25p	25p	25p	25p
 
-(clojure.pprint/pprint (backend-session (nth (result) 0)))
+(clojure.pprint/pprint (backend-session (nth (result) 1)))
 
 (defn sessions [] 
   (for [s (result)] (backend-session s)))
