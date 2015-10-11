@@ -1,6 +1,5 @@
 (ns core.sessions-api
-  (:use midje.sweet)
-  (:require [core.program-import :as pi]))
+  (:use midje.sweet))
 
 (def time-slots ["10:00" "10:15" "10:30" "10:45" "11:05" "11:20" "11:35" "11:50" "13:20" 
                  "13:45" "14:30"  "14:50" "15:05" "15:20" "15:35" "16:05" "16:20" "16:35" 
