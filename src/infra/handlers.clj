@@ -19,12 +19,32 @@
                "Mt-Blanc 4" {:id 9, :capacity 24}
                "Atrium"     {:id 10 :capacity 100}})
 
+
+(defn add-non-session-data [[s1 s2 s3 s4 s5 s6 s7 s8]]
+  (let [non-sessions  [{:title "Accueil des participants autour d'un café" :type :non-session}
+                       {:title "Session Plénière: le mot des organisateurs & Sponsor" :type :sponsor}
+                       {:title "Changement de salle" :type :non-session}
+                       {:title "Pause café" :type :cafe}
+                       {:title "Pause déjeuner" :type :meal} 
+                       {:title "Session Plénière: le mot des organisateurs & Sponsor" :type :sponsor}
+                       {:title "Changement de salle" :type :non-session}
+                       {:title "Pause café" :type :cafe}
+                       {:title "Pause café" :type :cafe}
+                       {:title "Changement de salle" :type :non-session}
+                       
+                       ;{:title "Fin de journée" :type :departure}
+                       ]
+        [arr sp1 chgmt1 cafe1 meal sp2 chgmt2 cafe2 cafe3 chgmt3 chgmt4] (for [ns non-sessions] {"all" (assoc ns :length 1 :width 11)})]
+    [arr sp1 s1 chgmt1 s2 cafe1 s3 meal sp2 s4 chgmt2 s5 cafe2 s6 cafe3 s7 chgmt3 s8]))
+
+
+
 (defn all-slots-with-rooms 
   
   ([smaps] (let [;header   (keys (first @smaps))
           index-by-room #(zipmap (map :room %) %)
           slots    (for [slot (range 1 15)] (sa/session-list-for smaps slot))
-          all-slots (pi/add-non-session-data (map index-by-room slots))]
+          all-slots (add-non-session-data (map index-by-room slots))]
       {:rooms room-defs
        :slots (remove empty? all-slots)
        ;:sessions smaps  // to speed up the UI dont need this for the program summary. 

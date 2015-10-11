@@ -1,8 +1,8 @@
 (ns infra.http  
   (:use midje.sweet
-        [compojure.core :only (GET POST defroutes)])
+        [compojure.core :only (GET POST defroutes)]
+         [net.cgrand.enlive-html :only [deftemplate]])
   (:require [clojure.java.io :as io] 
-            [infra.upload :as u] 
             [infra.handlers :as h] 
             [compojure.route :as route]
             [compojure.handler :as handler]
@@ -10,9 +10,15 @@
 
 (alter-var-root #'midje.semi-sweet/*include-midje-checks* (constantly false))
 
+  
+(defn render [t]
+      (apply str t))
+
+(deftemplate index "templates/index.html" [])
+
 
 (defroutes main-routes
-  (GET "/" [] (u/render (u/index)))
+  (GET "/" [] (render (index)))
   (GET ["/jsonp/beta/program-summary-with-roomlist"] [callback]  (h/h-beta-program-summary-with-roomlist callback))
   (GET ["/jsonp/beta/session/:id", :id #"[0-9]+"] 
        [callback id] (h/h-beta-get-session (read-string id) callback))
