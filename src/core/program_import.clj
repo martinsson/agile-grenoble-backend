@@ -149,21 +149,3 @@ the number of elements is the number of repetitions of the keys"
         [arr sp1 chgmt1 cafe1 meal sp2 chgmt2 cafe2 cafe3 chgmt3 chgmt4] (for [ns non-sessions] {"all" (assoc ns :length 1 :width 11)})]
     [arr sp1 s1 chgmt1 s2 cafe1 s3 meal sp2 s4 chgmt2 s5 cafe2 s6 cafe3 s7 chgmt3 s8]))
 
-(future-fact "adds keynotes, coffe breaks, lunch to slots"
-      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) => (has-prefix [{"all" (contains {:title "Accueil des participants autour d'un café"})}
-                                                   {"all" (contains {:title "Session Plénière: le mot des organisateurs & Sogilis"})}
-                                                   {"all" (contains {:title "Keynote : Reinventing software quality" :speakers ["Gojko Adzic"]})}])
-      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) 
-      => (contains [..s2.. 
-                    {"all" (contains {:title "Repas"})} 
-                    {"all" (contains {:title "Session Plénière: le mot des organisateurs & Samse"})}
-                    {"all" (contains {:title "Keynote : Rompez les amarres !!" :speakers ["Laurent Sarrazin"]})}
-                    ..s3..])
-      (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ])
-      => (has-suffix [{"all" {:title "Pause café"}}
-                      ..s4..
-                      ..s5..
-                      {"all" {:title "Apéro offert par le Club Agile Rhone Alpes"}}]))
-(future-facts "adds a type to every slot"
-       (add-non-session-data [..s1.. ..s2.. ..s3.. ..s4.. ..s5.. ]) =>
-       (has-prefix [{"all" {:type :arrival :title "Accueil des participants autour d'un café" }}]))

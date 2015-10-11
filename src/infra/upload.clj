@@ -1,7 +1,6 @@
 (ns infra.upload
   (:use [net.cgrand.enlive-html :only [deftemplate]]
         [clojure.java.io :only (file copy)]
-        [infra.handlers :only (session-maps-file smaps local-file)]
         hiccup.element 
         hiccup.form
         [hiccup.page :only [include-css html5 ]]))
@@ -49,11 +48,3 @@ docs.google.com : File → Download as → csv
 Ici             : Choose file → Submit"]]
      [:div.upload
        (upload-form)  ]])))
-
-(defn upload-file
-  [f-data]
-  (let [tmpfile (f-data :tempfile)]
-    (copy tmpfile local-file)
-    (dosync (ref-set smaps (session-maps-file tmpfile))))
-  (render (upload-success)))
-
