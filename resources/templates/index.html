@@ -5,28 +5,14 @@
     <title>Administration de sessions</title>
 </head>
 <body>
-  <h2>Administration des sessions d'Agile Grenoble</h2>
   <div>
-      <h3><a href="/upload">Mettre à jour les sessions</a></h3>
-  </div>
-  <div>
-  <h3>Programme</h3>
-  Allez-voir le <a href="/program">programme</a>
   <h3>API</h3>
-  Butterfly (jsonp)
-  <li><a href="jsonp/current-sessions?callback=callback_for_current_sessions">
-    current sessions</a></li>
-  <li><a href="jsonp/upcoming-sessions?callback=callback_for_current_sessions">
-    upcoming sessions</a></li>
-  <li><a href="jsonp/slot-list?callback=callback_for_slot-list">
-    slot-list, i.e. a list of time slots representing the session starting hours</a></li>
-  <li><a href="jsonp/sessions-for-slot/2?callback=callback_for_sessions-for-slot">
-    list of sessions for slot a given slot</a></li>
-  <li><a href="jsonp/session/17?callback=callback_for_session">
+  Site agile-grenoble.org
+  <li><a href="/jsonp/beta/program-summary-with-roomlist?callback=callback_for_current_sessions">json : list of slots </a> (slot = list of sessions, session = map with keys, title, slot, room, ...)</li>
+
+  <li><a href="/jsonp/beta/session/2?callback=callback_for_current_sessions">
     details of a given session</a></li>
   
-  Site agile-grenoble.org
-  <li><a href="json/program-summary-with-roomlist">json : list of slots </a> (slot = list of sessions, session = map with keys, title, slot, room, ...)</li>
   </div>
 </body>
 </html>
