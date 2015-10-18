@@ -5,21 +5,6 @@
             [clj-json.core :as json]
             [clojure.java.jdbc :as jdbc]))
 
-(def room-defs {
-               "Auditorium" {:id 0, :capacity 530}
-               "Makalu"     {:id 1, :capacity 110} 
-               "Kili 1+2"   {:id 2, :capacity 55}
-               "Kili 3+4"   {:id 3, :capacity 55}
-               "Cervin"     {:id 4, :capacity 40}
-               "Everest"    {:id 5, :capacity 40}
-               "Mt-Blanc 1" {:id 6, :capacity 24}
-               "Mt-Blanc 2" {:id 7, :capacity 24}
-               "Mt-Blanc 3" {:id 8, :capacity 24}
-               "Mt-Blanc 4" {:id 9, :capacity 24}
-               "Atrium 1"   {:id 10 :capacity 20}
-               "Atrium 2"   {:id 11 :capacity 30}})
-
-(def room-count (count room-defs))
 
 (defn add-non-session-data [[s1 s2 s3 s4 s5 s6 s7 s8]]
   (let [non-sessions  [{:title "Accueil des participants autour d'un café" :type :non-session}
@@ -37,7 +22,7 @@
                        
                        ;{:title "Fin de journée" :type :departure}
                        ]
-        [arr sp1 chgmt1 cafe1 meal sp2 chgmt2 cafe2 cafe3 chgmt3 chgmt4 apero] (for [ns non-sessions] {"all" (assoc ns :length 1 :width room-count)})]
+        [arr sp1 chgmt1 cafe1 meal sp2 chgmt2 cafe2 cafe3 chgmt3 chgmt4 apero] (for [ns non-sessions] {"all" (assoc ns :length 1 :width pc/room-count)})]
     [arr sp1 s1 chgmt1 s2 cafe1 s3 meal sp2 s4 chgmt2 s5 cafe2 s6 cafe3 s7 chgmt3 s8 apero]))
 
 
@@ -48,7 +33,7 @@
           index-by-room #(zipmap (map :room %) %)
           slots    (for [slot (range 1 more-than-number-of-slots)] (sa/session-list-for smaps slot))
           all-slots (add-non-session-data (map index-by-room slots))]
-      {:rooms room-defs
+      {:rooms pc/room-defs
        :slots (remove empty? all-slots)
        ;:sessions smaps  // to speed up the UI dont need this for the program summary. 
        })))
