@@ -7,6 +7,7 @@
 (def propile-response-ref (ref (get-propile-program)))
 
 ; Update the program every 2 minutes
+
 (future (let [two-minutes 120000] 
           (loop [] 
               (java.lang.Thread/sleep two-minutes)
@@ -25,11 +26,13 @@
 )
 (comment but (  :slides  :length :room  :email :firstname  :lastname))
 
-(def room-count 11)
+(def propile-room-def 
+  ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4" "Atrium 1" "Atrium 2"])
+
+(def room-count (count propile-room-def))
+
 (defn width [session] (if (:span_entire_row session) room-count 1))
 
-(def propile-room-def 
-  ["Auditorium" "Makalu" "Kili 1+2" "Kili 3+4" "Cervin" "Everest" "Mt-Blanc 1" "Mt-Blanc 2" "Mt-Blanc 3" "Mt-Blanc 4" "Atrium"])
 
 (defn room-name [session] (propile-room-def (dec (:track session))))
 

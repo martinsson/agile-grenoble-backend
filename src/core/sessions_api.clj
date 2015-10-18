@@ -21,6 +21,6 @@
      (session-list-for [{"key to remove" "toto" 
                      :id ..id.. :title ..title.. :slot "3" 
                      :room ..room.. :speakers ..sl..}] "3") 
-     => (just [{:id ..id.. :title ..title.. :slot "3" :room ..room.. :speakers ..sl.. :start-time "10:30"}])
+     => (just [{:id ..id.. :title ..title.. :slot "3" :room ..room.. :speakers ..sl..}])
      :in-any-order)
   

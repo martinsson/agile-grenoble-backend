@@ -16,7 +16,9 @@
                "Mt-Blanc 2" {:id 7, :capacity 24}
                "Mt-Blanc 3" {:id 8, :capacity 24}
                "Mt-Blanc 4" {:id 9, :capacity 24}
-               "Atrium"     {:id 10 :capacity 100}})
+               "Atrium 1"   {:id 10 :capacity 20}
+               "Atrium 2"   {:id 11 :capacity 30}})
+
 (def room-count (count room-defs))
 
 (defn add-non-session-data [[s1 s2 s3 s4 s5 s6 s7 s8]]
@@ -31,7 +33,7 @@
                        {:title "Pause café" :type :cafe}
                        {:title "Changement de salle" :type :non-session}
                        {:title "Changement de salle" :type :non-session}
-                       {:title "Apéro offert par le CARA" :type :non-session}
+                       {:title "Apéro offert par le CARA" :type :departure}
                        
                        ;{:title "Fin de journée" :type :departure}
                        ]
@@ -57,9 +59,9 @@
          (all-slots-with-rooms {}) =>
          (contains {:slots (contains (contains {"Auditorium" not-empty
                                                 "Mt-Blanc 3" not-empty}))}))
-  (facts "there are 11 rooms"
+  (facts "there are 12 rooms"
          (count (:rooms (all-slots-with-rooms {}))) =>
-         11) 
+         12) 
   
 
   (future-facts "adapt to all-slots-with-rooms : returns a list of slots with a list of sessions"
